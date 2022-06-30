@@ -181,8 +181,8 @@ This app helps users find plants that are suitable for them based on three growt
 | --------- | -------- | ----------- |  -- |
 | /api/CharacteristicsSearch | `POST` | creates new characteristics search from user entered attributes in JSON Payload Document (body) | [url](https://plantsservices.sc.egov.usda.gov/api/CharacteristicsSearch) |
 | /api/PlantProfile?symbol=:symbol | `GET` | gets plant profile by :symbol (from characteristics search results)| [url](https://plantsservices.sc.egov.usda.gov/api/PlantProfile?symbol=ACNED) | 
-| /api/PlantCharacteristics/:id | `GET` | gets plant characteristics information by :id (from plant profile) | [url](https://plantsservices.sc.egov.usda.gov/api/PlantCharacteristics/42690) | 
-| /ImageLibrary/standard/:filename | `GET` | gets plant image by :filename (from plant profile "ProfileImageFilename") | [url](https://plants.sc.egov.usda.gov/ImageLibrary/standard/abgr4_001_svp.jpg) |
+| /api/PlantCharacteristics/:id | `GET` | gets plant characteristics information by :id (from characteristics) | [url](https://plantsservices.sc.egov.usda.gov/api/PlantCharacteristics/42690) | 
+| /ImageLibrary/standard/:filename | `GET` | gets plant image by :filename (from characteristics search results) | [url](https://plants.sc.egov.usda.gov/ImageLibrary/standard/abgr4_001_svp.jpg) |
 
 <!-- Get all unfiltered plants
 Get plant details from api and store in database
