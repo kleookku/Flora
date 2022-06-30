@@ -11,6 +11,8 @@
 		765F0797204FDD8C134538C4 /* Pods_Flora_FloraUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8BFB23CF19A4225799F20F /* Pods_Flora_FloraUITests.framework */; };
 		E73819F1F5C1B3C6EF4C6CF7 /* Pods_Flora.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B8ADF9025442BD0ADD5828A /* Pods_Flora.framework */; };
 		F41A29E8286E4CE200D2DAB9 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = F41A29E7286E4CE200D2DAB9 /* Keys.plist */; };
+		F41A29EB286E4F7100D2DAB9 /* Plant.m in Sources */ = {isa = PBXBuildFile; fileRef = F41A29EA286E4F7100D2DAB9 /* Plant.m */; };
+		F41A29F6286E509200D2DAB9 /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F41A29F5286E509200D2DAB9 /* APIManager.m */; };
 		F47EE860286E4A8D00E3AA76 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F47EE85F286E4A8D00E3AA76 /* AppDelegate.m */; };
 		F47EE863286E4A8D00E3AA76 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F47EE862286E4A8D00E3AA76 /* SceneDelegate.m */; };
 		F47EE866286E4A8D00E3AA76 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F47EE865286E4A8D00E3AA76 /* ViewController.m */; };
@@ -51,6 +53,10 @@
 		AD0AFB2A2F2157872EEF6730 /* Pods_FloraTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FloraTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB8BFB23CF19A4225799F20F /* Pods_Flora_FloraUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Flora_FloraUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F41A29E7286E4CE200D2DAB9 /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
+		F41A29E9286E4F7100D2DAB9 /* Plant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Plant.h; sourceTree = "<group>"; };
+		F41A29EA286E4F7100D2DAB9 /* Plant.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Plant.m; sourceTree = "<group>"; };
+		F41A29F4286E509200D2DAB9 /* APIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIManager.h; sourceTree = "<group>"; };
+		F41A29F5286E509200D2DAB9 /* APIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APIManager.m; sourceTree = "<group>"; };
 		F47EE85B286E4A8D00E3AA76 /* Flora.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flora.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F47EE85E286E4A8D00E3AA76 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F47EE85F286E4A8D00E3AA76 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -121,6 +127,33 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F41A29EC286E4F7600D2DAB9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F41A29E9286E4F7100D2DAB9 /* Plant.h */,
+				F41A29EA286E4F7100D2DAB9 /* Plant.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F41A29ED286E4F7E00D2DAB9 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F47EE864286E4A8D00E3AA76 /* ViewController.h */,
+				F47EE865286E4A8D00E3AA76 /* ViewController.m */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		F41A29F7286E509800D2DAB9 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				F41A29F4286E509200D2DAB9 /* APIManager.h */,
+				F41A29F5286E509200D2DAB9 /* APIManager.m */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		F47EE852286E4A8D00E3AA76 = {
 			isa = PBXGroup;
 			children = (
@@ -146,12 +179,13 @@
 		F47EE85D286E4A8D00E3AA76 /* Flora */ = {
 			isa = PBXGroup;
 			children = (
+				F41A29F7286E509800D2DAB9 /* API */,
+				F41A29ED286E4F7E00D2DAB9 /* View Controllers */,
 				F47EE85E286E4A8D00E3AA76 /* AppDelegate.h */,
 				F47EE85F286E4A8D00E3AA76 /* AppDelegate.m */,
+				F41A29EC286E4F7600D2DAB9 /* Models */,
 				F47EE861286E4A8D00E3AA76 /* SceneDelegate.h */,
 				F47EE862286E4A8D00E3AA76 /* SceneDelegate.m */,
-				F47EE864286E4A8D00E3AA76 /* ViewController.h */,
-				F47EE865286E4A8D00E3AA76 /* ViewController.m */,
 				F47EE867286E4A8D00E3AA76 /* Main.storyboard */,
 				F47EE86A286E4A8E00E3AA76 /* Assets.xcassets */,
 				F47EE86C286E4A8E00E3AA76 /* LaunchScreen.storyboard */,
@@ -420,6 +454,8 @@
 			files = (
 				F47EE866286E4A8D00E3AA76 /* ViewController.m in Sources */,
 				F47EE860286E4A8D00E3AA76 /* AppDelegate.m in Sources */,
+				F41A29F6286E509200D2DAB9 /* APIManager.m in Sources */,
+				F41A29EB286E4F7100D2DAB9 /* Plant.m in Sources */,
 				F47EE871286E4A8E00E3AA76 /* main.m in Sources */,
 				F47EE863286E4A8D00E3AA76 /* SceneDelegate.m in Sources */,
 			);
