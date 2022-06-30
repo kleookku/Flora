@@ -21,19 +21,15 @@
     NSString *path = [[NSBundle mainBundle] pathForResource: @"Keys" ofType: @"plist"];
     NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile: path];
 
-    NSString *applicationKey = [dict objectForKey: @"applicationKey"];
+    NSString *applicationId = [dict objectForKey: @"applicationId"];
     NSString *clientKey = [dict objectForKey: @"clientKey"];
     
     ParseClientConfiguration *config = [ParseClientConfiguration  configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {
 
-        configuration.applicationId = applicationKey; // <- UPDATE
+        configuration.applicationId = applicationId; // <- UPDATE
         configuration.clientKey = clientKey; // <- UPDATE
         configuration.server = @"https://parseapi.back4app.com";
     }];
-    
-    /*
-     
-     */
 
     [Parse initializeWithConfiguration:config];
     
