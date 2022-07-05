@@ -1,0 +1,6459 @@
+{
+  "Text": null,
+  "Field": null,
+  "Locations": null,
+  "Groups": null,
+  "Durations": null,
+  "GrowthHabits": null,
+  "WetlandRegions": null,
+  "NoxiousLocations": null,
+  "InvasiveLocations": null,
+  "Countries": null,
+  "Provinces": null,
+  "Counties": null,
+  "Cities": null,
+  "Localities": null,
+  "ArtistFirstLetters": null,
+  "ImageLocations": null,
+  "Artists": null,
+  "CopyrightStatuses": null,
+  "ImageTypes": null,
+  "SortBy": "sortSciName",
+  "Offset": -1,
+  "FilterOptions": [
+    {
+      "Name": "Active Growth Period",
+      "Filters": [
+        {
+          "Id": 3,
+          "Display": "Fall",
+          "Count": 10,
+          "IsSelected": false
+        },
+        {
+          "Id": 4,
+          "Display": "Fall, Winter and Spring",
+          "Count": 52,
+          "IsSelected": false
+        },
+        {
+          "Id": 11,
+          "Display": "Spring",
+          "Count": 294,
+          "IsSelected": false
+        },
+        {
+          "Id": 12,
+          "Display": "Spring and Fall",
+          "Count": 31,
+          "IsSelected": false
+        },
+        {
+          "Id": 13,
+          "Display": "Spring and Summer",
+          "Count": 1220,
+          "IsSelected": false
+        },
+        {
+          "Id": 14,
+          "Display": "Spring, Summer, Fall",
+          "Count": 217,
+          "IsSelected": false
+        },
+        {
+          "Id": 15,
+          "Display": "Summer",
+          "Count": 205,
+          "IsSelected": false
+        },
+        {
+          "Id": 16,
+          "Display": "Summer and Fall",
+          "Count": 63,
+          "IsSelected": false
+        },
+        {
+          "Id": 18,
+          "Display": "Year Round",
+          "Count": 81,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 1,
+      "Type": "Morphology"
+    },
+    {
+      "Name": "Adapted to Coarse Textured Soils",
+      "Filters": [
+        {
+          "Id": 0,
+          "Display": "No",
+          "Count": 689,
+          "IsSelected": false
+        },
+        {
+          "Id": 1,
+          "Display": "Yes",
+          "Count": 1543,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 1,
+      "Type": "Growth Requirements"
+    },
+    {
+      "Name": "Bloom Period",
+      "Filters": [
+        {
+          "Id": 1,
+          "Display": "Early Spring",
+          "Count": 202,
+          "IsSelected": false
+        },
+        {
+          "Id": 2,
+          "Display": "Early Summer",
+          "Count": 176,
+          "IsSelected": false
+        },
+        {
+          "Id": 3,
+          "Display": "Fall",
+          "Count": 32,
+          "IsSelected": false
+        },
+        {
+          "Id": 5,
+          "Display": "Indeterminate",
+          "Count": 84,
+          "IsSelected": false
+        },
+        {
+          "Id": 6,
+          "Display": "Late Spring",
+          "Count": 566,
+          "IsSelected": false
+        },
+        {
+          "Id": 7,
+          "Display": "Late Summer",
+          "Count": 157,
+          "IsSelected": false
+        },
+        {
+          "Id": 8,
+          "Display": "Late Winter",
+          "Count": 20,
+          "IsSelected": false
+        },
+        {
+          "Id": 9,
+          "Display": "Mid Spring",
+          "Count": 379,
+          "IsSelected": false
+        },
+        {
+          "Id": 10,
+          "Display": "Mid Summer",
+          "Count": 161,
+          "IsSelected": false
+        },
+        {
+          "Id": 11,
+          "Display": "Spring",
+          "Count": 227,
+          "IsSelected": false
+        },
+        {
+          "Id": 15,
+          "Display": "Summer",
+          "Count": 203,
+          "IsSelected": false
+        },
+        {
+          "Id": 17,
+          "Display": "Winter",
+          "Count": 17,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 1,
+      "Type": "Reproduction"
+    },
+    {
+      "Name": "Berry/Nut/Seed Product",
+      "Filters": [
+        {
+          "Id": 0,
+          "Display": "No",
+          "Count": 2049,
+          "IsSelected": false
+        },
+        {
+          "Id": 1,
+          "Display": "Yes",
+          "Count": 137,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 1,
+      "Type": "Suitability Use"
+    },
+    {
+      "Name": "Duration",
+      "Filters": [
+        {
+          "Id": 3,
+          "Display": "Perennial",
+          "Count": 2023,
+          "IsSelected": false
+        },
+        {
+          "Id": 1,
+          "Display": "Annual",
+          "Count": 203,
+          "IsSelected": false
+        },
+        {
+          "Id": 2,
+          "Display": "Biennial",
+          "Count": 47,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 2,
+      "Type": null
+    },
+    {
+      "Name": "After Harvest Regrowth Rate",
+      "Filters": [
+        {
+          "Id": 1,
+          "Display": "Moderate",
+          "Count": 233,
+          "IsSelected": false
+        },
+        {
+          "Id": 3,
+          "Display": "Rapid",
+          "Count": 112,
+          "IsSelected": false
+        },
+        {
+          "Id": 4,
+          "Display": "Slow",
+          "Count": 754,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 2,
+      "Type": "Morphology"
+    },
+    {
+      "Name": "Commercial Availability",
+      "Filters": [
+        {
+          "Id": 2,
+          "Display": "Contracting Only",
+          "Count": 269,
+          "IsSelected": false
+        },
+        {
+          "Id": 1,
+          "Display": "Field Collections Only",
+          "Count": 63,
+          "IsSelected": false
+        },
+        {
+          "Id": 3,
+          "Display": "No Known Source",
+          "Count": 590,
+          "IsSelected": false
+        },
+        {
+          "Id": 4,
+          "Display": "Routinely Available",
+          "Count": 1155,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 2,
+      "Type": "Reproduction"
+    },
+    {
+      "Name": "Christmas Tree Product",
+      "Filters": [
+        {
+          "Id": 0,
+          "Display": "No",
+          "Count": 2154,
+          "IsSelected": false
+        },
+        {
+          "Id": 1,
+          "Display": "Yes",
+          "Count": 33,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 2,
+      "Type": "Suitability Use"
+    },
+    {
+      "Name": "Adapted to Medium Textured Soils",
+      "Filters": [
+        {
+          "Id": 0,
+          "Display": "No",
+          "Count": 136,
+          "IsSelected": false
+        },
+        {
+          "Id": 1,
+          "Display": "Yes",
+          "Count": 2058,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 2,
+      "Type": "Growth Requirements"
+    },
+    {
+      "Name": "Bloat",
+      "Filters": [
+        {
+          "Id": 1,
+          "Display": "High",
+          "Count": 8,
+          "IsSelected": false
+        },
+        {
+          "Id": 2,
+          "Display": "Low",
+          "Count": 70,
+          "IsSelected": false
+        },
+        {
+          "Id": 3,
+          "Display": "Medium",
+          "Count": 15,
+          "IsSelected": false
+        },
+        {
+          "Id": 4,
+          "Display": "None",
+          "Count": 2108,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 3,
+      "Type": "Morphology"
+    },
+    {
+      "Name": "Adapted to Fine Textured Soils",
+      "Filters": [
+        {
+          "Id": 0,
+          "Display": "No",
+          "Count": 956,
+          "IsSelected": false
+        },
+        {
+          "Id": 1,
+          "Display": "Yes",
+          "Count": 1258,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 3,
+      "Type": "Growth Requirements"
+    },
+    {
+      "Name": "Fruit/Seed Abundance",
+      "Filters": [
+        {
+          "Id": 1,
+          "Display": "High",
+          "Count": 669,
+          "IsSelected": false
+        },
+        {
+          "Id": 2,
+          "Display": "Low",
+          "Count": 480,
+          "IsSelected": false
+        },
+        {
+          "Id": 3,
+          "Display": "Medium",
+          "Count": 901,
+          "IsSelected": false
+        },
+        {
+          "Id": 4,
+          "Display": "None",
+          "Count": 17,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 3,
+      "Type": "Reproduction"
+    },
+    {
+      "Name": "Fodder Product",
+      "Filters": [
+        {
+          "Id": 0,
+          "Display": "No",
+          "Count": 1890,
+          "IsSelected": false
+        },
+        {
+          "Id": 1,
+          "Display": "Yes",
+          "Count": 321,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 3,
+      "Type": "Suitability Use"
+    },
+    {
+      "Name": "Fact Sheet/Plant Guide",
+      "Filters": [
+        {
+          "Id": 0,
+          "Display": "Has Fact Sheets/Plant Guides",
+          "Count": 619,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 3,
+      "Type": null
+    },
+    {
+      "Name": "Group",
+      "Filters": [
+        {
+          "Id": 1,
+          "Display": "Dicot",
+          "Count": 1433,
+          "IsSelected": false
+        },
+        {
+          "Id": 11,
+          "Display": "Monocot",
+          "Count": 628,
+          "IsSelected": false
+        },
+        {
+          "Id": 4,
+          "Display": "Gymnosperm",
+          "Count": 102,
+          "IsSelected": false
+        },
+        {
+          "Id": 2,
+          "Display": "Fern",
+          "Count": 18,
+          "IsSelected": false
+        },
+        {
+          "Id": 6,
+          "Display": "Horsetail",
+          "Count": 4,
+          "IsSelected": false
+        },
+        {
+          "Id": 9,
+          "Display": "Lycopod",
+          "Count": 1,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 4,
+      "Type": null
+    },
+    {
+      "Name": "C:N Ratio",
+      "Filters": [
+        {
+          "Id": 1,
+          "Display": "High",
+          "Count": 837,
+          "IsSelected": false
+        },
+        {
+          "Id": 2,
+          "Display": "Low",
+          "Count": 263,
+          "IsSelected": false
+        },
+        {
+          "Id": 3,
+          "Display": "Medium",
+          "Count": 859,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 4,
+      "Type": "Morphology"
+    },
+    {
+      "Name": "Anaerobic Tolerance",
+      "Filters": [
+        {
+          "Id": 1,
+          "Display": "High",
+          "Count": 397,
+          "IsSelected": false
+        },
+        {
+          "Id": 2,
+          "Display": "Low",
+          "Count": 461,
+          "IsSelected": false
+        },
+        {
+          "Id": 3,
+          "Display": "Medium",
+          "Count": 371,
+          "IsSelected": false
+        },
+        {
+          "Id": 4,
+          "Display": "None",
+          "Count": 961,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 4,
+      "Type": "Growth Requirements"
+    },
+    {
+      "Name": "Fruit/Seed Period Begin",
+      "Filters": [
+        {
+          "Id": 3,
+          "Display": "Fall",
+          "Count": 120,
+          "IsSelected": false
+        },
+        {
+          "Id": 11,
+          "Display": "Spring",
+          "Count": 583,
+          "IsSelected": false
+        },
+        {
+          "Id": 15,
+          "Display": "Summer",
+          "Count": 1343,
+          "IsSelected": false
+        },
+        {
+          "Id": 17,
+          "Display": "Winter",
+          "Count": 22,
+          "IsSelected": false
+        },
+        {
+          "Id": 18,
+          "Display": "Year Round",
+          "Count": 69,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 4,
+      "Type": "Reproduction"
+    },
+    {
+      "Name": "Fuelwood Product",
+      "Filters": [
+        {
+          "Id": 1,
+          "Display": "High",
+          "Count": 91,
+          "IsSelected": false
+        },
+        {
+          "Id": 2,
+          "Display": "Low",
+          "Count": 127,
+          "IsSelected": false
+        },
+        {
+          "Id": 3,
+          "Display": "Medium",
+          "Count": 163,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 4,
+      "Type": "Suitability Use"
+    },
+    {
+      "Name": "Growth Habit",
+      "Filters": [
+        {
+          "Id": 1,
+          "Display": "Forb/herb",
+          "Count": 719,
+          "IsSelected": false
+        },
+        {
+          "Id": 5,
+          "Display": "Shrub",
+          "Count": 606,
+          "IsSelected": false
+        },
+        {
+          "Id": 7,
+          "Display": "Tree",
+          "Count": 598,
+          "IsSelected": false
+        },
+        {
+          "Id": 2,
+          "Display": "Graminoid",
+          "Count": 519,
+          "IsSelected": false
+        },
+        {
+          "Id": 6,
+          "Display": "Subshrub",
+          "Count": 241,
+          "IsSelected": false
+        },
+        {
+          "Id": 8,
+          "Display": "Vine",
+          "Count": 70,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 5,
+      "Type": null
+    },
+    {
+      "Name": "Coppice Potential",
+      "Filters": [
+        {
+          "Id": 0,
+          "Display": "No",
+          "Count": 1928,
+          "IsSelected": false
+        },
+        {
+          "Id": 1,
+          "Display": "Yes",
+          "Count": 264,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 5,
+      "Type": "Morphology"
+    },
+    {
+      "Name": "CaCO~3~ Tolerance",
+      "Filters": [
+        {
+          "Id": 1,
+          "Display": "High",
+          "Count": 391,
+          "IsSelected": false
+        },
+        {
+          "Id": 2,
+          "Display": "Low",
+          "Count": 681,
+          "IsSelected": false
+        },
+        {
+          "Id": 3,
+          "Display": "Medium",
+          "Count": 914,
+          "IsSelected": false
+        },
+        {
+          "Id": 4,
+          "Display": "None",
+          "Count": 186,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 5,
+      "Type": "Growth Requirements"
+    },
+    {
+      "Name": "Lumber Product",
+      "Filters": [
+        {
+          "Id": 0,
+          "Display": "No",
+          "Count": 1969,
+          "IsSelected": false
+        },
+        {
+          "Id": 1,
+          "Display": "Yes",
+          "Count": 224,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 5,
+      "Type": "Suitability Use"
+    },
+    {
+      "Name": "Fruit/Seed Period End",
+      "Filters": [
+        {
+          "Id": 3,
+          "Display": "Fall",
+          "Count": 1054,
+          "IsSelected": false
+        },
+        {
+          "Id": 11,
+          "Display": "Spring",
+          "Count": 122,
+          "IsSelected": false
+        },
+        {
+          "Id": 15,
+          "Display": "Summer",
+          "Count": 828,
+          "IsSelected": false
+        },
+        {
+          "Id": 17,
+          "Display": "Winter",
+          "Count": 55,
+          "IsSelected": false
+        },
+        {
+          "Id": 18,
+          "Display": "Year Round",
+          "Count": 67,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 5,
+      "Type": "Reproduction"
+    },
+    {
+      "Name": "Fall Conspicuous",
+      "Filters": [
+        {
+          "Id": 0,
+          "Display": "No",
+          "Count": 1729,
+          "IsSelected": false
+        },
+        {
+          "Id": 1,
+          "Display": "Yes",
+          "Count": 469,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 6,
+      "Type": "Morphology"
+    },
+    {
+      "Name": "Cold Stratification Required",
+      "Filters": [
+        {
+          "Id": 0,
+          "Display": "No",
+          "Count": 1553,
+          "IsSelected": false
+        },
+        {
+          "Id": 1,
+          "Display": "Yes",
+          "Count": 656,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 6,
+      "Type": "Growth Requirements"
+    },
+    {
+      "Name": "Fruit/Seed Persistence",
+      "Filters": [
+        {
+          "Id": 0,
+          "Display": "No",
+          "Count": 1620,
+          "IsSelected": false
+        },
+        {
+          "Id": 1,
+          "Display": "Yes",
+          "Count": 580,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 6,
+      "Type": "Reproduction"
+    },
+    {
+      "Name": "Naval Store Product",
+      "Filters": [
+        {
+          "Id": 0,
+          "Display": "No",
+          "Count": 2116,
+          "IsSelected": false
+        },
+        {
+          "Id": 1,
+          "Display": "Yes",
+          "Count": 70,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 6,
+      "Type": "Suitability Use"
+    },
+    {
+      "Name": "Images",
+      "Filters": [
+        {
+          "Id": 0,
+          "Display": "Has Images",
+          "Count": 1903,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 6,
+      "Type": null
+    },
+    {
+      "Name": "Invasive Status",
+      "Filters": [
+        {
+          "Id": 3298,
+          "Display": "Connecticut",
+          "Count": 33,
+          "IsSelected": false
+        },
+        {
+          "Id": 3324,
+          "Display": "New York",
+          "Count": 18,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 7,
+      "Type": null
+    },
+    {
+      "Name": "Fire Resistance",
+      "Filters": [
+        {
+          "Id": 0,
+          "Display": "No",
+          "Count": 1994,
+          "IsSelected": false
+        },
+        {
+          "Id": 1,
+          "Display": "Yes",
+          "Count": 216,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 7,
+      "Type": "Morphology"
+    },
+    {
+      "Name": "Drought Tolerance",
+      "Filters": [
+        {
+          "Id": 1,
+          "Display": "High",
+          "Count": 537,
+          "IsSelected": false
+        },
+        {
+          "Id": 2,
+          "Display": "Low",
+          "Count": 789,
+          "IsSelected": false
+        },
+        {
+          "Id": 3,
+          "Display": "Medium",
+          "Count": 602,
+          "IsSelected": false
+        },
+        {
+          "Id": 4,
+          "Display": "None",
+          "Count": 280,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 7,
+      "Type": "Growth Requirements"
+    },
+    {
+      "Name": "Propagated by Bare Root",
+      "Filters": [
+        {
+          "Id": 0,
+          "Display": "No",
+          "Count": 1060,
+          "IsSelected": false
+        },
+        {
+          "Id": 1,
+          "Display": "Yes",
+          "Count": 1130,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 7,
+      "Type": "Reproduction"
+    },
+    {
+      "Name": "Nursery Stock Product",
+      "Filters": [
+        {
+          "Id": 0,
+          "Display": "No",
+          "Count": 1486,
+          "IsSelected": false
+        },
+        {
+          "Id": 1,
+          "Display": "Yes",
+          "Count": 720,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 7,
+      "Type": "Suitability Use"
+    },
+    {
+      "Name": "Noxious Status",
+      "Filters": [
+        {
+          "Id": 3292,
+          "Display": "Alabama",
+          "Count": 4,
+          "IsSelected": false
+        },
+        {
+          "Id": 3293,
+          "Display": "Alaska",
+          "Count": 4,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 8,
+      "Type": null
+    },
+    {
+      "Name": "Flower Color",
+      "Filters": [
+        {
+          "Id": 2,
+          "Display": "Blue",
+          "Count": 76,
+          "IsSelected": false
+        },
+        {
+          "Id": 3,
+          "Display": "Brown",
+          "Count": 52,
+          "IsSelected": false
+        },
+        {
+          "Id": 6,
+          "Display": "Green",
+          "Count": 336,
+          "IsSelected": false
+        },
+        {
+          "Id": 7,
+          "Display": "Orange",
+          "Count": 23,
+          "IsSelected": false
+        },
+        {
+          "Id": 8,
+          "Display": "Purple",
+          "Count": 238,
+          "IsSelected": false
+        },
+        {
+          "Id": 9,
+          "Display": "Red",
+          "Count": 122,
+          "IsSelected": false
+        },
+        {
+          "Id": 10,
+          "Display": "White",
+          "Count": 531,
+          "IsSelected": false
+        },
+        {
+          "Id": 12,
+          "Display": "Yellow",
+          "Count": 762,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 8,
+      "Type": "Morphology"
+    },
+    {
+      "Name": "Fertility Requirement",
+      "Filters": [
+        {
+          "Id": 1,
+          "Display": "High",
+          "Count": 135,
+          "IsSelected": false
+        },
+        {
+          "Id": 2,
+          "Display": "Low",
+          "Count": 909,
+          "IsSelected": false
+        },
+        {
+          "Id": 3,
+          "Display": "Medium",
+          "Count": 1146,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 8,
+      "Type": "Growth Requirements"
+    },
+    {
+      "Name": "Propagated by Bulbs",
+      "Filters": [
+        {
+          "Id": 0,
+          "Display": "No",
+          "Count": 2154,
+          "IsSelected": false
+        },
+        {
+          "Id": 1,
+          "Display": "Yes",
+          "Count": 32,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 8,
+      "Type": "Reproduction"
+    },
+    {
+      "Name": "Palatable Browse Animal",
+      "Filters": [
+        {
+          "Id": 1,
+          "Display": "High",
+          "Count": 273,
+          "IsSelected": false
+        },
+        {
+          "Id": 2,
+          "Display": "Low",
+          "Count": 929,
+          "IsSelected": false
+        },
+        {
+          "Id": 3,
+          "Display": "Medium",
+          "Count": 526,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 8,
+      "Type": "Suitability Use"
+    },
+    {
+      "Name": "Fire Tolerance",
+      "Filters": [
+        {
+          "Id": 1,
+          "Display": "High",
+          "Count": 737,
+          "IsSelected": false
+        },
+        {
+          "Id": 2,
+          "Display": "Low",
+          "Count": 479,
+          "IsSelected": false
+        },
+        {
+          "Id": 3,
+          "Display": "Medium",
+          "Count": 596,
+          "IsSelected": false
+        },
+        {
+          "Id": 4,
+          "Display": "None",
+          "Count": 310,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 9,
+      "Type": "Growth Requirements"
+    },
+    {
+      "Name": "Flower Conspicuous",
+      "Filters": [
+        {
+          "Id": 0,
+          "Display": "No",
+          "Count": 1155,
+          "IsSelected": false
+        },
+        {
+          "Id": 1,
+          "Display": "Yes",
+          "Count": 1042,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 9,
+      "Type": "Morphology"
+    },
+    {
+      "Name": "Propagated by Container",
+      "Filters": [
+        {
+          "Id": 0,
+          "Display": "No",
+          "Count": 1155,
+          "IsSelected": false
+        },
+        {
+          "Id": 1,
+          "Display": "Yes",
+          "Count": 1037,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 9,
+      "Type": "Reproduction"
+    },
+    {
+      "Name": "Palatable Graze Animal",
+      "Filters": [
+        {
+          "Id": 1,
+          "Display": "High",
+          "Count": 263,
+          "IsSelected": false
+        },
+        {
+          "Id": 2,
+          "Display": "Low",
+          "Count": 1018,
+          "IsSelected": false
+        },
+        {
+          "Id": 3,
+          "Display": "Medium",
+          "Count": 329,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 9,
+      "Type": "Suitability Use"
+    },
+    {
+      "Name": "Nativity Status",
+      "Filters": [
+        {
+          "Id": 1789540882,
+          "Display": "Native - L48",
+          "Count": 1707,
+          "IsSelected": false
+        },
+        {
+          "Id": -865437104,
+          "Display": "Native - CAN",
+          "Count": 1049,
+          "IsSelected": false
+        },
+        {
+          "Id": 514728226,
+          "Display": "Introduced - L48",
+          "Count": 352,
+          "IsSelected": false
+        },
+        {
+          "Id": -1825272906,
+          "Display": "Native - AK",
+          "Count": 351,
+          "IsSelected": false
+        },
+        {
+          "Id": 2134514504,
+          "Display": "Introduced - CAN",
+          "Count": 213,
+          "IsSelected": false
+        },
+        {
+          "Id": -1363625335,
+          "Display": "Introduced - HI",
+          "Count": 201,
+          "IsSelected": false
+        },
+        {
+          "Id": 1796447456,
+          "Display": "Native - SPM",
+          "Count": 194,
+          "IsSelected": false
+        },
+        {
+          "Id": -971649660,
+          "Display": "Native - PR",
+          "Count": 160,
+          "IsSelected": false
+        },
+        {
+          "Id": -294934264,
+          "Display": "Introduced - PB",
+          "Count": 102,
+          "IsSelected": false
+        },
+        {
+          "Id": -294934248,
+          "Display": "Introduced - PR",
+          "Count": 102,
+          "IsSelected": false
+        },
+        {
+          "Id": -662473489,
+          "Display": "Native - GL",
+          "Count": 100,
+          "IsSelected": false
+        },
+        {
+          "Id": 191149727,
+          "Display": "Native - VI",
+          "Count": 97,
+          "IsSelected": false
+        },
+        {
+          "Id": 1721488378,
+          "Display": "Introduced - AK",
+          "Count": 91,
+          "IsSelected": false
+        },
+        {
+          "Id": -1101503309,
+          "Display": "Introduced - VI",
+          "Count": 57,
+          "IsSelected": false
+        },
+        {
+          "Id": -1690169436,
+          "Display": "Introduced - SPM",
+          "Count": 45,
+          "IsSelected": false
+        },
+        {
+          "Id": -615419327,
+          "Display": "Native - HI",
+          "Count": 41,
+          "IsSelected": false
+        },
+        {
+          "Id": 914919323,
+          "Display": "Introduced - GL",
+          "Count": 35,
+          "IsSelected": false
+        },
+        {
+          "Id": -971649676,
+          "Display": "Native - PB",
+          "Count": 22,
+          "IsSelected": false
+        },
+        {
+          "Id": -1628958838,
+          "Display": "Waif  - CAN",
+          "Count": 18,
+          "IsSelected": false
+        },
+        {
+          "Id": 532633145,
+          "Display": "Native - NAV",
+          "Count": 9,
+          "IsSelected": false
+        },
+        {
+          "Id": 1316414023,
+          "Display": "Probably Introduced - AK",
+          "Count": 7,
+          "IsSelected": false
+        },
+        {
+          "Id": 387463266,
+          "Display": "Waif  - SPM",
+          "Count": 6,
+          "IsSelected": false
+        },
+        {
+          "Id": 662538897,
+          "Display": "Introduced - NAV",
+          "Count": 6,
+          "IsSelected": false
+        },
+        {
+          "Id": -252947849,
+          "Display": "Waif  - GL",
+          "Count": 4,
+          "IsSelected": false
+        },
+        {
+          "Id": -571764157,
+          "Display": "Probably Native - AK",
+          "Count": 3,
+          "IsSelected": false
+        },
+        {
+          "Id": 688661425,
+          "Display": "Probably Native - L48",
+          "Count": 1,
+          "IsSelected": false
+        },
+        {
+          "Id": 1800888823,
+          "Display": "Probably Native - PR",
+          "Count": 1,
+          "IsSelected": false
+        },
+        {
+          "Id": -1734563592,
+          "Display": "Probably Native - VI",
+          "Count": 1,
+          "IsSelected": false
+        },
+        {
+          "Id": -1815753850,
+          "Display": "Probably Introduced - HI",
+          "Count": 1,
+          "IsSelected": false
+        },
+        {
+          "Id": -656232363,
+          "Display": "Waif  - HI",
+          "Count": 1,
+          "IsSelected": false
+        },
+        {
+          "Id": 931911056,
+          "Display": "Waif  - L48",
+          "Count": 1,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 9,
+      "Type": null
+    },
+    {
+      "Name": "Rarity Status",
+      "Filters": [
+        {
+          "Id": 3322,
+          "Display": "New Jersey",
+          "Count": 110,
+          "IsSelected": false
+        },
+        {
+          "Id": 1,
+          "Display": "Federal",
+          "Count": 7,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 10,
+      "Type": null
+    },
+    {
+      "Name": "Foliage Color",
+      "Filters": [
+        {
+          "Id": 4,
+          "Display": "Dark Green",
+          "Count": 215,
+          "IsSelected": false
+        },
+        {
+          "Id": 5,
+          "Display": "Gray-Green",
+          "Count": 132,
+          "IsSelected": false
+        },
+        {
+          "Id": 6,
+          "Display": "Green",
+          "Count": 1755,
+          "IsSelected": false
+        },
+        {
+          "Id": 9,
+          "Display": "Red",
+          "Count": 13,
+          "IsSelected": false
+        },
+        {
+          "Id": 11,
+          "Display": "White-Gray",
+          "Count": 33,
+          "IsSelected": false
+        },
+        {
+          "Id": 13,
+          "Display": "Yellow-Green",
+          "Count": 69,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 10,
+      "Type": "Morphology"
+    },
+    {
+      "Name": "Frost Free Days, Minimum",
+      "Filters": [
+        {
+          "Id": 0,
+          "Display": "N/A",
+          "Count": 7,
+          "IsSelected": false
+        },
+        {
+          "Id": 41,
+          "Display": "0 - 51",
+          "Count": 14,
+          "IsSelected": false
+        },
+        {
+          "Id": 42,
+          "Display": "52 - 66",
+          "Count": 26,
+          "IsSelected": false
+        },
+        {
+          "Id": 43,
+          "Display": "67 - 81",
+          "Count": 118,
+          "IsSelected": false
+        },
+        {
+          "Id": 44,
+          "Display": "82 - 96",
+          "Count": 328,
+          "IsSelected": false
+        },
+        {
+          "Id": 45,
+          "Display": "97 - 111",
+          "Count": 353,
+          "IsSelected": false
+        },
+        {
+          "Id": 46,
+          "Display": "112 - 126",
+          "Count": 336,
+          "IsSelected": false
+        },
+        {
+          "Id": 47,
+          "Display": "127 - 141",
+          "Count": 237,
+          "IsSelected": false
+        },
+        {
+          "Id": 48,
+          "Display": "142 - 156",
+          "Count": 149,
+          "IsSelected": false
+        },
+        {
+          "Id": 49,
+          "Display": "157 - 171",
+          "Count": 179,
+          "IsSelected": false
+        },
+        {
+          "Id": 50,
+          "Display": "172 - 186",
+          "Count": 163,
+          "IsSelected": false
+        },
+        {
+          "Id": 51,
+          "Display": "187 - 201",
+          "Count": 117,
+          "IsSelected": false
+        },
+        {
+          "Id": 52,
+          "Display": "202 - 216",
+          "Count": 32,
+          "IsSelected": false
+        },
+        {
+          "Id": 53,
+          "Display": "217 - 231",
+          "Count": 35,
+          "IsSelected": false
+        },
+        {
+          "Id": 54,
+          "Display": "232 - 246",
+          "Count": 30,
+          "IsSelected": false
+        },
+        {
+          "Id": 55,
+          "Display": "247 - 261",
+          "Count": 24,
+          "IsSelected": false
+        },
+        {
+          "Id": 56,
+          "Display": "262 - 276",
+          "Count": 18,
+          "IsSelected": false
+        },
+        {
+          "Id": 57,
+          "Display": "277 - 291",
+          "Count": 13,
+          "IsSelected": false
+        },
+        {
+          "Id": 58,
+          "Display": "292 - 306",
+          "Count": 18,
+          "IsSelected": false
+        },
+        {
+          "Id": 59,
+          "Display": "307 - 321",
+          "Count": 7,
+          "IsSelected": false
+        },
+        {
+          "Id": 60,
+          "Display": "322 - 336",
+          "Count": 2,
+          "IsSelected": false
+        },
+        {
+          "Id": 61,
+          "Display": "337 - 351",
+          "Count": 7,
+          "IsSelected": false
+        },
+        {
+          "Id": 62,
+          "Display": "352 - 365",
+          "Count": 162,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 10,
+      "Type": "Growth Requirements"
+    },
+    {
+      "Name": "Propagated by Corms",
+      "Filters": [
+        {
+          "Id": 0,
+          "Display": "No",
+          "Count": 2168,
+          "IsSelected": false
+        },
+        {
+          "Id": 1,
+          "Display": "Yes",
+          "Count": 18,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 10,
+      "Type": "Reproduction"
+    },
+    {
+      "Name": "Palatable Human",
+      "Filters": [
+        {
+          "Id": 0,
+          "Display": "No",
+          "Count": 1886,
+          "IsSelected": false
+        },
+        {
+          "Id": 1,
+          "Display": "Yes",
+          "Count": 304,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 10,
+      "Type": "Suitability Use"
+    },
+    {
+      "Name": "Foliage Porosity Summer",
+      "Filters": [
+        {
+          "Id": 1,
+          "Display": "Dense",
+          "Count": 710,
+          "IsSelected": false
+        },
+        {
+          "Id": 2,
+          "Display": "Moderate",
+          "Count": 820,
+          "IsSelected": false
+        },
+        {
+          "Id": 3,
+          "Display": "Porous",
+          "Count": 665,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 11,
+      "Type": "Morphology"
+    },
+    {
+      "Name": "Hedge Tolerance",
+      "Filters": [
+        {
+          "Id": 1,
+          "Display": "High",
+          "Count": 177,
+          "IsSelected": false
+        },
+        {
+          "Id": 2,
+          "Display": "Low",
+          "Count": 359,
+          "IsSelected": false
+        },
+        {
+          "Id": 3,
+          "Display": "Medium",
+          "Count": 222,
+          "IsSelected": false
+        },
+        {
+          "Id": 4,
+          "Display": "None",
+          "Count": 1422,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 11,
+      "Type": "Growth Requirements"
+    },
+    {
+      "Name": "Propagated by Cuttings",
+      "Filters": [
+        {
+          "Id": 0,
+          "Display": "No",
+          "Count": 1690,
+          "IsSelected": false
+        },
+        {
+          "Id": 1,
+          "Display": "Yes",
+          "Count": 509,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 11,
+      "Type": "Reproduction"
+    },
+    {
+      "Name": "Post Product",
+      "Filters": [
+        {
+          "Id": 0,
+          "Display": "No",
+          "Count": 2041,
+          "IsSelected": false
+        },
+        {
+          "Id": 1,
+          "Display": "Yes",
+          "Count": 146,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 11,
+      "Type": "Suitability Use"
+    },
+    {
+      "Name": "State/Province",
+      "Filters": [
+        {
+          "Id": 3292,
+          "Display": "Alabama",
+          "Count": 808,
+          "IsSelected": false
+        },
+        {
+          "Id": 3293,
+          "Display": "Alaska",
+          "Count": 446,
+          "IsSelected": false
+        },
+        {
+          "Id": 3352,
+          "Display": "Alberta",
+          "Count": 624,
+          "IsSelected": false
+        },
+        {
+          "Id": 3294,
+          "Display": "Arizona",
+          "Count": 704,
+          "IsSelected": false
+        },
+        {
+          "Id": 3295,
+          "Display": "Arkansas",
+          "Count": 724,
+          "IsSelected": false
+        },
+        {
+          "Id": 3353,
+          "Display": "British Columbia",
+          "Count": 807,
+          "IsSelected": false
+        },
+        {
+          "Id": 3296,
+          "Display": "California",
+          "Count": 1030,
+          "IsSelected": false
+        },
+        {
+          "Id": 3297,
+          "Display": "Colorado",
+          "Count": 811,
+          "IsSelected": false
+        },
+        {
+          "Id": 3298,
+          "Display": "Connecticut",
+          "Count": 780,
+          "IsSelected": false
+        },
+        {
+          "Id": 3299,
+          "Display": "Delaware",
+          "Count": 710,
+          "IsSelected": false
+        },
+        {
+          "Id": 3300,
+          "Display": "District of Columbia",
+          "Count": 603,
+          "IsSelected": false
+        },
+        {
+          "Id": 3301,
+          "Display": "Florida",
+          "Count": 733,
+          "IsSelected": false
+        },
+        {
+          "Id": 3302,
+          "Display": "Georgia",
+          "Count": 835,
+          "IsSelected": false
+        },
+        {
+          "Id": 3345,
+          "Display": "Guam",
+          "Count": 109,
+          "IsSelected": false
+        },
+        {
+          "Id": 3303,
+          "Display": "Hawaii",
+          "Count": 244,
+          "IsSelected": false
+        },
+        {
+          "Id": 3304,
+          "Display": "Idaho",
+          "Count": 804,
+          "IsSelected": false
+        },
+        {
+          "Id": 3305,
+          "Display": "Illinois",
+          "Count": 910,
+          "IsSelected": false
+        },
+        {
+          "Id": 3306,
+          "Display": "Indiana",
+          "Count": 803,
+          "IsSelected": false
+        },
+        {
+          "Id": 3307,
+          "Display": "Iowa",
+          "Count": 704,
+          "IsSelected": false
+        },
+        {
+          "Id": 3308,
+          "Display": "Kansas",
+          "Count": 637,
+          "IsSelected": false
+        },
+        {
+          "Id": 3309,
+          "Display": "Kentucky",
+          "Count": 802,
+          "IsSelected": false
+        },
+        {
+          "Id": 3364,
+          "Display": "Labrador",
+          "Count": 242,
+          "IsSelected": false
+        },
+        {
+          "Id": 3310,
+          "Display": "Louisiana",
+          "Count": 741,
+          "IsSelected": false
+        },
+        {
+          "Id": 3311,
+          "Display": "Maine",
+          "Count": 721,
+          "IsSelected": false
+        },
+        {
+          "Id": 3354,
+          "Display": "Manitoba",
+          "Count": 572,
+          "IsSelected": false
+        },
+        {
+          "Id": 3312,
+          "Display": "Maryland",
+          "Count": 893,
+          "IsSelected": false
+        },
+        {
+          "Id": 3313,
+          "Display": "Massachusetts",
+          "Count": 840,
+          "IsSelected": false
+        },
+        {
+          "Id": 3314,
+          "Display": "Michigan",
+          "Count": 835,
+          "IsSelected": false
+        },
+        {
+          "Id": 3315,
+          "Display": "Minnesota",
+          "Count": 730,
+          "IsSelected": false
+        },
+        {
+          "Id": 3316,
+          "Display": "Mississippi",
+          "Count": 746,
+          "IsSelected": false
+        },
+        {
+          "Id": 3317,
+          "Display": "Missouri",
+          "Count": 774,
+          "IsSelected": false
+        },
+        {
+          "Id": 3318,
+          "Display": "Montana",
+          "Count": 825,
+          "IsSelected": false
+        },
+        {
+          "Id": 3372,
+          "Display": "Navassa Island",
+          "Count": 15,
+          "IsSelected": false
+        },
+        {
+          "Id": 3319,
+          "Display": "Nebraska",
+          "Count": 630,
+          "IsSelected": false
+        },
+        {
+          "Id": 3320,
+          "Display": "Nevada",
+          "Count": 737,
+          "IsSelected": false
+        },
+        {
+          "Id": 3355,
+          "Display": "New Brunswick",
+          "Count": 525,
+          "IsSelected": false
+        },
+        {
+          "Id": 3321,
+          "Display": "New Hampshire",
+          "Count": 686,
+          "IsSelected": false
+        },
+        {
+          "Id": 3322,
+          "Display": "New Jersey",
+          "Count": 876,
+          "IsSelected": false
+        },
+        {
+          "Id": 3323,
+          "Display": "New Mexico",
+          "Count": 799,
+          "IsSelected": false
+        },
+        {
+          "Id": 3324,
+          "Display": "New York",
+          "Count": 963,
+          "IsSelected": false
+        },
+        {
+          "Id": 3365,
+          "Display": "Newfoundland",
+          "Count": 366,
+          "IsSelected": false
+        },
+        {
+          "Id": 3325,
+          "Display": "North Carolina",
+          "Count": 905,
+          "IsSelected": false
+        },
+        {
+          "Id": 3326,
+          "Display": "North Dakota",
+          "Count": 553,
+          "IsSelected": false
+        },
+        {
+          "Id": 3362,
+          "Display": "Northwest Territories",
+          "Count": 346,
+          "IsSelected": false
+        },
+        {
+          "Id": 3356,
+          "Display": "Nova Scotia",
+          "Count": 526,
+          "IsSelected": false
+        },
+        {
+          "Id": 3363,
+          "Display": "Nunavut",
+          "Count": 141,
+          "IsSelected": false
+        },
+        {
+          "Id": 3327,
+          "Display": "Ohio",
+          "Count": 850,
+          "IsSelected": false
+        },
+        {
+          "Id": 3328,
+          "Display": "Oklahoma",
+          "Count": 713,
+          "IsSelected": false
+        },
+        {
+          "Id": 3357,
+          "Display": "Ontario",
+          "Count": 861,
+          "IsSelected": false
+        },
+        {
+          "Id": 3329,
+          "Display": "Oregon",
+          "Count": 942,
+          "IsSelected": false
+        },
+        {
+          "Id": 3348,
+          "Display": "Palau",
+          "Count": 89,
+          "IsSelected": false
+        },
+        {
+          "Id": 3330,
+          "Display": "Pennsylvania",
+          "Count": 902,
+          "IsSelected": false
+        },
+        {
+          "Id": 3358,
+          "Display": "Prince Edward Island",
+          "Count": 376,
+          "IsSelected": false
+        },
+        {
+          "Id": 3349,
+          "Display": "Puerto Rico",
+          "Count": 263,
+          "IsSelected": false
+        },
+        {
+          "Id": 3359,
+          "Display": "Quebec",
+          "Count": 702,
+          "IsSelected": false
+        },
+        {
+          "Id": 3331,
+          "Display": "Rhode Island",
+          "Count": 648,
+          "IsSelected": false
+        },
+        {
+          "Id": 3360,
+          "Display": "Saskatchewan",
+          "Count": 538,
+          "IsSelected": false
+        },
+        {
+          "Id": 3332,
+          "Display": "South Carolina",
+          "Count": 792,
+          "IsSelected": false
+        },
+        {
+          "Id": 3333,
+          "Display": "South Dakota",
+          "Count": 646,
+          "IsSelected": false
+        },
+        {
+          "Id": 3334,
+          "Display": "Tennessee",
+          "Count": 812,
+          "IsSelected": false
+        },
+        {
+          "Id": 3335,
+          "Display": "Texas",
+          "Count": 901,
+          "IsSelected": false
+        },
+        {
+          "Id": 3350,
+          "Display": "U.S. Minor Outlying Islands",
+          "Count": 61,
+          "IsSelected": false
+        },
+        {
+          "Id": 3336,
+          "Display": "Utah",
+          "Count": 810,
+          "IsSelected": false
+        },
+        {
+          "Id": 3337,
+          "Display": "Vermont",
+          "Count": 669,
+          "IsSelected": false
+        },
+        {
+          "Id": 3351,
+          "Display": "Virgin Islands",
+          "Count": 155,
+          "IsSelected": false
+        },
+        {
+          "Id": 3338,
+          "Display": "Virginia",
+          "Count": 920,
+          "IsSelected": false
+        },
+        {
+          "Id": 3339,
+          "Display": "Washington",
+          "Count": 878,
+          "IsSelected": false
+        },
+        {
+          "Id": 3340,
+          "Display": "West Virginia",
+          "Count": 726,
+          "IsSelected": false
+        },
+        {
+          "Id": 3341,
+          "Display": "Wisconsin",
+          "Count": 754,
+          "IsSelected": false
+        },
+        {
+          "Id": 3342,
+          "Display": "Wyoming",
+          "Count": 775,
+          "IsSelected": false
+        },
+        {
+          "Id": 3361,
+          "Display": "Yukon",
+          "Count": 349,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 11,
+      "Type": null
+    },
+    {
+      "Name": "Foliage Porosity Winter",
+      "Filters": [
+        {
+          "Id": 1,
+          "Display": "Dense",
+          "Count": 235,
+          "IsSelected": false
+        },
+        {
+          "Id": 2,
+          "Display": "Moderate",
+          "Count": 342,
+          "IsSelected": false
+        },
+        {
+          "Id": 3,
+          "Display": "Porous",
+          "Count": 1563,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 12,
+      "Type": "Morphology"
+    },
+    {
+      "Name": "Moisture Use",
+      "Filters": [
+        {
+          "Id": 1,
+          "Display": "High",
+          "Count": 587,
+          "IsSelected": false
+        },
+        {
+          "Id": 2,
+          "Display": "Low",
+          "Count": 555,
+          "IsSelected": true
+        },
+        {
+          "Id": 3,
+          "Display": "Medium",
+          "Count": 956,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 12,
+      "Type": "Growth Requirements"
+    },
+    {
+      "Name": "Propagated by Seed",
+      "Filters": [
+        {
+          "Id": 0,
+          "Display": "No",
+          "Count": 240,
+          "IsSelected": false
+        },
+        {
+          "Id": 1,
+          "Display": "Yes",
+          "Count": 1967,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 12,
+      "Type": "Reproduction"
+    },
+    {
+      "Name": "Protein Potential",
+      "Filters": [
+        {
+          "Id": 1,
+          "Display": "High",
+          "Count": 97,
+          "IsSelected": false
+        },
+        {
+          "Id": 2,
+          "Display": "Low",
+          "Count": 838,
+          "IsSelected": false
+        },
+        {
+          "Id": 3,
+          "Display": "Medium",
+          "Count": 338,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 12,
+      "Type": "Suitability Use"
+    },
+    {
+      "Name": "Wetland Region",
+      "Filters": [
+        {
+          "Id": 7,
+          "Display": "Great Plains",
+          "Count": 1000,
+          "IsSelected": false
+        },
+        {
+          "Id": 5,
+          "Display": "Atlantic and Gulf Coastal Plain",
+          "Count": 917,
+          "IsSelected": false
+        },
+        {
+          "Id": 6,
+          "Display": "Eastern Mountains and Piedmont",
+          "Count": 886,
+          "IsSelected": false
+        },
+        {
+          "Id": 9,
+          "Display": "Northcentral & Northeast",
+          "Count": 837,
+          "IsSelected": false
+        },
+        {
+          "Id": 8,
+          "Display": "Midwest",
+          "Count": 826,
+          "IsSelected": false
+        },
+        {
+          "Id": 10,
+          "Display": "Western Mountains, Valleys, and Coast",
+          "Count": 792,
+          "IsSelected": false
+        },
+        {
+          "Id": 4,
+          "Display": "Arid West",
+          "Count": 774,
+          "IsSelected": false
+        },
+        {
+          "Id": 3,
+          "Display": "Alaska",
+          "Count": 335,
+          "IsSelected": false
+        },
+        {
+          "Id": 1,
+          "Display": "Hawaii",
+          "Count": 184,
+          "IsSelected": false
+        },
+        {
+          "Id": 2,
+          "Display": "Caribbean",
+          "Count": 171,
+          "IsSelected": false
+        },
+        {
+          "Id": 24,
+          "Display": "South Pacific Islands",
+          "Count": 30,
+          "IsSelected": false
+        },
+        {
+          "Id": 27,
+          "Display": "Western Gulf Coast",
+          "Count": 8,
+          "IsSelected": false
+        },
+        {
+          "Id": 16,
+          "Display": "Interior Alaska Lowlands",
+          "Count": 3,
+          "IsSelected": false
+        },
+        {
+          "Id": 14,
+          "Display": "Copper River Basin",
+          "Count": 2,
+          "IsSelected": false
+        },
+        {
+          "Id": 15,
+          "Display": "Interior Alaska Highlands",
+          "Count": 2,
+          "IsSelected": false
+        },
+        {
+          "Id": 19,
+          "Display": "Northcentral Great Lakes",
+          "Count": 2,
+          "IsSelected": false
+        },
+        {
+          "Id": 13,
+          "Display": "Cook Inlet Lowlands",
+          "Count": 1,
+          "IsSelected": false
+        },
+        {
+          "Id": 22,
+          "Display": "Pebble, Donlin, Aniak",
+          "Count": 1,
+          "IsSelected": false
+        },
+        {
+          "Id": 25,
+          "Display": "Upper Kobuk and Koyukuk Hills and Valleys",
+          "Count": 1,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 12,
+      "Type": null
+    },
+    {
+      "Name": "Foliage Texture",
+      "Filters": [
+        {
+          "Id": 2,
+          "Display": "Coarse",
+          "Count": 749,
+          "IsSelected": false
+        },
+        {
+          "Id": 1,
+          "Display": "Fine",
+          "Count": 595,
+          "IsSelected": false
+        },
+        {
+          "Id": 3,
+          "Display": "Medium",
+          "Count": 896,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 13,
+      "Type": "Morphology"
+    },
+    {
+      "Name": "pH, Minimum",
+      "Filters": [
+        {
+          "Id": 0,
+          "Display": "N/A",
+          "Count": 39,
+          "IsSelected": false
+        },
+        {
+          "Id": 0,
+          "Display": "3.5-3.6",
+          "Count": 19,
+          "IsSelected": false
+        },
+        {
+          "Id": 0,
+          "Display": "3.7-3.8",
+          "Count": 8,
+          "IsSelected": false
+        },
+        {
+          "Id": 0,
+          "Display": "3.9-4",
+          "Count": 136,
+          "IsSelected": false
+        },
+        {
+          "Id": 0,
+          "Display": "4.1-4.2",
+          "Count": 16,
+          "IsSelected": false
+        },
+        {
+          "Id": 0,
+          "Display": "4.3-4.4",
+          "Count": 31,
+          "IsSelected": false
+        },
+        {
+          "Id": 0,
+          "Display": "4.5-4.6",
+          "Count": 236,
+          "IsSelected": false
+        },
+        {
+          "Id": 0,
+          "Display": "4.7-4.8",
+          "Count": 138,
+          "IsSelected": false
+        },
+        {
+          "Id": 0,
+          "Display": "4.9-5",
+          "Count": 370,
+          "IsSelected": false
+        },
+        {
+          "Id": 0,
+          "Display": "5.1-5.2",
+          "Count": 77,
+          "IsSelected": false
+        },
+        {
+          "Id": 0,
+          "Display": "5.3-5.4",
+          "Count": 62,
+          "IsSelected": false
+        },
+        {
+          "Id": 0,
+          "Display": "5.5-5.6",
+          "Count": 279,
+          "IsSelected": false
+        },
+        {
+          "Id": 0,
+          "Display": "5.7-5.8",
+          "Count": 142,
+          "IsSelected": false
+        },
+        {
+          "Id": 0,
+          "Display": "5.9-6",
+          "Count": 399,
+          "IsSelected": false
+        },
+        {
+          "Id": 0,
+          "Display": "6.1-6.2",
+          "Count": 52,
+          "IsSelected": false
+        },
+        {
+          "Id": 0,
+          "Display": "6.3-6.4",
+          "Count": 44,
+          "IsSelected": false
+        },
+        {
+          "Id": 0,
+          "Display": "6.5-6.6",
+          "Count": 133,
+          "IsSelected": false
+        },
+        {
+          "Id": 0,
+          "Display": "6.7-6.8",
+          "Count": 13,
+          "IsSelected": false
+        },
+        {
+          "Id": 0,
+          "Display": "6.9-7",
+          "Count": 88,
+          "IsSelected": false
+        },
+        {
+          "Id": 0,
+          "Display": "7.1-7.2",
+          "Count": 3,
+          "IsSelected": false
+        },
+        {
+          "Id": 0,
+          "Display": "7.5-7.6",
+          "Count": 13,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 13,
+      "Type": "Growth Requirements"
+    },
+    {
+      "Name": "Propagated by Sod",
+      "Filters": [
+        {
+          "Id": 0,
+          "Display": "No",
+          "Count": 2161,
+          "IsSelected": false
+        },
+        {
+          "Id": 1,
+          "Display": "Yes",
+          "Count": 32,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 13,
+      "Type": "Reproduction"
+    },
+    {
+      "Name": "Pulpwood Product",
+      "Filters": [
+        {
+          "Id": 0,
+          "Display": "No",
+          "Count": 2058,
+          "IsSelected": false
+        },
+        {
+          "Id": 1,
+          "Display": "Yes",
+          "Count": 133,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 13,
+      "Type": "Suitability Use"
+    },
+    {
+      "Name": "Fruit/Seed Color",
+      "Filters": [
+        {
+          "Id": 1,
+          "Display": "Black",
+          "Count": 240,
+          "IsSelected": false
+        },
+        {
+          "Id": 2,
+          "Display": "Blue",
+          "Count": 44,
+          "IsSelected": false
+        },
+        {
+          "Id": 3,
+          "Display": "Brown",
+          "Count": 1332,
+          "IsSelected": false
+        },
+        {
+          "Id": 6,
+          "Display": "Green",
+          "Count": 71,
+          "IsSelected": false
+        },
+        {
+          "Id": 7,
+          "Display": "Orange",
+          "Count": 21,
+          "IsSelected": false
+        },
+        {
+          "Id": 8,
+          "Display": "Purple",
+          "Count": 46,
+          "IsSelected": false
+        },
+        {
+          "Id": 9,
+          "Display": "Red",
+          "Count": 173,
+          "IsSelected": false
+        },
+        {
+          "Id": 10,
+          "Display": "White",
+          "Count": 77,
+          "IsSelected": false
+        },
+        {
+          "Id": 12,
+          "Display": "Yellow",
+          "Count": 95,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 14,
+      "Type": "Morphology"
+    },
+    {
+      "Name": "pH, Maximum",
+      "Filters": [
+        {
+          "Id": 0,
+          "Display": "N/A",
+          "Count": 34,
+          "IsSelected": false
+        },
+        {
+          "Id": 0,
+          "Display": "5.1-5.2",
+          "Count": 4,
+          "IsSelected": false
+        },
+        {
+          "Id": 0,
+          "Display": "5.3-5.4",
+          "Count": 2,
+          "IsSelected": false
+        },
+        {
+          "Id": 0,
+          "Display": "5.5-5.6",
+          "Count": 21,
+          "IsSelected": false
+        },
+        {
+          "Id": 0,
+          "Display": "5.7-5.8",
+          "Count": 14,
+          "IsSelected": false
+        },
+        {
+          "Id": 0,
+          "Display": "5.9-6",
+          "Count": 47,
+          "IsSelected": false
+        },
+        {
+          "Id": 0,
+          "Display": "6.1-6.2",
+          "Count": 7,
+          "IsSelected": false
+        },
+        {
+          "Id": 0,
+          "Display": "6.3-6.4",
+          "Count": 7,
+          "IsSelected": false
+        },
+        {
+          "Id": 0,
+          "Display": "6.5-6.6",
+          "Count": 99,
+          "IsSelected": false
+        },
+        {
+          "Id": 0,
+          "Display": "6.7-6.8",
+          "Count": 69,
+          "IsSelected": false
+        },
+        {
+          "Id": 0,
+          "Display": "6.9-7",
+          "Count": 397,
+          "IsSelected": false
+        },
+        {
+          "Id": 0,
+          "Display": "7.1-7.2",
+          "Count": 128,
+          "IsSelected": false
+        },
+        {
+          "Id": 0,
+          "Display": "7.3-7.4",
+          "Count": 109,
+          "IsSelected": false
+        },
+        {
+          "Id": 0,
+          "Display": "7.5-7.6",
+          "Count": 478,
+          "IsSelected": false
+        },
+        {
+          "Id": 0,
+          "Display": "7.7-7.8",
+          "Count": 117,
+          "IsSelected": false
+        },
+        {
+          "Id": 0,
+          "Display": "7.9-8",
+          "Count": 343,
+          "IsSelected": false
+        },
+        {
+          "Id": 0,
+          "Display": "8.1-8.2",
+          "Count": 35,
+          "IsSelected": false
+        },
+        {
+          "Id": 0,
+          "Display": "8.3-8.4",
+          "Count": 59,
+          "IsSelected": false
+        },
+        {
+          "Id": 0,
+          "Display": "8.5-8.6",
+          "Count": 224,
+          "IsSelected": false
+        },
+        {
+          "Id": 0,
+          "Display": "8.7-8.8",
+          "Count": 32,
+          "IsSelected": false
+        },
+        {
+          "Id": 0,
+          "Display": "8.9-9",
+          "Count": 60,
+          "IsSelected": false
+        },
+        {
+          "Id": 0,
+          "Display": "9.1-9.2",
+          "Count": 5,
+          "IsSelected": false
+        },
+        {
+          "Id": 0,
+          "Display": "9.3-9.4",
+          "Count": 2,
+          "IsSelected": false
+        },
+        {
+          "Id": 0,
+          "Display": "9.5-9.6",
+          "Count": 13,
+          "IsSelected": false
+        },
+        {
+          "Id": 0,
+          "Display": "9.9-10",
+          "Count": 5,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 14,
+      "Type": "Growth Requirements"
+    },
+    {
+      "Name": "Propagated by Sprigs",
+      "Filters": [
+        {
+          "Id": 0,
+          "Display": "No",
+          "Count": 1691,
+          "IsSelected": false
+        },
+        {
+          "Id": 1,
+          "Display": "Yes",
+          "Count": 505,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 14,
+      "Type": "Reproduction"
+    },
+    {
+      "Name": "Veneer Product",
+      "Filters": [
+        {
+          "Id": 0,
+          "Display": "No",
+          "Count": 2047,
+          "IsSelected": false
+        },
+        {
+          "Id": 1,
+          "Display": "Yes",
+          "Count": 142,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 14,
+      "Type": "Suitability Use"
+    },
+    {
+      "Name": "Fruit/Seed Conspicuous",
+      "Filters": [
+        {
+          "Id": 0,
+          "Display": "No",
+          "Count": 1526,
+          "IsSelected": false
+        },
+        {
+          "Id": 1,
+          "Display": "Yes",
+          "Count": 682,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 15,
+      "Type": "Morphology"
+    },
+    {
+      "Name": "Planting Density per Acre, Minimum",
+      "Filters": [
+        {
+          "Id": 0,
+          "Display": "N/A",
+          "Count": 534,
+          "IsSelected": false
+        },
+        {
+          "Id": 135,
+          "Display": "10 - 299",
+          "Count": 133,
+          "IsSelected": false
+        },
+        {
+          "Id": 136,
+          "Display": "300 - 549",
+          "Count": 428,
+          "IsSelected": false
+        },
+        {
+          "Id": 137,
+          "Display": "550 - 799",
+          "Count": 185,
+          "IsSelected": false
+        },
+        {
+          "Id": 138,
+          "Display": "800 - 1299",
+          "Count": 173,
+          "IsSelected": false
+        },
+        {
+          "Id": 139,
+          "Display": "1300 - 1799",
+          "Count": 173,
+          "IsSelected": false
+        },
+        {
+          "Id": 140,
+          "Display": "1800 - 2999",
+          "Count": 289,
+          "IsSelected": false
+        },
+        {
+          "Id": 141,
+          "Display": "3000 - 3999",
+          "Count": 89,
+          "IsSelected": false
+        },
+        {
+          "Id": 142,
+          "Display": "4000 - 4999",
+          "Count": 85,
+          "IsSelected": false
+        },
+        {
+          "Id": 143,
+          "Display": "5000 - 12999",
+          "Count": 125,
+          "IsSelected": false
+        },
+        {
+          "Id": 144,
+          "Display": "13000 - 22999",
+          "Count": 7,
+          "IsSelected": false
+        },
+        {
+          "Id": 145,
+          "Display": "23000 - 32999",
+          "Count": 1,
+          "IsSelected": false
+        },
+        {
+          "Id": 146,
+          "Display": "33000 - 44000",
+          "Count": 10,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 15,
+      "Type": "Growth Requirements"
+    },
+    {
+      "Name": "Propagated by Tubers",
+      "Filters": [
+        {
+          "Id": 0,
+          "Display": "No",
+          "Count": 2162,
+          "IsSelected": false
+        },
+        {
+          "Id": 1,
+          "Display": "Yes",
+          "Count": 24,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 15,
+      "Type": "Reproduction"
+    },
+    {
+      "Name": "Growth Form",
+      "Filters": [
+        {
+          "Id": 1,
+          "Display": "Bunch",
+          "Count": 355,
+          "IsSelected": false
+        },
+        {
+          "Id": 7,
+          "Display": "Colonizing",
+          "Count": 26,
+          "IsSelected": false
+        },
+        {
+          "Id": 6,
+          "Display": "Multiple Stem",
+          "Count": 452,
+          "IsSelected": false
+        },
+        {
+          "Id": 5,
+          "Display": "Rhizomatous",
+          "Count": 393,
+          "IsSelected": false
+        },
+        {
+          "Id": 2,
+          "Display": "Single Crown",
+          "Count": 352,
+          "IsSelected": false
+        },
+        {
+          "Id": 8,
+          "Display": "Single Stem",
+          "Count": 410,
+          "IsSelected": false
+        },
+        {
+          "Id": 4,
+          "Display": "Stoloniferous",
+          "Count": 103,
+          "IsSelected": false
+        },
+        {
+          "Id": 3,
+          "Display": "Thicket Forming",
+          "Count": 70,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 16,
+      "Type": "Morphology"
+    },
+    {
+      "Name": "Seed per Pound",
+      "Filters": [
+        {
+          "Id": 0,
+          "Display": "N/A",
+          "Count": 541,
+          "IsSelected": false
+        },
+        {
+          "Id": 214,
+          "Display": "10 - 99999",
+          "Count": 675,
+          "IsSelected": false
+        },
+        {
+          "Id": 215,
+          "Display": "100000 - 199999",
+          "Count": 190,
+          "IsSelected": false
+        },
+        {
+          "Id": 216,
+          "Display": "200000 - 299999",
+          "Count": 153,
+          "IsSelected": false
+        },
+        {
+          "Id": 217,
+          "Display": "300000 - 399999",
+          "Count": 104,
+          "IsSelected": false
+        },
+        {
+          "Id": 218,
+          "Display": "400000 - 499999",
+          "Count": 75,
+          "IsSelected": false
+        },
+        {
+          "Id": 219,
+          "Display": "500000 - 999999",
+          "Count": 198,
+          "IsSelected": false
+        },
+        {
+          "Id": 220,
+          "Display": "1000000 - 1499999",
+          "Count": 81,
+          "IsSelected": false
+        },
+        {
+          "Id": 221,
+          "Display": "1500000 - 9999999",
+          "Count": 176,
+          "IsSelected": false
+        },
+        {
+          "Id": 222,
+          "Display": "10000000 - 19999999",
+          "Count": 7,
+          "IsSelected": false
+        },
+        {
+          "Id": 223,
+          "Display": "20000000 - 29999999",
+          "Count": 3,
+          "IsSelected": false
+        },
+        {
+          "Id": 224,
+          "Display": "30000000 - 39999999",
+          "Count": 2,
+          "IsSelected": false
+        },
+        {
+          "Id": 225,
+          "Display": "40000000 - 49999999",
+          "Count": 4,
+          "IsSelected": false
+        },
+        {
+          "Id": 226,
+          "Display": "> 49999999",
+          "Count": 2,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 16,
+      "Type": "Reproduction"
+    },
+    {
+      "Name": "Planting Density per Acre, Maximum",
+      "Filters": [
+        {
+          "Id": 0,
+          "Display": "N/A",
+          "Count": 535,
+          "IsSelected": false
+        },
+        {
+          "Id": 1,
+          "Display": "50 - 499",
+          "Count": 77,
+          "IsSelected": false
+        },
+        {
+          "Id": 2,
+          "Display": "500 - 999",
+          "Count": 277,
+          "IsSelected": false
+        },
+        {
+          "Id": 3,
+          "Display": "1000 - 1499",
+          "Count": 259,
+          "IsSelected": false
+        },
+        {
+          "Id": 4,
+          "Display": "1500 - 2499",
+          "Count": 120,
+          "IsSelected": false
+        },
+        {
+          "Id": 5,
+          "Display": "2500 - 3499",
+          "Count": 228,
+          "IsSelected": false
+        },
+        {
+          "Id": 6,
+          "Display": "3500 - 4499",
+          "Count": 5,
+          "IsSelected": false
+        },
+        {
+          "Id": 7,
+          "Display": "4500 - 5499",
+          "Count": 350,
+          "IsSelected": false
+        },
+        {
+          "Id": 8,
+          "Display": "5500 - 10499",
+          "Count": 50,
+          "IsSelected": false
+        },
+        {
+          "Id": 9,
+          "Display": "10500 - 18999",
+          "Count": 189,
+          "IsSelected": false
+        },
+        {
+          "Id": 10,
+          "Display": "19000 - 71999",
+          "Count": 140,
+          "IsSelected": false
+        },
+        {
+          "Id": 11,
+          "Display": "72000 - 125000",
+          "Count": 1,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 16,
+      "Type": "Growth Requirements"
+    },
+    {
+      "Name": "Growth Rate",
+      "Filters": [
+        {
+          "Id": 1,
+          "Display": "Moderate",
+          "Count": 1036,
+          "IsSelected": false
+        },
+        {
+          "Id": 3,
+          "Display": "Rapid",
+          "Count": 748,
+          "IsSelected": false
+        },
+        {
+          "Id": 4,
+          "Display": "Slow",
+          "Count": 378,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 17,
+      "Type": "Morphology"
+    },
+    {
+      "Name": "Precipitation, Minimum (inches)",
+      "Filters": [
+        {
+          "Id": 0,
+          "Display": "N/A",
+          "Count": 50,
+          "IsSelected": false
+        },
+        {
+          "Id": 147,
+          "Display": "0-4",
+          "Count": 26,
+          "IsSelected": false
+        },
+        {
+          "Id": 148,
+          "Display": "5-9",
+          "Count": 237,
+          "IsSelected": false
+        },
+        {
+          "Id": 149,
+          "Display": "10-14",
+          "Count": 525,
+          "IsSelected": false
+        },
+        {
+          "Id": 150,
+          "Display": "15-19",
+          "Count": 275,
+          "IsSelected": false
+        },
+        {
+          "Id": 151,
+          "Display": "20-24",
+          "Count": 260,
+          "IsSelected": false
+        },
+        {
+          "Id": 152,
+          "Display": "25-29",
+          "Count": 95,
+          "IsSelected": false
+        },
+        {
+          "Id": 153,
+          "Display": "30-39",
+          "Count": 634,
+          "IsSelected": false
+        },
+        {
+          "Id": 154,
+          "Display": "40-49",
+          "Count": 134,
+          "IsSelected": false
+        },
+        {
+          "Id": 155,
+          "Display": "50-59",
+          "Count": 16,
+          "IsSelected": false
+        },
+        {
+          "Id": 156,
+          "Display": ">=60",
+          "Count": 24,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 17,
+      "Type": "Growth Requirements"
+    },
+    {
+      "Name": "Seed Spread Rate",
+      "Filters": [
+        {
+          "Id": 1,
+          "Display": "Moderate",
+          "Count": 582,
+          "IsSelected": false
+        },
+        {
+          "Id": 2,
+          "Display": "None",
+          "Count": 115,
+          "IsSelected": false
+        },
+        {
+          "Id": 3,
+          "Display": "Rapid",
+          "Count": 221,
+          "IsSelected": false
+        },
+        {
+          "Id": 4,
+          "Display": "Slow",
+          "Count": 1194,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 17,
+      "Type": "Reproduction"
+    },
+    {
+      "Name": "Height at Base age, Maximum (feet)",
+      "Filters": [
+        {
+          "Id": 0,
+          "Display": "N/A",
+          "Count": 1272,
+          "IsSelected": false
+        },
+        {
+          "Id": 12,
+          "Display": "1 - 1.9",
+          "Count": 40,
+          "IsSelected": false
+        },
+        {
+          "Id": 13,
+          "Display": "2 - 2.9",
+          "Count": 47,
+          "IsSelected": false
+        },
+        {
+          "Id": 14,
+          "Display": "3 - 3.9",
+          "Count": 39,
+          "IsSelected": false
+        },
+        {
+          "Id": 15,
+          "Display": "4 - 5.9",
+          "Count": 66,
+          "IsSelected": false
+        },
+        {
+          "Id": 16,
+          "Display": "6 - 9.9",
+          "Count": 109,
+          "IsSelected": false
+        },
+        {
+          "Id": 17,
+          "Display": "10 - 14.9",
+          "Count": 100,
+          "IsSelected": false
+        },
+        {
+          "Id": 18,
+          "Display": "15 - 19.9",
+          "Count": 70,
+          "IsSelected": false
+        },
+        {
+          "Id": 19,
+          "Display": "20 - 24.9",
+          "Count": 107,
+          "IsSelected": false
+        },
+        {
+          "Id": 20,
+          "Display": "25 - 29.9",
+          "Count": 78,
+          "IsSelected": false
+        },
+        {
+          "Id": 21,
+          "Display": "30 - 39.9",
+          "Count": 122,
+          "IsSelected": false
+        },
+        {
+          "Id": 22,
+          "Display": "40 - 59.9",
+          "Count": 102,
+          "IsSelected": false
+        },
+        {
+          "Id": 23,
+          "Display": "60 - 79.9",
+          "Count": 47,
+          "IsSelected": false
+        },
+        {
+          "Id": 24,
+          "Display": "80 - 130",
+          "Count": 18,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 18,
+      "Type": "Morphology"
+    },
+    {
+      "Name": "Precipitation, Maximum (inches)",
+      "Filters": [
+        {
+          "Id": 0,
+          "Display": "N/A",
+          "Count": 50,
+          "IsSelected": false
+        },
+        {
+          "Id": 157,
+          "Display": "10-14",
+          "Count": 52,
+          "IsSelected": false
+        },
+        {
+          "Id": 158,
+          "Display": "15-19",
+          "Count": 115,
+          "IsSelected": false
+        },
+        {
+          "Id": 159,
+          "Display": "20-24",
+          "Count": 194,
+          "IsSelected": false
+        },
+        {
+          "Id": 160,
+          "Display": "25-29",
+          "Count": 48,
+          "IsSelected": false
+        },
+        {
+          "Id": 161,
+          "Display": "30-39",
+          "Count": 176,
+          "IsSelected": false
+        },
+        {
+          "Id": 162,
+          "Display": "40-49",
+          "Count": 203,
+          "IsSelected": false
+        },
+        {
+          "Id": 163,
+          "Display": "50-59",
+          "Count": 478,
+          "IsSelected": false
+        },
+        {
+          "Id": 164,
+          "Display": "60-79",
+          "Count": 686,
+          "IsSelected": false
+        },
+        {
+          "Id": 165,
+          "Display": "80-99",
+          "Count": 137,
+          "IsSelected": false
+        },
+        {
+          "Id": 166,
+          "Display": "100-149",
+          "Count": 92,
+          "IsSelected": false
+        },
+        {
+          "Id": 167,
+          "Display": "150-199",
+          "Count": 30,
+          "IsSelected": false
+        },
+        {
+          "Id": 168,
+          "Display": ">=200",
+          "Count": 37,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 18,
+      "Type": "Growth Requirements"
+    },
+    {
+      "Name": "Seeding Vigor",
+      "Filters": [
+        {
+          "Id": 1,
+          "Display": "High",
+          "Count": 500,
+          "IsSelected": false
+        },
+        {
+          "Id": 2,
+          "Display": "Low",
+          "Count": 625,
+          "IsSelected": false
+        },
+        {
+          "Id": 3,
+          "Display": "Medium",
+          "Count": 921,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 18,
+      "Type": "Reproduction"
+    },
+    {
+      "Name": "Height at Maturity (feet)",
+      "Filters": [
+        {
+          "Id": 0,
+          "Display": "N/A",
+          "Count": 22,
+          "IsSelected": false
+        },
+        {
+          "Id": 26,
+          "Display": "0 - 0.9",
+          "Count": 139,
+          "IsSelected": false
+        },
+        {
+          "Id": 27,
+          "Display": "1 - 1.9",
+          "Count": 313,
+          "IsSelected": false
+        },
+        {
+          "Id": 28,
+          "Display": "2 - 2.9",
+          "Count": 365,
+          "IsSelected": false
+        },
+        {
+          "Id": 29,
+          "Display": "3 - 3.9",
+          "Count": 338,
+          "IsSelected": false
+        },
+        {
+          "Id": 30,
+          "Display": "4 - 5.9",
+          "Count": 222,
+          "IsSelected": false
+        },
+        {
+          "Id": 31,
+          "Display": "6 - 9.9",
+          "Count": 195,
+          "IsSelected": false
+        },
+        {
+          "Id": 32,
+          "Display": "10 - 19.9",
+          "Count": 186,
+          "IsSelected": false
+        },
+        {
+          "Id": 33,
+          "Display": "20 - 39.9",
+          "Count": 172,
+          "IsSelected": false
+        },
+        {
+          "Id": 34,
+          "Display": "40 - 59.9",
+          "Count": 97,
+          "IsSelected": false
+        },
+        {
+          "Id": 35,
+          "Display": "60 - 99.9",
+          "Count": 146,
+          "IsSelected": false
+        },
+        {
+          "Id": 36,
+          "Display": "100 - 149.9",
+          "Count": 66,
+          "IsSelected": false
+        },
+        {
+          "Id": 37,
+          "Display": "150 - 199.9",
+          "Count": 15,
+          "IsSelected": false
+        },
+        {
+          "Id": 38,
+          "Display": "200 - 250",
+          "Count": 10,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 19,
+      "Type": "Morphology"
+    },
+    {
+      "Name": "Root Depth, Minimum (inches)",
+      "Filters": [
+        {
+          "Id": 0,
+          "Display": "N/A",
+          "Count": 39,
+          "IsSelected": false
+        },
+        {
+          "Id": 169,
+          "Display": "1 - 2",
+          "Count": 11,
+          "IsSelected": false
+        },
+        {
+          "Id": 170,
+          "Display": "3 - 5",
+          "Count": 43,
+          "IsSelected": false
+        },
+        {
+          "Id": 171,
+          "Display": "6 - 8",
+          "Count": 408,
+          "IsSelected": false
+        },
+        {
+          "Id": 172,
+          "Display": "9 - 11",
+          "Count": 302,
+          "IsSelected": false
+        },
+        {
+          "Id": 173,
+          "Display": "12 - 14",
+          "Count": 577,
+          "IsSelected": false
+        },
+        {
+          "Id": 174,
+          "Display": "15 - 17",
+          "Count": 185,
+          "IsSelected": false
+        },
+        {
+          "Id": 175,
+          "Display": "18 - 20",
+          "Count": 245,
+          "IsSelected": false
+        },
+        {
+          "Id": 176,
+          "Display": "21 - 23",
+          "Count": 1,
+          "IsSelected": false
+        },
+        {
+          "Id": 177,
+          "Display": "24 - 26",
+          "Count": 151,
+          "IsSelected": false
+        },
+        {
+          "Id": 178,
+          "Display": "27 - 29",
+          "Count": 17,
+          "IsSelected": false
+        },
+        {
+          "Id": 179,
+          "Display": "30 - 32",
+          "Count": 67,
+          "IsSelected": false
+        },
+        {
+          "Id": 180,
+          "Display": "33 - 35",
+          "Count": 4,
+          "IsSelected": false
+        },
+        {
+          "Id": 181,
+          "Display": "36 - 38",
+          "Count": 108,
+          "IsSelected": false
+        },
+        {
+          "Id": 182,
+          "Display": "39 - 41",
+          "Count": 44,
+          "IsSelected": false
+        },
+        {
+          "Id": 183,
+          "Display": "42 - 44",
+          "Count": 8,
+          "IsSelected": false
+        },
+        {
+          "Id": 185,
+          "Display": "48 - 51",
+          "Count": 14,
+          "IsSelected": false
+        },
+        {
+          "Id": 186,
+          "Display": "52 - 120",
+          "Count": 17,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 19,
+      "Type": "Growth Requirements"
+    },
+    {
+      "Name": "Small Grain",
+      "Filters": [
+        {
+          "Id": 0,
+          "Display": "No",
+          "Count": 2166,
+          "IsSelected": false
+        },
+        {
+          "Id": 1,
+          "Display": "Yes",
+          "Count": 20,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 19,
+      "Type": "Reproduction"
+    },
+    {
+      "Name": "Known Allelopath",
+      "Filters": [
+        {
+          "Id": 0,
+          "Display": "No",
+          "Count": 2130,
+          "IsSelected": false
+        },
+        {
+          "Id": 1,
+          "Display": "Yes",
+          "Count": 57,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 20,
+      "Type": "Morphology"
+    },
+    {
+      "Name": "Salinity Tolerance",
+      "Filters": [
+        {
+          "Id": 1,
+          "Display": "High",
+          "Count": 124,
+          "IsSelected": false
+        },
+        {
+          "Id": 2,
+          "Display": "Low",
+          "Count": 481,
+          "IsSelected": false
+        },
+        {
+          "Id": 3,
+          "Display": "Medium",
+          "Count": 291,
+          "IsSelected": false
+        },
+        {
+          "Id": 4,
+          "Display": "None",
+          "Count": 1250,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 20,
+      "Type": "Growth Requirements"
+    },
+    {
+      "Name": "Vegetative Spread Rate",
+      "Filters": [
+        {
+          "Id": 1,
+          "Display": "Moderate",
+          "Count": 363,
+          "IsSelected": false
+        },
+        {
+          "Id": 2,
+          "Display": "None",
+          "Count": 1189,
+          "IsSelected": false
+        },
+        {
+          "Id": 3,
+          "Display": "Rapid",
+          "Count": 166,
+          "IsSelected": false
+        },
+        {
+          "Id": 4,
+          "Display": "Slow",
+          "Count": 372,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 20,
+      "Type": "Reproduction"
+    },
+    {
+      "Name": "Leaf Retention",
+      "Filters": [
+        {
+          "Id": 0,
+          "Display": "No",
+          "Count": 1828,
+          "IsSelected": false
+        },
+        {
+          "Id": 1,
+          "Display": "Yes",
+          "Count": 364,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 21,
+      "Type": "Morphology"
+    },
+    {
+      "Name": "Shade Tolerance",
+      "Filters": [
+        {
+          "Id": 3,
+          "Display": "Intermediate",
+          "Count": 632,
+          "IsSelected": false
+        },
+        {
+          "Id": 1,
+          "Display": "Intolerant",
+          "Count": 1051,
+          "IsSelected": false
+        },
+        {
+          "Id": 2,
+          "Display": "Tolerant",
+          "Count": 491,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 21,
+      "Type": "Growth Requirements"
+    },
+    {
+      "Name": "Life Span",
+      "Filters": [
+        {
+          "Id": 2,
+          "Display": "Long",
+          "Count": 627,
+          "IsSelected": false
+        },
+        {
+          "Id": 3,
+          "Display": "Moderate",
+          "Count": 866,
+          "IsSelected": false
+        },
+        {
+          "Id": 1,
+          "Display": "Short",
+          "Count": 547,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 22,
+      "Type": "Morphology"
+    },
+    {
+      "Name": "Temperature, Minimum (°F)",
+      "Filters": [
+        {
+          "Id": 187,
+          "Display": "-75 - -53",
+          "Count": 53,
+          "IsSelected": false
+        },
+        {
+          "Id": 188,
+          "Display": "-52 - -48",
+          "Count": 14,
+          "IsSelected": false
+        },
+        {
+          "Id": 189,
+          "Display": "-47 - -43",
+          "Count": 181,
+          "IsSelected": false
+        },
+        {
+          "Id": 190,
+          "Display": "-42 - -38",
+          "Count": 326,
+          "IsSelected": false
+        },
+        {
+          "Id": 191,
+          "Display": "-37 - -33",
+          "Count": 385,
+          "IsSelected": false
+        },
+        {
+          "Id": 192,
+          "Display": "-32 - -28",
+          "Count": 224,
+          "IsSelected": false
+        },
+        {
+          "Id": 193,
+          "Display": "-27 - -23",
+          "Count": 219,
+          "IsSelected": false
+        },
+        {
+          "Id": 194,
+          "Display": "-22 - -18",
+          "Count": 116,
+          "IsSelected": false
+        },
+        {
+          "Id": 195,
+          "Display": "-17 - -13",
+          "Count": 130,
+          "IsSelected": false
+        },
+        {
+          "Id": 196,
+          "Display": "-12 - -8",
+          "Count": 61,
+          "IsSelected": false
+        },
+        {
+          "Id": 197,
+          "Display": "-7 - -3",
+          "Count": 104,
+          "IsSelected": false
+        },
+        {
+          "Id": 198,
+          "Display": "-2 - 2",
+          "Count": 42,
+          "IsSelected": false
+        },
+        {
+          "Id": 198,
+          "Display": "N/A",
+          "Count": 11,
+          "IsSelected": false
+        },
+        {
+          "Id": 199,
+          "Display": "3 - 7",
+          "Count": 106,
+          "IsSelected": false
+        },
+        {
+          "Id": 200,
+          "Display": "8 - 13",
+          "Count": 49,
+          "IsSelected": false
+        },
+        {
+          "Id": 201,
+          "Display": "13 - 17",
+          "Count": 87,
+          "IsSelected": false
+        },
+        {
+          "Id": 202,
+          "Display": "18 - 22",
+          "Count": 32,
+          "IsSelected": false
+        },
+        {
+          "Id": 203,
+          "Display": "23 - 27",
+          "Count": 30,
+          "IsSelected": false
+        },
+        {
+          "Id": 204,
+          "Display": "28 - 32",
+          "Count": 55,
+          "IsSelected": false
+        },
+        {
+          "Id": 205,
+          "Display": "33 - 37",
+          "Count": 15,
+          "IsSelected": false
+        },
+        {
+          "Id": 206,
+          "Display": "38 - 42",
+          "Count": 85,
+          "IsSelected": false
+        },
+        {
+          "Id": 207,
+          "Display": "43 - 47",
+          "Count": 32,
+          "IsSelected": false
+        },
+        {
+          "Id": 208,
+          "Display": "48 - 52",
+          "Count": 54,
+          "IsSelected": false
+        },
+        {
+          "Id": 209,
+          "Display": "53 - 57",
+          "Count": 1,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 22,
+      "Type": "Growth Requirements"
+    },
+    {
+      "Name": "Low Growing Grass",
+      "Filters": [
+        {
+          "Id": 0,
+          "Display": "No",
+          "Count": 2073,
+          "IsSelected": false
+        },
+        {
+          "Id": 1,
+          "Display": "Yes",
+          "Count": 122,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 23,
+      "Type": "Morphology"
+    },
+    {
+      "Name": "Nitrogen Fixation",
+      "Filters": [
+        {
+          "Id": 1,
+          "Display": "High",
+          "Count": 39,
+          "IsSelected": false
+        },
+        {
+          "Id": 2,
+          "Display": "Low",
+          "Count": 82,
+          "IsSelected": false
+        },
+        {
+          "Id": 3,
+          "Display": "Medium",
+          "Count": 88,
+          "IsSelected": false
+        },
+        {
+          "Id": 4,
+          "Display": "None",
+          "Count": 1986,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 24,
+      "Type": "Morphology"
+    },
+    {
+      "Name": "Resprout Ability",
+      "Filters": [
+        {
+          "Id": 0,
+          "Display": "No",
+          "Count": 1508,
+          "IsSelected": false
+        },
+        {
+          "Id": 1,
+          "Display": "Yes",
+          "Count": 684,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 25,
+      "Type": "Morphology"
+    },
+    {
+      "Name": "Shape and Orientation",
+      "Filters": [
+        {
+          "Id": 11,
+          "Display": "Climbing",
+          "Count": 42,
+          "IsSelected": false
+        },
+        {
+          "Id": 10,
+          "Display": "Columnar",
+          "Count": 10,
+          "IsSelected": false
+        },
+        {
+          "Id": 4,
+          "Display": "Conical",
+          "Count": 33,
+          "IsSelected": false
+        },
+        {
+          "Id": 9,
+          "Display": "Decumbent",
+          "Count": 158,
+          "IsSelected": false
+        },
+        {
+          "Id": 1,
+          "Display": "Erect",
+          "Count": 1409,
+          "IsSelected": false
+        },
+        {
+          "Id": 6,
+          "Display": "Irregular",
+          "Count": 41,
+          "IsSelected": false
+        },
+        {
+          "Id": 7,
+          "Display": "Oval",
+          "Count": 8,
+          "IsSelected": false
+        },
+        {
+          "Id": 5,
+          "Display": "Prostrate",
+          "Count": 108,
+          "IsSelected": false
+        },
+        {
+          "Id": 8,
+          "Display": "Rounded",
+          "Count": 93,
+          "IsSelected": false
+        },
+        {
+          "Id": 3,
+          "Display": "Semi-Erect",
+          "Count": 286,
+          "IsSelected": false
+        },
+        {
+          "Id": 2,
+          "Display": "Vase",
+          "Count": 12,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 26,
+      "Type": "Morphology"
+    },
+    {
+      "Name": "Toxicity",
+      "Filters": [
+        {
+          "Id": 4,
+          "Display": "Moderate",
+          "Count": 64,
+          "IsSelected": false
+        },
+        {
+          "Id": 2,
+          "Display": "None",
+          "Count": 1874,
+          "IsSelected": false
+        },
+        {
+          "Id": 3,
+          "Display": "Severe",
+          "Count": 39,
+          "IsSelected": false
+        },
+        {
+          "Id": 1,
+          "Display": "Slight",
+          "Count": 136,
+          "IsSelected": false
+        }
+      ],
+      "SortOrder": 27,
+      "Type": "Morphology"
+    }
+  ],
+  "UnfilteredPlantIds": [
+    26026,
+    52286,
+    15379,
+    54611,
+    30717,
+    88455,
+    17300,
+    87524,
+    83653,
+    43589,
+    52579,
+    67647,
+    25136,
+    66464,
+    32600,
+    15449,
+    35138,
+    18178,
+    16047,
+    15309,
+    80689,
+    61598,
+    17481,
+    74148,
+    47776,
+    87008,
+    79992,
+    17997,
+    70236,
+    35653,
+    75150,
+    15560,
+    37435,
+    43477,
+    20725,
+    74301,
+    15561,
+    31567,
+    75248,
+    26611,
+    65248,
+    17342,
+    67466,
+    22869,
+    69889,
+    24467,
+    81176,
+    15421,
+    84391,
+    20252,
+    19736,
+    80104,
+    49112,
+    49739,
+    70237,
+    68427,
+    70710,
+    16772,
+    68246,
+    51939,
+    74732,
+    25108,
+    70612,
+    72366,
+    52147,
+    91127,
+    74928,
+    45201,
+    26792,
+    78963,
+    83514,
+    70111,
+    83069,
+    88913,
+    20432,
+    69903,
+    80591,
+    81107,
+    25902,
+    70919,
+    79616,
+    20153,
+    20877,
+    77250,
+    70390,
+    91587,
+    65781,
+    15366,
+    17773,
+    65573,
+    64788,
+    65374,
+    79923,
+    40303,
+    68440,
+    19652,
+    21100,
+    88718,
+    54862,
+    74913,
+    21602,
+    31637,
+    18441,
+    18232,
+    16785,
+    68232,
+    22784,
+    24620,
+    15380,
+    23716,
+    25817,
+    26806,
+    51271,
+    51995,
+    47386,
+    26541,
+    25164,
+    33064,
+    23243,
+    26820,
+    26333,
+    32096,
+    14168,
+    60748,
+    90181,
+    52662,
+    68719,
+    25831,
+    74426,
+    26597,
+    18275,
+    24231,
+    27001,
+    59176,
+    70432,
+    86994,
+    70543,
+    67076,
+    90918,
+    28852,
+    68663,
+    14837,
+    23563,
+    70250,
+    78490,
+    56921,
+    31762,
+    27669,
+    44588,
+    20864,
+    18205,
+    87175,
+    25678,
+    87105,
+    65123,
+    17314,
+    40846,
+    26486,
+    71503,
+    34122,
+    15393,
+    47206,
+    25567,
+    88469,
+    27933,
+    16062,
+    88412,
+    17718,
+    92756,
+    34568,
+    65276,
+    35334,
+    32754,
+    71405,
+    19750,
+    17983,
+    24940,
+    27112,
+    64284,
+    70362,
+    63839,
+    20976,
+    25191,
+    24091,
+    55445,
+    23270,
+    53818,
+    22270,
+    35639,
+    79631,
+    15686,
+    20349,
+    71391,
+    15281,
+    20711,
+    58466,
+    90723,
+    81871,
+    70571,
+    12874,
+    64747,
+    17843,
+    15448,
+    24259,
+    67438,
+    78085,
+    19026,
+    21310,
+    88858,
+    91754,
+    47957,
+    26194,
+    49711,
+    13375,
+    23339,
+    24022,
+    24063,
+    70501,
+    26221,
+    28393,
+    71476,
+    65485,
+    66729,
+    23117,
+    67856,
+    15463,
+    88664,
+    90793,
+    32235,
+    80759,
+    46300,
+    49196,
+    24996,
+    70557,
+    58758,
+    21239,
+    49669,
+    18330,
+    23605,
+    81245,
+    43003,
+    40902,
+    71920,
+    23785,
+    23103,
+    25706,
+    71740,
+    61389,
+    50408,
+    71447,
+    80730,
+    17383,
+    45856,
+    79561,
+    80285,
+    16200,
+    93131,
+    87468,
+    17885,
+    15254,
+    67382,
+    29562,
+    84321,
+    93188,
+    18609,
+    81217,
+    24064,
+    21211,
+    42904,
+    92865,
+    87149,
+    68467,
+    42055,
+    16105,
+    72309,
+    62277,
+    26735,
+    47946,
+    70944,
+    92976,
+    88356,
+    22049,
+    74048,
+    25997,
+    20755,
+    71349,
+    45955,
+    52344,
+    24703,
+    56584,
+    93784,
+    15479,
+    93603,
+    32570,
+    43016,
+    67951,
+    79535,
+    65162,
+    67910,
+    17428,
+    60496,
+    58840,
+    59215,
+    93756,
+    13822,
+    21381,
+    65989,
+    62528,
+    15743,
+    68509,
+    83642,
+    85702,
+    34997,
+    70387,
+    12528,
+    86301,
+    70165,
+    73785,
+    19765,
+    42933,
+    15227,
+    90165,
+    70875,
+    88620,
+    18220,
+    84380,
+    78950,
+    41345,
+    93129,
+    17539,
+    70986,
+    15005,
+    65233,
+    70082,
+    39702,
+    24619,
+    18499,
+    56835,
+    70735,
+    89830,
+    90597,
+    40718,
+    69915,
+    92963,
+    64536,
+    39787,
+    29603,
+    71543,
+    26748,
+    39995,
+    64551,
+    70568,
+    54683,
+    65543,
+    90875,
+    80161,
+    89177,
+    23380,
+    32543,
+    91320,
+    54697,
+    90123,
+    89886,
+    46776,
+    69901,
+    76682,
+    88146,
+    38812,
+    18124,
+    51523,
+    61652,
+    60928,
+    42905,
+    73227,
+    88216,
+    91250,
+    64815,
+    27444,
+    65023,
+    28712,
+    38533,
+    67200,
+    49824,
+    46985,
+    88661,
+    70819,
+    75343,
+    60260,
+    67966,
+    70332,
+    19946,
+    15451,
+    93213,
+    42834,
+    93199,
+    42820,
+    64282,
+    25064,
+    70081,
+    40483,
+    72977,
+    62403,
+    79117,
+    73366,
+    67451,
+    17455,
+    34538,
+    22480,
+    75246,
+    51926,
+    65205,
+    43141,
+    89635,
+    50520,
+    20629,
+    24758,
+    67422,
+    74438,
+    91849,
+    39522,
+    15423,
+    32038,
+    18902,
+    70526,
+    73840,
+    15757,
+    69928,
+    25760,
+    46971,
+    32362,
+    34468,
+    59188,
+    19669,
+    23393,
+    68453,
+    17859,
+    25900,
+    49783,
+    23909,
+    19961,
+    72546,
+    15798,
+    87122,
+    25384,
+    33940,
+    40120,
+    81248,
+    23324,
+    15715,
+    20002,
+    24062,
+    21923,
+    15646,
+    85090,
+    29532,
+    49184,
+    15604,
+    17790,
+    65947,
+    82222,
+    74982,
+    80258,
+    61137,
+    20894,
+    70151,
+    15575,
+    28976,
+    17747,
+    55456,
+    79674,
+    62445,
+    74925,
+    18944,
+    22007,
+    53081,
+    59160,
+    64703,
+    33620,
+    43002,
+    13404,
+    88606,
+    84477,
+    36279,
+    24897,
+    68258,
+    37462,
+    17957,
+    78714,
+    72351,
+    75288,
+    20156,
+    17943,
+    16271,
+    20601,
+    88257,
+    19140,
+    21088,
+    75010,
+    84881,
+    37002,
+    70401,
+    26651,
+    51620,
+    47403,
+    69942,
+    70987,
+    73297,
+    70193,
+    30882,
+    61066,
+    87526,
+    18151,
+    36265,
+    15283,
+    18179,
+    15576,
+    69998,
+    26595,
+    42988,
+    67576,
+    53777,
+    82945,
+    24939,
+    71654,
+    21103,
+    40135,
+    26623,
+    32390,
+    87260,
+    91167,
+    26372,
+    82500,
+    15340,
+    67590,
+    18401,
+    19168,
+    68186,
+    24597,
+    39478,
+    75161,
+    83442,
+    22600,
+    21821,
+    76871,
+    45838,
+    70066,
+    92941,
+    20568,
+    24345,
+    91770,
+    22225,
+    70136,
+    87436,
+    23344,
+    90142,
+    15432,
+    88625,
+    18354,
+    17241,
+    81632,
+    51894,
+    93205,
+    16058,
+    39952,
+    22782,
+    22864,
+    27074,
+    75272,
+    18020,
+    92759,
+    12257,
+    24416,
+    49903,
+    21710,
+    89404,
+    22934,
+    49206,
+    79390,
+    28744,
+    83372,
+    89655,
+    46423,
+    17715,
+    29482,
+    33492,
+    61392,
+    93204,
+    12926,
+    64799,
+    90838,
+    55108,
+    90072,
+    35747,
+    65301,
+    40703,
+    90254,
+    24930,
+    38893,
+    51976,
+    19607,
+    78165,
+    26962,
+    27087,
+    33521,
+    59137,
+    17826,
+    92842,
+    62506,
+    32277,
+    75244,
+    70219,
+    79057,
+    49207,
+    65397,
+    47494,
+    69760,
+    22420,
+    83344,
+    21515,
+    72905,
+    19732,
+    32402,
+    77136,
+    83385,
+    45866,
+    20707,
+    88820,
+    70928,
+    27199,
+    25251,
+    51880,
+    87033,
+    93886,
+    67643,
+    82940,
+    24262,
+    28425,
+    90324,
+    65203,
+    89794,
+    23608,
+    93135,
+    24053,
+    20261,
+    64730,
+    80267,
+    50669,
+    30763,
+    58733,
+    78361,
+    15932,
+    19078,
+    45142,
+    87005,
+    42763,
+    32652,
+    16476,
+    32666,
+    58705,
+    15946,
+    24541,
+    18369,
+    76690,
+    16003,
+    15473,
+    78332,
+    49902,
+    69816,
+    88389,
+    25028,
+    71013,
+    17867,
+    20763,
+    22211,
+    93887,
+    75063,
+    22892,
+    15013,
+    19622,
+    24026,
+    91966,
+    60974,
+    82133,
+    16934,
+    46743,
+    25695,
+    42778,
+    70678,
+    23733,
+    65369,
+    68423,
+    93038,
+    70344,
+    53577,
+    22656,
+    22615,
+    34731,
+    63188,
+    86490,
+    23997,
+    69091,
+    83761,
+    84347,
+    86198,
+    20289,
+    91422,
+    78666,
+    26586,
+    91813,
+    87409,
+    72014,
+    15223,
+    20248,
+    86671,
+    65105,
+    29384,
+    61266,
+    47786,
+    16671,
+    65007,
+    17743,
+    91702,
+    91409,
+    22879,
+    91340,
+    59165,
+    69982,
+    49875,
+    87047,
+    79405,
+    18145,
+    70316,
+    63076,
+    50474,
+    59610,
+    49291,
+    31417,
+    15041,
+    74158,
+    41983,
+    80588,
+    61893,
+    18772,
+    52185,
+    92843,
+    70164,
+    68451,
+    49819,
+    17562,
+    32569,
+    48595,
+    34077,
+    45532,
+    77789,
+    67713,
+    69997,
+    20136,
+    41942,
+    25793,
+    21404,
+    55699,
+    79376,
+    88263,
+    92814,
+    88694,
+    27102,
+    36179,
+    79725,
+    23705,
+    15167,
+    58650,
+    20192,
+    18452,
+    22072,
+    15556,
+    19635,
+    71625,
+    68521,
+    61462,
+    26572,
+    54817,
+    85725,
+    25167,
+    35511,
+    20122,
+    15390,
+    64329,
+    37877,
+    44057,
+    38322,
+    18494,
+    16753,
+    20860,
+    71569,
+    41928,
+    43376,
+    84220,
+    20888,
+    79446,
+    17311,
+    19440,
+    70594,
+    83733,
+    88708,
+    70608,
+    67518,
+    68242,
+    64855,
+    70665,
+    70622,
+    90894,
+    72794,
+    88722,
+    65063,
+    20609,
+    38379,
+    35483,
+    75174,
+    79167,
+    24150,
+    16057,
+    32071,
+    67085,
+    43068,
+    41926,
+    71776,
+    79448,
+    24316,
+    70997,
+    32181,
+    27824,
+    44503,
+    49194,
+    66751,
+    67378,
+    64286,
+    46383,
+    63923,
+    51296,
+    75214,
+    89820,
+    72403,
+    39783,
+    41774,
+    61697,
+    35133,
+    61516,
+    70523,
+    14167,
+    71553,
+    65313,
+    28409,
+    42887,
+    15642,
+    22547,
+    90112,
+    15350,
+    78933,
+    28339,
+    14166,
+    78516,
+    43262,
+    81229,
+    92813,
+    84835,
+    65424,
+    67670,
+    56796,
+    88624,
+    29592,
+    70774,
+    70412,
+    15321,
+    21475,
+    49821,
+    33101,
+    68560,
+    20750,
+    15976,
+    86129,
+    17159,
+    69925,
+    17424,
+    53427,
+    90183,
+    67893,
+    15489,
+    28270,
+    73391,
+    64728,
+    25012,
+    23245,
+    43026,
+    32850,
+    91824,
+    71429,
+    21600,
+    53371,
+    75186,
+    16268,
+    70439,
+    29550,
+    15058,
+    20361,
+    41717,
+    60276,
+    17465,
+    82539,
+    47760,
+    17981,
+    42692,
+    67614,
+    24692,
+    75200,
+    64686,
+    84863,
+    86992,
+    90655,
+    16074,
+    70969,
+    15308,
+    16226,
+    90712,
+    34104,
+    28075,
+    62253,
+    90920,
+    49751,
+    79866,
+    23759,
+    20068,
+    59121,
+    15545,
+    21336,
+    39867,
+    90962,
+    21544,
+    75242,
+    21265,
+    86826,
+    87550,
+    35788,
+    65174,
+    86339,
+    79629,
+    91407,
+    67307,
+    42999,
+    57938,
+    65160,
+    29286,
+    60375,
+    70468,
+    18634,
+    49766,
+    93120,
+    26641,
+    47594,
+    75020,
+    31206,
+    25777,
+    21127,
+    21502,
+    66110,
+    83193,
+    24928,
+    87076,
+    90572,
+    84306,
+    93565,
+    32497,
+    66543,
+    65229,
+    39504,
+    54790,
+    78766,
+    79908,
+    15364,
+    86965,
+    17438,
+    43416,
+    87257,
+    24079,
+    20945,
+    19762,
+    39991,
+    33226,
+    78209,
+    65159,
+    25848,
+    44628,
+    23119,
+    50420,
+    58578,
+    54638,
+    77652,
+    15586,
+    64742,
+    32567,
+    80756,
+    87229,
+    82566,
+    35119,
+    70649,
+    75187,
+    47621,
+    40911,
+    20722,
+    93161,
+    20765,
+    48026,
+    65298,
+    73502,
+    15030,
+    16478,
+    32055,
+    74685,
+    88957,
+    51352,
+    71581,
+    55739,
+    59567,
+    62463,
+    42803,
+    90070,
+    25152,
+    16464,
+    78530,
+    24859,
+    20903,
+    20180,
+    82205,
+    18467,
+    58536,
+    23439,
+    25749,
+    73154,
+    47245,
+    25735,
+    91268,
+    87159,
+    26724,
+    74922,
+    25527,
+    27169,
+    88205,
+    40215,
+    16101,
+    80451,
+    36595,
+    67684,
+    34493,
+    74908,
+    25805,
+    31735,
+    23857,
+    64978,
+    18551,
+    68421,
+    92772,
+    21712,
+    17576,
+    33978,
+    88873,
+    32056,
+    17813,
+    84822,
+    82163,
+    72708,
+    90614,
+    91031,
+    89848,
+    92952,
+    20681,
+    84264,
+    23620,
+    60708,
+    67698,
+    64314,
+    32483,
+    49834,
+    23885,
+    24609,
+    22394,
+    65522,
+    15168,
+    69382,
+    26487,
+    24107,
+    90586,
+    93152,
+    89644,
+    28720,
+    60936,
+    72303,
+    26799,
+    40046,
+    80514,
+    32705,
+    75032,
+    90452,
+    71009,
+    51917,
+    34506,
+    18518,
+    83132,
+    32412,
+    81949,
+    18588,
+    49774,
+    64587,
+    23402,
+    35507,
+    64781,
+    20954,
+    42968,
+    55091,
+    22583,
+    60713,
+    41785,
+    65539,
+    70828,
+    91775,
+    73194,
+    90674,
+    64291,
+    66541,
+    92860,
+    71566,
+    18671,
+    76380,
+    83021,
+    39391,
+    26173,
+    89825,
+    48410,
+    13242,
+    47004,
+    21371,
+    61786,
+    71008,
+    58821,
+    92151,
+    15274,
+    27216,
+    72638,
+    77187,
+    36245,
+    30962,
+    70717,
+    26729,
+    36356,
+    80208,
+    83201,
+    81391,
+    21177,
+    49732,
+    41535,
+    92846,
+    54103,
+    82366,
+    93291,
+    71385,
+    49746,
+    31644,
+    34964,
+    81420,
+    70577,
+    15846,
+    75171,
+    26757,
+    23708,
+    88782,
+    31407,
+    15386,
+    21386,
+    83564,
+    38305,
+    88990,
+    74225,
+    68433,
+    88433,
+    40088,
+    90146,
+    12212,
+    68281,
+    73528,
+    24642,
+    34045,
+    15316,
+    25866,
+    26813,
+    15595,
+    40060,
+    64332,
+    16778,
+    65367,
+    87141,
+    68475,
+    15623,
+    69923,
+    74920,
+    71636,
+    86583,
+    71551,
+    45960,
+    70619,
+    20175,
+    44067,
+    71135,
+    20885,
+    65339,
+    90131,
+    61479,
+    71565,
+    15358,
+    16082,
+    69909,
+    38863,
+    67780,
+    21051,
+    61548,
+    27007,
+    66596,
+    90619,
+    37443,
+    23903,
+    36008,
+    62245,
+    15511,
+    51235,
+    23042,
+    64277,
+    73542,
+    49788,
+    28594,
+    60476,
+    72318,
+    90730,
+    18058,
+    40728,
+    34310,
+    17391,
+    81044,
+    93904,
+    15721,
+    23194,
+    42690,
+    70702,
+    88406,
+    88768,
+    91802,
+    19979,
+    20746,
+    72874,
+    16764,
+    32398,
+    16583,
+    15289,
+    66402,
+    90731,
+    71803,
+    20425,
+    24933,
+    64319,
+    80223,
+    38625,
+    65380,
+    89728,
+    93236,
+    21302,
+    92832,
+    86333,
+    43539,
+    51779,
+    91760,
+    32876,
+    15206,
+    42843,
+    32732,
+    44610,
+    75018,
+    17460,
+    24976,
+    24489,
+    52126,
+    49635,
+    28080,
+    24822,
+    42983,
+    57929,
+    16013,
+    15442,
+    89868,
+    68170,
+    15568,
+    16180,
+    15650,
+    68378,
+    24042,
+    15735,
+    23319,
+    45125,
+    71482,
+    89798,
+    71455,
+    65464,
+    16151,
+    26730,
+    61883,
+    25755,
+    93180,
+    25504,
+    15497,
+    79847,
+    19117,
+    73417,
+    31239,
+    82478,
+    18365,
+    70730,
+    15469,
+    67863,
+    70550,
+    81447,
+    67389,
+    15261,
+    28637,
+    27620,
+    79791,
+    18337,
+    91260,
+    90536,
+    28358,
+    31713,
+    89353,
+    17405,
+    18129,
+    12867,
+    24071,
+    90744,
+    92916,
+    35340,
+    65436,
+    87224,
+    51612,
+    88586,
+    90034,
+    76020,
+    85303,
+    91009,
+    20272,
+    17991,
+    83606,
+    88584,
+    20316,
+    92051,
+    72385,
+    15262,
+    90089,
+    16029,
+    23373,
+    42869,
+    67735,
+    83120,
+    76842,
+    72274,
+    27326,
+    61088,
+    71577,
+    15596,
+    82938,
+    23192,
+    68209,
+    26588,
+    87003,
+    83788,
+    20287,
+    66037,
+    41715,
+    31502,
+    15291,
+    79917,
+    76994,
+    88320,
+    35631,
+    15402,
+    67987,
+    67402,
+    68320,
+    51682,
+    67847,
+    91119,
+    79431,
+    80642,
+    71424,
+    25851,
+    32170,
+    24292,
+    70172,
+    71689,
+    24069,
+    50875,
+    65226,
+    20274,
+    79681,
+    69950,
+    49205,
+    88362,
+    76925,
+    85932,
+    26783,
+    20663,
+    91786,
+    20010,
+    88849,
+    15401,
+    18297,
+    32689,
+    58513,
+    53005,
+    60267,
+    15638,
+    65309,
+    24654,
+    67930,
+    36188,
+    41005,
+    43901,
+    88919,
+    25767,
+    35213,
+    38109,
+    49693,
+    16906,
+    19954,
+    23137,
+    80266,
+    83162,
+    24891,
+    76591,
+    86460,
+    70562,
+    26282,
+    81198,
+    58776,
+    84331,
+    26979,
+    34475,
+    88612,
+    24124,
+    18590,
+    23624,
+    86182,
+    64290,
+    92983,
+    16390,
+    19939,
+    91062,
+    70074,
+    18756,
+    90576,
+    32271,
+    17128,
+    64275,
+    17365,
+    60991,
+    26993,
+    70102,
+    24863,
+    52045,
+    17336,
+    29595,
+    15415,
+    76869,
+    85945,
+    47214,
+    26268,
+    39515,
+    39709,
+    40447,
+    74389,
+    88654,
+    52031,
+    76633,
+    67945,
+    25781,
+    26505,
+    70117,
+    84984,
+    79278,
+    51766,
+    83579,
+    67416,
+    50333,
+    14357,
+    15499,
+    19007,
+    27423,
+    88306,
+    68154,
+    20079,
+    13578,
+    52295,
+    18269,
+    17268,
+    26310,
+    80001,
+    83662,
+    18088,
+    72329,
+    68084,
+    32620,
+    18714,
+    24459,
+    71480,
+    28454,
+    15429,
+    70367,
+    40629,
+    18228,
+    23721,
+    65141,
+    23359,
+    68306,
+    33864,
+    76675,
+    92845,
+    17531,
+    24529,
+    24611,
+    88125,
+    64613,
+    87491,
+    42814,
+    23002,
+    49079,
+    89671,
+    25015,
+    40782,
+    23094,
+    76939,
+    18381,
+    64947,
+    21930,
+    15346,
+    72301,
+    15639,
+    24500,
+    69671,
+    21596,
+    15722,
+    92774,
+    65212,
+    70882,
+    22557,
+    70004,
+    65323,
+    23030,
+    18005,
+    15319,
+    18868,
+    15360,
+    26338,
+    74975,
+    58832,
+    25363,
+    15026,
+    68293,
+    26672,
+    88126,
+    36730,
+    17225,
+    80808,
+    15527,
+    67611,
+    53312,
+    32341,
+    52337,
+    36215,
+    23205,
+    77496,
+    24710,
+    20997,
+    65634,
+    64849,
+    90185,
+    22264,
+    31627,
+    86084,
+    87532,
+    91633,
+    37426,
+    56035,
+    70213,
+    78888,
+    30889,
+    79611,
+    39375,
+    15276,
+    90687,
+    26602,
+    90686,
+    65336,
+    87324,
+    26422,
+    23276,
+    24724,
+    24473,
+    22014,
+    23290,
+    71425,
+    15304,
+    33849,
+    17727,
+    17921,
+    20580,
+    70687,
+    19856,
+    21304,
+    63913,
+    82966,
+    64891,
+    35770,
+    75002,
+    93819,
+    78192,
+    26616,
+    49275,
+    90966,
+    54300,
+    23824,
+    36339,
+    61955,
+    85814,
+    45024,
+    65744,
+    15508,
+    26928,
+    26483,
+    75196,
+    32436,
+    64570,
+    15578,
+    43021,
+    42980,
+    67483,
+    18389,
+    20673,
+    63208,
+    20492,
+    32506,
+    93685,
+    52081,
+    67776,
+    66078,
+    65562,
+    41545,
+    24533,
+    60104,
+    82042,
+    23601,
+    27192,
+    79383,
+    12223,
+    17721,
+    68444,
+    71478,
+    40070,
+    15549,
+    16316,
+    43467,
+    68667,
+    90734,
+    65266,
+    93100,
+    23081,
+    79273,
+    82516,
+    50786,
+    18904,
+    71437,
+    15396,
+    16844,
+    24826,
+    15425,
+    68068,
+    37341,
+    65897,
+    26775,
+    15829,
+    52262,
+    31438,
+    77352,
+    40445,
+    23267,
+    20561,
+    79717,
+    52345,
+    26593,
+    61205,
+    65502,
+    92140,
+    35073,
+    36603,
+    73316,
+    92975,
+    91792,
+    25521,
+    90914,
+    75348,
+    27736,
+    32408,
+    85341,
+    65154,
+    15035,
+    89092,
+    16426,
+    88187,
+    20534,
+    18432,
+    64475,
+    65362,
+    75335,
+    70448,
+    15744,
+    61093,
+    24033,
+    17875,
+    22189,
+    58656,
+    66439,
+    41351,
+    16719,
+    82474,
+    64917,
+    25744,
+    45887,
+    17832,
+    24004,
+    87458,
+    46862,
+    76948,
+    27179,
+    67623,
+    42770,
+    65446,
+    17917,
+    18835,
+    36117,
+    88116,
+    37480,
+    22440,
+    70017,
+    61329,
+    90719,
+    87192,
+    72690,
+    70769,
+    39917,
+    24505,
+    22885,
+    88131,
+    70031,
+    17903,
+    13351,
+    48017,
+    26469,
+    36562,
+    79063,
+    79106,
+    79787,
+    40863,
+    71952,
+    79773,
+    64848,
+    16483,
+    65252,
+    16120,
+    85202,
+    71006,
+    20770,
+    21508,
+    89161,
+    32298,
+    90789,
+    36799,
+    70379,
+    49771,
+    23991,
+    69905,
+    70672,
+    23809,
+    93003,
+    24325,
+    70338,
+    90080,
+    93295,
+    45525,
+    15522,
+    82906,
+    16705,
+    73442,
+    80804,
+    91750,
+    74374,
+    78813,
+    29572,
+    39388,
+    90204,
+    74806,
+    17554,
+    25772,
+    18223,
+    90567,
+    15633,
+    87444,
+    51761,
+    68904,
+    76670,
+    14339,
+    19768,
+    51650,
+    49840,
+    23962,
+    34947,
+    18528,
+    13378,
+    86706,
+    21550,
+    49700,
+    20102,
+    70420,
+    90706,
+    93699,
+    73330,
+    18041,
+    20324,
+    30227,
+    67470,
+    15299,
+    24478,
+    89704,
+    15606,
+    42478,
+    22051,
+    25354,
+    66495,
+    79634,
+    18180,
+    86650,
+    66050,
+    25105,
+    55116,
+    90650,
+    26774,
+    46402,
+    67956,
+    67526,
+    75168,
+    37676,
+    70351,
+    69209,
+    32022,
+    74958,
+    70143,
+    44077,
+    53362,
+    15884,
+    20687,
+    59799,
+    69892,
+    24909,
+    88673,
+    78270,
+    88980,
+    91081,
+    23447,
+    21368,
+    92794,
+    36186,
+    67260,
+    60272,
+    45218,
+    25368,
+    71576,
+    32548,
+    58837,
+    74680,
+    15605,
+    24129,
+    90901,
+    15355,
+    58615,
+    76321,
+    24645,
+    23197,
+    25369,
+    43605,
+    79411,
+    18236,
+    17512,
+    68472,
+    51454,
+    82780,
+    67554,
+    15369,
+    26315,
+    93016,
+    18265,
+    54601,
+    65590,
+    69934,
+    68221,
+    22788,
+    42673,
+    24659,
+    27555,
+    58601,
+    90663,
+    49188,
+    73287,
+    65501,
+    71003,
+    87319,
+    91846,
+    87237,
+    88379,
+    83770,
+    20521,
+    70265,
+    68192,
+    26717,
+    50816,
+    61258,
+    20076,
+    32547,
+    50746,
+    24240,
+    72438,
+    70113,
+    70517,
+    32076,
+    17458,
+    90634,
+    18864,
+    15162,
+    59003,
+    75026,
+    78605,
+    21189,
+    69890,
+    20257,
+    51484,
+    93252,
+    88408,
+    86318,
+    67788,
+    15608,
+    70892,
+    25909,
+    82781,
+    23040,
+    15718,
+    90119,
+    53294,
+    92778,
+    73147,
+    63319,
+    65320,
+    88825,
+    38091,
+    25715,
+    41962,
+    79162,
+    19087,
+    67133,
+    26940,
+    87864,
+    70488,
+    68373,
+    38969,
+    20661,
+    26453,
+    29417,
+    88337,
+    93767,
+    21453,
+    89785,
+    88742,
+    65110,
+    26786,
+    34806,
+    21524,
+    23808,
+    15328,
+    90676,
+    59658,
+    18224,
+    70990,
+    28095,
+    27594,
+    83256,
+    92875,
+    87083,
+    25603,
+    69974,
+    48797,
+    20104,
+    23767,
+    90954,
+    51192,
+    83408,
+    87069,
+    15594,
+    18391,
+    32672,
+    14160,
+    42950,
+    65417,
+    45846,
+    38217,
+    20841,
+    25409,
+    12239,
+    68790,
+    52849,
+    71421,
+    79844,
+    41000,
+    68525,
+    72661,
+    86999,
+    15551,
+    51609,
+    58461,
+    79901,
+    55802,
+    83478,
+    15078,
+    75207,
+    66396,
+    71923,
+    63916,
+    70740,
+    74999,
+    79386,
+    68275,
+    26634,
+    22749,
+    70712,
+    68024,
+    49730,
+    53350,
+    32379,
+    25394,
+    26161,
+    26132,
+    65167,
+    70934,
+    21064,
+    41544,
+    24978,
+    42907,
+    71574,
+    15218,
+    24114,
+    84745,
+    87041,
+    36143,
+    41349,
+    24852,
+    26146,
+    26732,
+    21871,
+    57249,
+    67510,
+    32491,
+    71838,
+    75152,
+    85788,
+    42977,
+    40681,
+    26703,
+    81682,
+    70684,
+    73718,
+    25479,
+    23710,
+    82614,
+    17988,
+    90286,
+    13185,
+    70140,
+    79065,
+    19059,
+    32091,
+    90538,
+    18321,
+    60061,
+    17138,
+    67147,
+    20242,
+    17027,
+    18475,
+    83520,
+    20618,
+    70029,
+    82337,
+    71463,
+    89326,
+    41614,
+    15342,
+    20367,
+    25478,
+    59825,
+    24073,
+    68108,
+    88685,
+    19032,
+    24824,
+    48923,
+    78328,
+    82155,
+    76893,
+    84981,
+    70975,
+    17597,
+    90635,
+    39998,
+    67871,
+    70586,
+    15398,
+    42393,
+    16192,
+    23864,
+    20452,
+    24393,
+    88881,
+    89605,
+    41140,
+    39957,
+    67496,
+    18488,
+    17626,
+    90621,
+    73426,
+    81933,
+    24142,
+    17778,
+    19756,
+    31993,
+    20409,
+    42407,
+    62414,
+    70279,
+    19046,
+    80178,
+    72285,
+    66758,
+    80973,
+    85970,
+    18336,
+    18545,
+    45540,
+    88866,
+    51985,
+    71017,
+    70336,
+    31283,
+    47461,
+    54408,
+    20200,
+    32505,
+    79482,
+    80206,
+    27691,
+    32802,
+    74135,
+    74916,
+    67676,
+    70572,
+    21634,
+    66522,
+    88199,
+    91052,
+    44611,
+    70158,
+    23105,
+    75017,
+    56036,
+    17147,
+    76021,
+    25412,
+    58822,
+    39921,
+    54301,
+    87437,
+    89645,
+    21554,
+    90132,
+    20262,
+    72304,
+    75019,
+    23038,
+    20569,
+    15014,
+    25400,
+    70831,
+    86707,
+    58843,
+    70821,
+    75025,
+    58838,
+    59181,
+    26579,
+    70565,
+    15060,
+    55813,
+    90124,
+    17131,
+    15579,
+    38814,
+    47005,
+    54414,
+    83257,
+    88786,
+    81249,
+    65438,
+    35640,
+    84478,
+    75353,
+    35654,
+    17163,
+    71387,
+    24468,
+    15345,
+    24023,
+    28722,
+    82223,
+    20756,
+    16706,
+    70920,
+    90919,
+    75027,
+    27116,
+    40709,
+    65148,
+    88778,
+    15080,
+    72649,
+    70650,
+    93005,
+    37433,
+    82206,
+    81246,
+    64627,
+    70388,
+    68295,
+    43030,
+    19867,
+    48596,
+    56800,
+    79394,
+    92760,
+    93297,
+    24760,
+    16203
+  ],
+  "Type": "Characteristics",
+  "TaxonSearchCriteria": null
+}

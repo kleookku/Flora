@@ -13,11 +13,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 // you should add a function for each API request you want to support
 
++ (instancetype)shared;
+
 - (void)charSearch:(void(^)(NSArray *results, NSError *error))completion;
 
-- (void)plantProfile:(NSString *)symbol completion:(void (^)(NSDictionary *dict, NSError *error))completion;
+- (void)getPlantCharacteristics:(NSString *)plantId completion:(void (^)(NSDictionary *characteristics, NSError *error))completion;
 
-- (void)plantChars:(NSString *)plantId completion:(void (^)(NSArray *chars, NSError *error))completion;
 
 
 @end
