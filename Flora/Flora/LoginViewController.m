@@ -17,10 +17,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    // [self getPlantChars:@"42690"];
+    [self createCharacteristicSearch:nil];
 }
 
 - (void)getPlantChars:(NSString *)plantID {
-    [[APIManager shared] getPlantCharacteristics:@"42690" completion:^(NSDictionary * _Nonnull characteristics, NSError * _Nonnull error) {
+    [[APIManager shared] getPlantCharacteristics:plantID completion:^(NSDictionary * _Nonnull characteristics, NSError * _Nonnull error) {
         if(characteristics) {
             NSLog(@"Characteristics: %@", characteristics);
         } else {
@@ -30,7 +32,13 @@
 }
 
 - (void)createCharacteristicSearch:(NSDictionary *)selectedAttributes {
-    
+    [[APIManager shared] characteristicSearch:nil completion:^(NSArray * _Nonnull results, NSError * _Nonnull error) {
+        if(results) {
+            NSLog(@"results: %@", results);
+        } else {
+            NSLog(@"Error creating characteristics search: %@", error.localizedDescription);
+        }
+    }];
 }
 
 /*
