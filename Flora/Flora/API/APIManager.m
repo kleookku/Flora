@@ -11,10 +11,10 @@
 
 + (instancetype)shared {
     static APIManager *sharedManager = nil;
-    
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedManager = [[self alloc] init];
+        sharedManager.requestSerializer = [AFJSONRequestSerializer serializer];
     });
     return sharedManager;
 }
@@ -24,8 +24,8 @@
     NSString *path = [[NSBundle mainBundle] pathForResource:@"charSearchBody" ofType:@"json"];
     NSData *data = [NSData dataWithContentsOfFile:path];
     NSMutableDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-    [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:url parameters:dict error:nil];
     NSMutableArray *filterOptions = [dict objectForKey:@"FilterOptions"];
+    
     
 //    [self setSelection:selections[@"shade"] ofArray:filterOptions inCategory:@"Shade Tolerance"];
 //    [self setSelection:selections[@"moist"] ofArray:filterOptions inCategory:@"Moisture Use"];
@@ -37,6 +37,8 @@
     // LOW: @"-75 - -53", @"-52 - -48", @"-47 - -43", @"-42 - -38", @"-37 - -33", @"-32 - -28", @"-27 - -23",@"-22 - -18"
     // MEDIUM: @"-17 - -13", @"-12 - -8", @"-7 - -3", @"-2 - 2",@"3 - 7", @"8 - 13", @"13 - 17", @"18 - 22",
     // HIGH: @"23 - 27",@"28 - 32", @"33 - 37", @"38 - 42", @"43 - 47", @"48 - 52", @"53 - 57"
+    
+    
 
     [self POST:url parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary * _Nullable response) {
         NSLog(@"response is %@", response[@"PlantResults"]);
@@ -54,7 +56,8 @@
     for (NSString *selection in selections) {
         NSUInteger selectionIndex = [options indexOfObjectPassingTest:^BOOL(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             NSDictionary *dict = (NSDictionary *)obj;
-            return [dict[@"Display"]  isEqualToString:selection];}];
+            return [dict[@"Display"]  isEqualToString:selection];
+        }];
         NSMutableDictionary *selectionDict = [options objectAtIndex:selectionIndex];
         selectionDict[@"IsSelected"] = @YES;
     }
