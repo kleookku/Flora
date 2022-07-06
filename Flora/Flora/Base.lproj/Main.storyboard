@@ -15,16 +15,117 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rha-St-TVk">
+                                <rect key="frame" x="174" y="297" width="67" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="tinted" title="Button"/>
+                                <connections>
+                                    <segue destination="Een-o5-hcy" kind="show" id="eVC-8g-Fg7"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="270" y="77"/>
+            <point key="canvasLocation" x="448" y="76"/>
+        </scene>
+        <!--Results View Controller-->
+        <scene sceneID="peo-6v-MqQ">
+            <objects>
+                <viewController id="tPc-xn-1YC" customClass="ResultsViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="unj-dh-xCD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vjb-oO-N4T">
+                                <rect key="frame" x="102" y="707" width="42" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="xmark" catalog="system" title=""/>
+                                <connections>
+                                    <action selector="didTapDislike:" destination="tPc-xn-1YC" eventType="touchUpInside" id="ouK-80-71X"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x9z-JP-I1M">
+                                <rect key="frame" x="184" y="707" width="46" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="arrow.uturn.backward" catalog="system" title=""/>
+                                <connections>
+                                    <action selector="didTapPreviousButton:" destination="tPc-xn-1YC" eventType="touchUpInside" id="ZS9-pI-iQN"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aUV-a6-kMZ">
+                                <rect key="frame" x="270" y="707" width="46" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="suit.heart" catalog="system" title=""/>
+                                <connections>
+                                    <action selector="didTapLikebutton:" destination="tPc-xn-1YC" eventType="touchUpInside" id="TNH-Ss-UYb"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Ir-OF-c3s" customClass="ZLSwipeableView">
+                                <rect key="frame" x="69.5" y="76" width="275" height="591"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="275" id="dLp-Qb-5ud"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="kLo-XP-A8N"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="1Ir-OF-c3s" firstAttribute="centerX" secondItem="kLo-XP-A8N" secondAttribute="centerX" id="8Ey-Zx-cgC"/>
+                            <constraint firstItem="1Ir-OF-c3s" firstAttribute="top" secondItem="kLo-XP-A8N" secondAttribute="top" constant="20" id="Kg5-xb-gqx"/>
+                            <constraint firstItem="aUV-a6-kMZ" firstAttribute="leading" secondItem="x9z-JP-I1M" secondAttribute="trailing" constant="40" id="NN9-Vk-ft6"/>
+                            <constraint firstItem="vjb-oO-N4T" firstAttribute="top" secondItem="1Ir-OF-c3s" secondAttribute="bottom" constant="40" id="XTe-C3-k32"/>
+                            <constraint firstItem="x9z-JP-I1M" firstAttribute="leading" secondItem="vjb-oO-N4T" secondAttribute="trailing" constant="40" id="aS6-9H-tge"/>
+                            <constraint firstItem="x9z-JP-I1M" firstAttribute="centerY" secondItem="aUV-a6-kMZ" secondAttribute="centerY" id="dbp-Kc-9dH"/>
+                            <constraint firstItem="x9z-JP-I1M" firstAttribute="centerY" secondItem="vjb-oO-N4T" secondAttribute="centerY" id="gA5-Xi-uVM"/>
+                            <constraint firstItem="kLo-XP-A8N" firstAttribute="bottom" secondItem="x9z-JP-I1M" secondAttribute="bottom" constant="55" id="icc-b5-5O5"/>
+                            <constraint firstItem="x9z-JP-I1M" firstAttribute="centerX" secondItem="kLo-XP-A8N" secondAttribute="centerX" id="sTo-7d-97R"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="gPM-jT-uwJ"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="dislikeButton" destination="vjb-oO-N4T" id="N56-XC-vAT"/>
+                        <outlet property="likeButton" destination="aUV-a6-kMZ" id="ymU-Fd-zaV"/>
+                        <outlet property="previousButton" destination="x9z-JP-I1M" id="jci-ip-qP5"/>
+                        <outlet property="swipeableView" destination="1Ir-OF-c3s" id="D1D-q1-KY2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RKk-nR-J11" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2015.9420289855075" y="75.669642857142847"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Yyr-rF-STZ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Een-o5-hcy" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="C48-Vq-qZn"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TnG-Ue-UHM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="tPc-xn-1YC" kind="relationship" relationship="rootViewController" id="8Pe-Rx-1hc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JYG-Fc-JGg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1105.7971014492755" y="75.669642857142847"/>
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.uturn.backward" catalog="system" width="128" height="112"/>
+        <image name="suit.heart" catalog="system" width="128" height="109"/>
+        <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

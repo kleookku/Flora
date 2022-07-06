@@ -6,6 +6,9 @@
 //
 
 #import "APIManager.h"
+#define SHADE @"Shade Tolerance"
+#define MOIST @"Moisture Use"
+#define TEMP @"Temperature, Minimum (°F)"
 
 @implementation APIManager
 
@@ -19,16 +22,24 @@
     return sharedManager;
 }
 
-- (void)characteristicSearch:(NSDictionary *)selections completion:(void(^)(NSArray *results, NSError *error))completion {
+//+ (NSMutableDictionary *)searchBody {
+//    NSString *url = @"https://plantsservices.sc.egov.usda.gov/api/CharacteristicsSearch";
+//    NSString *path = [[NSBundle mainBundle] pathForResource:@"charSearchBody" ofType:@"json"];
+//    NSData *data = [NSData dataWithContentsOfFile:path];
+//    NSMutableDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+//    return dict;
+//}
+
+- (void)searchWithShadeLevel:(NSArray *)shade withMoistureUse:(NSArray *)moist withMinTemperature:(NSArray *)temp completion:(void(^)(NSArray *results, NSError *error))completion {
     NSString *url = @"https://plantsservices.sc.egov.usda.gov/api/CharacteristicsSearch";
     NSString *path = [[NSBundle mainBundle] pathForResource:@"charSearchBody" ofType:@"json"];
     NSData *data = [NSData dataWithContentsOfFile:path];
     NSMutableDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
     NSMutableArray *filterOptions = [dict objectForKey:@"FilterOptions"];
     
-    [self setSelection:selections[@"shade"] ofArray:filterOptions inCategory:@"Shade Tolerance"];               // @"Tolerant", @"Intolerant", @"Intermediate"
-    [self setSelection:selections[@"moist"] ofArray:filterOptions inCategory:@"Moisture Use"];                  // @"High", @"Low", @"Medium"
-    [self setSelection:selections[@"temp"] ofArray:filterOptions inCategory:@"Temperature, Minimum (°F)"];      // LOW: @"-75 - -53", @"-52 - -48", @"-47 - -43", @"-42 - -38", @"-37 - -33", @"-32 - -28", @"-27 - -23",@"-22 - -18"
+    [self modifyFilterOptions:shade ofArray:filterOptions inCategory:SHADE];               // @"Tolerant", @"Intolerant", @"Intermediate"
+    [self modifyFilterOptions:moist ofArray:filterOptions inCategory:MOIST];                  // @"High", @"Low", @"Medium"
+    [self modifyFilterOptions:temp ofArray:filterOptions inCategory:TEMP];      // LOW: @"-75 - -53", @"-52 - -48", @"-47 - -43", @"-42 - -38", @"-37 - -33", @"-32 - -28", @"-27 - -23",@"-22 - -18"
                                                                                                                 // MEDIUM: @"-17 - -13", @"-12 - -8", @"-7 - -3", @"-2 - 2",@"3 - 7", @"8 - 13", @"13 - 17", @"18 - 22",
                                                                                                                 // HIGH: @"23 - 27",@"28 - 32", @"33 - 37", @"38 - 42", @"43 - 47", @"48 - 52", @"53 - 57"
     
@@ -39,7 +50,7 @@
     }];
 }
 
-- (void)setSelection:(NSArray *)selections ofArray:(NSMutableArray *)filterOptions inCategory:(NSString *)categoryString{
+- (void)modifyFilterOptions:(NSArray *)selections ofArray:(NSMutableArray *)filterOptions inCategory:(NSString *)categoryString{
     NSUInteger index = [filterOptions indexOfObjectPassingTest:^BOOL(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         NSDictionary *dict = (NSDictionary *)obj;
         return [dict[@"Name"]  isEqualToString:categoryString];}];
@@ -58,9 +69,9 @@
     NSString *url = [@"https://plantsservices.sc.egov.usda.gov/api/PlantCharacteristics/" stringByAppendingString:plantId];
     [self GET:url parameters:nil progress: nil success:^(NSURLSessionDataTask * _Nonnull task, NSArray * _Nullable response) {
         
-        NSDictionary *dict = @{@"shade": [self getCharacteristicValue:@"Shade Tolerance" inArray:response],
-                               @"moisture": [self getCharacteristicValue:@"Moisture Use" inArray:response],
-                               @"temp": [self getCharacteristicValue:@"Temperature, Minimum (°F)" inArray:response]};
+        NSDictionary *dict = @{@"shade": [self getCharacteristicValue:SHADE inArray:response],
+                               @"moist": [self getCharacteristicValue:MOIST inArray:response],
+                               @"temp": [self getCharacteristicValue:TEMP inArray:response]};
         
         completion(dict, nil);
         

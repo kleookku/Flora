@@ -13,10 +13,12 @@ PODS:
     - Parse/Core (= 1.19.3)
   - Parse/Core (1.19.3):
     - Bolts/Tasks (= 1.9.1)
+  - ZLSwipeableView (0.0.8)
 
 DEPENDENCIES:
   - BDBOAuth1Manager
   - Parse
+  - ZLSwipeableView
 
 SPEC REPOS:
   trunk:
@@ -24,13 +26,15 @@ SPEC REPOS:
     - BDBOAuth1Manager
     - Bolts
     - Parse
+    - ZLSwipeableView
 
 SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
   BDBOAuth1Manager: 92d17d06f8a648602962304cd2f35ae7394fa001
   Bolts: 8c1e8aab2f603387b8b9924f57d1d64f43d3ffdc
   Parse: 0abb63a0ff6fa34a3f64b81d595a294e2ece143a
+  ZLSwipeableView: df385760ff4838935cdbcb62878ac5acd7355949
 
-PODFILE CHECKSUM: 72ef41245bafc5a7fe14ad6ee551e592bb40da7b
+PODFILE CHECKSUM: 528cc2e341199a2111458216779eea0bb1276a44
 
 COCOAPODS: 1.11.3
