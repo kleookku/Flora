@@ -1,0 +1,800 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5FDC46EC33554B9EAC53AA0B /* Pods_FloraTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD0AFB2A2F2157872EEF6730 /* Pods_FloraTests.framework */; };
+		765F0797204FDD8C134538C4 /* Pods_Flora_FloraUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8BFB23CF19A4225799F20F /* Pods_Flora_FloraUITests.framework */; };
+		E73819F1F5C1B3C6EF4C6CF7 /* Pods_Flora.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B8ADF9025442BD0ADD5828A /* Pods_Flora.framework */; };
+		F41A29E8286E4CE200D2DAB9 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = F41A29E7286E4CE200D2DAB9 /* Keys.plist */; };
+		F41A29EB286E4F7100D2DAB9 /* Plant.m in Sources */ = {isa = PBXBuildFile; fileRef = F41A29EA286E4F7100D2DAB9 /* Plant.m */; };
+		F41A29F6286E509200D2DAB9 /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F41A29F5286E509200D2DAB9 /* APIManager.m */; };
+		F41A29FD286E646D00D2DAB9 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F41A29FC286E646D00D2DAB9 /* LoginViewController.m */; };
+		F445ED042874A4340084BDBB /* charSearchBody.json in Resources */ = {isa = PBXBuildFile; fileRef = F445ED032874A4340084BDBB /* charSearchBody.json */; };
+		F47EE860286E4A8D00E3AA76 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F47EE85F286E4A8D00E3AA76 /* AppDelegate.m */; };
+		F47EE863286E4A8D00E3AA76 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F47EE862286E4A8D00E3AA76 /* SceneDelegate.m */; };
+		F47EE869286E4A8D00E3AA76 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F47EE867286E4A8D00E3AA76 /* Main.storyboard */; };
+		F47EE86B286E4A8E00E3AA76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F47EE86A286E4A8E00E3AA76 /* Assets.xcassets */; };
+		F47EE86E286E4A8E00E3AA76 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F47EE86C286E4A8E00E3AA76 /* LaunchScreen.storyboard */; };
+		F47EE871286E4A8E00E3AA76 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F47EE870286E4A8E00E3AA76 /* main.m */; };
+		F47EE87B286E4A8E00E3AA76 /* FloraTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F47EE87A286E4A8E00E3AA76 /* FloraTests.m */; };
+		F47EE885286E4A8E00E3AA76 /* FloraUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F47EE884286E4A8E00E3AA76 /* FloraUITests.m */; };
+		F47EE887286E4A8E00E3AA76 /* FloraUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F47EE886286E4A8E00E3AA76 /* FloraUITestsLaunchTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F47EE877286E4A8E00E3AA76 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F47EE853286E4A8D00E3AA76 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F47EE85A286E4A8D00E3AA76;
+			remoteInfo = Flora;
+		};
+		F47EE881286E4A8E00E3AA76 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F47EE853286E4A8D00E3AA76 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F47EE85A286E4A8D00E3AA76;
+			remoteInfo = Flora;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0B8ADF9025442BD0ADD5828A /* Pods_Flora.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Flora.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3261E9DF9EEAD20ED6802442 /* Pods-Flora.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flora.debug.xcconfig"; path = "Target Support Files/Pods-Flora/Pods-Flora.debug.xcconfig"; sourceTree = "<group>"; };
+		64BFF87648540B25EA6733F8 /* Pods-FloraTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FloraTests.debug.xcconfig"; path = "Target Support Files/Pods-FloraTests/Pods-FloraTests.debug.xcconfig"; sourceTree = "<group>"; };
+		65C5037708F8FE444B12F984 /* Pods-Flora-FloraUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flora-FloraUITests.release.xcconfig"; path = "Target Support Files/Pods-Flora-FloraUITests/Pods-Flora-FloraUITests.release.xcconfig"; sourceTree = "<group>"; };
+		7662785C07E52A17BAB712EF /* Pods-Flora.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flora.release.xcconfig"; path = "Target Support Files/Pods-Flora/Pods-Flora.release.xcconfig"; sourceTree = "<group>"; };
+		840E0347A227C35BC42428C9 /* Pods-Flora-FloraUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flora-FloraUITests.debug.xcconfig"; path = "Target Support Files/Pods-Flora-FloraUITests/Pods-Flora-FloraUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		9CB4B67367D9E0DC2EEDD41E /* Pods-FloraTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FloraTests.release.xcconfig"; path = "Target Support Files/Pods-FloraTests/Pods-FloraTests.release.xcconfig"; sourceTree = "<group>"; };
+		AD0AFB2A2F2157872EEF6730 /* Pods_FloraTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FloraTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB8BFB23CF19A4225799F20F /* Pods_Flora_FloraUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Flora_FloraUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F41A29E7286E4CE200D2DAB9 /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
+		F41A29E9286E4F7100D2DAB9 /* Plant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Plant.h; sourceTree = "<group>"; };
+		F41A29EA286E4F7100D2DAB9 /* Plant.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Plant.m; sourceTree = "<group>"; };
+		F41A29F4286E509200D2DAB9 /* APIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIManager.h; sourceTree = "<group>"; };
+		F41A29F5286E509200D2DAB9 /* APIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APIManager.m; sourceTree = "<group>"; };
+		F41A29FB286E646D00D2DAB9 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		F41A29FC286E646D00D2DAB9 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		F445ED032874A4340084BDBB /* charSearchBody.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = charSearchBody.json; sourceTree = "<group>"; };
+		F47EE85B286E4A8D00E3AA76 /* Flora.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flora.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F47EE85E286E4A8D00E3AA76 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		F47EE85F286E4A8D00E3AA76 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		F47EE861286E4A8D00E3AA76 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
+		F47EE862286E4A8D00E3AA76 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
+		F47EE868286E4A8D00E3AA76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F47EE86A286E4A8E00E3AA76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F47EE86D286E4A8E00E3AA76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F47EE86F286E4A8E00E3AA76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F47EE870286E4A8E00E3AA76 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F47EE876286E4A8E00E3AA76 /* FloraTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FloraTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F47EE87A286E4A8E00E3AA76 /* FloraTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FloraTests.m; sourceTree = "<group>"; };
+		F47EE880286E4A8E00E3AA76 /* FloraUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FloraUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F47EE884286E4A8E00E3AA76 /* FloraUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FloraUITests.m; sourceTree = "<group>"; };
+		F47EE886286E4A8E00E3AA76 /* FloraUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FloraUITestsLaunchTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F47EE858286E4A8D00E3AA76 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E73819F1F5C1B3C6EF4C6CF7 /* Pods_Flora.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F47EE873286E4A8E00E3AA76 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5FDC46EC33554B9EAC53AA0B /* Pods_FloraTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F47EE87D286E4A8E00E3AA76 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				765F0797204FDD8C134538C4 /* Pods_Flora_FloraUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		05B94E44BC0D259036141457 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3261E9DF9EEAD20ED6802442 /* Pods-Flora.debug.xcconfig */,
+				7662785C07E52A17BAB712EF /* Pods-Flora.release.xcconfig */,
+				840E0347A227C35BC42428C9 /* Pods-Flora-FloraUITests.debug.xcconfig */,
+				65C5037708F8FE444B12F984 /* Pods-Flora-FloraUITests.release.xcconfig */,
+				64BFF87648540B25EA6733F8 /* Pods-FloraTests.debug.xcconfig */,
+				9CB4B67367D9E0DC2EEDD41E /* Pods-FloraTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		BF4215B12D39EDD8C75A44FD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0B8ADF9025442BD0ADD5828A /* Pods_Flora.framework */,
+				CB8BFB23CF19A4225799F20F /* Pods_Flora_FloraUITests.framework */,
+				AD0AFB2A2F2157872EEF6730 /* Pods_FloraTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F41A29EC286E4F7600D2DAB9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F41A29E9286E4F7100D2DAB9 /* Plant.h */,
+				F41A29EA286E4F7100D2DAB9 /* Plant.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F41A29ED286E4F7E00D2DAB9 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		F41A29F7286E509800D2DAB9 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				F41A29F4286E509200D2DAB9 /* APIManager.h */,
+				F41A29F5286E509200D2DAB9 /* APIManager.m */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		F47EE852286E4A8D00E3AA76 = {
+			isa = PBXGroup;
+			children = (
+				F47EE85D286E4A8D00E3AA76 /* Flora */,
+				F47EE879286E4A8E00E3AA76 /* FloraTests */,
+				F47EE883286E4A8E00E3AA76 /* FloraUITests */,
+				F47EE85C286E4A8D00E3AA76 /* Products */,
+				05B94E44BC0D259036141457 /* Pods */,
+				BF4215B12D39EDD8C75A44FD /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		F47EE85C286E4A8D00E3AA76 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F47EE85B286E4A8D00E3AA76 /* Flora.app */,
+				F47EE876286E4A8E00E3AA76 /* FloraTests.xctest */,
+				F47EE880286E4A8E00E3AA76 /* FloraUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F47EE85D286E4A8D00E3AA76 /* Flora */ = {
+			isa = PBXGroup;
+			children = (
+				F41A29F7286E509800D2DAB9 /* API */,
+				F41A29ED286E4F7E00D2DAB9 /* View Controllers */,
+				F47EE85E286E4A8D00E3AA76 /* AppDelegate.h */,
+				F47EE85F286E4A8D00E3AA76 /* AppDelegate.m */,
+				F41A29EC286E4F7600D2DAB9 /* Models */,
+				F47EE861286E4A8D00E3AA76 /* SceneDelegate.h */,
+				F47EE862286E4A8D00E3AA76 /* SceneDelegate.m */,
+				F47EE867286E4A8D00E3AA76 /* Main.storyboard */,
+				F41A29FB286E646D00D2DAB9 /* LoginViewController.h */,
+				F41A29FC286E646D00D2DAB9 /* LoginViewController.m */,
+				F47EE86A286E4A8E00E3AA76 /* Assets.xcassets */,
+				F47EE86C286E4A8E00E3AA76 /* LaunchScreen.storyboard */,
+				F47EE86F286E4A8E00E3AA76 /* Info.plist */,
+				F41A29E7286E4CE200D2DAB9 /* Keys.plist */,
+				F445ED032874A4340084BDBB /* charSearchBody.json */,
+				F47EE870286E4A8E00E3AA76 /* main.m */,
+			);
+			path = Flora;
+			sourceTree = "<group>";
+		};
+		F47EE879286E4A8E00E3AA76 /* FloraTests */ = {
+			isa = PBXGroup;
+			children = (
+				F47EE87A286E4A8E00E3AA76 /* FloraTests.m */,
+			);
+			path = FloraTests;
+			sourceTree = "<group>";
+		};
+		F47EE883286E4A8E00E3AA76 /* FloraUITests */ = {
+			isa = PBXGroup;
+			children = (
+				F47EE884286E4A8E00E3AA76 /* FloraUITests.m */,
+				F47EE886286E4A8E00E3AA76 /* FloraUITestsLaunchTests.m */,
+			);
+			path = FloraUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F47EE85A286E4A8D00E3AA76 /* Flora */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F47EE88A286E4A8E00E3AA76 /* Build configuration list for PBXNativeTarget "Flora" */;
+			buildPhases = (
+				0B86E163896BE69DD905C404 /* [CP] Check Pods Manifest.lock */,
+				F47EE857286E4A8D00E3AA76 /* Sources */,
+				F47EE858286E4A8D00E3AA76 /* Frameworks */,
+				F47EE859286E4A8D00E3AA76 /* Resources */,
+				83CF91AB559FDC2A1B5B412C /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Flora;
+			productName = Flora;
+			productReference = F47EE85B286E4A8D00E3AA76 /* Flora.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F47EE875286E4A8E00E3AA76 /* FloraTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F47EE88D286E4A8E00E3AA76 /* Build configuration list for PBXNativeTarget "FloraTests" */;
+			buildPhases = (
+				943C445EC60E08FFA8E6D269 /* [CP] Check Pods Manifest.lock */,
+				F47EE872286E4A8E00E3AA76 /* Sources */,
+				F47EE873286E4A8E00E3AA76 /* Frameworks */,
+				F47EE874286E4A8E00E3AA76 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F47EE878286E4A8E00E3AA76 /* PBXTargetDependency */,
+			);
+			name = FloraTests;
+			productName = FloraTests;
+			productReference = F47EE876286E4A8E00E3AA76 /* FloraTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F47EE87F286E4A8E00E3AA76 /* FloraUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F47EE890286E4A8E00E3AA76 /* Build configuration list for PBXNativeTarget "FloraUITests" */;
+			buildPhases = (
+				16D33F38AE3A4598899148C6 /* [CP] Check Pods Manifest.lock */,
+				F47EE87C286E4A8E00E3AA76 /* Sources */,
+				F47EE87D286E4A8E00E3AA76 /* Frameworks */,
+				F47EE87E286E4A8E00E3AA76 /* Resources */,
+				6DB86B2418E2B058A91B5040 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F47EE882286E4A8E00E3AA76 /* PBXTargetDependency */,
+			);
+			name = FloraUITests;
+			productName = FloraUITests;
+			productReference = F47EE880286E4A8E00E3AA76 /* FloraUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F47EE853286E4A8D00E3AA76 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1340;
+				TargetAttributes = {
+					F47EE85A286E4A8D00E3AA76 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+					F47EE875286E4A8E00E3AA76 = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = F47EE85A286E4A8D00E3AA76;
+					};
+					F47EE87F286E4A8E00E3AA76 = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = F47EE85A286E4A8D00E3AA76;
+					};
+				};
+			};
+			buildConfigurationList = F47EE856286E4A8D00E3AA76 /* Build configuration list for PBXProject "Flora" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F47EE852286E4A8D00E3AA76;
+			productRefGroup = F47EE85C286E4A8D00E3AA76 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F47EE85A286E4A8D00E3AA76 /* Flora */,
+				F47EE875286E4A8E00E3AA76 /* FloraTests */,
+				F47EE87F286E4A8E00E3AA76 /* FloraUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F47EE859286E4A8D00E3AA76 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F445ED042874A4340084BDBB /* charSearchBody.json in Resources */,
+				F41A29E8286E4CE200D2DAB9 /* Keys.plist in Resources */,
+				F47EE86E286E4A8E00E3AA76 /* LaunchScreen.storyboard in Resources */,
+				F47EE86B286E4A8E00E3AA76 /* Assets.xcassets in Resources */,
+				F47EE869286E4A8D00E3AA76 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F47EE874286E4A8E00E3AA76 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F47EE87E286E4A8E00E3AA76 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0B86E163896BE69DD905C404 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Flora-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		16D33F38AE3A4598899148C6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Flora-FloraUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6DB86B2418E2B058A91B5040 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Flora-FloraUITests/Pods-Flora-FloraUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Flora-FloraUITests/Pods-Flora-FloraUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Flora-FloraUITests/Pods-Flora-FloraUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		83CF91AB559FDC2A1B5B412C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Flora/Pods-Flora-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Flora/Pods-Flora-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Flora/Pods-Flora-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		943C445EC60E08FFA8E6D269 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FloraTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F47EE857286E4A8D00E3AA76 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F47EE860286E4A8D00E3AA76 /* AppDelegate.m in Sources */,
+				F41A29F6286E509200D2DAB9 /* APIManager.m in Sources */,
+				F41A29FD286E646D00D2DAB9 /* LoginViewController.m in Sources */,
+				F41A29EB286E4F7100D2DAB9 /* Plant.m in Sources */,
+				F47EE871286E4A8E00E3AA76 /* main.m in Sources */,
+				F47EE863286E4A8D00E3AA76 /* SceneDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F47EE872286E4A8E00E3AA76 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F47EE87B286E4A8E00E3AA76 /* FloraTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F47EE87C286E4A8E00E3AA76 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F47EE885286E4A8E00E3AA76 /* FloraUITests.m in Sources */,
+				F47EE887286E4A8E00E3AA76 /* FloraUITestsLaunchTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F47EE878286E4A8E00E3AA76 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F47EE85A286E4A8D00E3AA76 /* Flora */;
+			targetProxy = F47EE877286E4A8E00E3AA76 /* PBXContainerItemProxy */;
+		};
+		F47EE882286E4A8E00E3AA76 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F47EE85A286E4A8D00E3AA76 /* Flora */;
+			targetProxy = F47EE881286E4A8E00E3AA76 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F47EE867286E4A8D00E3AA76 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F47EE868286E4A8D00E3AA76 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F47EE86C286E4A8E00E3AA76 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F47EE86D286E4A8E00E3AA76 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F47EE888286E4A8E00E3AA76 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		F47EE889286E4A8E00E3AA76 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F47EE88B286E4A8E00E3AA76 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3261E9DF9EEAD20ED6802442 /* Pods-Flora.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7FBY9XMGDL;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Flora/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.codepath.Flora;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F47EE88C286E4A8E00E3AA76 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7662785C07E52A17BAB712EF /* Pods-Flora.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7FBY9XMGDL;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Flora/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.codepath.Flora;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		F47EE88E286E4A8E00E3AA76 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 64BFF87648540B25EA6733F8 /* Pods-FloraTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7FBY9XMGDL;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.codepath.FloraTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Flora.app/Flora";
+			};
+			name = Debug;
+		};
+		F47EE88F286E4A8E00E3AA76 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9CB4B67367D9E0DC2EEDD41E /* Pods-FloraTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7FBY9XMGDL;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.codepath.FloraTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Flora.app/Flora";
+			};
+			name = Release;
+		};
+		F47EE891286E4A8E00E3AA76 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 840E0347A227C35BC42428C9 /* Pods-Flora-FloraUITests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7FBY9XMGDL;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.codepath.FloraUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Flora;
+			};
+			name = Debug;
+		};
+		F47EE892286E4A8E00E3AA76 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 65C5037708F8FE444B12F984 /* Pods-Flora-FloraUITests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7FBY9XMGDL;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.codepath.FloraUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Flora;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F47EE856286E4A8D00E3AA76 /* Build configuration list for PBXProject "Flora" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F47EE888286E4A8E00E3AA76 /* Debug */,
+				F47EE889286E4A8E00E3AA76 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F47EE88A286E4A8E00E3AA76 /* Build configuration list for PBXNativeTarget "Flora" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F47EE88B286E4A8E00E3AA76 /* Debug */,
+				F47EE88C286E4A8E00E3AA76 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F47EE88D286E4A8E00E3AA76 /* Build configuration list for PBXNativeTarget "FloraTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F47EE88E286E4A8E00E3AA76 /* Debug */,
+				F47EE88F286E4A8E00E3AA76 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F47EE890286E4A8E00E3AA76 /* Build configuration list for PBXNativeTarget "FloraUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F47EE891286E4A8E00E3AA76 /* Debug */,
+				F47EE892286E4A8E00E3AA76 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F47EE853286E4A8D00E3AA76 /* Project object */;
+}
