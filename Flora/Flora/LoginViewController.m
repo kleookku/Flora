@@ -32,8 +32,12 @@
 }
 
 - (void)createCharacteristicSearch:(NSDictionary *)selectedAttributes {
-    [[APIManager shared] characteristicSearch:nil completion:^(NSArray * _Nonnull results, NSError * _Nonnull error) {
+    NSDictionary *selection = @{@"shade":@[@"Intolerant"],
+                                @"moist":@[@"High"],
+                                @"temp":@[]}; //@"-17 - -13", @"-12 - -8", @"-7 - -3", @"-2 - 2",@"3 - 7", @"8 - 13", @"13 - 17", @"18 - 22"]};
+    [[APIManager shared] characteristicSearch:selection completion:^(NSArray * _Nonnull results, NSError * _Nonnull error) {
         if(results) {
+            NSLog(@"Successfully created characteristics search!");
             NSLog(@"results: %@", results);
         } else {
             NSLog(@"Error creating characteristics search: %@", error.localizedDescription);
