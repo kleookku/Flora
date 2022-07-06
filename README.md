@@ -28,8 +28,8 @@ This app helps users find plants that are suitable for them based on three growt
 **Required Stories**
 - [ ] Users can login/create an account or logout. 
 - [ ] Users can search for plants based on three growth requirements.
-- [ ] **Results will be fetched from the USDA Plants database through an undocumented API** 
-    - This is a difficult/ambiguous problem because the API is very clunky and complicated, so it will be difficult to figure out how to use it for the app's needs.
+- [ ] **Results will be fetched from the USDA Plants database through a poorly documented API** 
+    - This is a difficult/ambiguous problem because the API is very clunky and complicated, so we expect some extra challenges in using it for the app's needs
 - [ ] **Results can be liked or disliked in a stacked view.** 
     - This is a difficult/ambiguous problem because we have no learned how to do swipe gesture recognize or make an item on the screen look like it is moving off the screen. I also would like to have the next plant in the stack prefetched so that the user can swipe through quickly.
 - [ ] Liked plants and each plant's relevant information (image, moisture, sunlight, temperature) will be saved to a database.
