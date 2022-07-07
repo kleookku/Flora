@@ -1,4 +1,10 @@
 PODS:
+  - AFNetworking (3.0.4):
+    - AFNetworking/NSURLSession (= 3.0.4)
+    - AFNetworking/Reachability (= 3.0.4)
+    - AFNetworking/Security (= 3.0.4)
+    - AFNetworking/Serialization (= 3.0.4)
+    - AFNetworking/UIKit (= 3.0.4)
   - AFNetworking/NSURLSession (3.0.4):
     - AFNetworking/Reachability
     - AFNetworking/Security
@@ -6,6 +12,8 @@ PODS:
   - AFNetworking/Reachability (3.0.4)
   - AFNetworking/Security (3.0.4)
   - AFNetworking/Serialization (3.0.4)
+  - AFNetworking/UIKit (3.0.4):
+    - AFNetworking/NSURLSession
   - BDBOAuth1Manager (2.0.0):
     - AFNetworking/NSURLSession (~> 3.0.0)
   - Bolts/Tasks (1.9.1)
@@ -16,6 +24,7 @@ PODS:
   - ZLSwipeableView (0.0.8)
 
 DEPENDENCIES:
+  - AFNetworking
   - BDBOAuth1Manager
   - Parse
   - ZLSwipeableView
@@ -35,6 +44,6 @@ SPEC CHECKSUMS:
   Parse: 0abb63a0ff6fa34a3f64b81d595a294e2ece143a
   ZLSwipeableView: df385760ff4838935cdbcb62878ac5acd7355949
 
-PODFILE CHECKSUM: 528cc2e341199a2111458216779eea0bb1276a44
+PODFILE CHECKSUM: 50d2e2023e393564ff1a36980aa460567a0bcd47
 
 COCOAPODS: 1.11.3

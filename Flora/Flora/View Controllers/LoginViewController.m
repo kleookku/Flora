@@ -7,8 +7,11 @@
 
 #import "LoginViewController.h"
 #import "APIManager.h"
+#import "ResultsViewController.h"
 
 @interface LoginViewController ()
+
+@property (nonatomic, strong)NSArray *results;
 
 @end
 
@@ -38,21 +41,27 @@
     [[APIManager shared] searchWithShadeLevel:@[@"Intolerant"] withMoistureUse:@[@"High"] withMinTemperature:@[] completion:^(NSArray * _Nonnull results, NSError * _Nonnull error) {
             if(results) {
                 NSLog(@"Successfully created characteristics search!");
-                NSLog(@"results: %@", results);
+//                NSLog(@"results: %@", results);
+                self.results = results;
+                
             } else {
                 NSLog(@"Error creating characteristics search: %@", error.localizedDescription);
             }
     }];
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    UINavigationController *navController = [segue destinationViewController];
+    ResultsViewController *resultsVC = (ResultsViewController*)navController.topViewController;
+    resultsVC.plantsArray = self.results;
+    NSLog(@"plants are %@", resultsVC.plantsArray);
 }
-*/
+
 
 @end

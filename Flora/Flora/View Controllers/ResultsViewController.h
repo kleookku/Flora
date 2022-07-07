@@ -12,7 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ResultsViewController : UIViewController <ZLSwipeableViewDataSource, ZLSwipeableViewDelegate, UIActionSheetDelegate>
 
-//@property (nonatomic, strong) ZLSwipeableView *swipeableView;
+@property (nonatomic, strong)NSArray *plantsArray;
+
 
 - (UIView *)nextViewForSwipeableView:(ZLSwipeableView *)swipeableView;
 

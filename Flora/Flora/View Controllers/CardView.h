@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CardView : UIView
 
+- (instancetype)initWithPlant:(CGRect)frame plantDict:(NSDictionary *)plant;
+
 @end
 
 NS_ASSUME_NONNULL_END

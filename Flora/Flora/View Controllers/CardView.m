@@ -6,6 +6,7 @@
 //
 
 #import "CardView.h"
+#import "UIImageView+AFNetworking.h"
 
 @implementation CardView
 
@@ -21,6 +22,30 @@
     self = [super initWithFrame:frame];
     if (self) {
         [self setup];
+    }
+    return self;
+}
+
+- (instancetype)initWithPlant:(CGRect)frame plantDict:(NSDictionary *)plant{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self setup];
+        NSString *thumbnailString =  [@"https://plants.sc.egov.usda.gov/ImageLibrary/standard/" stringByAppendingString:plant[@"ProfileImageFilename"]];
+        
+        NSString *imageUrlString = [thumbnailString stringByReplacingCharactersInRange:NSMakeRange(thumbnailString.length-7, 1) withString:@"s"];
+        
+        NSLog(@"url is %@", imageUrlString);
+        NSURL *imageUrl = [NSURL URLWithString:imageUrlString];
+        
+        UIImageView *imgView = [[UIImageView alloc] init];
+        imgView.image = nil;
+        [imgView setImageWithURL:imageUrl];
+        
+        imgView.layer.cornerRadius = 10;
+        imgView.frame = CGRectOffset(self.frame, 0, 0 );
+        imgView.contentMode = UIViewContentModeScaleAspectFill;
+        imgView.clipsToBounds = YES;
+        [self addSubview:imgView];
     }
     return self;
 }
@@ -44,14 +69,6 @@
     
     // Corner Radius
     self.layer.cornerRadius = 10.0;
-    
-    
-    UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"flowers.jpg"]];
-    imgView.layer.cornerRadius = 10;
-    imgView.frame = CGRectOffset(self.frame, 0, 0 );
-    imgView.contentMode = UIViewContentModeScaleAspectFill;
-    imgView.clipsToBounds = YES;
-    [self addSubview:imgView];
 }
 
 

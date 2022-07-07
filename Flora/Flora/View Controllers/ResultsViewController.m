@@ -14,6 +14,8 @@
 
 @property (nonatomic) BOOL loadCardFromXib;
 
+@property (nonatomic) NSUInteger plantIndex;
+
 @property (weak, nonatomic) IBOutlet ZLSwipeableView *swipeableView;
 @property (weak, nonatomic) IBOutlet UIButton *likeButton;
 @property (weak, nonatomic) IBOutlet UIButton *dislikeButton;
@@ -29,6 +31,7 @@
     self.navigationController.toolbarHidden = NO;
     self.view.clipsToBounds = YES;
     self.view.backgroundColor = [UIColor whiteColor];
+    self.plantIndex = 0;
     
     // Do any additional setup after loading the view, typically from a nib.
 
@@ -40,7 +43,7 @@
 
     self.swipeableView.translatesAutoresizingMaskIntoConstraints = NO;
     self.swipeableView.allowedDirection = ZLSwipeableViewDirectionHorizontal;
-
+    self.swipeableView.numberOfHistoryItem = self.plantsArray.count;
 }
 
 - (void)viewDidLayoutSubviews {
@@ -74,34 +77,46 @@
 
 - (UIView *)nextViewForSwipeableView:(ZLSwipeableView *)swipeableView {
 
-    CardView *view = [[CardView alloc] initWithFrame:swipeableView.bounds];
-    view.backgroundColor = [UIColor blueColor];
+    // CardView *view = [[CardView alloc] initWithFrame:swipeableView.bounds];
+    NSLog(@"plants are %@", self.plantsArray);
     
-    
-    if (self.loadCardFromXib) {
-        UIView *contentView =
-            [[NSBundle mainBundle] loadNibNamed:@"CardContentView" owner:self options:nil][0];
-        contentView.translatesAutoresizingMaskIntoConstraints = NO;
-        [view addSubview:contentView];
+//    NSLog(@"image is %d", );
+    if(self.plantIndex < self.plantsArray.count) {
+        while(![_plantsArray[self.plantIndex][@"ProfileImageFilename"] isKindOfClass:[NSString class]]) {
+            self.plantIndex++;
+        }
+        CardView *view = [[CardView alloc] initWithPlant:swipeableView.bounds
+                                               plantDict:_plantsArray[self.plantIndex]];
+        self.plantIndex++;
+        view.backgroundColor = [UIColor blueColor];
+        
+        
+        if (self.loadCardFromXib) {
+            UIView *contentView =
+                [[NSBundle mainBundle] loadNibNamed:@"CardContentView" owner:self options:nil][0];
+            contentView.translatesAutoresizingMaskIntoConstraints = NO;
+            [view addSubview:contentView];
 
-        // This is important:
-        // https://github.com/zhxnlai/ZLSwipeableView/issues/9
-        NSDictionary *metrics =
-            @{ @"height" : @(view.bounds.size.height),
-               @"width" : @(view.bounds.size.width) };
-        NSDictionary *views = NSDictionaryOfVariableBindings(contentView);
-        [view addConstraints:[NSLayoutConstraint
-                                 constraintsWithVisualFormat:@"H:|[contentView(width)]"
-                                                     options:0
-                                                     metrics:metrics
-                                                       views:views]];
-        [view addConstraints:[NSLayoutConstraint
-                                 constraintsWithVisualFormat:@"V:|[contentView(height)]"
-                                                     options:0
-                                                     metrics:metrics
-                                                       views:views]];
+            // This is important:
+            // https://github.com/zhxnlai/ZLSwipeableView/issues/9
+            NSDictionary *metrics =
+                @{ @"height" : @(view.bounds.size.height),
+                   @"width" : @(view.bounds.size.width) };
+            NSDictionary *views = NSDictionaryOfVariableBindings(contentView);
+            [view addConstraints:[NSLayoutConstraint
+                                     constraintsWithVisualFormat:@"H:|[contentView(width)]"
+                                                         options:0
+                                                         metrics:metrics
+                                                           views:views]];
+            [view addConstraints:[NSLayoutConstraint
+                                     constraintsWithVisualFormat:@"V:|[contentView(height)]"
+                                                         options:0
+                                                         metrics:metrics
+                                                           views:views]];
+        }
+        return view;
     }
-    return view;
+    return nil;
 }
 
 /*
