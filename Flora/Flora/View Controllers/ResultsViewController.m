@@ -8,6 +8,9 @@
 #import "ResultsViewController.h"
 #import "ZLSwipeableView/ZLSwipeableView.h"
 #import "CardView.h"
+#import "APIManager.h"
+
+#define PLANTS_PER_PAGE 25;
 
 @interface ResultsViewController ()
 
@@ -15,11 +18,14 @@
 @property (nonatomic) BOOL loadCardFromXib;
 
 @property (nonatomic) NSUInteger plantIndex;
+@property (nonatomic) NSUInteger offset;
+@property BOOL NO_MORE_RESULTS;
 
 @property (weak, nonatomic) IBOutlet ZLSwipeableView *swipeableView;
 @property (weak, nonatomic) IBOutlet UIButton *likeButton;
 @property (weak, nonatomic) IBOutlet UIButton *dislikeButton;
 @property (weak, nonatomic) IBOutlet UIButton *previousButton;
+
 
 @end
 
@@ -32,6 +38,7 @@
     self.view.clipsToBounds = YES;
     self.view.backgroundColor = [UIColor whiteColor];
     self.plantIndex = 0;
+    self.offset = -1;
     
     // Do any additional setup after loading the view, typically from a nib.
 
@@ -43,7 +50,7 @@
 
     self.swipeableView.translatesAutoresizingMaskIntoConstraints = NO;
     self.swipeableView.allowedDirection = ZLSwipeableViewDirectionHorizontal;
-    self.swipeableView.numberOfHistoryItem = self.plantsArray.count;
+    self.swipeableView.numberOfHistoryItem = [self.numResults unsignedIntegerValue]; //self.plantsArray.count;
 }
 
 - (void)viewDidLayoutSubviews {
@@ -76,57 +83,55 @@
 #pragma mark - ZLSwipeableViewDataSource
 
 - (UIView *)nextViewForSwipeableView:(ZLSwipeableView *)swipeableView {
-
-    // CardView *view = [[CardView alloc] initWithFrame:swipeableView.bounds];
-    NSLog(@"plants are %@", self.plantsArray);
-    
-//    NSLog(@"image is %d", );
-    if(self.plantIndex < self.plantsArray.count) {
-        while(![_plantsArray[self.plantIndex][@"ProfileImageFilename"] isKindOfClass:[NSString class]]) {
+    if(!_NO_MORE_RESULTS){
+        if(self.plantIndex + 25 == self.plantsArray.count) {
+            self.offset = _offset + PLANTS_PER_PAGE;
+            [self createCharacteristicSearchWithOffset];
+        }
+        
+        if(self.plantIndex < self.plantsArray.count) {
+            while(![self.plantsArray[self.plantIndex][@"ProfileImageFilename"] isKindOfClass:[NSString class]]) {
+                self.plantIndex++;
+            }
+            CardView *view = [[CardView alloc] initWithPlant:swipeableView.bounds plantDict:_plantsArray[self.plantIndex]];
             self.plantIndex++;
+            view.backgroundColor = [UIColor whiteColor];
+            return view;
+        } else if(self.plantIndex >= self.plantsArray.count) {
+            CardView *view = [[CardView alloc] initWithLoad:swipeableView.bounds];
+            view.backgroundColor = [UIColor whiteColor];
+            return view;
         }
-        CardView *view = [[CardView alloc] initWithPlant:swipeableView.bounds
-                                               plantDict:_plantsArray[self.plantIndex]];
-        self.plantIndex++;
-        view.backgroundColor = [UIColor blueColor];
-        
-        
-        if (self.loadCardFromXib) {
-            UIView *contentView =
-                [[NSBundle mainBundle] loadNibNamed:@"CardContentView" owner:self options:nil][0];
-            contentView.translatesAutoresizingMaskIntoConstraints = NO;
-            [view addSubview:contentView];
-
-            // This is important:
-            // https://github.com/zhxnlai/ZLSwipeableView/issues/9
-            NSDictionary *metrics =
-                @{ @"height" : @(view.bounds.size.height),
-                   @"width" : @(view.bounds.size.width) };
-            NSDictionary *views = NSDictionaryOfVariableBindings(contentView);
-            [view addConstraints:[NSLayoutConstraint
-                                     constraintsWithVisualFormat:@"H:|[contentView(width)]"
-                                                         options:0
-                                                         metrics:metrics
-                                                           views:views]];
-            [view addConstraints:[NSLayoutConstraint
-                                     constraintsWithVisualFormat:@"V:|[contentView(height)]"
-                                                         options:0
-                                                         metrics:metrics
-                                                           views:views]];
-        }
-        return view;
     }
     return nil;
 }
 
-/*
+- (void)createCharacteristicSearchWithOffset {
+    [[APIManager shared] searchWithShadeLevel:self.shade withMoistureUse:self.moist withMinTemperature:self.temp offsetBy:self.offset completion:^(NSArray * _Nonnull results, NSError * _Nonnull error) {
+            if(results) {
+                NSLog(@"Successfully created characteristics search!");
+                if(results.count == 0){
+                    self.NO_MORE_RESULTS = true;
+                }
+                [self.plantsArray addObjectsFromArray:results];
+                
+            } else {
+                NSLog(@"Error creating characteristics search: %@", error.localizedDescription);
+            }
+    }];
+}
+
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if( [sender isKindOfClass:[UIButton class]] ){
+        self.plantsArray[_plantIndex];
+    }
 }
-*/
+
 
 @end

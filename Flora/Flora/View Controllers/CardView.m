@@ -34,7 +34,6 @@
         
         NSString *imageUrlString = [thumbnailString stringByReplacingCharactersInRange:NSMakeRange(thumbnailString.length-7, 1) withString:@"s"];
         
-        NSLog(@"url is %@", imageUrlString);
         NSURL *imageUrl = [NSURL URLWithString:imageUrlString];
         
         UIImageView *imgView = [[UIImageView alloc] init];
@@ -43,9 +42,50 @@
         
         imgView.layer.cornerRadius = 10;
         imgView.frame = CGRectOffset(self.frame, 0, 0 );
-        imgView.contentMode = UIViewContentModeScaleAspectFill;
+        imgView.contentMode = UIViewContentModeScaleAspectFit;
         imgView.clipsToBounds = YES;
         [self addSubview:imgView];
+        
+        UILabel *name = [[UILabel alloc] initWithFrame:CGRectOffset(self.frame, 10, 10)];
+        name.numberOfLines = 0;
+        name.text = plant[@"CommonName"];
+        name.sizeToFit;
+        [self addSubview:name];
+        
+        UIButton *detailsButton = [[UIButton alloc] initWithFrame: CGRectOffset(self.frame, 0, 0)];
+        [detailsButton setTitle:@"" forState:UIControlStateNormal];
+        detailsButton.contentMode = UIViewContentModeScaleAspectFill;
+//        detailsButton.center = self.center;
+        [detailsButton addTarget:self action:@selector(buttonPressed) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:detailsButton];
+    }
+    return self;
+}
+
+- (void)buttonPressed {
+    [[self parentViewController] performSegueWithIdentifier:@"detailSegue" sender:nil];
+}
+
+- (UIViewController *)parentViewController {
+    UIResponder *responder = [self nextResponder];
+    while (responder != nil) {
+        if ([responder isKindOfClass:[UIViewController class]]) {
+            return (UIViewController *)responder;
+        }
+        responder = [responder nextResponder];
+    }
+    return nil;
+}
+
+- (instancetype)initWithLoad:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self setup];
+        UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleMedium];
+        spinner.frame = CGRectOffset(self.frame, 0, 0);
+        spinner.center = self.center;
+        spinner.startAnimating;
+        [self addSubview:spinner];
     }
     return self;
 }

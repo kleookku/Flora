@@ -18,6 +18,8 @@
 		F445ED072875FD410084BDBB /* Board.m in Sources */ = {isa = PBXBuildFile; fileRef = F445ED062875FD410084BDBB /* Board.m */; };
 		F445ED0D287606600084BDBB /* ResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F445ED0C287606600084BDBB /* ResultsViewController.m */; };
 		F445ED1028760C530084BDBB /* CardView.m in Sources */ = {isa = PBXBuildFile; fileRef = F445ED0F28760C530084BDBB /* CardView.m */; };
+		F445ED132877438E0084BDBB /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F445ED122877438E0084BDBB /* SearchViewController.m */; };
+		F445ED162877A9A10084BDBB /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F445ED152877A9A10084BDBB /* DetailViewController.m */; };
 		F47EE860286E4A8D00E3AA76 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F47EE85F286E4A8D00E3AA76 /* AppDelegate.m */; };
 		F47EE863286E4A8D00E3AA76 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F47EE862286E4A8D00E3AA76 /* SceneDelegate.m */; };
 		F47EE869286E4A8D00E3AA76 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F47EE867286E4A8D00E3AA76 /* Main.storyboard */; };
@@ -70,6 +72,10 @@
 		F445ED0C287606600084BDBB /* ResultsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResultsViewController.m; sourceTree = "<group>"; };
 		F445ED0E28760C530084BDBB /* CardView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CardView.h; path = "Flora/View Controllers/CardView.h"; sourceTree = SOURCE_ROOT; };
 		F445ED0F28760C530084BDBB /* CardView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CardView.m; path = "Flora/View Controllers/CardView.m"; sourceTree = SOURCE_ROOT; };
+		F445ED112877438E0084BDBB /* SearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		F445ED122877438E0084BDBB /* SearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		F445ED142877A9A10084BDBB /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		F445ED152877A9A10084BDBB /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		F47EE85B286E4A8D00E3AA76 /* Flora.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flora.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F47EE85E286E4A8D00E3AA76 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F47EE85F286E4A8D00E3AA76 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -154,8 +160,12 @@
 			children = (
 				F41A29FB286E646D00D2DAB9 /* LoginViewController.h */,
 				F41A29FC286E646D00D2DAB9 /* LoginViewController.m */,
+				F445ED112877438E0084BDBB /* SearchViewController.h */,
+				F445ED122877438E0084BDBB /* SearchViewController.m */,
 				F445ED0B287606600084BDBB /* ResultsViewController.h */,
 				F445ED0C287606600084BDBB /* ResultsViewController.m */,
+				F445ED142877A9A10084BDBB /* DetailViewController.h */,
+				F445ED152877A9A10084BDBB /* DetailViewController.m */,
 				F445ED0E28760C530084BDBB /* CardView.h */,
 				F445ED0F28760C530084BDBB /* CardView.m */,
 			);
@@ -473,10 +483,12 @@
 			files = (
 				F445ED072875FD410084BDBB /* Board.m in Sources */,
 				F47EE860286E4A8D00E3AA76 /* AppDelegate.m in Sources */,
+				F445ED132877438E0084BDBB /* SearchViewController.m in Sources */,
 				F41A29F6286E509200D2DAB9 /* APIManager.m in Sources */,
 				F445ED0D287606600084BDBB /* ResultsViewController.m in Sources */,
 				F41A29FD286E646D00D2DAB9 /* LoginViewController.m in Sources */,
 				F41A29EB286E4F7100D2DAB9 /* Plant.m in Sources */,
+				F445ED162877A9A10084BDBB /* DetailViewController.m in Sources */,
 				F445ED1028760C530084BDBB /* CardView.m in Sources */,
 				F47EE871286E4A8E00E3AA76 /* main.m in Sources */,
 				F47EE863286E4A8D00E3AA76 /* SceneDelegate.m in Sources */,
