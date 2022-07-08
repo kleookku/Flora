@@ -65,7 +65,6 @@
                 UIViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
                 SceneDelegate *sceneDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
                 sceneDelegate.window.rootViewController = vc;
-            
             }
         }];
     }

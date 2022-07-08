@@ -36,7 +36,7 @@
     self.usernameField.text = user.username;
     self.passwordField.placeholder = @"reset password";
     self.emailField.text = user.email;
-    
+    self.emailField.userInteractionEnabled = NO;
     // Do any additional setup after loading the view.
     _saveButton.layer.cornerRadius = 10;
     
@@ -44,6 +44,11 @@
     self.profileImage.layer.cornerRadius = self.profileImage.frame.size.width/2;
     self.profileImage.clipsToBounds = true;
     self.profileImage.layer.borderWidth = 0.05;
+    if(user[@"profilePic"] != nil) {
+        self.profileImage.file = user[@"profilePic"];
+        [self.profileImage loadInBackground];
+    }
+//    self.profileImage.image = currentUser[@"]
     
     self.addPictureButton.layer.masksToBounds = false;
     self.addPictureButton.layer.cornerRadius = self.addPictureButton.frame.size.width/2;
@@ -60,6 +65,21 @@
 
 
 - (IBAction)didTapSave:(id)sender {
+    PFUser *user = [PFUser currentUser];
+    if(![self.usernameField.text isEqualToString:@""]) {
+        user.username = self.usernameField.text;
+    }
+    if(![self.passwordField.text isEqualToString:@""]) {
+        user.password = self.passwordField.text;
+    }
+    
+    NSData *imageData = UIImagePNGRepresentation(self.profileImage.image);
+    PFFileObject *imageFile = [PFFileObject fileObjectWithName:@"avatar.png" data:imageData];
+    
+    PFUser *currentUser = [PFUser currentUser];
+    currentUser[@"profilePic"] = imageFile;
+    
+    [currentUser saveInBackground];
 }
 
 - (IBAction)logoutUser:(id)sender {
@@ -79,7 +99,7 @@
     
     // Get the image captured by the UIImagePickerController
     UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
-    //    UIImage *editedImage = info[UIImagePickerControllerEditedImage];
+    UIImage *editedImage = info[UIImagePickerControllerEditedImage];
     
     // Do something with the images (based on your use case)
     UIImage *resizedImage = [self resizeImage:originalImage withSize:self.profileImage.bounds.size];
