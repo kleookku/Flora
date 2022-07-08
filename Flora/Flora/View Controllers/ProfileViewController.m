@@ -10,10 +10,11 @@
 #import "SceneDelegate.h"
 #import "LoginViewController.h"
 #import "AppDelegate.h"
+#import "PFImageView.h"
 
 @interface ProfileViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
-@property (weak, nonatomic) IBOutlet UIImageView *profileImage;
+@property (weak, nonatomic) IBOutlet PFImageView *profileImage;
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
@@ -48,7 +49,6 @@
         self.profileImage.file = user[@"profilePic"];
         [self.profileImage loadInBackground];
     }
-//    self.profileImage.image = currentUser[@"]
     
     self.addPictureButton.layer.masksToBounds = false;
     self.addPictureButton.layer.cornerRadius = self.addPictureButton.frame.size.width/2;
