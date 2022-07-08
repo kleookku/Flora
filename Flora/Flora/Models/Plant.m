@@ -28,7 +28,7 @@
     newPlant.shadeLevel = characteristics[@"shade"];
     newPlant.minTemp = characteristics[@"temp"];
     
-    [newPlant saveInBackgroundWithBlock: completion];
+    [newPlant saveInBackgroundWithBlock:completion];
 }
 
 + (PFFileObject *)getPFFileFromImage: (UIImage * _Nullable)image {

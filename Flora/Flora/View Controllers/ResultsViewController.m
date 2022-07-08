@@ -75,8 +75,8 @@
         [self reset];
     }
     
-    NSLog(@"array is %@", self.plantsArray);
-    NSLog(@"index is %@", self.plantIndex);
+//    NSLog(@"array is %@", self.plantsArray);
+//    NSLog(@"index is %@", self.plantIndex);
 }
 
 - (void)viewDidLayoutSubviews {
