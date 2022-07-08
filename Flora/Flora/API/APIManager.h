@@ -15,11 +15,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype)shared;
 
-+ (NSDictionary *)searchBody;
++ (NSData *)searchBody;
 
 - (void)searchWithShadeLevel:(NSArray *)shade withMoistureUse:(NSArray *)moist withMinTemperature:(NSArray *)temp offsetBy:(NSUInteger)offset completion:(void(^)(NSArray *results, NSError *error))completion;
 
 - (void)getPlantCharacteristics:(NSString *)plantId completion:(void (^)(NSDictionary *characteristics, NSError *error))completion;
+
+- (NSURL *)getPlantImageURL:(NSString *) filename;
 
 
 

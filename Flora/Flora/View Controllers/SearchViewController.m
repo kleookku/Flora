@@ -32,6 +32,8 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *moistureControl;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *sunlightControl;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *temperaturecontrol;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (weak, nonatomic) IBOutlet UIButton *searchButton;
 
 @property (nonatomic, strong)NSArray *moist;
 @property (nonatomic, strong)NSArray *shade;
@@ -46,25 +48,31 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
-
-//    [self createCharacteristicSearch:nil];
 }
 - (IBAction)onTapSearch:(id)sender {
+    self.activityIndicator.startAnimating;
+    self.searchButton.enabled = NO;
     self.moist = MOIST_ARRAY[_moistureControl.selectedSegmentIndex];
     self.shade = SUN_ARRAY[_sunlightControl.selectedSegmentIndex];
     self.temp = TEMP_ARRAY[_temperaturecontrol.selectedSegmentIndex];
+    
+    NSLog(@"moist: %@, shade: %@, temp: %@", self.moist, self.shade, self.temp);
     
     [self createCharacteristicSearchWithMoistureLevel:self.moist shadeLevel:self.shade minimumTemperature:self.temp];
 }
 
 - (void)createCharacteristicSearchWithMoistureLevel:(NSArray *)moisture shadeLevel:(NSArray *)shade  minimumTemperature:(NSArray *)temp {
+    self.results = @[];
     [[APIManager shared] searchWithShadeLevel:shade withMoistureUse:moisture withMinTemperature:temp offsetBy:0 completion:^(NSArray * _Nonnull results, NSError * _Nonnull error) {
             if(results) {
                 NSLog(@"Successfully created characteristics search!");
+                NSLog(@"api results first item %@", results[0]);
                 self.results = results;
-
+                NSLog(@"results first item %@", self.results[0]);
+                self.activityIndicator.stopAnimating;
+                self.searchButton.enabled = YES;
+                
                 [self performSegueWithIdentifier:@"searchSegue" sender:nil];
             } else {
                 NSLog(@"Error creating characteristics search: %@", error.localizedDescription);

@@ -9,8 +9,10 @@
 #import "ZLSwipeableView/ZLSwipeableView.h"
 #import "CardView.h"
 #import "APIManager.h"
+#import "DetailViewController.h"
 
 #define PLANTS_PER_PAGE 25;
+#define CARD_OFFSET = 4;
 
 @interface ResultsViewController ()
 
@@ -34,11 +36,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.navigationController.toolbarHidden = NO;
     self.view.clipsToBounds = YES;
     self.view.backgroundColor = [UIColor whiteColor];
     self.plantIndex = 0;
     self.offset = -1;
+    NSLog(@"new array is %@", self.plantsArray);
     
     // Do any additional setup after loading the view, typically from a nib.
 
@@ -50,7 +54,29 @@
 
     self.swipeableView.translatesAutoresizingMaskIntoConstraints = NO;
     self.swipeableView.allowedDirection = ZLSwipeableViewDirectionHorizontal;
-    self.swipeableView.numberOfHistoryItem = [self.numResults unsignedIntegerValue]; //self.plantsArray.count;
+    self.swipeableView.numberOfHistoryItem = 3;
+}
+
+- (void)reset {
+    NSArray *viewsToRemove = [self.view subviews];
+    for (UIView *v in viewsToRemove) {
+        [v removeFromSuperview];
+    }
+    
+    self.plantsArray = [[NSMutableArray alloc] init];
+    self.plantIndex = 0;
+    self.offset = -1;
+}
+
+- (void) viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    if(self.isMovingFromParentViewController){
+        [self reset];
+    }
+    
+    NSLog(@"array is %@", self.plantsArray);
+    NSLog(@"index is %@", self.plantIndex);
 }
 
 - (void)viewDidLayoutSubviews {
@@ -74,6 +100,7 @@
 
 - (IBAction)didTapPreviousButton:(id)sender {
     [self handlePrevious:sender];
+    self.plantIndex = _plantIndex - 1;
 }
 
 - (void)handlePrevious:(UIBarButtonItem *)sender {
@@ -84,15 +111,12 @@
 
 - (UIView *)nextViewForSwipeableView:(ZLSwipeableView *)swipeableView {
     if(!_NO_MORE_RESULTS){
-        if(self.plantIndex + 25 == self.plantsArray.count) {
+        if(self.plantIndex + 10 == self.plantsArray.count) {
             self.offset = _offset + PLANTS_PER_PAGE;
             [self createCharacteristicSearchWithOffset];
         }
         
         if(self.plantIndex < self.plantsArray.count) {
-            while(![self.plantsArray[self.plantIndex][@"ProfileImageFilename"] isKindOfClass:[NSString class]]) {
-                self.plantIndex++;
-            }
             CardView *view = [[CardView alloc] initWithPlant:swipeableView.bounds plantDict:_plantsArray[self.plantIndex]];
             self.plantIndex++;
             view.backgroundColor = [UIColor whiteColor];
@@ -128,9 +152,11 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    if( [sender isKindOfClass:[UIButton class]] ){
-        self.plantsArray[_plantIndex];
-    }
+//    if( [sender isKindOfClass:[UIButton class]] ){
+// 
+//    }
+    DetailViewController *detailVC = [segue destinationViewController];
+    detailVC.plantDict = self.plantsArray[_plantIndex-4];
 }
 
 

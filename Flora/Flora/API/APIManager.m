@@ -22,20 +22,21 @@
     return sharedManager;
 }
 
-+ (NSDictionary *)searchBody {
-    static NSDictionary *dict = nil;
++ (NSData *)searchBody {
+    static NSData *data = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         NSString *path = [[NSBundle mainBundle] pathForResource:@"charSearchBody" ofType:@"json"];
-        NSData *data = [NSData dataWithContentsOfFile:path];
-        dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+        data = [NSData dataWithContentsOfFile:path];
+//        dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
     });
-    return dict;
+    return data;
 }
 
 - (void)searchWithShadeLevel:(NSArray *)shade withMoistureUse:(NSArray *)moist withMinTemperature:(NSArray *)temp offsetBy:(NSUInteger)offset completion:(void(^)(NSArray *results, NSError *error))completion {
     NSString *url = @"https://plantsservices.sc.egov.usda.gov/api/CharacteristicsSearch";
-    NSMutableDictionary *mutableDict = [[APIManager searchBody] mutableCopy];
+//    NSMutableDictionary *mutableDict = [[APIManager searchBody] mutableCopy];
+    NSMutableDictionary *mutableDict = [NSJSONSerialization JSONObjectWithData:[APIManager searchBody] options:NSJSONReadingMutableContainers error:nil];
     mutableDict[@"Offset"] = @(offset);
     NSMutableArray *filterOptions = [mutableDict objectForKey:@"FilterOptions"];
             
@@ -44,7 +45,11 @@
     [self modifyFilterOptions:temp ofArray:filterOptions inCategory:TEMP];
     
     [self POST:url parameters:mutableDict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary * _Nullable response) {
-        completion(response[@"PlantResults"], nil);
+        
+        NSMutableArray *results = response[@"PlantResults"];
+        for (NSUInteger i = 0; i > 1; i--)
+            [results exchangeObjectAtIndex:i - 1 withObjectAtIndex:arc4random_uniform((u_int32_t)i)];
+        completion(results, nil);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         completion(nil, error);
     }];
@@ -62,10 +67,11 @@
         }];
         [options objectAtIndex:selectionIndex][@"IsSelected"] = @YES;
     }
+    NSLog(@"options are %@", options);
 }
 
 - (void)getPlantCharacteristics:(NSString *)plantId completion:(void (^)(NSDictionary *characteristics, NSError *error))completion {
-    NSString *url = [@"https://plantsservices.sc.egov.usda.gov/api/PlantCharacteristics/" stringByAppendingString:plantId];
+    NSString *url = [@"https://plantsservices.sc.egov.usda.gov/api/PlantCharacteristics/" stringByAppendingString:plantId ];
     [self GET:url parameters:nil progress: nil success:^(NSURLSessionDataTask * _Nonnull task, NSArray * _Nullable response) {
 
         NSDictionary *dict = @{@"shade": [self getCharacteristicValue:SHADE inArray:response],
@@ -83,8 +89,27 @@
     NSUInteger index = [response indexOfObjectPassingTest:^BOOL(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         NSDictionary *dict = (NSDictionary *)obj;
         return [dict[@"PlantCharacteristicName"]  isEqualToString:category];}];
-    return [response objectAtIndex:index][@"PlantCharacteristicValue"];
+    NSLog(@"response is %@", response);
+    
+    if( index <= [response count]){
+        return [response objectAtIndex:index][@"PlantCharacteristicValue"];
+    } else {
+        return @"N/A";
+    }
 }
+
+- (NSURL *)getPlantImageURL:(NSString *) filename {
+    NSString *imageUrlString = [[NSString alloc] init];
+    if([filename isKindOfClass:[NSString class]]) {
+        NSString *thumbnailString =  [@"https://plants.sc.egov.usda.gov/ImageLibrary/standard/" stringByAppendingString:filename];
+        imageUrlString = [thumbnailString stringByReplacingCharactersInRange:NSMakeRange(thumbnailString.length-7, 1) withString:@"s"];
+    } else {
+        imageUrlString = @"https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png";
+    }
+    return [NSURL URLWithString:imageUrlString];
+    
+}
+
 
 
 /*

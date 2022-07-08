@@ -7,6 +7,10 @@
 
 #import "CardView.h"
 #import "UIImageView+AFNetworking.h"
+#import "APIManager.h"
+
+#define PLANT_IMAGE @"ProfileImageFilename"
+
 
 @implementation CardView
 
@@ -30,15 +34,10 @@
     self = [super initWithFrame:frame];
     if (self) {
         [self setup];
-        NSString *thumbnailString =  [@"https://plants.sc.egov.usda.gov/ImageLibrary/standard/" stringByAppendingString:plant[@"ProfileImageFilename"]];
-        
-        NSString *imageUrlString = [thumbnailString stringByReplacingCharactersInRange:NSMakeRange(thumbnailString.length-7, 1) withString:@"s"];
-        
-        NSURL *imageUrl = [NSURL URLWithString:imageUrlString];
         
         UIImageView *imgView = [[UIImageView alloc] init];
         imgView.image = nil;
-        [imgView setImageWithURL:imageUrl];
+        [imgView setImageWithURL:[[APIManager shared] getPlantImageURL:plant[PLANT_IMAGE]]];
         
         imgView.layer.cornerRadius = 10;
         imgView.frame = CGRectOffset(self.frame, 0, 0 );
@@ -48,7 +47,7 @@
         
         UILabel *name = [[UILabel alloc] initWithFrame:CGRectOffset(self.frame, 10, 10)];
         name.numberOfLines = 0;
-        name.text = plant[@"CommonName"];
+        name.text = [plant[@"CommonName"] lowercaseString];
         name.sizeToFit;
         [self addSubview:name];
         
