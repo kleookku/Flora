@@ -10,11 +10,18 @@
 #import "SceneDelegate.h"
 #import "LoginViewController.h"
 #import "AppDelegate.h"
+<<<<<<< HEAD
 #import "PFImageView.h"
 
 @interface ProfileViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet PFImageView *profileImage;
+=======
+
+@interface ProfileViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+
+@property (weak, nonatomic) IBOutlet UIImageView *profileImage;
+>>>>>>> b875545 (added profile view, login/logout)
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
@@ -37,7 +44,11 @@
     self.usernameField.text = user.username;
     self.passwordField.placeholder = @"reset password";
     self.emailField.text = user.email;
+<<<<<<< HEAD
     self.emailField.userInteractionEnabled = NO;
+=======
+    
+>>>>>>> b875545 (added profile view, login/logout)
     // Do any additional setup after loading the view.
     _saveButton.layer.cornerRadius = 10;
     
@@ -45,10 +56,13 @@
     self.profileImage.layer.cornerRadius = self.profileImage.frame.size.width/2;
     self.profileImage.clipsToBounds = true;
     self.profileImage.layer.borderWidth = 0.05;
+<<<<<<< HEAD
     if(user[@"profilePic"] != nil) {
         self.profileImage.file = user[@"profilePic"];
         [self.profileImage loadInBackground];
     }
+=======
+>>>>>>> b875545 (added profile view, login/logout)
     
     self.addPictureButton.layer.masksToBounds = false;
     self.addPictureButton.layer.cornerRadius = self.addPictureButton.frame.size.width/2;
@@ -65,6 +79,7 @@
 
 
 - (IBAction)didTapSave:(id)sender {
+<<<<<<< HEAD
     PFUser *user = [PFUser currentUser];
     if(![self.usernameField.text isEqualToString:@""]) {
         user.username = self.usernameField.text;
@@ -80,6 +95,8 @@
     currentUser[@"profilePic"] = imageFile;
     
     [currentUser saveInBackground];
+=======
+>>>>>>> b875545 (added profile view, login/logout)
 }
 
 - (IBAction)logoutUser:(id)sender {
@@ -99,7 +116,11 @@
     
     // Get the image captured by the UIImagePickerController
     UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
+<<<<<<< HEAD
     UIImage *editedImage = info[UIImagePickerControllerEditedImage];
+=======
+    //    UIImage *editedImage = info[UIImagePickerControllerEditedImage];
+>>>>>>> b875545 (added profile view, login/logout)
     
     // Do something with the images (based on your use case)
     UIImage *resizedImage = [self resizeImage:originalImage withSize:self.profileImage.bounds.size];

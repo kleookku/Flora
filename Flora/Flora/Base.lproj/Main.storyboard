@@ -484,7 +484,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+<<<<<<< HEAD
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Tu3-FF-g2V" customClass="PFImageView">
+=======
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Tu3-FF-g2V">
+>>>>>>> b875545 (added profile view, login/logout)
                                 <rect key="frame" x="144.5" y="168.5" width="125" height="126.5"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -583,7 +587,11 @@
                         <outlet property="addPictureButton" destination="zjl-uQ-oAN" id="UEQ-G5-mhP"/>
                         <outlet property="emailField" destination="HFh-BZ-cBV" id="V7E-tP-NEl"/>
                         <outlet property="passwordField" destination="W69-gj-Rqi" id="l4A-H5-KZd"/>
+<<<<<<< HEAD
                         <outlet property="profileImage" destination="Tu3-FF-g2V" id="p8Q-Qa-h2y"/>
+=======
+                        <outlet property="profileImage" destination="Tu3-FF-g2V" id="PfT-Lo-IIW"/>
+>>>>>>> b875545 (added profile view, login/logout)
                         <outlet property="saveButton" destination="6Ef-9l-Wn2" id="oza-GX-j1X"/>
                         <outlet property="usernameField" destination="Tvh-WZ-2au" id="s6H-e8-1WL"/>
                     </connections>
