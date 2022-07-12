@@ -318,7 +318,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="l5V-id-gTg">
-                                <rect key="frame" x="0.0" y="44" width="414" height="720"/>
+                                <rect key="frame" x="0.0" y="84" width="414" height="758"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="QtF-30-SKm">
                                     <size key="itemSize" width="195" height="226"/>
@@ -352,7 +352,7 @@
                                 </cells>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q1J-4P-X3r">
-                                <rect key="frame" x="363" y="777" width="37" height="31"/>
+                                <rect key="frame" x="363" y="34" width="37" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="CtC-Hq-cxA"/>
                                     <constraint firstAttribute="width" constant="37" id="wc8-tM-QFv"/>
@@ -370,12 +370,12 @@
                         <viewLayoutGuide key="safeArea" id="WpL-ia-3Cr"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="l5V-id-gTg" firstAttribute="top" secondItem="WpL-ia-3Cr" secondAttribute="top" constant="40" id="9wj-Le-LiM"/>
+                            <constraint firstItem="WpL-ia-3Cr" firstAttribute="top" secondItem="Q1J-4P-X3r" secondAttribute="top" constant="10" id="Hul-kg-XKC"/>
                             <constraint firstItem="WpL-ia-3Cr" firstAttribute="trailing" secondItem="l5V-id-gTg" secondAttribute="trailing" id="KBz-NQ-F6d"/>
-                            <constraint firstItem="WpL-ia-3Cr" firstAttribute="bottom" secondItem="l5V-id-gTg" secondAttribute="bottom" constant="78" id="aZh-Xa-f3i"/>
+                            <constraint firstItem="WpL-ia-3Cr" firstAttribute="bottom" secondItem="l5V-id-gTg" secondAttribute="bottom" id="aZh-Xa-f3i"/>
                             <constraint firstItem="WpL-ia-3Cr" firstAttribute="trailing" secondItem="Q1J-4P-X3r" secondAttribute="trailing" constant="14" id="d8e-Bq-a8q"/>
-                            <constraint firstItem="WpL-ia-3Cr" firstAttribute="top" secondItem="l5V-id-gTg" secondAttribute="top" id="jaZ-l6-ece"/>
                             <constraint firstItem="l5V-id-gTg" firstAttribute="leading" secondItem="WpL-ia-3Cr" secondAttribute="leading" id="m2P-lC-5uC"/>
-                            <constraint firstItem="Q1J-4P-X3r" firstAttribute="top" secondItem="l5V-id-gTg" secondAttribute="bottom" constant="13" id="rSS-Nw-cHk"/>
                         </constraints>
                     </view>
                 </viewController>

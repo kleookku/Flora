@@ -51,8 +51,8 @@ This app helps users find plants that are suitable for them based on three growt
 - [ ] Users can replace plant images with their own image.
 - [ ] Users can delete plants from their boards.
 - [ ] Users can delete boards.
-- [ ] Plant descriptions are in user friendly terms (i.e. instead of 30% soil moisture it will say "water 2 times a day")
-- [ ] Users cannot signup with a username that is already in use.
+- [x] Plant descriptions are in user friendly terms (i.e. instead of 30% soil moisture it will say "water 2 times a day")
+- [x] Users cannot signup with a username that is already in use.
 - [ ] Users can add multiple plants to boards at once.
 
 
