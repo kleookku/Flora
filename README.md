@@ -32,15 +32,15 @@ This app helps users find plants that are suitable for them based on three growt
     - This is a difficult/ambiguous problem because the API is very clunky and complicated, so we expect some extra challenges in using it for the app's needs
 - [x] **Results can be liked or disliked in a stacked view.** 
     - This is a difficult/ambiguous problem because we have no learned how to do swipe gesture recognize or make an item on the screen look like it is moving off the screen. I also would like to have the next plant in the stack prefetched so that the user can swipe through quickly.
-- [ ] Liked plants and each plant's relevant information (image, moisture, sunlight, temperature) will be saved to a database.
+- [x] Liked plants and each plant's relevant information (image, moisture, sunlight, temperature) will be saved to a database.
 - [x] Plants can be viewed in a detail view.
 - [ ] Plants can be added to a board/"garden". 
-- [ ] Users can navigate between the search view and plants view using a navigation bar. 
-- [ ] Users can view and scroll through their likes in the plants view. 
+- [x] Users can navigate between the search view and plants view using a navigation bar. 
+- [x] Users can view and scroll through their likes in the plants view. 
 - [ ] Users can view and scroll through their boards/"gardens" in the plants view. 
 - [ ] Users can create new boards or rename current boards. 
 - [ ] Users cannot add the same plant to a board multiple times.
-- [ ] Users can change their username or password and set a profile picture.
+- [x] Users can change their username or password and set a profile picture.
 
 
 **Optional Stories**

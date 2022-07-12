@@ -72,10 +72,24 @@
 - (void)getPlantCharacteristicsWithId:(NSString *)plantId completion:(void (^)(NSString *shade, NSString *moist, NSString *temp, NSError *error))completion {
     NSString *url = [@"https://plantsservices.sc.egov.usda.gov/api/PlantCharacteristics/" stringByAppendingString:plantId];
     [self GET:url parameters:nil progress: nil success:^(NSURLSessionDataTask * _Nonnull task, NSArray * _Nullable response) {
+        
+        NSString *shadeLevel = [self getCharacteristicValue:SHADE inArray:response];
+        NSString *moistureUse = [self getCharacteristicValue:MOIST inArray:response];
+        NSString *minimumTemp = [self getCharacteristicValue:TEMP inArray:response];
+        
+//        if(shadeLevel @"")
+//            shadeLevel = @"No shade level information available"
+//        
+//        
+//        if(moistureUse == @"")
+//            moistureUse = @"No moisture use information available"
+//        
+//        if (minimumTemp == @"")
+//            minimumTemp = @"No minimum temperature information available."
 
-        NSDictionary *dict = @{@"shade": [self getCharacteristicValue:SHADE inArray:response],
-                               @"moist": [self getCharacteristicValue:MOIST inArray:response],
-                               @"temp": [self getCharacteristicValue:TEMP inArray:response]};
+        NSDictionary *dict = @{@"shade": shadeLevel,
+                               @"moist": moistureUse,
+                               @"temp": minimumTemp};
         
         completion(dict[@"shade"], dict[@"moist"], dict[@"temp"], nil);
         

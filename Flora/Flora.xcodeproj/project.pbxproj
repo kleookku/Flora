@@ -22,6 +22,7 @@
 		F445ED162877A9A10084BDBB /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F445ED152877A9A10084BDBB /* DetailViewController.m */; };
 		F445ED192878B48F0084BDBB /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F445ED182878B48F0084BDBB /* ProfileViewController.m */; };
 		F445ED1C2878CF7F0084BDBB /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F445ED1B2878CF7F0084BDBB /* SignupViewController.m */; };
+		F44CF44F287DEA910076AB4B /* BoardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F44CF44E287DEA910076AB4B /* BoardsViewController.m */; };
 		F456EAA5287CD5DE0067B05C /* LikesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F456EAA4287CD5DE0067B05C /* LikesViewController.m */; };
 		F456EAA8287CDA280067B05C /* LikesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F456EAA7287CDA280067B05C /* LikesCell.m */; };
 		F47EE860286E4A8D00E3AA76 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F47EE85F286E4A8D00E3AA76 /* AppDelegate.m */; };
@@ -84,6 +85,8 @@
 		F445ED182878B48F0084BDBB /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		F445ED1A2878CF7F0084BDBB /* SignupViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
 		F445ED1B2878CF7F0084BDBB /* SignupViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignupViewController.m; sourceTree = "<group>"; };
+		F44CF44D287DEA910076AB4B /* BoardsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BoardsViewController.h; sourceTree = "<group>"; };
+		F44CF44E287DEA910076AB4B /* BoardsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BoardsViewController.m; sourceTree = "<group>"; };
 		F456EAA3287CD5DE0067B05C /* LikesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LikesViewController.h; sourceTree = "<group>"; };
 		F456EAA4287CD5DE0067B05C /* LikesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LikesViewController.m; sourceTree = "<group>"; };
 		F456EAA6287CDA280067B05C /* LikesCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LikesCell.h; sourceTree = "<group>"; };
@@ -184,6 +187,8 @@
 				F445ED152877A9A10084BDBB /* DetailViewController.m */,
 				F456EAA3287CD5DE0067B05C /* LikesViewController.h */,
 				F456EAA4287CD5DE0067B05C /* LikesViewController.m */,
+				F44CF44D287DEA910076AB4B /* BoardsViewController.h */,
+				F44CF44E287DEA910076AB4B /* BoardsViewController.m */,
 				F456EAA6287CDA280067B05C /* LikesCell.h */,
 				F456EAA7287CDA280067B05C /* LikesCell.m */,
 				F445ED0E28760C530084BDBB /* CardView.h */,
@@ -512,6 +517,7 @@
 				F41A29EB286E4F7100D2DAB9 /* Plant.m in Sources */,
 				F445ED162877A9A10084BDBB /* DetailViewController.m in Sources */,
 				F456EAA5287CD5DE0067B05C /* LikesViewController.m in Sources */,
+				F44CF44F287DEA910076AB4B /* BoardsViewController.m in Sources */,
 				F445ED1028760C530084BDBB /* CardView.m in Sources */,
 				F47EE871286E4A8E00E3AA76 /* main.m in Sources */,
 				F445ED192878B48F0084BDBB /* ProfileViewController.m in Sources */,

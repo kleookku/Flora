@@ -31,6 +31,7 @@
     self.loginButton.layer.cornerRadius = 20;
     self.usernameField.layer.cornerRadius = 40;
     self.passwordField.layer.cornerRadius = 40;
+    self.passwordField.secureTextEntry = YES;
     _usernameField.placeholder = @"username";
     _passwordField.placeholder = @"password";
 

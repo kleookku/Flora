@@ -30,7 +30,7 @@
     self.user = [PFUser currentUser];
     
     NSArray *userLikes = self.user[@"likes"];
-    self.likes = [[userLikes reverseObjectEnumerator] allObjects];    
+    self.likes = [[userLikes reverseObjectEnumerator] allObjects];
     self.boards = self.user[@"boards"];
 
     
@@ -46,8 +46,6 @@
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     if (collectionView.tag == 1) {
         LikesCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"LikesCell" forIndexPath:indexPath];
-        
-        NSLog(@"%@", self.likes[indexPath.row]);
         PFQuery *query = [PFQuery queryWithClassName:@"Plant"];
         [query whereKey:@"plantId" equalTo:self.likes[indexPath.row]];
         query.limit = 1;
