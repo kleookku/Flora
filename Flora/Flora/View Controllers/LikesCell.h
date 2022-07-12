@@ -6,7 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PFImageView.h"
+#import <Parse/PFImageView.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
