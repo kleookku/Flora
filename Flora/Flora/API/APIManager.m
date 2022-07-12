@@ -67,21 +67,20 @@
         }];
         [options objectAtIndex:selectionIndex][@"IsSelected"] = @YES;
     }
-    NSLog(@"options are %@", options);
 }
 
-- (void)getPlantCharacteristics:(NSString *)plantId completion:(void (^)(NSDictionary *characteristics, NSError *error))completion {
-    NSString *url = [@"https://plantsservices.sc.egov.usda.gov/api/PlantCharacteristics/" stringByAppendingString:plantId ];
+- (void)getPlantCharacteristicsWithId:(NSString *)plantId completion:(void (^)(NSString *shade, NSString *moist, NSString *temp, NSError *error))completion {
+    NSString *url = [@"https://plantsservices.sc.egov.usda.gov/api/PlantCharacteristics/" stringByAppendingString:plantId];
     [self GET:url parameters:nil progress: nil success:^(NSURLSessionDataTask * _Nonnull task, NSArray * _Nullable response) {
 
         NSDictionary *dict = @{@"shade": [self getCharacteristicValue:SHADE inArray:response],
                                @"moist": [self getCharacteristicValue:MOIST inArray:response],
                                @"temp": [self getCharacteristicValue:TEMP inArray:response]};
         
-        completion(dict, nil);
+        completion(dict[@"shade"], dict[@"moist"], dict[@"temp"], nil);
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        completion(nil, error);
+        completion(nil, nil, nil, error);
     }];
 }
 
@@ -89,7 +88,7 @@
     NSUInteger index = [response indexOfObjectPassingTest:^BOOL(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         NSDictionary *dict = (NSDictionary *)obj;
         return [dict[@"PlantCharacteristicName"]  isEqualToString:category];}];
-    NSLog(@"response is %@", response);
+//    NSLog(@"response is %@", response);
     
     if( index <= [response count]){
         return [response objectAtIndex:index][@"PlantCharacteristicValue"];

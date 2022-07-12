@@ -57,7 +57,7 @@
     self.shade = SUN_ARRAY[_sunlightControl.selectedSegmentIndex];
     self.temp = TEMP_ARRAY[_temperaturecontrol.selectedSegmentIndex];
     
-    NSLog(@"moist: %@, shade: %@, temp: %@", self.moist, self.shade, self.temp);
+//    NSLog(@"moist: %@, shade: %@, temp: %@", self.moist, self.shade, self.temp);
     
     [self createCharacteristicSearchWithMoistureLevel:self.moist shadeLevel:self.shade minimumTemperature:self.temp];
 }
@@ -67,9 +67,9 @@
     [[APIManager shared] searchWithShadeLevel:shade withMoistureUse:moisture withMinTemperature:temp offsetBy:0 completion:^(NSArray * _Nonnull results, NSError * _Nonnull error) {
             if(results) {
                 NSLog(@"Successfully created characteristics search!");
-                NSLog(@"api results first item %@", results[0]);
+//                NSLog(@"api results first item %@", results[0]);
                 self.results = results;
-                NSLog(@"results first item %@", self.results[0]);
+//                NSLog(@"results first item %@", self.results[0]);
                 self.activityIndicator.stopAnimating;
                 self.searchButton.enabled = YES;
                 

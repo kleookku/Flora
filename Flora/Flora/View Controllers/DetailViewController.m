@@ -41,7 +41,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.plantName.text = self.plantDict[PLANT_NAME];
-    NSLog(@"plant dict is %@", self.plantDict);
+//    NSLog(@"plant dict is %@", self.plantDict);
     [self.plantImage setImageWithURL:[[APIManager shared] getPlantImageURL:self.plantDict[PLANT_IMAGE]]];
     self.activityIndicator.startAnimating;
     [self getPlantObj];
@@ -49,19 +49,15 @@
 
 - (void)getPlantObj {
     NSString *idString = [NSString stringWithFormat:@"%@", self.plantDict[PLANT_ID]];
-    [[APIManager shared] getPlantCharacteristics:idString completion:^(NSDictionary * _Nonnull characteristics, NSError * _Nonnull error) {
-            if(characteristics) {
-                NSLog(@"Successfully read plant characteristics!");
-                
-                self.activityIndicator.stopAnimating;
-                
-                self.moistLabel.text = MOIST_DICT[@"Low"];
-                self.shadeLabel.text = SUN_DICT[characteristics[@"shade"]];
-                self.tempLabel.text = [@"Minimum temperature is " stringByAppendingString: [characteristics[@"temp"] stringByAppendingString:@"°F"]];
-                
-            } else {
-                NSLog(@"Error reading plant characteristics: %@", error.localizedDescription);
-            }
+    [[APIManager shared] getPlantCharacteristicsWithId:idString completion:^(NSString * _Nonnull shade, NSString * _Nonnull moist, NSString * _Nonnull temp, NSError * _Nonnull error) {
+        if(error) {
+            NSLog(@"Error reading plant characteristics: %@", error.localizedDescription);
+        } else {
+            self.activityIndicator.stopAnimating;
+            self.moistLabel.text = MOIST_DICT[moist];
+            self.shadeLabel.text = SUN_DICT[shade];
+            self.tempLabel.text = [@"Minimum temperature is " stringByAppendingString:[temp stringByAppendingString:@"°F"]];
+        }
     }];
 }
 

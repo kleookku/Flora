@@ -10,10 +10,15 @@
 #import "CardView.h"
 #import "APIManager.h"
 #import "DetailViewController.h"
+#import "Parse/Parse.h"
+#import "Plant.h"
 
 #define PLANTS_PER_PAGE 25;
 #define CARD_OFFSET = 4;
-
+#define PLANT_ID @"AcceptedId"
+#define PLANT_IMAGE @"ProfileImageFilename"
+#define PLANT_NAME @"CommonName"
+ 
 @interface ResultsViewController ()
 
 
@@ -22,12 +27,12 @@
 @property (nonatomic) NSUInteger plantIndex;
 @property (nonatomic) NSUInteger offset;
 @property BOOL NO_MORE_RESULTS;
+@property (nonatomic, strong)PFUser *user;
 
 @property (weak, nonatomic) IBOutlet ZLSwipeableView *swipeableView;
 @property (weak, nonatomic) IBOutlet UIButton *likeButton;
 @property (weak, nonatomic) IBOutlet UIButton *dislikeButton;
 @property (weak, nonatomic) IBOutlet UIButton *previousButton;
-
 
 @end
 
@@ -42,8 +47,8 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.plantIndex = 0;
     self.offset = -1;
-    NSLog(@"new array is %@", self.plantsArray);
-    
+    self.user = [PFUser currentUser];
+
     // Do any additional setup after loading the view, typically from a nib.
 
     // Required Data Source
@@ -62,7 +67,6 @@
     for (UIView *v in viewsToRemove) {
         [v removeFromSuperview];
     }
-    
     self.plantsArray = [[NSMutableArray alloc] init];
     self.plantIndex = 0;
     self.offset = -1;
@@ -70,13 +74,9 @@
 
 - (void) viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    
     if(self.isMovingFromParentViewController){
         [self reset];
     }
-    
-//    NSLog(@"array is %@", self.plantsArray);
-//    NSLog(@"index is %@", self.plantIndex);
 }
 
 - (void)viewDidLayoutSubviews {
@@ -85,17 +85,14 @@
 #pragma mark - Action
 
 - (IBAction)didTapDislike:(id)sender {
-    [self handleLeft:sender];
-}
-- (void)handleLeft:(UIBarButtonItem *)sender {
     [self.swipeableView swipeTopViewToLeft];
+    [self handleLeft:sender];
 }
 
 - (IBAction)didTapLikebutton:(id)sender {
-    [self handleRight:sender];
-}
-- (void)handleRight:(UIBarButtonItem *)sender {
     [self.swipeableView swipeTopViewToRight];
+
+    [self handleRight:sender];
 }
 
 - (IBAction)didTapPreviousButton:(id)sender {
@@ -103,8 +100,14 @@
     self.plantIndex = _plantIndex - 1;
 }
 
-- (void)handlePrevious:(UIBarButtonItem *)sender {
-    [self.swipeableView rewind];
+#pragma mark - ZLSwipeableViewDelegate
+
+- (void)swipeableView:(ZLSwipeableView *)swipeableView didSwipeView:(UIView *)view inDirection:(ZLSwipeableViewDirection)direction {
+    if(direction == ZLSwipeableViewDirectionLeft) {
+        [self handleLeft:nil];
+    } else if (direction == ZLSwipeableViewDirectionRight) {
+        [self handleRight:nil];
+    }
 }
 
 #pragma mark - ZLSwipeableViewDataSource
@@ -129,6 +132,60 @@
     }
     return nil;
 }
+
+
+#pragma mark - Handlers
+
+- (void)handleLeft:(UIButton *)sender {
+    NSDictionary *curPlant = self.plantsArray[self.plantIndex-4];
+    NSString *plantId = [NSString stringWithFormat:@"%@", curPlant[@"Id"]];
+    
+    // save plant id to user's seen
+    NSMutableArray *seenArray = [[NSMutableArray alloc] initWithArray:self.user[@"seen"] copyItems:YES];
+    [seenArray addObject:plantId];
+    self.user[@"seen"] = seenArray;
+    [self.user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if(error) {
+            NSLog(@"Error: %@", error.localizedDescription);
+        } else {
+            NSLog(@"Saved!");
+        }
+    }];
+}
+
+- (void)handleRight:(UIButton *)sender {    
+    NSDictionary *curPlant = self.plantsArray[self.plantIndex-4];
+    NSString *plantId = [NSString stringWithFormat:@"%@", curPlant[@"Id"]];
+    
+    // save plant PFObject to database
+    [Plant savePlantWithDict:curPlant withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+        if(error){
+            NSLog(@"Error saving plant: %@", error.localizedDescription);
+        } else {
+            NSLog(@"Successfully saved plant!");
+        }
+    }];
+
+    
+    // save plant to user's likes
+    NSMutableArray *likesArray = [[NSMutableArray alloc] initWithArray:self.user[@"likes"] copyItems:YES];
+    [likesArray addObject:plantId];
+    self.user[@"likes"] = likesArray;
+    [self.user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if(error) {
+            NSLog(@"Error: %@", error.localizedDescription);
+        } else {
+            NSLog(@"Saved!");
+        }
+    }];
+    
+}
+
+- (void)handlePrevious:(UIBarButtonItem *)sender {
+    [self.swipeableView rewind];
+}
+
+#pragma mark - Networking
 
 - (void)createCharacteristicSearchWithOffset {
     [[APIManager shared] searchWithShadeLevel:self.shade withMoistureUse:self.moist withMinTemperature:self.temp offsetBy:self.offset completion:^(NSArray * _Nonnull results, NSError * _Nonnull error) {

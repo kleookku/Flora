@@ -22,6 +22,8 @@
 		F445ED162877A9A10084BDBB /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F445ED152877A9A10084BDBB /* DetailViewController.m */; };
 		F445ED192878B48F0084BDBB /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F445ED182878B48F0084BDBB /* ProfileViewController.m */; };
 		F445ED1C2878CF7F0084BDBB /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F445ED1B2878CF7F0084BDBB /* SignupViewController.m */; };
+		F456EAA5287CD5DE0067B05C /* LikesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F456EAA4287CD5DE0067B05C /* LikesViewController.m */; };
+		F456EAA8287CDA280067B05C /* LikesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F456EAA7287CDA280067B05C /* LikesCell.m */; };
 		F47EE860286E4A8D00E3AA76 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F47EE85F286E4A8D00E3AA76 /* AppDelegate.m */; };
 		F47EE863286E4A8D00E3AA76 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F47EE862286E4A8D00E3AA76 /* SceneDelegate.m */; };
 		F47EE869286E4A8D00E3AA76 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F47EE867286E4A8D00E3AA76 /* Main.storyboard */; };
@@ -82,6 +84,10 @@
 		F445ED182878B48F0084BDBB /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		F445ED1A2878CF7F0084BDBB /* SignupViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
 		F445ED1B2878CF7F0084BDBB /* SignupViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignupViewController.m; sourceTree = "<group>"; };
+		F456EAA3287CD5DE0067B05C /* LikesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LikesViewController.h; sourceTree = "<group>"; };
+		F456EAA4287CD5DE0067B05C /* LikesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LikesViewController.m; sourceTree = "<group>"; };
+		F456EAA6287CDA280067B05C /* LikesCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LikesCell.h; sourceTree = "<group>"; };
+		F456EAA7287CDA280067B05C /* LikesCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LikesCell.m; sourceTree = "<group>"; };
 		F47EE85B286E4A8D00E3AA76 /* Flora.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flora.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F47EE85E286E4A8D00E3AA76 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F47EE85F286E4A8D00E3AA76 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -176,6 +182,10 @@
 				F445ED0C287606600084BDBB /* ResultsViewController.m */,
 				F445ED142877A9A10084BDBB /* DetailViewController.h */,
 				F445ED152877A9A10084BDBB /* DetailViewController.m */,
+				F456EAA3287CD5DE0067B05C /* LikesViewController.h */,
+				F456EAA4287CD5DE0067B05C /* LikesViewController.m */,
+				F456EAA6287CDA280067B05C /* LikesCell.h */,
+				F456EAA7287CDA280067B05C /* LikesCell.m */,
 				F445ED0E28760C530084BDBB /* CardView.h */,
 				F445ED0F28760C530084BDBB /* CardView.m */,
 			);
@@ -218,11 +228,11 @@
 			children = (
 				F41A29F7286E509800D2DAB9 /* API */,
 				F41A29ED286E4F7E00D2DAB9 /* View Controllers */,
-				F47EE85E286E4A8D00E3AA76 /* AppDelegate.h */,
-				F47EE85F286E4A8D00E3AA76 /* AppDelegate.m */,
 				F41A29EC286E4F7600D2DAB9 /* Models */,
 				F47EE861286E4A8D00E3AA76 /* SceneDelegate.h */,
 				F47EE862286E4A8D00E3AA76 /* SceneDelegate.m */,
+				F47EE85E286E4A8D00E3AA76 /* AppDelegate.h */,
+				F47EE85F286E4A8D00E3AA76 /* AppDelegate.m */,
 				F47EE867286E4A8D00E3AA76 /* Main.storyboard */,
 				F47EE86A286E4A8E00E3AA76 /* Assets.xcassets */,
 				F47EE86C286E4A8E00E3AA76 /* LaunchScreen.storyboard */,
@@ -492,6 +502,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F445ED072875FD410084BDBB /* Board.m in Sources */,
+				F456EAA8287CDA280067B05C /* LikesCell.m in Sources */,
 				F47EE860286E4A8D00E3AA76 /* AppDelegate.m in Sources */,
 				F445ED132877438E0084BDBB /* SearchViewController.m in Sources */,
 				F445ED1C2878CF7F0084BDBB /* SignupViewController.m in Sources */,
@@ -500,6 +511,7 @@
 				F41A29FD286E646D00D2DAB9 /* LoginViewController.m in Sources */,
 				F41A29EB286E4F7100D2DAB9 /* Plant.m in Sources */,
 				F445ED162877A9A10084BDBB /* DetailViewController.m in Sources */,
+				F456EAA5287CD5DE0067B05C /* LikesViewController.m in Sources */,
 				F445ED1028760C530084BDBB /* CardView.m in Sources */,
 				F47EE871286E4A8E00E3AA76 /* main.m in Sources */,
 				F445ED192878B48F0084BDBB /* ProfileViewController.m in Sources */,
