@@ -28,7 +28,9 @@
     // Do any additional setup after loading the view.
     
     self.user = [PFUser currentUser];
-    self.likes = self.user[@"likes"];
+    
+    NSArray *userLikes = self.user[@"likes"];
+    self.likes = [[userLikes reverseObjectEnumerator] allObjects];    
     self.boards = self.user[@"boards"];
 
     
@@ -37,6 +39,8 @@
     
     self.likedCollectionView.tag = 1;
     self.boardsCollectionView.tag = 2;
+    
+    [self.likedCollectionView reloadData];
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
