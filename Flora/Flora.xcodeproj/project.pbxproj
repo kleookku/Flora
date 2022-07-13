@@ -22,7 +22,11 @@
 		F445ED162877A9A10084BDBB /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F445ED152877A9A10084BDBB /* DetailViewController.m */; };
 		F445ED192878B48F0084BDBB /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F445ED182878B48F0084BDBB /* ProfileViewController.m */; };
 		F445ED1C2878CF7F0084BDBB /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F445ED1B2878CF7F0084BDBB /* SignupViewController.m */; };
-		F44CF44F287DEA910076AB4B /* BoardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F44CF44E287DEA910076AB4B /* BoardsViewController.m */; };
+		F44B96C0287F3A0100A6EC78 /* PlantCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F44B96BF287F3A0100A6EC78 /* PlantCell.m */; };
+		F44CF452287E1A890076AB4B /* SelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F44CF451287E1A890076AB4B /* SelectViewController.m */; };
+		F44CF455287E21D10076AB4B /* BoardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F44CF454287E21D10076AB4B /* BoardCell.m */; };
+		F44CF458287E251A0076AB4B /* SelectBoardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F44CF457287E251A0076AB4B /* SelectBoardCell.m */; };
+		F44CF45C287F2F420076AB4B /* BoardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F44CF45B287F2F420076AB4B /* BoardViewController.m */; };
 		F456EAA5287CD5DE0067B05C /* LikesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F456EAA4287CD5DE0067B05C /* LikesViewController.m */; };
 		F456EAA8287CDA280067B05C /* LikesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F456EAA7287CDA280067B05C /* LikesCell.m */; };
 		F47EE860286E4A8D00E3AA76 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F47EE85F286E4A8D00E3AA76 /* AppDelegate.m */; };
@@ -75,8 +79,8 @@
 		F445ED062875FD410084BDBB /* Board.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Board.m; sourceTree = "<group>"; };
 		F445ED0B287606600084BDBB /* ResultsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResultsViewController.h; sourceTree = "<group>"; };
 		F445ED0C287606600084BDBB /* ResultsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResultsViewController.m; sourceTree = "<group>"; };
-		F445ED0E28760C530084BDBB /* CardView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CardView.h; path = "Flora/View Controllers/CardView.h"; sourceTree = SOURCE_ROOT; };
-		F445ED0F28760C530084BDBB /* CardView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CardView.m; path = "Flora/View Controllers/CardView.m"; sourceTree = SOURCE_ROOT; };
+		F445ED0E28760C530084BDBB /* CardView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CardView.h; path = Flora/Subviews/CardView.h; sourceTree = SOURCE_ROOT; };
+		F445ED0F28760C530084BDBB /* CardView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CardView.m; path = Flora/Subviews/CardView.m; sourceTree = SOURCE_ROOT; };
 		F445ED112877438E0084BDBB /* SearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		F445ED122877438E0084BDBB /* SearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		F445ED142877A9A10084BDBB /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
@@ -85,8 +89,16 @@
 		F445ED182878B48F0084BDBB /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		F445ED1A2878CF7F0084BDBB /* SignupViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
 		F445ED1B2878CF7F0084BDBB /* SignupViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignupViewController.m; sourceTree = "<group>"; };
-		F44CF44D287DEA910076AB4B /* BoardsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BoardsViewController.h; sourceTree = "<group>"; };
-		F44CF44E287DEA910076AB4B /* BoardsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BoardsViewController.m; sourceTree = "<group>"; };
+		F44B96BE287F3A0100A6EC78 /* PlantCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlantCell.h; sourceTree = "<group>"; };
+		F44B96BF287F3A0100A6EC78 /* PlantCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlantCell.m; sourceTree = "<group>"; };
+		F44CF450287E1A890076AB4B /* SelectViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectViewController.h; sourceTree = "<group>"; };
+		F44CF451287E1A890076AB4B /* SelectViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectViewController.m; sourceTree = "<group>"; };
+		F44CF453287E21D10076AB4B /* BoardCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BoardCell.h; sourceTree = "<group>"; };
+		F44CF454287E21D10076AB4B /* BoardCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BoardCell.m; sourceTree = "<group>"; };
+		F44CF456287E251A0076AB4B /* SelectBoardCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectBoardCell.h; sourceTree = "<group>"; };
+		F44CF457287E251A0076AB4B /* SelectBoardCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectBoardCell.m; sourceTree = "<group>"; };
+		F44CF45A287F2F420076AB4B /* BoardViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BoardViewController.h; sourceTree = "<group>"; };
+		F44CF45B287F2F420076AB4B /* BoardViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BoardViewController.m; sourceTree = "<group>"; };
 		F456EAA3287CD5DE0067B05C /* LikesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LikesViewController.h; sourceTree = "<group>"; };
 		F456EAA4287CD5DE0067B05C /* LikesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LikesViewController.m; sourceTree = "<group>"; };
 		F456EAA6287CDA280067B05C /* LikesCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LikesCell.h; sourceTree = "<group>"; };
@@ -173,10 +185,10 @@
 		F41A29ED286E4F7E00D2DAB9 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				F445ED172878B48F0084BDBB /* ProfileViewController.h */,
-				F445ED182878B48F0084BDBB /* ProfileViewController.m */,
 				F41A29FB286E646D00D2DAB9 /* LoginViewController.h */,
 				F41A29FC286E646D00D2DAB9 /* LoginViewController.m */,
+				F445ED172878B48F0084BDBB /* ProfileViewController.h */,
+				F445ED182878B48F0084BDBB /* ProfileViewController.m */,
 				F445ED1A2878CF7F0084BDBB /* SignupViewController.h */,
 				F445ED1B2878CF7F0084BDBB /* SignupViewController.m */,
 				F445ED112877438E0084BDBB /* SearchViewController.h */,
@@ -187,12 +199,10 @@
 				F445ED152877A9A10084BDBB /* DetailViewController.m */,
 				F456EAA3287CD5DE0067B05C /* LikesViewController.h */,
 				F456EAA4287CD5DE0067B05C /* LikesViewController.m */,
-				F44CF44D287DEA910076AB4B /* BoardsViewController.h */,
-				F44CF44E287DEA910076AB4B /* BoardsViewController.m */,
-				F456EAA6287CDA280067B05C /* LikesCell.h */,
-				F456EAA7287CDA280067B05C /* LikesCell.m */,
-				F445ED0E28760C530084BDBB /* CardView.h */,
-				F445ED0F28760C530084BDBB /* CardView.m */,
+				F44CF450287E1A890076AB4B /* SelectViewController.h */,
+				F44CF451287E1A890076AB4B /* SelectViewController.m */,
+				F44CF45A287F2F420076AB4B /* BoardViewController.h */,
+				F44CF45B287F2F420076AB4B /* BoardViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -204,6 +214,23 @@
 				F41A29F5286E509200D2DAB9 /* APIManager.m */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		F44CF459287E25210076AB4B /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				F456EAA6287CDA280067B05C /* LikesCell.h */,
+				F456EAA7287CDA280067B05C /* LikesCell.m */,
+				F44CF453287E21D10076AB4B /* BoardCell.h */,
+				F44CF454287E21D10076AB4B /* BoardCell.m */,
+				F445ED0E28760C530084BDBB /* CardView.h */,
+				F445ED0F28760C530084BDBB /* CardView.m */,
+				F44CF456287E251A0076AB4B /* SelectBoardCell.h */,
+				F44CF457287E251A0076AB4B /* SelectBoardCell.m */,
+				F44B96BE287F3A0100A6EC78 /* PlantCell.h */,
+				F44B96BF287F3A0100A6EC78 /* PlantCell.m */,
+			);
+			path = Subviews;
 			sourceTree = "<group>";
 		};
 		F47EE852286E4A8D00E3AA76 = {
@@ -231,6 +258,7 @@
 		F47EE85D286E4A8D00E3AA76 /* Flora */ = {
 			isa = PBXGroup;
 			children = (
+				F44CF459287E25210076AB4B /* Subviews */,
 				F41A29F7286E509800D2DAB9 /* API */,
 				F41A29ED286E4F7E00D2DAB9 /* View Controllers */,
 				F41A29EC286E4F7600D2DAB9 /* Models */,
@@ -509,18 +537,22 @@
 				F445ED072875FD410084BDBB /* Board.m in Sources */,
 				F456EAA8287CDA280067B05C /* LikesCell.m in Sources */,
 				F47EE860286E4A8D00E3AA76 /* AppDelegate.m in Sources */,
+				F44CF455287E21D10076AB4B /* BoardCell.m in Sources */,
 				F445ED132877438E0084BDBB /* SearchViewController.m in Sources */,
+				F44CF452287E1A890076AB4B /* SelectViewController.m in Sources */,
 				F445ED1C2878CF7F0084BDBB /* SignupViewController.m in Sources */,
 				F41A29F6286E509200D2DAB9 /* APIManager.m in Sources */,
 				F445ED0D287606600084BDBB /* ResultsViewController.m in Sources */,
+				F44B96C0287F3A0100A6EC78 /* PlantCell.m in Sources */,
 				F41A29FD286E646D00D2DAB9 /* LoginViewController.m in Sources */,
 				F41A29EB286E4F7100D2DAB9 /* Plant.m in Sources */,
 				F445ED162877A9A10084BDBB /* DetailViewController.m in Sources */,
 				F456EAA5287CD5DE0067B05C /* LikesViewController.m in Sources */,
-				F44CF44F287DEA910076AB4B /* BoardsViewController.m in Sources */,
 				F445ED1028760C530084BDBB /* CardView.m in Sources */,
+				F44CF458287E251A0076AB4B /* SelectBoardCell.m in Sources */,
 				F47EE871286E4A8E00E3AA76 /* main.m in Sources */,
 				F445ED192878B48F0084BDBB /* ProfileViewController.m in Sources */,
+				F44CF45C287F2F420076AB4B /* BoardViewController.m in Sources */,
 				F47EE863286E4A8D00E3AA76 /* SceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

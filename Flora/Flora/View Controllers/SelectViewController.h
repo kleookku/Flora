@@ -1,5 +1,5 @@
 //
-//  BoardsViewController.h
+//  SelectViewController.h
 //  Flora
 //
 //  Created by Kleo Ku on 7/12/22.
@@ -9,7 +9,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BoardsViewController : UIViewController
+@interface SelectViewController : UIViewController
+
+@property (nonatomic, strong)NSString *plantId;
 
 @end
 

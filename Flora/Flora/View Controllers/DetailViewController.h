@@ -6,12 +6,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Plant.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DetailViewController : UIViewController
 
 @property (nonatomic, strong) NSDictionary *plantDict;
+@property (nonatomic, strong) Plant *plant;
 
 @end
 

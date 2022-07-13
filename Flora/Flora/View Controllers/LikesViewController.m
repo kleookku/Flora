@@ -10,14 +10,23 @@
 #import "LikesCell.h"
 #import "UIImageView+AFNetworking.h"
 #import "Plant.h"
+#import "BoardCell.h"
+#import "Board.h"
+#import "BoardViewController.h"
+#import "DetailViewController.h"
 
-@interface LikesViewController () <UICollectionViewDataSource>
+@interface LikesViewController () <UICollectionViewDataSource, BoardCellDelegate, LikesCellDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *boardsCollectionView;
 @property (weak, nonatomic) IBOutlet UICollectionView *likedCollectionView;
 
 @property (nonatomic, strong)PFUser *user;
 @property (nonatomic, strong)NSArray *likes;
 @property (nonatomic, strong)NSArray *boards;
+
+@property (nonatomic, strong)UIAlertController *createBoardAlert;
+@property (nonatomic, strong)Board *boardToView;
+@property (nonatomic, strong)Plant *plantToView;
+@property BOOL clickedPlant;
 
 @end
 
@@ -30,9 +39,11 @@
     self.user = [PFUser currentUser];
     
     NSArray *userLikes = self.user[@"likes"];
+    NSLog(@"user is %@", self.user);
+    NSLog(@"user likes are %@", self.user[@"likes"]);
+    NSLog(@"user boards are %@", self.user[@"boards"]);
     self.likes = [[userLikes reverseObjectEnumerator] allObjects];
     self.boards = self.user[@"boards"];
-
     
     self.likedCollectionView.dataSource = self;
     self.boardsCollectionView.dataSource = self;
@@ -40,12 +51,57 @@
     self.likedCollectionView.tag = 1;
     self.boardsCollectionView.tag = 2;
     
+    self.boardToView = nil;
+    self.plantToView = nil;
+    
+    [self setupCreateBoardAlert];
+    
     [self.likedCollectionView reloadData];
 }
+
+- (void) setupCreateBoardAlert {
+    self.createBoardAlert = [UIAlertController alertControllerWithTitle:@"Create a Board" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    [self.createBoardAlert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.placeholder = @"name";
+    }];
+    
+    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self saveBoardWithName:[[self.createBoardAlert textFields][0] text]];
+        
+    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        NSLog(@"Cancelled");
+    }];
+    
+    [self.createBoardAlert addAction:confirmAction];
+    [self.createBoardAlert addAction:cancelAction];
+}
+
+#pragma mark - Actions
+
+- (IBAction)didTapAddBoard:(id)sender {
+    [self presentViewController:self.createBoardAlert animated:YES completion:nil];
+}
+
+- (void)didTapViewBoard:(Board *)board {
+    self.boardToView = board;
+    self.clickedPlant = NO;
+    [self performSegueWithIdentifier:@"ViewBoardSegue" sender:nil];
+}
+
+- (void)didTapPlant:(Plant *)plant {
+    self.plantToView = plant;
+    self.clickedPlant = YES;
+    [self performSegueWithIdentifier:@"ViewPlantSegue" sender:nil];
+}
+
+#pragma mark - Collection View Data Source
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     if (collectionView.tag == 1) {
         LikesCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"LikesCell" forIndexPath:indexPath];
+        cell.plantImage.layer.cornerRadius = 20;
+        cell.delegate = self;
         PFQuery *query = [PFQuery queryWithClassName:@"Plant"];
         [query whereKey:@"plantId" equalTo:self.likes[indexPath.row]];
         query.limit = 1;
@@ -54,8 +110,10 @@
             if(results) {
                 if(results.count > 0) {
                     Plant *plant = (Plant *)results[0];
+                    cell.plant = plant;
                     cell.plantImage.file = plant.image;
-                    [cell.plantImage loadInBackground];
+                    [cell.plantImage loadInBackground];                    
+                    cell.plantName.text = plant.name;
                 }
             } else {
                 NSLog(@"%@", error.localizedDescription);
@@ -63,9 +121,50 @@
         }];
         return cell;
     } else {
-        return nil;
+        BoardCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"BoardCell" forIndexPath:indexPath];
+        cell.coverImage.layer.cornerRadius = 20;
+        cell.delegate = self;
+        PFQuery *query = [PFQuery queryWithClassName:@"Board"];
+        [query whereKey:@"name" equalTo:self.boards[indexPath.row]];
+        [query whereKey:@"user" equalTo:self.user.username];
+        query.limit = 1;
+        
+        [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable results, NSError * _Nullable error) {
+            if(results) {
+                if (results.count > 0) {
+                    Board *board = (Board *)results[0];
+                    cell.board = board;
+                    cell.boardName.text = board.name;
+                    cell.numPlants.text = [[NSString stringWithFormat:@"%li",  board.plantsArray.count] stringByAppendingString:@" plants"];
+                    
+                    if(board.plantsArray.count > 0) {
+                        [self setBoardCoverImage:board.plantsArray[0] forCell:cell];
+
+                    }
+                    
+                }
+            }
+        }];
+        return cell;
     }
-    return nil;
+}
+
+- (void) setBoardCoverImage:(NSString *)plantId forCell:(BoardCell *)cell {
+    PFQuery *query = [PFQuery queryWithClassName:@"Plant"];
+    [query whereKey:@"plantId" equalTo:plantId];
+    query.limit = 1;
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable results, NSError * _Nullable error) {
+        if(results) {
+            if(results.count > 0) {
+                Plant *plant = (Plant *)results[0];
+                cell.coverImage.file = plant.image;
+                [cell.coverImage loadInBackground];
+            } else {
+                NSLog(@"Error getting board cover image: %@", error.localizedDescription);
+            }
+        }
+    }];
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -73,18 +172,53 @@
         return self.likes.count;
 
     } else {
-        return 0;
+        return self.boards.count;
     }
 }
 
-/*
+#pragma mark - Networking
+
+- (void)saveBoardWithName:(NSString*)boardName {
+    
+    // save board PFObject to database
+    [Board saveBoard:boardName withPlants:@[] forUser:[PFUser currentUser].username withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+        if(error){
+            NSLog(@"Error saving board: %@", error.localizedDescription);
+        } else {
+            NSLog(@"Successfully saved board!");
+        }
+    }];
+    
+    // save plant to user's likes
+    PFUser *user = [PFUser currentUser];
+    NSMutableArray *boardsArray = [[NSMutableArray alloc] initWithArray: user[@"boards"] copyItems:YES];
+    [boardsArray addObject:boardName];
+
+    user[@"boards"] = boardsArray;
+    [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if(error) {
+            NSLog(@"Error: %@", error.localizedDescription);
+        } else {
+            NSLog(@"Saved!");
+        }
+    }];
+}
+
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if (self.clickedPlant ){
+        DetailViewController *detailVC = [segue destinationViewController];
+        detailVC.plant = self.plantToView;
+
+    } else {
+        BoardViewController *boardVC = [segue destinationViewController];
+        boardVC.board = self.boardToView;
+    }
 }
-*/
 
 @end

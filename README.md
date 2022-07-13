@@ -34,12 +34,12 @@ This app helps users find plants that are suitable for them based on three growt
     - This is a difficult/ambiguous problem because we have no learned how to do swipe gesture recognize or make an item on the screen look like it is moving off the screen. I also would like to have the next plant in the stack prefetched so that the user can swipe through quickly.
 - [x] Liked plants and each plant's relevant information (image, moisture, sunlight, temperature) will be saved to a database.
 - [x] Plants can be viewed in a detail view.
-- [ ] Plants can be added to a board/"garden". 
+- [x] Plants can be added to a board/"garden". 
 - [x] Users can navigate between the search view and plants view using a navigation bar. 
 - [x] Users can view and scroll through their likes in the plants view. 
-- [ ] Users can view and scroll through their boards/"gardens" in the plants view. 
-- [ ] Users can create new boards or rename current boards. 
-- [ ] Users cannot add the same plant to a board multiple times.
+- [x] Users can view and scroll through their boards/"gardens" in the plants view. 
+- [x] Users can create new boards or rename current boards. 
+- [x] Users are warned when they attempt to add a plant to a board that already contains it.
 - [x] Users can change their username or password and set a profile picture.
 
 

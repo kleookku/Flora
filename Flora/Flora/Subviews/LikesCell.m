@@ -9,4 +9,8 @@
 
 @implementation LikesCell
 
+- (IBAction)didTapPlant:(id)sender {
+    [self.delegate didTapPlant:self.plant];
+}
+
 @end
