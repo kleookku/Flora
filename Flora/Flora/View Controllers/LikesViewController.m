@@ -28,6 +28,10 @@
 @property (nonatomic, strong)Plant *plantToView;
 @property BOOL clickedPlant;
 
+@property (nonatomic, strong) UIRefreshControl *likesRefreshControl;
+@property (nonatomic, strong) UIRefreshControl *boardsRefreshControl;
+
+
 @end
 
 @implementation LikesViewController
@@ -51,12 +55,29 @@
     self.likedCollectionView.tag = 1;
     self.boardsCollectionView.tag = 2;
     
+    self.likesRefreshControl = [[UIRefreshControl alloc] init];
+    [self.likesRefreshControl addTarget:self action:@selector(updateLikes) forControlEvents:UIControlEventValueChanged];
+    [self.likedCollectionView insertSubview:self.likesRefreshControl atIndex:0];\
+    [self.likesRefreshControl setHidden:NO];
+    
+    self.boardsRefreshControl = [[UIRefreshControl alloc] init];
+    [self.boardsRefreshControl addTarget:self action:@selector(updateBoards) forControlEvents:UIControlEventValueChanged];
+    [self.boardsCollectionView insertSubview:self.boardsRefreshControl atIndex:0];
+    [self.boardsRefreshControl setHidden:NO];
+    
+    NSLog(@"referfsh control are %@, %@", self.likesRefreshControl, self.boardsRefreshControl);
+    
     self.boardToView = nil;
     self.plantToView = nil;
     
     [self setupCreateBoardAlert];
     
     [self.likedCollectionView reloadData];
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self updateLikes];
 }
 
 - (void) setupCreateBoardAlert {
@@ -75,6 +96,18 @@
     
     [self.createBoardAlert addAction:confirmAction];
     [self.createBoardAlert addAction:cancelAction];
+}
+
+- (void)updateLikes {
+    self.likes = [[self.user[@"likes"] reverseObjectEnumerator] allObjects];
+    [self.likedCollectionView reloadData];
+    [self.likesRefreshControl endRefreshing];
+}
+
+- (void)updateBoards {
+    self.boards = self.user[@"boards"];
+    [self.boardsCollectionView reloadData];
+    [self.boardsRefreshControl endRefreshing];
 }
 
 #pragma mark - Actions

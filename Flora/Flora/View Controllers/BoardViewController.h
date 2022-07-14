@@ -10,9 +10,17 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol BoardViewControllerDelegate
+
+- (void)tappedEdit;
+- (void)stoppedEdit;
+
+@end
+
 @interface BoardViewController : UIViewController
 
 @property (nonatomic, strong)Board *board;
+@property (nonatomic, strong)NSMutableArray<id<BoardViewControllerDelegate>> *delegates;
 
 @end
 

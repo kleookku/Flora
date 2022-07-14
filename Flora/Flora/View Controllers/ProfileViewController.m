@@ -23,6 +23,7 @@
 
 @property (nonatomic, strong) UIAlertController *addPictureAlert;
 @property (nonatomic, strong) UIAlertController *noCameraAlert;
+@property (nonatomic, strong)UIAlertController *savedAlert;
 
 
 
@@ -55,32 +56,40 @@
     self.addPictureButton.layer.cornerRadius = self.addPictureButton.frame.size.width/2;
     self.addPictureButton.clipsToBounds = true;
     
-    
+    // alerts
     [self setupAddPictureAlert];
     [self setupNoCameraAlert];
-    
+    [self setupSavedAlert];
 }
+
+#pragma mark - Actions
+
 - (IBAction)addProfilePic:(id)sender {
     [self presentViewController:self.addPictureAlert animated:YES completion:^{}];
 }
 
-
 - (IBAction)didTapSave:(id)sender {
     PFUser *user = [PFUser currentUser];
-    if(![self.usernameField.text isEqualToString:@""]) {
+    if(![self.usernameField.text isEqualToString:@""])
         user.username = self.usernameField.text;
-    }
-    if(![self.passwordField.text isEqualToString:@""]) {
+    if(![self.passwordField.text isEqualToString:@""])
         user.password = self.passwordField.text;
-    }
     
     NSData *imageData = UIImagePNGRepresentation(self.profileImage.image);
     PFFileObject *imageFile = [PFFileObject fileObjectWithName:@"avatar.png" data:imageData];
     
     PFUser *currentUser = [PFUser currentUser];
     currentUser[@"profilePic"] = imageFile;
-    
     [currentUser saveInBackground];
+    
+    [self presentViewController:self.savedAlert animated:YES completion:^{
+            NSTimeInterval delayInSeconds = 0.25;
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                [self.savedAlert dismissViewControllerAnimated:YES completion:nil];
+            });
+    }];
+
 }
 
 - (IBAction)logoutUser:(id)sender {
@@ -96,19 +105,7 @@
 
 }
 
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
-    
-    // Get the image captured by the UIImagePickerController
-    UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
-    UIImage *editedImage = info[UIImagePickerControllerEditedImage];
-    
-    // Do something with the images (based on your use case)
-    UIImage *resizedImage = [self resizeImage:originalImage withSize:self.profileImage.bounds.size];
-    self.profileImage.image = resizedImage; //originalImage;
-    
-    // Dismiss UIImagePickerController to go back to your original view controller
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
+#pragma mark - Alerts
 
 
 - (void)setupAddPictureAlert {
@@ -133,13 +130,29 @@
 }
 
 - (void)setupNoCameraAlert {
-    
     self.noCameraAlert = [UIAlertController alertControllerWithTitle:@"Camera not available" message:nil preferredStyle:UIAlertControllerStyleAlert];
-    
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {}];
-    
     [self.noCameraAlert addAction:okAction];
+}
+
+- (void)setupSavedAlert {
+    self.savedAlert = [UIAlertController alertControllerWithTitle:@"Saved" message:nil preferredStyle:UIAlertControllerStyleAlert];
+}
+
+#pragma mark - Image Select
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     
+    // Get the image captured by the UIImagePickerController
+    UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
+    UIImage *editedImage = info[UIImagePickerControllerEditedImage];
+    
+    // Do something with the images (based on your use case)
+    UIImage *resizedImage = [self resizeImage:originalImage withSize:self.profileImage.bounds.size];
+    self.profileImage.image = resizedImage; //originalImage;
+    
+    // Dismiss UIImagePickerController to go back to your original view controller
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)openCamera {

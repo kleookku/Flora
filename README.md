@@ -49,7 +49,7 @@ This app helps users find plants that are suitable for them based on three growt
 - [ ]  **Plants will be extracted from the USDA Plants database and stored in Parse, then queried for a faster search.**
     - [ ] This is a difficult/ambiguous problem because we have not learned how to extract data from an existing database for our own use. I don't really know how to go about this, but my manager says that it is doable.
 - [ ] Users can replace plant images with their own image.
-- [ ] Users can delete plants from their boards.
+- [x] Users can delete plants from their boards.
 - [ ] Users can delete boards.
 - [x] Plant descriptions are in user friendly terms (i.e. instead of 30% soil moisture it will say "water 2 times a day")
 - [x] Users cannot signup with a username that is already in use.

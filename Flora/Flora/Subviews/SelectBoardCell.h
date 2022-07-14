@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)confirmAddToBoard:(UIAlertController *)confirmation;
 
+- (void)updateBoards;
+
 @end
 
 @interface SelectBoardCell : UICollectionViewCell

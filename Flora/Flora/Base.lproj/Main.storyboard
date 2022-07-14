@@ -628,7 +628,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ICK-Db-gp5" customClass="PFImageView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="190" height="186"/>
+                                                    <rect key="frame" x="8" y="8" width="174" height="178"/>
                                                     <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="43P-1a-QCo">
@@ -637,18 +637,36 @@
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1na-VY-9hP">
+                                                    <rect key="frame" x="5" y="5" width="20" height="20"/>
+                                                    <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="4Lx-Lg-EFP"/>
+                                                        <constraint firstAttribute="width" constant="20" id="uuo-JV-qLc"/>
+                                                    </constraints>
+                                                    <color key="tintColor" systemColor="systemGray4Color"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" image="minus.circle.fill" catalog="system" title=""/>
+                                                    <connections>
+                                                        <action selector="deleteButton:" destination="wSl-cE-b1R" eventType="touchUpInside" id="i1W-5f-vgF"/>
+                                                        <action selector="didTapDelete:" destination="fZ3-Do-PgB" eventType="touchUpInside" id="NYa-rO-wxt"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="43P-1a-QCo" firstAttribute="centerX" secondItem="M0n-zq-VOA" secondAttribute="centerX" id="8hf-SY-qpo"/>
                                                 <constraint firstItem="43P-1a-QCo" firstAttribute="top" secondItem="ICK-Db-gp5" secondAttribute="bottom" constant="2" id="A5B-QM-zoc"/>
-                                                <constraint firstAttribute="trailing" secondItem="ICK-Db-gp5" secondAttribute="trailing" id="G8g-n6-vqi"/>
-                                                <constraint firstItem="ICK-Db-gp5" firstAttribute="top" secondItem="M0n-zq-VOA" secondAttribute="top" id="Ti5-ED-fz9"/>
+                                                <constraint firstAttribute="trailing" secondItem="ICK-Db-gp5" secondAttribute="trailing" constant="8" id="G8g-n6-vqi"/>
+                                                <constraint firstItem="1na-VY-9hP" firstAttribute="leading" secondItem="M0n-zq-VOA" secondAttribute="leading" constant="5" id="QQt-BE-9ZW"/>
+                                                <constraint firstItem="ICK-Db-gp5" firstAttribute="top" secondItem="M0n-zq-VOA" secondAttribute="top" constant="8" id="Ti5-ED-fz9"/>
                                                 <constraint firstAttribute="bottom" secondItem="ICK-Db-gp5" secondAttribute="bottom" constant="29" id="qXu-eE-RXe"/>
-                                                <constraint firstItem="ICK-Db-gp5" firstAttribute="leading" secondItem="M0n-zq-VOA" secondAttribute="leading" id="v8h-V8-TFp"/>
+                                                <constraint firstItem="1na-VY-9hP" firstAttribute="top" secondItem="M0n-zq-VOA" secondAttribute="top" constant="5" id="tBj-H6-WMn"/>
+                                                <constraint firstItem="ICK-Db-gp5" firstAttribute="leading" secondItem="M0n-zq-VOA" secondAttribute="leading" constant="8" id="v8h-V8-TFp"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="190" height="215"/>
                                         <connections>
+                                            <outlet property="deleteButton" destination="1na-VY-9hP" id="iDC-kR-Fed"/>
                                             <outlet property="plantImage" destination="ICK-Db-gp5" id="rqD-H9-yK9"/>
                                             <outlet property="plantName" destination="43P-1a-QCo" id="oPw-XY-7UV"/>
                                         </connections>
@@ -668,7 +686,7 @@
                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="">
-                                    <imageReference key="image" image="pencil" catalog="system" symbolScale="medium"/>
+                                    <imageReference key="image" image="pencil" catalog="system" symbolScale="small"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="didTapEdit:" destination="Tt3-k5-Y1C" eventType="touchUpInside" id="E8g-lM-Dge"/>
@@ -1054,6 +1072,7 @@
         <image name="face.smiling" catalog="system" width="128" height="121"/>
         <image name="heart" catalog="system" width="128" height="109"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <image name="minus.circle.fill" catalog="system" width="128" height="121"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="rectangle.portrait.and.arrow.right" catalog="system" width="128" height="108"/>
@@ -1064,6 +1083,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

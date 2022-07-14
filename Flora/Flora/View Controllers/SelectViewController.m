@@ -38,9 +38,40 @@
     self.boards = self.user[@"boards"];
 }
 
+#pragma mark - Alert
+
+- (void) setupCreateBoardAlert {
+    self.createBoardAlert = [UIAlertController alertControllerWithTitle:@"Create a Board" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    [self.createBoardAlert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.placeholder = @"name";
+    }];
+    
+    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self saveBoardWithName:[[self.createBoardAlert textFields][0] text]];
+        self.boards = self.user[@"boards"];
+        [self.collectionView reloadData];
+        
+    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        NSLog(@"Cancelled");
+    }];
+    
+    [self.createBoardAlert addAction:confirmAction];
+    [self.createBoardAlert addAction:cancelAction];
+}
+
+#pragma mark - SelectBoardCellDelegate
+
 - (void)confirmAddToBoard:(UIAlertController *) confirmation {
     [self presentViewController:confirmation animated:YES completion:nil];
 }
+
+- (void)updateBoards{
+    self.boards = self.user[@"boards"];
+    [self.collectionView reloadData];
+}
+
+#pragma mark - CollectionViewDataSource
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     SelectBoardCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SelectBoardCell" forIndexPath:indexPath];
@@ -68,6 +99,18 @@
     return cell;
 }
 
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return self.boards.count;
+}
+
+#pragma mark - Actions
+
+- (IBAction)didTapAddBoard:(id)sender {
+    [self presentViewController:self.createBoardAlert animated:YES completion:nil];
+}
+
+#pragma mark - Networking
+
 - (void) setBoardCoverImage:(NSString *)plantId forCell:(SelectBoardCell *)cell {
     PFQuery *query = [PFQuery queryWithClassName:@"Plant"];
     [query whereKey:@"plantId" equalTo:plantId];
@@ -86,33 +129,6 @@
     }];
 }
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.boards.count;
-}
-
-- (void) setupCreateBoardAlert {
-    self.createBoardAlert = [UIAlertController alertControllerWithTitle:@"Create a Board" message:nil preferredStyle:UIAlertControllerStyleAlert];
-    [self.createBoardAlert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-        textField.placeholder = @"name";
-    }];
-    
-    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self saveBoardWithName:[[self.createBoardAlert textFields][0] text]];
-        
-    }];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        NSLog(@"Cancelled");
-    }];
-    
-    [self.createBoardAlert addAction:confirmAction];
-    [self.createBoardAlert addAction:cancelAction];
-}
-
-- (IBAction)didTapAddBoard:(id)sender {
-    NSLog(@"clicked add board");
-    [self presentViewController:self.createBoardAlert animated:YES completion:nil];
-}
-
 - (void)saveBoardWithName:(NSString*)boardName {
     // save board PFObject to database
     [Board saveBoard:boardName withPlants:@[] forUser:self.user.username withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
@@ -122,7 +138,6 @@
             NSLog(@"Successfully saved board!");
         }
     }];
-    
     
     // save plant to user's likes
     PFUser *user = [PFUser currentUser];

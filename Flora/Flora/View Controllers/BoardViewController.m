@@ -9,7 +9,7 @@
 #import "PlantCell.h"
 #import "Plant.h"
 
-@interface BoardViewController () <UICollectionViewDataSource>
+@interface BoardViewController () <UICollectionViewDataSource, PlantCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *boardNameField;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -30,14 +30,18 @@
     self.boardNameField.text = self.board.name;
     
     self.collectionView.dataSource = self;
+    self.delegates = [[NSMutableArray alloc] init];
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     PlantCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PlantCell" forIndexPath:indexPath];
+    cell.delegate = self;
     cell.plantImage.layer.cornerRadius = 20;
     PFQuery *query = [PFQuery queryWithClassName:@"Plant"];
     [query whereKey:@"plantId" equalTo:self.board.plantsArray[indexPath.row]];
     query.limit = 1;
+    
+    [self.delegates addObject:cell];
 
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable results, NSError * _Nullable error) {
         if(results) {
@@ -46,6 +50,7 @@
                 cell.plantImage.file = plant.image;
                 [cell.plantImage loadInBackground];
                 cell.plantName.text = plant.name;
+                cell.plantId = plant.plantId;
             }
         } else {
             NSLog(@"%@", error.localizedDescription);
@@ -53,6 +58,29 @@
     }];
     return cell;
 }
+
+#pragma mark - PlantCellDelegate
+
+- (void)deletePlantWithId:(NSString *)plantId {
+    NSMutableArray *plantsArray = [[NSMutableArray alloc] initWithArray:self.board[@"plantsArray"] copyItems:YES];
+    [plantsArray removeObject:plantId];
+    self.board[@"plantsArray"] = plantsArray;
+    [self.board saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if(error) {
+            NSLog(@"Error removing plant from board %@", error.localizedDescription);
+        } else {
+            NSLog(@"Removed plant from board!");
+        }
+    }];
+    
+    [self.collectionView reloadData];
+}
+
+- (void)presentConfirmationAlert:(UIAlertController *)alert {
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+#pragma mark - Actions
 
 - (IBAction)didTapEdit:(id)sender {
     if(_editing) {
@@ -78,6 +106,9 @@
                 NSLog(@"Successfully saved board for user!");
             }
         }];
+        for (id<BoardViewControllerDelegate> delegate in _delegates) {
+            [delegate stoppedEdit];
+        }
 
     } else {
         self.previousName = self.board.name;
@@ -85,6 +116,9 @@
         self.boardNameField.userInteractionEnabled = YES;
         [self.boardNameField becomeFirstResponder];
         [self.editButton setImage:[UIImage systemImageNamed:@"checkmark"] forState:UIControlStateNormal];
+        for (id<BoardViewControllerDelegate> delegate in _delegates) {
+            [delegate tappedEdit];
+        }
     }
 }
 
