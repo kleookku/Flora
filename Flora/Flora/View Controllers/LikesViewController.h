@@ -9,7 +9,17 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol LikesViewControllerDelegate
+
+- (void)tappedEdit;
+- (void)stoppedEdit;
+
+@end
+
 @interface LikesViewController : UIViewController
+
+@property (nonatomic, strong)NSMutableArray<id<LikesViewControllerDelegate>> *delegates;
+
 
 @end
 

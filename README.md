@@ -50,10 +50,13 @@ This app helps users find plants that are suitable for them based on three growt
     - [ ] This is a difficult/ambiguous problem because we have not learned how to extract data from an existing database for our own use. I don't really know how to go about this, but my manager says that it is doable.
 - [ ] Users can replace plant images with their own image.
 - [x] Users can delete plants from their boards.
-- [ ] Users can delete boards.
+- [x] Users can delete boards.
+- [x] Users can delete plants from their likes.
+- [x] Users can refresh their boards by scrolling down.
 - [x] Plant descriptions are in user friendly terms (i.e. instead of 30% soil moisture it will say "water 2 times a day")
 - [x] Users cannot signup with a username that is already in use.
 - [ ] Users can add multiple plants to boards at once.
+- [ ] Detail images will be loaded from low to high quality.
 
 
 **Stretch Stories**

@@ -18,6 +18,10 @@
 @interface LikesViewController () <UICollectionViewDataSource, BoardCellDelegate, LikesCellDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *boardsCollectionView;
 @property (weak, nonatomic) IBOutlet UICollectionView *likedCollectionView;
+@property (weak, nonatomic) IBOutlet UIButton *editButton;
+@property (weak, nonatomic) IBOutlet UIButton *addBoardButton;
+
+@property BOOL editing;
 
 @property (nonatomic, strong)PFUser *user;
 @property (nonatomic, strong)NSArray *likes;
@@ -72,6 +76,12 @@
     
     [self setupCreateBoardAlert];
     
+    self.editButton.layer.cornerRadius = 10;
+    self.addBoardButton.layer.cornerRadius = 10;
+    self.editing = NO;
+    
+    self.delegates = [[NSMutableArray alloc] init];
+    
     [self.likedCollectionView reloadData];
 }
 
@@ -98,6 +108,8 @@
     [self.createBoardAlert addAction:cancelAction];
 }
 
+#pragma mark - Refreshing
+
 - (void)updateLikes {
     self.likes = [[self.user[@"likes"] reverseObjectEnumerator] allObjects];
     [self.likedCollectionView reloadData];
@@ -115,6 +127,21 @@
 - (IBAction)didTapAddBoard:(id)sender {
     [self presentViewController:self.createBoardAlert animated:YES completion:nil];
 }
+- (IBAction)didTapEdit:(id)sender {
+    if(self.editing){
+        [self.editButton setTitle:@"Edit" forState:UIControlStateNormal];
+        self.editing = NO;
+        for(id<LikesViewControllerDelegate> delegate in self.delegates)
+            [delegate stoppedEdit];
+    } else {
+        [self.editButton setTitle:@"Done" forState:UIControlStateNormal];
+        self.editing = YES;
+        for(id<LikesViewControllerDelegate> delegate in self.delegates)
+            [delegate tappedEdit];
+    }
+}
+
+#pragma mark - BoardCellDelegate
 
 - (void)didTapViewBoard:(Board *)board {
     self.boardToView = board;
@@ -122,10 +149,51 @@
     [self performSegueWithIdentifier:@"ViewBoardSegue" sender:nil];
 }
 
+- (void)deleteBoard:(NSString *)boardName {
+    NSMutableArray *boardsArray = [[NSMutableArray alloc] initWithArray:self.user[@"boards"] copyItems:YES];
+    [boardsArray removeObject:boardName];
+    self.user[@"boards"] = boardsArray;
+    self.boards = boardsArray;
+    [self.boardsCollectionView reloadData];
+    
+    [self.user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            if(error)
+                NSLog(@"Error deleting board from user's boards: %@", error.localizedDescription);
+            else
+                NSLog(@"Successfuly deleted board from user's boards!");
+    }];
+}
+
+- (void)confirmBoardDelete:(UIAlertController *)alert {
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+#pragma mark - LikesCellDelegate
+
 - (void)didTapPlant:(Plant *)plant {
     self.plantToView = plant;
     self.clickedPlant = YES;
     [self performSegueWithIdentifier:@"ViewPlantSegue" sender:nil];
+}
+
+- (void)deletePlantFromLikes:(NSString *)plantId {
+    NSMutableArray *likesArray = [[NSMutableArray alloc] initWithArray:self.user[@"likes"] copyItems:YES];
+    [likesArray removeObject:plantId];
+    self.user[@"likes"] = likesArray;
+    self.likes = [[likesArray reverseObjectEnumerator] allObjects];
+;
+    [self.likedCollectionView reloadData];
+    
+    [self.user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            if(error)
+                NSLog(@"Error deleting plant from user's likes: %@", error.localizedDescription);
+            else
+                NSLog(@"Successfuly deleted plant from user's likes!");
+    }];
+}
+
+- (void)confirmLikeDelete:(UIAlertController *)alert {
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 #pragma mark - Collection View Data Source
@@ -138,6 +206,8 @@
         PFQuery *query = [PFQuery queryWithClassName:@"Plant"];
         [query whereKey:@"plantId" equalTo:self.likes[indexPath.row]];
         query.limit = 1;
+        
+        [self.delegates addObject:cell];
 
         [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable results, NSError * _Nullable error) {
             if(results) {
@@ -161,6 +231,9 @@
         [query whereKey:@"name" equalTo:self.boards[indexPath.row]];
         [query whereKey:@"user" equalTo:self.user.username];
         query.limit = 1;
+        
+        [self.delegates addObject:cell];
+
         
         [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable results, NSError * _Nullable error) {
             if(results) {
