@@ -38,6 +38,8 @@
 		F47EE87B286E4A8E00E3AA76 /* FloraTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F47EE87A286E4A8E00E3AA76 /* FloraTests.m */; };
 		F47EE885286E4A8E00E3AA76 /* FloraUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F47EE884286E4A8E00E3AA76 /* FloraUITests.m */; };
 		F47EE887286E4A8E00E3AA76 /* FloraUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F47EE886286E4A8E00E3AA76 /* FloraUITestsLaunchTests.m */; };
+		F49755B52881E046008050BB /* AddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F49755B42881E046008050BB /* AddViewController.m */; };
+		F49755B82881E458008050BB /* AddPlantCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F49755B72881E458008050BB /* AddPlantCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +120,10 @@
 		F47EE880286E4A8E00E3AA76 /* FloraUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FloraUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F47EE884286E4A8E00E3AA76 /* FloraUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FloraUITests.m; sourceTree = "<group>"; };
 		F47EE886286E4A8E00E3AA76 /* FloraUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FloraUITestsLaunchTests.m; sourceTree = "<group>"; };
+		F49755B32881E046008050BB /* AddViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddViewController.h; sourceTree = "<group>"; };
+		F49755B42881E046008050BB /* AddViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddViewController.m; sourceTree = "<group>"; };
+		F49755B62881E458008050BB /* AddPlantCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AddPlantCell.h; path = Flora/Subviews/AddPlantCell.h; sourceTree = SOURCE_ROOT; };
+		F49755B72881E458008050BB /* AddPlantCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AddPlantCell.m; path = Flora/Subviews/AddPlantCell.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +209,8 @@
 				F44CF451287E1A890076AB4B /* SelectViewController.m */,
 				F44CF45A287F2F420076AB4B /* BoardViewController.h */,
 				F44CF45B287F2F420076AB4B /* BoardViewController.m */,
+				F49755B32881E046008050BB /* AddViewController.h */,
+				F49755B42881E046008050BB /* AddViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -229,6 +237,8 @@
 				F44CF457287E251A0076AB4B /* SelectBoardCell.m */,
 				F44B96BE287F3A0100A6EC78 /* PlantCell.h */,
 				F44B96BF287F3A0100A6EC78 /* PlantCell.m */,
+				F49755B62881E458008050BB /* AddPlantCell.h */,
+				F49755B72881E458008050BB /* AddPlantCell.m */,
 			);
 			path = Subviews;
 			sourceTree = "<group>";
@@ -539,6 +549,7 @@
 				F47EE860286E4A8D00E3AA76 /* AppDelegate.m in Sources */,
 				F44CF455287E21D10076AB4B /* BoardCell.m in Sources */,
 				F445ED132877438E0084BDBB /* SearchViewController.m in Sources */,
+				F49755B82881E458008050BB /* AddPlantCell.m in Sources */,
 				F44CF452287E1A890076AB4B /* SelectViewController.m in Sources */,
 				F445ED1C2878CF7F0084BDBB /* SignupViewController.m in Sources */,
 				F41A29F6286E509200D2DAB9 /* APIManager.m in Sources */,
@@ -551,6 +562,7 @@
 				F445ED1028760C530084BDBB /* CardView.m in Sources */,
 				F44CF458287E251A0076AB4B /* SelectBoardCell.m in Sources */,
 				F47EE871286E4A8E00E3AA76 /* main.m in Sources */,
+				F49755B52881E046008050BB /* AddViewController.m in Sources */,
 				F445ED192878B48F0084BDBB /* ProfileViewController.m in Sources */,
 				F44CF45C287F2F420076AB4B /* BoardViewController.m in Sources */,
 				F47EE863286E4A8D00E3AA76 /* SceneDelegate.m in Sources */,

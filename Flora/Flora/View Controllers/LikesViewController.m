@@ -15,7 +15,7 @@
 #import "BoardViewController.h"
 #import "DetailViewController.h"
 
-@interface LikesViewController () <UICollectionViewDataSource, BoardCellDelegate, LikesCellDelegate>
+@interface LikesViewController () <UICollectionViewDataSource, UICollectionViewDelegate, BoardCellDelegate, LikesCellDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *boardsCollectionView;
 @property (weak, nonatomic) IBOutlet UICollectionView *likedCollectionView;
 @property (weak, nonatomic) IBOutlet UIButton *editButton;
@@ -181,7 +181,7 @@
     [likesArray removeObject:plantId];
     self.user[@"likes"] = likesArray;
     self.likes = [[likesArray reverseObjectEnumerator] allObjects];
-;
+
     [self.likedCollectionView reloadData];
     
     [self.user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
@@ -196,7 +196,7 @@
     [self presentViewController:alert animated:YES completion:nil];
 }
 
-#pragma mark - Collection View Data Source
+#pragma mark - CollectionViewDataSource
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     if (collectionView.tag == 1) {
@@ -281,6 +281,24 @@
         return self.boards.count;
     }
 }
+//
+//#pragma mark - CollectionViewDelegate
+//
+//- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
+//    CGPoint offset = scrollView.contentOffset;
+//    UIEdgeInsets inset = scrollView.contentInset;
+//    CGFloat y = offset.x - inset.left;
+//    CGFloat reloadDistance = -80;
+//
+//    if (y < reloadDistance) {
+//        [self.likesRefreshControl beginRefreshing];
+//    }
+//}
+//
+//- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+//    [self.likesRefreshControl endRefreshing];
+//    [self updateLikes];
+//}
 
 #pragma mark - Networking
 

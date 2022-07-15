@@ -32,7 +32,9 @@
     self.emailField.layer.cornerRadius = 40;
     self.usernameField.layer.cornerRadius = 40;
     self.passwordField.layer.cornerRadius = 40;
+    [self.passwordField setSecureTextEntry:YES];
     self.confirmPasswordField.layer.cornerRadius = 40;
+    [self.confirmPasswordField setSecureTextEntry:YES];
     
     self.emailField.placeholder = @"email";
     self.usernameField.placeholder = @"username";
@@ -86,6 +88,12 @@
             if (error != nil) {
                 NSLog(@"Error: %@", error.localizedDescription);
                 [self displayErrorAlertWithMessage:error.localizedDescription];
+                
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+                [alert addAction:okAction];
+                [self presentViewController:alert animated:YES completion:nil];
+                
             } else {
                 NSLog(@"User registered successfully");
                 

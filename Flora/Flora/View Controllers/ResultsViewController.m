@@ -91,7 +91,6 @@
 
 - (IBAction)didTapLikebutton:(id)sender {
     [self.swipeableView swipeTopViewToRight];
-
     [self handleRight:sender];
 }
 

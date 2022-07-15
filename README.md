@@ -55,6 +55,8 @@ This app helps users find plants that are suitable for them based on three growt
 - [x] Users can refresh their boards by scrolling down.
 - [x] Plant descriptions are in user friendly terms (i.e. instead of 30% soil moisture it will say "water 2 times a day")
 - [x] Users cannot signup with a username that is already in use.
+- [x] Users cannot like multiple of the same plant.
+- [x] Users can reset their password through their email if they forget it. 
 - [ ] Users can add multiple plants to boards at once.
 - [ ] Detail images will be loaded from low to high quality.
 
@@ -62,6 +64,7 @@ This app helps users find plants that are suitable for them based on three growt
 **Stretch Stories**
 - [ ] Users can buy plants within the app.
 - [ ] Users can take a picture of a plant and the app will help determine what plant it is. 
+- [ ] Users can add their own plants.
 
 ### 2. Screen Archetypes
 - Login Screen

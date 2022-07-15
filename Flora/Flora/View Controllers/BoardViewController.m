@@ -7,6 +7,7 @@
 
 #import "BoardViewController.h"
 #import "PlantCell.h"
+#import "AddViewController.h"
 #import "Plant.h"
 
 @interface BoardViewController () <UICollectionViewDataSource, PlantCellDelegate>
@@ -15,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tapGesture;
 @property (weak, nonatomic) IBOutlet UIButton *editButton;
+@property (weak, nonatomic) IBOutlet UIButton *addPlantButton;
 @property (nonatomic, strong)NSString *previousName;
 
 @property BOOL editing;
@@ -31,7 +33,13 @@
     
     self.collectionView.dataSource = self;
     self.delegates = [[NSMutableArray alloc] init];
+    self.boardNameField.borderStyle = UITextBorderStyleNone;
+    
+    self.editButton.layer.cornerRadius = 15;
+    self.addPlantButton.layer.cornerRadius = 15;
 }
+
+#pragma mark - UICollectionViewDataSource
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     PlantCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PlantCell" forIndexPath:indexPath];
@@ -58,6 +66,11 @@
     }];
     return cell;
 }
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return self.board.plantsArray.count;
+}
+
 
 #pragma mark - PlantCellDelegate
 
@@ -87,7 +100,8 @@
         self.editing = NO;
         self.boardNameField.userInteractionEnabled = NO;
         [self.boardNameField resignFirstResponder];
-        [self.editButton setImage:[UIImage systemImageNamed:@"pencil"] forState:UIControlStateNormal];
+//        [self.editButton setImage:[UIImage systemImageNamed:@"pencil"] forState:UIControlStateNormal];
+        [self.editButton setTitle:@"edit" forState:UIControlStateNormal];
         
         self.board.name = self.boardNameField.text;
         [self.board saveInBackground];
@@ -115,25 +129,25 @@
         self.editing = YES;
         self.boardNameField.userInteractionEnabled = YES;
         [self.boardNameField becomeFirstResponder];
-        [self.editButton setImage:[UIImage systemImageNamed:@"checkmark"] forState:UIControlStateNormal];
+//        [self.editButton setImage:[UIImage systemImageNamed:@"checkmark"] forState:UIControlStateNormal];
+        [self.editButton setTitle:@"done" forState:UIControlStateNormal];
         for (id<BoardViewControllerDelegate> delegate in _delegates) {
             [delegate tappedEdit];
         }
     }
 }
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.board.plantsArray.count;
-}
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    AddViewController *addViewVC = [segue destinationViewController];
+    addViewVC.board = self.board;
 }
-*/
+
 
 @end

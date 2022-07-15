@@ -49,6 +49,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.searchButton.layer.cornerRadius = 10;
 }
 - (IBAction)onTapSearch:(id)sender {
     self.activityIndicator.startAnimating;
@@ -67,9 +68,7 @@
     [[APIManager shared] searchWithShadeLevel:shade withMoistureUse:moisture withMinTemperature:temp offsetBy:0 completion:^(NSArray * _Nonnull results, NSError * _Nonnull error) {
             if(results) {
                 NSLog(@"Successfully created characteristics search!");
-//                NSLog(@"api results first item %@", results[0]);
                 self.results = results;
-//                NSLog(@"results first item %@", self.results[0]);
                 self.activityIndicator.stopAnimating;
                 self.searchButton.enabled = YES;
                 
