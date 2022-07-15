@@ -156,27 +156,30 @@
     NSDictionary *curPlant = self.plantsArray[self.plantIndex-4];
     NSString *plantId = [NSString stringWithFormat:@"%@", curPlant[@"Id"]];
     
-    // save plant PFObject to database
-    [Plant savePlantWithDict:curPlant withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-        if(error){
-            NSLog(@"Error saving plant: %@", error.localizedDescription);
-        } else {
-            NSLog(@"Successfully saved plant!");
-        }
-    }];
-
     
-    // save plant to user's likes
-    NSMutableArray *likesArray = [[NSMutableArray alloc] initWithArray:self.user[@"likes"] copyItems:YES];
-    [likesArray addObject:plantId];
-    self.user[@"likes"] = likesArray;
-    [self.user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        if(error) {
-            NSLog(@"Error: %@", error.localizedDescription);
-        } else {
-            NSLog(@"Saved!");
-        }
-    }];
+    if(![self.user[@"likes"] containsObject:plantId]){
+        // save plant PFObject to database
+        [Plant savePlantWithDict:curPlant withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+            if(error){
+                NSLog(@"Error saving plant: %@", error.localizedDescription);
+            } else {
+                NSLog(@"Successfully saved plant!");
+            }
+        }];
+        
+        // save plant to user's likes
+        NSMutableArray *likesArray = [[NSMutableArray alloc] initWithArray:self.user[@"likes"] copyItems:YES];
+        [likesArray addObject:plantId];
+        self.user[@"likes"] = likesArray;
+        [self.user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            if(error) {
+                NSLog(@"Error: %@", error.localizedDescription);
+            } else {
+                NSLog(@"Saved!");
+            }
+        }];
+        
+    }
     
 }
 
@@ -206,6 +209,8 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
     DetailViewController *detailVC = [segue destinationViewController];
     detailVC.plantDict = self.plantsArray[_plantIndex-4];
 }

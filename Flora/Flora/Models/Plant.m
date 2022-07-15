@@ -106,7 +106,6 @@
             if(results.count > 0) {
                 Plant *plant = (Plant *)results[0];
                 returnPlant = plant;
-//                NSLog(@"plant is %@", returnPlant);
             }
         } else {
             NSLog(@"%@", error.localizedDescription);

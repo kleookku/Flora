@@ -40,21 +40,21 @@
     self.passwordField.secureTextEntry = YES;
     self.emailField.text = user.email;
     self.emailField.userInteractionEnabled = NO;
-    // Do any additional setup after loading the view.
     _saveButton.layer.cornerRadius = 10;
     
     self.profileImage.layer.masksToBounds = false;
     self.profileImage.layer.cornerRadius = self.profileImage.frame.size.width/2;
     self.profileImage.clipsToBounds = true;
     self.profileImage.layer.borderWidth = 0.05;
-    if(user[@"profilePic"] != nil) {
-        self.profileImage.file = user[@"profilePic"];
-        [self.profileImage loadInBackground];
-    }
     
     self.addPictureButton.layer.masksToBounds = false;
     self.addPictureButton.layer.cornerRadius = self.addPictureButton.frame.size.width/2;
     self.addPictureButton.clipsToBounds = true;
+    
+    if(user[@"profilePic"] != nil) {
+        self.profileImage.file = user[@"profilePic"];
+        [self.profileImage loadInBackground];
+    }
     
     // alerts
     [self setupAddPictureAlert];
@@ -78,24 +78,21 @@
     NSData *imageData = UIImagePNGRepresentation(self.profileImage.image);
     PFFileObject *imageFile = [PFFileObject fileObjectWithName:@"avatar.png" data:imageData];
     
-    PFUser *currentUser = [PFUser currentUser];
-    currentUser[@"profilePic"] = imageFile;
-    [currentUser saveInBackground];
+    user[@"profilePic"] = imageFile;
+    [user saveInBackground];
     
     [self presentViewController:self.savedAlert animated:YES completion:^{
             NSTimeInterval delayInSeconds = 0.25;
             dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
             dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
                 [self.savedAlert dismissViewControllerAnimated:YES completion:nil];
-            });
+        });
     }];
 
 }
 
 - (IBAction)logoutUser:(id)sender {
-    
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
-        // PFUser.current() will now be nil
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
         SceneDelegate *sceneDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
         UIViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
@@ -141,14 +138,17 @@
 #pragma mark - Image Select
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
-    
     // Get the image captured by the UIImagePickerController
     UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
     UIImage *editedImage = info[UIImagePickerControllerEditedImage];
     
-    // Do something with the images (based on your use case)
-    UIImage *resizedImage = [self resizeImage:originalImage withSize:self.profileImage.bounds.size];
-    self.profileImage.image = resizedImage;
+    if(editedImage){
+        UIImage *resizedImage = [self resizeImage:editedImage withSize:self.profileImage.bounds.size];
+        self.profileImage.image = resizedImage;
+    } else {
+        UIImage *resizedImage = [self resizeImage:originalImage withSize:self.profileImage.bounds.size];
+        self.profileImage.image = resizedImage;
+    }
     
     // Dismiss UIImagePickerController to go back to your original view controller
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -162,7 +162,6 @@
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
         [self presentViewController:imagePickerVC animated:YES completion:nil];
-
     }
     else {
         NSLog(@"Camera 🚫 available so we will use photo library instead");

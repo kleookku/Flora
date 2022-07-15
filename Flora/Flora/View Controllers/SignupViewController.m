@@ -27,7 +27,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     self.signupButton.layer.cornerRadius = 20;
     self.emailField.layer.cornerRadius = 40;
     self.usernameField.layer.cornerRadius = 40;
@@ -45,25 +44,19 @@
 }
 
 - (void)setupAlerts {
-    
+    // emptyFieldsAlert
     self.emptyFieldsAlert = [UIAlertController alertControllerWithTitle:@"Fields Empty"
                                                                 message:@"Please enter a username and password"
                                                          preferredStyle:(UIAlertControllerStyleAlert)];
-    
-    // create an OK action
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
                                                        style:UIAlertActionStyleDefault
-                                                     handler:^(UIAlertAction * _Nonnull action) {
-        // handle response here.
-    }];
-    // add the OK action to the alert controller
+                                                     handler:^(UIAlertAction * _Nonnull action) {}];
     [self.emptyFieldsAlert addAction:okAction];
     
+    // passwordMatchAlert
     self.passwordMatchAlert = [UIAlertController alertControllerWithTitle:@"Passwords don't match"
                                                                   message:@"Please enter a valid password"
                                                            preferredStyle:(UIAlertControllerStyleAlert)];
-    
-    // add the OK action to the alert controller
     [self.passwordMatchAlert addAction:okAction];
     
 }
@@ -111,13 +104,10 @@
     self.errorAlert = [UIAlertController alertControllerWithTitle:@"Error"
                                                                 message:message
                                                          preferredStyle:(UIAlertControllerStyleAlert)];
-    
     // create an OK action
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
                                                        style:UIAlertActionStyleDefault
-                                                     handler:^(UIAlertAction * _Nonnull action) {
-        // handle response here.
-    }];
+                                                     handler:^(UIAlertAction * _Nonnull action) {}];
     // add the OK action to the alert controller
     [self.errorAlert addAction:okAction];
     [self presentViewController:self.errorAlert animated:YES completion:^{}];

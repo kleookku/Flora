@@ -23,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSURL *)getPlantImageURL:(NSString *) filename;
 
-
++ (void)saveBoardWithName:(NSString *) boardName;
 
 @end
 

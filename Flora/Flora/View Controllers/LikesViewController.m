@@ -14,6 +14,7 @@
 #import "Board.h"
 #import "BoardViewController.h"
 #import "DetailViewController.h"
+#import "APIManager.h"
 
 @interface LikesViewController () <UICollectionViewDataSource, UICollectionViewDelegate, BoardCellDelegate, LikesCellDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *boardsCollectionView;
@@ -32,7 +33,6 @@
 @property (nonatomic, strong)Plant *plantToView;
 @property BOOL clickedPlant;
 
-@property (nonatomic, strong) UIRefreshControl *likesRefreshControl;
 @property (nonatomic, strong) UIRefreshControl *boardsRefreshControl;
 
 
@@ -56,15 +56,10 @@
     self.likedCollectionView.tag = 1;
     self.boardsCollectionView.tag = 2;
     
-    self.likesRefreshControl = [[UIRefreshControl alloc] init];
-    [self.likesRefreshControl addTarget:self action:@selector(updateLikes) forControlEvents:UIControlEventValueChanged];
-    [self.likedCollectionView insertSubview:self.likesRefreshControl atIndex:0];\
-    [self.likesRefreshControl setHidden:NO];
-    
     self.boardsRefreshControl = [[UIRefreshControl alloc] init];
     [self.boardsRefreshControl addTarget:self action:@selector(updateBoards) forControlEvents:UIControlEventValueChanged];
     [self.boardsCollectionView insertSubview:self.boardsRefreshControl atIndex:0];
-    [self.boardsRefreshControl setHidden:NO];
+    [self.boardsRefreshControl setHidden:YES];
         
     self.boardToView = nil;
     self.plantToView = nil;
@@ -108,7 +103,6 @@
 - (void)updateLikes {
     self.likes = [[self.user[@"likes"] reverseObjectEnumerator] allObjects];
     [self.likedCollectionView reloadData];
-    [self.likesRefreshControl endRefreshing];
 }
 
 - (void)updateBoards {
@@ -229,7 +223,6 @@
         query.limit = 1;
         
         [self.delegates addObject:cell];
-
         
         [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable results, NSError * _Nullable error) {
             if(results) {
@@ -281,29 +274,14 @@
 #pragma mark - Networking
 
 - (void)saveBoardWithName:(NSString*)boardName {
-    
-    // save board PFObject to database
-    [Board saveBoard:boardName withPlants:@[] forUser:[PFUser currentUser].username withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-        if(error){
-            NSLog(@"Error saving board: %@", error.localizedDescription);
-        } else {
-            NSLog(@"Successfully saved board!");
-        }
-    }];
-    
-    // save plant to user's likes
-    PFUser *user = [PFUser currentUser];
-    NSMutableArray *boardsArray = [[NSMutableArray alloc] initWithArray: user[@"boards"] copyItems:YES];
-    [boardsArray addObject:boardName];
-
-    user[@"boards"] = boardsArray;
-    [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        if(error) {
-            NSLog(@"Error: %@", error.localizedDescription);
-        } else {
-            NSLog(@"Saved!");
-        }
-    }];
+    if([self.user[@"boards"] containsObject:boardName]){
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Duplicate Board Name" message:nil preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+        [alert addAction:okAction];
+        [self presentViewController:alert animated:YES completion:nil];
+    } else {
+        [APIManager saveBoardWithName:boardName];
+    }
 }
 
 

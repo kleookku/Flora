@@ -10,6 +10,7 @@
 #import "Board.h"
 #import "SelectBoardCell.h"
 #import "Plant.h"
+#import "APIManager.h"
 
 @interface SelectViewController () <UICollectionViewDataSource, SelectBoardCellDelegate>
 
@@ -91,7 +92,7 @@
                 
                 if(board.plantsArray.count > 0) {
                     [self setBoardCoverImage:board.plantsArray[0] forCell:cell];
-
+                    
                 }
             }
         }
@@ -130,27 +131,14 @@
 }
 
 - (void)saveBoardWithName:(NSString*)boardName {
-    // save board PFObject to database
-    [Board saveBoard:boardName withPlants:@[] forUser:self.user.username withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-        if(error){
-            NSLog(@"Error saving board: %@", error.localizedDescription);
-        } else {
-            NSLog(@"Successfully saved board!");
-        }
-    }];
-    
-    // save plant to user's likes
-    PFUser *user = [PFUser currentUser];
-    NSMutableArray *boardsArray = [[NSMutableArray alloc] initWithArray: user[@"boards"] copyItems:YES];
-    [boardsArray addObject:boardName];
-    user[@"boards"] = boardsArray;
-    [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        if(error) {
-            NSLog(@"Error: %@", error.localizedDescription);
-        } else {
-            NSLog(@"Saved!");
-        }
-    }];
+    if([self.user[@"boards"] containsObject:boardName]){
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Duplicate Board Name" message:nil preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+        [alert addAction:okAction];
+        [self presentViewController:alert animated:YES completion:nil];
+    } else {
+        [APIManager saveBoardWithName:boardName];
+    }
 }
 
 /*

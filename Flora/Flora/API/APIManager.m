@@ -6,6 +6,9 @@
 //
 
 #import "APIManager.h"
+#import "Parse/Parse.h"
+#import "Board.h"
+
 #define SHADE @"Shade Tolerance"
 #define MOIST @"Moisture Use"
 #define TEMP @"Temperature, Minimum (°F)"
@@ -28,7 +31,7 @@
     dispatch_once(&onceToken, ^{
         NSString *path = [[NSBundle mainBundle] pathForResource:@"charSearchBody" ofType:@"json"];
         data = [NSData dataWithContentsOfFile:path];
-    });
+        });
     return data;
 }
 
@@ -37,7 +40,7 @@
     NSMutableDictionary *mutableDict = [NSJSONSerialization JSONObjectWithData:[APIManager searchBody] options:NSJSONReadingMutableContainers error:nil];
     mutableDict[@"Offset"] = @(offset);
     NSMutableArray *filterOptions = [mutableDict objectForKey:@"FilterOptions"];
-            
+    
     [self modifyFilterOptions:shade ofArray:filterOptions inCategory:SHADE];
     [self modifyFilterOptions:moist ofArray:filterOptions inCategory:MOIST];
     [self modifyFilterOptions:temp ofArray:filterOptions inCategory:TEMP];
@@ -106,7 +109,31 @@
     
 }
 
-
++ (void)saveBoardWithName:(NSString *) boardName {
+    PFUser *user = [PFUser currentUser];
+    
+    // save board PFObject to database
+    [Board saveBoard:boardName withPlants:@[] forUser:user.username withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+        if(error){
+            NSLog(@"Error saving board: %@", error.localizedDescription);
+        } else {
+            NSLog(@"Successfully saved board!");
+        }
+    }];
+    
+    // save plant to user's likes
+    NSMutableArray *boardsArray = [[NSMutableArray alloc] initWithArray: user[@"boards"] copyItems:YES];
+    [boardsArray addObject:boardName];
+    user[@"boards"] = boardsArray;
+    [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if(error) {
+            NSLog(@"Error: %@", error.localizedDescription);
+        } else {
+            NSLog(@"Saved!");
+        }
+    }];
+    
+}
 
 /*
  SVPullToRefresh pod (detect when you get to the bottom)

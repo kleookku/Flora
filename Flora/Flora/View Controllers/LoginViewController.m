@@ -32,15 +32,55 @@
     self.passwordField.secureTextEntry = YES;
     _usernameField.placeholder = @"username";
     _passwordField.placeholder = @"password";
-
+    
 }
+
+- (void)setupAlerts{
+    self.emptyFieldsAlert = [UIAlertController alertControllerWithTitle:@"Fields Empty" message:@"Please enter a username and password" preferredStyle:(UIAlertControllerStyleAlert)];
+    [self.emptyFieldsAlert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {}]];
+    
+    self.forgotPasswordAlert = [UIAlertController alertControllerWithTitle:@"Reset Password"
+                                                                   message:@"Enter your email"
+                                                            preferredStyle:(UIAlertControllerStyleAlert)];
+    [self.forgotPasswordAlert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.placeholder = @"email";
+    }];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSString *email = [[self.forgotPasswordAlert textFields][0] text];
+        [PFUser requestPasswordResetForEmailInBackground:email block:^(BOOL succeeded, NSError * _Nullable error) {
+            UIAlertController *alert = nil;
+            if(error)
+                alert = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+            else
+                alert = [UIAlertController alertControllerWithTitle:@"Reset password link sent" message:nil preferredStyle:UIAlertControllerStyleAlert];
+            
+            [self presentViewController:alert animated:YES completion:^{
+                    NSTimeInterval delayInSeconds = 1;
+                    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+                    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                        [alert dismissViewControllerAnimated:YES completion:nil];
+                });
+            }];
+            
+        }];
+    }];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSLog(@"Cancelled");
+    }];
+    
+    [self.forgotPasswordAlert addAction:cancelAction];
+    [self.forgotPasswordAlert addAction:okAction];
+    [self.forgotPasswordAlert setPreferredAction:cancelAction];
+}
+
 
 
 #pragma mark - Actions
 
 - (IBAction)didTapForgotPassword:(id)sender {
-//    PFUser.requestPasswordResetForEmailInBackground("email@example.com", nil)
-    
+    [self presentViewController:self.forgotPasswordAlert animated:YES completion:nil];
 }
 
 - (IBAction)loginUser:(id)sender {
@@ -61,7 +101,7 @@
                 
                 self.usernameField.text = @"";
                 self.passwordField.text = @"";
-                                
+                
                 UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
                 UIViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
                 SceneDelegate *sceneDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
@@ -70,23 +110,6 @@
         }];
     }
 }
-
-- (void)setupAlerts{
-    self.emptyFieldsAlert = [UIAlertController alertControllerWithTitle:@"Fields Empty"
-                                                     message:@"Please enter a username and password"
-                                              preferredStyle:(UIAlertControllerStyleAlert)];
-    // create an OK action
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
-                              style:UIAlertActionStyleDefault
-                              handler:^(UIAlertAction * _Nonnull action) {}];
-    // add the OK action to the alert controller
-    [self.emptyFieldsAlert addAction:okAction];
-    
-    self.forgotPasswordAlert = [UIAlertController alertControllerWithTitle:@"Forgot Password"
-                                                                  message:@"Please enter your email"
-                                                           preferredStyle:(UIAlertControllerStyleAlert)];
-}
-
 
 
 
