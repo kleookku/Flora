@@ -12,16 +12,9 @@
 - (IBAction)didTapAddToBoard:(id)sender {
     UIAlertController *confirmationAlert = nil;
     if([self.board[@"plantsArray"] containsObject:self.plantToAdd]){
-        confirmationAlert = [UIAlertController alertControllerWithTitle:@"Already exists in your board" message:nil preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Add Anyways" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            [self addPlantToBoard];
-        }];
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {}];
-        
+        confirmationAlert = [UIAlertController alertControllerWithTitle:@"Already exists in this board" message:nil preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {}];
         [confirmationAlert addAction:okAction];
-        [confirmationAlert addAction:cancelAction];
-        
-        [confirmationAlert setPreferredAction:cancelAction];
         
     } else {
         NSString *title = [@"Add plant to " stringByAppendingString:self.board.name];

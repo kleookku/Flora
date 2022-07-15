@@ -51,12 +51,23 @@
                 [self dismissViewControllerAnimated:YES completion:nil];
             }
     }];
+    
+    [self.delegate updateBoard];
 }
 
 #pragma mark - AddPlantCellDelegate
 
 - (void)addedPlant:(NSString *)plantId{
-    [self.plantsToAdd addObject:plantId];
+    if([self.board[@"plantsArray"] containsObject:plantId]){
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Already exists in your board" message:nil preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {}];
+
+        [alert addAction:okAction];
+        [self presentViewController:alert animated:YES completion:nil];
+    } else {
+        [self.plantsToAdd addObject:plantId];
+
+    }
 }
 
 - (void)unaddedPlant:(NSString *)plantId {

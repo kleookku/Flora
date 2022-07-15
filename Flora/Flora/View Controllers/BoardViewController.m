@@ -10,7 +10,7 @@
 #import "AddViewController.h"
 #import "Plant.h"
 
-@interface BoardViewController () <UICollectionViewDataSource, PlantCellDelegate>
+@interface BoardViewController () <UICollectionViewDataSource, PlantCellDelegate, AddViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *boardNameField;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -93,6 +93,12 @@
     [self presentViewController:alert animated:YES completion:nil];
 }
 
+#pragma mark - AddViewControllerDelegate
+
+- (void)updateBoard {
+    [self.collectionView reloadData];
+}
+
 #pragma mark - Actions
 
 - (IBAction)didTapEdit:(id)sender {
@@ -147,6 +153,7 @@
     // Pass the selected object to the new view controller.
     AddViewController *addViewVC = [segue destinationViewController];
     addViewVC.board = self.board;
+    addViewVC.delegate = self;
 }
 
 
