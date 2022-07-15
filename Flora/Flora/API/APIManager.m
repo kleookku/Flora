@@ -28,14 +28,12 @@
     dispatch_once(&onceToken, ^{
         NSString *path = [[NSBundle mainBundle] pathForResource:@"charSearchBody" ofType:@"json"];
         data = [NSData dataWithContentsOfFile:path];
-//        dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
     });
     return data;
 }
 
 - (void)searchWithShadeLevel:(NSArray *)shade withMoistureUse:(NSArray *)moist withMinTemperature:(NSArray *)temp offsetBy:(NSUInteger)offset completion:(void(^)(NSArray *results, NSError *error))completion {
     NSString *url = @"https://plantsservices.sc.egov.usda.gov/api/CharacteristicsSearch";
-//    NSMutableDictionary *mutableDict = [[APIManager searchBody] mutableCopy];
     NSMutableDictionary *mutableDict = [NSJSONSerialization JSONObjectWithData:[APIManager searchBody] options:NSJSONReadingMutableContainers error:nil];
     mutableDict[@"Offset"] = @(offset);
     NSMutableArray *filterOptions = [mutableDict objectForKey:@"FilterOptions"];
@@ -77,21 +75,7 @@
         NSString *moistureUse = [self getCharacteristicValue:MOIST inArray:response];
         NSString *minimumTemp = [self getCharacteristicValue:TEMP inArray:response];
         
-//        if(shadeLevel @"")
-//            shadeLevel = @"No shade level information available"
-//        
-//        
-//        if(moistureUse == @"")
-//            moistureUse = @"No moisture use information available"
-//        
-//        if (minimumTemp == @"")
-//            minimumTemp = @"No minimum temperature information available."
-
-        NSDictionary *dict = @{@"shade": shadeLevel,
-                               @"moist": moistureUse,
-                               @"temp": minimumTemp};
-        
-        completion(dict[@"shade"], dict[@"moist"], dict[@"temp"], nil);
+        completion(shadeLevel, moistureUse, minimumTemp, nil);
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         completion(nil, nil, nil, error);
@@ -102,7 +86,6 @@
     NSUInteger index = [response indexOfObjectPassingTest:^BOOL(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         NSDictionary *dict = (NSDictionary *)obj;
         return [dict[@"PlantCharacteristicName"]  isEqualToString:category];}];
-//    NSLog(@"response is %@", response);
     
     if( index <= [response count]){
         return [response objectAtIndex:index][@"PlantCharacteristicValue"];

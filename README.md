@@ -43,12 +43,11 @@ This app helps users find plants that are suitable for them based on three growt
 - [x] Users can change their username or password and set a profile picture.
 
 
-**Optional Stories**
+**Stretch Stories**
 - [ ] **Plant results will show new results every time (i.e. plants that users have seen already will not appear)**
     - This is a difficult/ambiguous problem because I will have to figure out how to cache certain results and store "seen" results. I also have to figure out how to get new results from later pages of the USDA database in case the user goes through all the plants on the first page.
 - [ ]  **Plants will be extracted from the USDA Plants database and stored in Parse, then queried for a faster search.**
     - [ ] This is a difficult/ambiguous problem because we have not learned how to extract data from an existing database for our own use. I don't really know how to go about this, but my manager says that it is doable.
-- [ ] Users can replace plant images with their own image.
 - [x] Users can delete plants from their boards.
 - [x] Users can delete boards.
 - [x] Users can delete plants from their likes.
@@ -56,15 +55,17 @@ This app helps users find plants that are suitable for them based on three growt
 - [x] Plant descriptions are in user friendly terms (i.e. instead of 30% soil moisture it will say "water 2 times a day")
 - [x] Users cannot signup with a username that is already in use.
 - [x] Users cannot like multiple of the same plant.
-- [x] Users can reset their password through their email if they forget it. 
-- [ ] Users can add multiple plants to boards at once.
+- [x] Users can add multiple plants to boards at once.
+- [ ] Users can reset their password through their email if they forget it. 
 - [ ] Detail images will be loaded from low to high quality.
+- [ ] Users can replace plant images with their own image.
 
 
-**Stretch Stories**
+**Super Stretch Stories**
 - [ ] Users can buy plants within the app.
 - [ ] Users can take a picture of a plant and the app will help determine what plant it is. 
 - [ ] Users can add their own plants.
+- [ ] Users can share plants or boards. 
 
 ### 2. Screen Archetypes
 - Login Screen
@@ -89,15 +90,16 @@ This app helps users find plants that are suitable for them based on three growt
 - Board Screen
     - Displays a user's board, with an image and the name of each plant that is part of the board. 
     - Allows the user to edit the name of the board.
-- Delete Screen
+- Add Screen
     - Displays a list of plants or list of boards than users can select. 
-    - Presents a remove button that allows the user to delete their selections.
+    - Presents a save button that allows the user to save their selections.
 
 ### 3. Navigation
 
 **Tab Navigation** (Tab to Screen)
 - Search Screen
 - Plants Screen
+- Profile Screen
 
 
 **Flow Navigation** (Screen to Screen)
@@ -109,7 +111,7 @@ This app helps users find plants that are suitable for them based on three growt
             - Select Screen
 - Plants Screen
     - Board Screen
-        - Delete Screen
+        - Add Screen
 
 ## Wireframes
 

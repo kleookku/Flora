@@ -47,9 +47,6 @@
     self.user = [PFUser currentUser];
     
     NSArray *userLikes = self.user[@"likes"];
-    NSLog(@"user is %@", self.user);
-    NSLog(@"user likes are %@", self.user[@"likes"]);
-    NSLog(@"user boards are %@", self.user[@"boards"]);
     self.likes = [[userLikes reverseObjectEnumerator] allObjects];
     self.boards = self.user[@"boards"];
     
@@ -68,9 +65,7 @@
     [self.boardsRefreshControl addTarget:self action:@selector(updateBoards) forControlEvents:UIControlEventValueChanged];
     [self.boardsCollectionView insertSubview:self.boardsRefreshControl atIndex:0];
     [self.boardsRefreshControl setHidden:NO];
-    
-    NSLog(@"referfsh control are %@, %@", self.likesRefreshControl, self.boardsRefreshControl);
-    
+        
     self.boardToView = nil;
     self.plantToView = nil;
     
@@ -129,12 +124,12 @@
 }
 - (IBAction)didTapEdit:(id)sender {
     if(self.editing){
-        [self.editButton setTitle:@"Edit" forState:UIControlStateNormal];
+        [self.editButton setTitle:@"edit" forState:UIControlStateNormal];
         self.editing = NO;
         for(id<LikesViewControllerDelegate> delegate in self.delegates)
             [delegate stoppedEdit];
     } else {
-        [self.editButton setTitle:@"Done" forState:UIControlStateNormal];
+        [self.editButton setTitle:@"done" forState:UIControlStateNormal];
         self.editing = YES;
         for(id<LikesViewControllerDelegate> delegate in self.delegates)
             [delegate tappedEdit];
@@ -206,7 +201,7 @@
         PFQuery *query = [PFQuery queryWithClassName:@"Plant"];
         [query whereKey:@"plantId" equalTo:self.likes[indexPath.row]];
         query.limit = 1;
-        
+
         [self.delegates addObject:cell];
 
         [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable results, NSError * _Nullable error) {
@@ -215,13 +210,14 @@
                     Plant *plant = (Plant *)results[0];
                     cell.plant = plant;
                     cell.plantImage.file = plant.image;
-                    [cell.plantImage loadInBackground];                    
+                    [cell.plantImage loadInBackground];
                     cell.plantName.text = plant.name;
                 }
             } else {
                 NSLog(@"%@", error.localizedDescription);
             }
         }];
+        
         return cell;
     } else {
         BoardCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"BoardCell" forIndexPath:indexPath];
@@ -281,24 +277,6 @@
         return self.boards.count;
     }
 }
-//
-//#pragma mark - CollectionViewDelegate
-//
-//- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
-//    CGPoint offset = scrollView.contentOffset;
-//    UIEdgeInsets inset = scrollView.contentInset;
-//    CGFloat y = offset.x - inset.left;
-//    CGFloat reloadDistance = -80;
-//
-//    if (y < reloadDistance) {
-//        [self.likesRefreshControl beginRefreshing];
-//    }
-//}
-//
-//- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-//    [self.likesRefreshControl endRefreshing];
-//    [self updateLikes];
-//}
 
 #pragma mark - Networking
 
@@ -332,9 +310,7 @@
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {\
     if (self.clickedPlant ){
         DetailViewController *detailVC = [segue destinationViewController];
         detailVC.plant = self.plantToView;

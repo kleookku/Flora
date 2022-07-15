@@ -36,24 +36,22 @@
 }
 
 
+#pragma mark - Actions
+
 - (IBAction)didTapForgotPassword:(id)sender {
 //    PFUser.requestPasswordResetForEmailInBackground("email@example.com", nil)
     
 }
 
-
 - (IBAction)loginUser:(id)sender {
     if([self.usernameField.text isEqual:@""] || [self.passwordField.text isEqual:@""]) {
-        [self presentViewController:self.emptyFieldsAlert animated:YES completion:^{
-            // optional code for what happens after the alert controller has finished presenting
-        }];
+        [self presentViewController:self.emptyFieldsAlert animated:YES completion:^{}];
     } else {
         NSString *username = self.usernameField.text;
         NSString *password = self.passwordField.text;
         
         [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * user, NSError *  error) {
             if (error) {
-//                NSLog(@"User log in failed: %@", error.localizedDescription);
                 UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Login failed" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
                 UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
                 [alert addAction:okAction];
@@ -98,9 +96,6 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    //UINavigationController *navController = [segue destinationViewController];
-    //ResultsViewController *resultsVC = (ResultsViewController*)navController.topViewController;
-
 }
 
 

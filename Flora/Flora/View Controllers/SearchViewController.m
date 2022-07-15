@@ -57,9 +57,6 @@
     self.moist = MOIST_ARRAY[_moistureControl.selectedSegmentIndex];
     self.shade = SUN_ARRAY[_sunlightControl.selectedSegmentIndex];
     self.temp = TEMP_ARRAY[_temperaturecontrol.selectedSegmentIndex];
-    
-//    NSLog(@"moist: %@, shade: %@, temp: %@", self.moist, self.shade, self.temp);
-    
     [self createCharacteristicSearchWithMoistureLevel:self.moist shadeLevel:self.shade minimumTemperature:self.temp];
 }
 

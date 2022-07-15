@@ -24,6 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype) savePlantWithCharsMoistureUse:(NSString *)moist shadeLevel:(NSString *)shade minimumTemp:(NSString *)temp fromPlantDict:(NSDictionary *)dict withCompletion: (PFBooleanResultBlock _Nullable)completion;
 
++ (instancetype)getPlantWithId:(NSString *)plantId;
 
 @end
 

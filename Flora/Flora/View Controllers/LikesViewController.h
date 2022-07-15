@@ -20,7 +20,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong)NSMutableArray<id<LikesViewControllerDelegate>> *delegates;
 
-
 @end
 
 NS_ASSUME_NONNULL_END

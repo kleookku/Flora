@@ -35,8 +35,8 @@
     self.delegates = [[NSMutableArray alloc] init];
     self.boardNameField.borderStyle = UITextBorderStyleNone;
     
-    self.editButton.layer.cornerRadius = 15;
-    self.addPlantButton.layer.cornerRadius = 15;
+    self.editButton.layer.cornerRadius = 10;
+    self.addPlantButton.layer.cornerRadius = 7;
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -106,7 +106,8 @@
         self.editing = NO;
         self.boardNameField.userInteractionEnabled = NO;
         [self.boardNameField resignFirstResponder];
-//        [self.editButton setImage:[UIImage systemImageNamed:@"pencil"] forState:UIControlStateNormal];
+        [self.addPlantButton setHidden:YES];
+
         [self.editButton setTitle:@"edit" forState:UIControlStateNormal];
         
         self.board.name = self.boardNameField.text;
@@ -134,8 +135,8 @@
         self.previousName = self.board.name;
         self.editing = YES;
         self.boardNameField.userInteractionEnabled = YES;
+        [self.addPlantButton setHidden:NO];
         [self.boardNameField becomeFirstResponder];
-//        [self.editButton setImage:[UIImage systemImageNamed:@"checkmark"] forState:UIControlStateNormal];
         [self.editButton setTitle:@"done" forState:UIControlStateNormal];
         for (id<BoardViewControllerDelegate> delegate in _delegates) {
             [delegate tappedEdit];
@@ -149,8 +150,6 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
     AddViewController *addViewVC = [segue destinationViewController];
     addViewVC.board = self.board;
     addViewVC.delegate = self;

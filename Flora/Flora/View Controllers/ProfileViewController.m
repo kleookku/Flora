@@ -95,7 +95,6 @@
 - (IBAction)logoutUser:(id)sender {
     
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
-        NSLog(@"Error is %@", error);
         // PFUser.current() will now be nil
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
         SceneDelegate *sceneDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
@@ -149,7 +148,7 @@
     
     // Do something with the images (based on your use case)
     UIImage *resizedImage = [self resizeImage:originalImage withSize:self.profileImage.bounds.size];
-    self.profileImage.image = resizedImage; //originalImage;
+    self.profileImage.image = resizedImage;
     
     // Dismiss UIImagePickerController to go back to your original view controller
     [self dismissViewControllerAnimated:YES completion:nil];
