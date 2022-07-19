@@ -66,32 +66,6 @@
     [self queryPlants];
 }
 
-- (void)createCharacteristicSearch {
-    self.moist = MOIST_ARRAY[_moistureControl.selectedSegmentIndex];
-    self.shade = SUN_ARRAY[_sunlightControl.selectedSegmentIndex];
-    self.temp = TEMP_ARRAY[_temperaturecontrol.selectedSegmentIndex];
-
-    self.results = @[];
-    [[APIManager shared] searchWithShadeLevel:self.shade withMoistureUse:self.moist withMinTemperature:self.temp offsetBy:self.offset completion:^(NSArray * _Nonnull results, NSError * _Nonnull error) {
-        if(results) {
-            if(results.count < 25) {
-                self.offset += PLANTS_PER_PAGE;
-                [self createCharacteristicSearch];
-                return;
-            } else {
-                NSLog(@"Successfully created characteristics search!");
-                self.results = results;
-                [self.activityIndicator stopAnimating];
-                self.searchButton.enabled = YES;
-                
-                [self performSegueWithIdentifier:@"searchSegue" sender:nil];
-            }
-        } else {
-            NSLog(@"Error creating characteristics search: %@", error.localizedDescription);
-        }
-    }];
-}
-
 - (void)queryPlants {
     self.moist = MOIST_ARRAY[_moistureControl.selectedSegmentIndex];
     self.shade = SUN_ARRAY[_sunlightControl.selectedSegmentIndex];
@@ -109,12 +83,23 @@
         if(error) {
             NSLog(@"Error getting search results: %@", error.localizedDescription);
         } else {
-            self.results = objects;
+            self.results = [self shuffleArray:objects];
             [self.activityIndicator stopAnimating];
             self.searchButton.enabled = YES;
             [self performSegueWithIdentifier:@"searchSegue" sender:nil];
         }
     }];
+}
+
+- (NSArray *)shuffleArray:(NSArray *)array {
+    NSMutableArray *mutableArray = [[NSMutableArray alloc] init];
+    [mutableArray addObjectsFromArray:array];
+    for (NSUInteger i = 0; i < array.count - 1; ++i) {
+        NSInteger remainingCount = array.count - i;
+        NSInteger exchangeIndex = i + arc4random_uniform((u_int32_t )remainingCount);
+        [mutableArray exchangeObjectAtIndex:i withObjectAtIndex:exchangeIndex];
+    }
+    return mutableArray;
 }
 
 #pragma mark - Navigation
