@@ -46,8 +46,8 @@ This app helps users find plants that are suitable for them based on three growt
 **Stretch Stories**
 - [ ] **Plant results will show new results every time (i.e. plants that users have seen already will not appear)**
     - This is a difficult/ambiguous problem because I will have to figure out how to cache certain results and store "seen" results. I also have to figure out how to get new results from later pages of the USDA database in case the user goes through all the plants on the first page.
-- [ ]  **Plants will be extracted from the USDA Plants database and stored in Parse, then queried for a faster search.**
-    - [ ] This is a difficult/ambiguous problem because we have not learned how to extract data from an existing database for our own use. I don't really know how to go about this, but my manager says that it is doable.
+- [x]  **Plants will be extracted from the USDA Plants database and stored in Parse, then queried for a faster search.**
+    - This is a difficult/ambiguous problem because we have not learned how to extract data from an existing database for our own use. I don't really know how to go about this, but my manager says that it is doable.
 - [x] Users can delete plants from their boards.
 - [x] Users can delete boards.
 - [x] Users can delete plants from their likes.
@@ -60,13 +60,16 @@ This app helps users find plants that are suitable for them based on three growt
 - [x] Users can view search results "infinitely" (goes through all the pages/results).
 - [ ] Users can replace plant images with their own image.
 - [ ] Detail images will be loaded from low to high quality.
+- [ ] Users can add a description to their boards. 
+
 
 
 **Super Stretch Stories**
-- [ ] Users can buy plants within the app.
-- [ ] Users can take a picture of a plant and the app will help determine what plant it is. 
-- [ ] Users can add their own plants.
-- [ ] Users can share plants or boards. 
+- [ ] Users can search by region/state using their current location.
+- [ ] Users can follow other users and see their boards. 
+- [ ] Users can add their own pictures to each plant.
+
+
 
 ### 2. Screen Archetypes
 - Login Screen
