@@ -27,6 +27,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)savePlant:(NSDictionary *)curPlant withId:(NSString *) plantId;
 
+- (void)searchWithOffset:(NSUInteger)offset completion:(void(^)(NSArray *results, NSError *error))completion;
+
 
 @end
 

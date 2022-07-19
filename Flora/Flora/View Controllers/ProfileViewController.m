@@ -11,6 +11,8 @@
 #import "LoginViewController.h"
 #import "AppDelegate.h"
 #import "PFImageView.h"
+#import "APIManager.h"
+#import "Plant.h"
 
 @interface ProfileViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
@@ -25,6 +27,8 @@
 @property (nonatomic, strong) UIAlertController *noCameraAlert;
 @property (nonatomic, strong)UIAlertController *savedAlert;
 
+
+@property NSUInteger offset;
 
 
 @end
@@ -60,6 +64,8 @@
     [self setupAddPictureAlert];
     [self setupNoCameraAlert];
     [self setupSavedAlert];
+    
+    self.offset = 0;
 }
 
 #pragma mark - Actions
@@ -188,6 +194,37 @@
     UIGraphicsEndImageContext();
     
     return newImage;
+}
+
+#pragma mark - Data Import
+
+- (IBAction)onTapImport:(id)sender {
+    [self getPlants];
+}
+
+- (void)getPlants {
+    [[APIManager shared] searchWithOffset:self.offset completion:^(NSArray * _Nonnull results, NSError * _Nonnull error) {
+            if(error) {
+                NSLog(@"error getting plants: %@", error.localizedDescription);
+            } else {
+                [self saveResults:results];
+                if(results.count<25){
+                    return;
+                } else {
+                    self.offset += 25;
+                    [self getPlants];
+                }
+                
+            }
+    }];
+}
+
+- (void)saveResults:(NSArray*) results {
+    for (NSDictionary *result in results) {
+        [Plant savePlantWithDict:result withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+                    NSLog(@"Successfully saved plant to parse!");
+        }];
+    }
 }
 
 /*

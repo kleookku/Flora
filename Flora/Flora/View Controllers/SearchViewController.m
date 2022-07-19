@@ -8,6 +8,7 @@
 #import "SearchViewController.h"
 #import "APIManager.h"
 #import "ResultsViewController.h"
+#import "Parse/Parse.h"
 
 
 #define LOW_SUN @[@"Tolerant"]
@@ -26,6 +27,11 @@
 #define HIGH_TEMP @[@"23 - 27",@"28 - 32", @"33 - 37", @"38 - 42", @"43 - 47", @"48 - 52", @"53 - 57"]
 #define TEMP_ARRAY @[LOW_TEMP, MED_TEMP, HIGH_TEMP]
 
+#define NOT_LOW_TEMP @[@"-17 - -13", @"-12 - -8", @"-7 - -3", @"-2 - 2",@"3 - 7", @"8 - 13", @"13 - 17", @"18 - 22", @"23 - 27",@"28 - 32", @"33 - 37", @"38 - 42", @"43 - 47", @"48 - 52", @"53 - 57"]
+#define NOT_MED_TEMP @[@"-75 - -53", @"-52 - -48", @"-47 - -43", @"-42 - -38", @"-37 - -33", @"-32 - -28", @"-27 - -23",@"-22 - -18", @"23 - 27",@"28 - 32", @"33 - 37", @"38 - 42", @"43 - 47", @"48 - 52", @"53 - 57"]
+#define NOT_HIGH_TEMP @[@"-75 - -53", @"-52 - -48", @"-47 - -43", @"-42 - -38", @"-37 - -33", @"-32 - -28", @"-27 - -23",@"-22 - -18", @"-17 - -13", @"-12 - -8", @"-7 - -3", @"-2 - 2",@"3 - 7", @"8 - 13", @"13 - 17", @"18 - 22"]
+#define NOT_TEMP_ARRAY @[NOT_LOW_TEMP, NOT_MED_TEMP, NOT_HIGH_TEMP]
+
 #define PLANTS_PER_PAGE 25
 
 @interface SearchViewController ()
@@ -43,8 +49,6 @@
 @property (nonatomic, strong)NSNumber *numResults;
 @property (nonatomic) NSUInteger offset;
 
-
-
 @end
 
 @implementation SearchViewController
@@ -56,15 +60,17 @@
     self.offset = 0;
 }
 - (IBAction)onTapSearch:(id)sender {
-    self.activityIndicator.startAnimating;
+    [self.activityIndicator startAnimating];
     self.searchButton.enabled = NO;
-    self.moist = MOIST_ARRAY[_moistureControl.selectedSegmentIndex];
-    self.shade = SUN_ARRAY[_sunlightControl.selectedSegmentIndex];
-    self.temp = TEMP_ARRAY[_temperaturecontrol.selectedSegmentIndex];
-    [self createCharacteristicSearch];
+
+    [self queryPlants];
 }
 
 - (void)createCharacteristicSearch {
+    self.moist = MOIST_ARRAY[_moistureControl.selectedSegmentIndex];
+    self.shade = SUN_ARRAY[_sunlightControl.selectedSegmentIndex];
+    self.temp = TEMP_ARRAY[_temperaturecontrol.selectedSegmentIndex];
+
     self.results = @[];
     [[APIManager shared] searchWithShadeLevel:self.shade withMoistureUse:self.moist withMinTemperature:self.temp offsetBy:self.offset completion:^(NSArray * _Nonnull results, NSError * _Nonnull error) {
         if(results) {
@@ -75,7 +81,7 @@
             } else {
                 NSLog(@"Successfully created characteristics search!");
                 self.results = results;
-                self.activityIndicator.stopAnimating;
+                [self.activityIndicator stopAnimating];
                 self.searchButton.enabled = YES;
                 
                 [self performSegueWithIdentifier:@"searchSegue" sender:nil];
@@ -86,9 +92,33 @@
     }];
 }
 
+- (void)queryPlants {
+    self.moist = MOIST_ARRAY[_moistureControl.selectedSegmentIndex];
+    self.shade = SUN_ARRAY[_sunlightControl.selectedSegmentIndex];
+    self.temp = NOT_TEMP_ARRAY[_temperaturecontrol.selectedSegmentIndex];
+
+    PFQuery *query = [PFQuery queryWithClassName:@"Plant"];
+    
+    [query whereKey:@"shadeLevel" equalTo:self.shade[0]];
+    [query whereKey:@"moistureUse" equalTo:self.moist[0]];
+    for(NSString *t in self.temp) {
+        [query whereKey:@"minTemp" notEqualTo:t];
+    }
+        
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        if(error) {
+            NSLog(@"Error getting search results: %@", error.localizedDescription);
+        } else {
+            self.results = objects;
+            [self.activityIndicator stopAnimating];
+            self.searchButton.enabled = YES;
+            [self performSegueWithIdentifier:@"searchSegue" sender:nil];
+        }
+    }];
+}
+
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     ResultsViewController *resultsVC = [segue destinationViewController];
     resultsVC.plantsArray = [self.results mutableCopy];

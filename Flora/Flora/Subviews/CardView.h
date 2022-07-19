@@ -18,10 +18,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CardView : UIView
 
-@property (nonatomic, strong)NSDictionary *plant;
+@property (nonatomic, strong)NSDictionary *plantDict;
+@property (nonatomic, strong)Plant *plant;
 @property (nonatomic, strong)id<CardViewDelegate> delegate;
 
-- (instancetype)initWithPlant:(CGRect)frame plantDict:(NSDictionary *)plant;
+- (instancetype)initWithDict:(CGRect)frame plantDict:(NSDictionary *)plant;
+
+- (instancetype)initWithPlant:(CGRect)frame plant:(Plant *)plant;
 
 - (instancetype)initWithLoad:(CGRect)frame;
 

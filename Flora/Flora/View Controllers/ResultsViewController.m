@@ -112,21 +112,33 @@
 
 - (UIView *)nextViewForSwipeableView:(ZLSwipeableView *)swipeableView {
     if(!_NO_MORE_RESULTS){
-        if(self.plantIndex + 15 == self.plantsArray.count) {
-            [self createCharacteristicSearchWithOffset];
-        }
         
         if(self.plantIndex < self.plantsArray.count) {
-            CardView *view = [[CardView alloc] initWithPlant:swipeableView.bounds plantDict:_plantsArray[self.plantIndex]];
+            CardView *view = [[CardView alloc] initWithPlant:swipeableView.bounds plant:_plantsArray[self.plantIndex]];
             view.delegate = self;
             view.backgroundColor = [UIColor whiteColor];
             self.plantIndex++;
-            return view;
-        } else if(self.plantIndex >= self.plantsArray.count) {
+        } else {
             CardView *view = [[CardView alloc] initWithLoad:swipeableView.bounds];
             view.backgroundColor = [UIColor whiteColor];
             return view;
         }
+        
+//        if(self.plantIndex + 15 == self.plantsArray.count) {
+//            [self createCharacteristicSearchWithOffset];
+//        }
+//
+//        if(self.plantIndex < self.plantsArray.count) {
+//            CardView *view = [[CardView alloc] initWithDict:swipeableView.bounds plantDict:_plantsArray[self.plantIndex]];
+//            view.delegate = self;
+//            view.backgroundColor = [UIColor whiteColor];
+//            self.plantIndex++;
+//            return view;
+//        } else if(self.plantIndex >= self.plantsArray.count) {
+//            CardView *view = [[CardView alloc] initWithLoad:swipeableView.bounds];
+//            view.backgroundColor = [UIColor whiteColor];
+//            return view;
+//        }
     }
     return nil;
 }

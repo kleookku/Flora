@@ -37,6 +37,8 @@
 }
 
 - (void)searchWithShadeLevel:(NSArray *)shade withMoistureUse:(NSArray *)moist withMinTemperature:(NSArray *)temp offsetBy:(NSUInteger)offset completion:(void(^)(NSArray *results, NSError *error))completion {
+
+    
     NSString *url = @"https://plantsservices.sc.egov.usda.gov/api/CharacteristicsSearch";
     NSMutableDictionary *mutableDict = [NSJSONSerialization JSONObjectWithData:[APIManager searchBody] options:NSJSONReadingMutableContainers error:nil];
     mutableDict[@"Offset"] = @(offset);
@@ -56,13 +58,26 @@
             [results exchangeObjectAtIndex:i withObjectAtIndex:exchangeIndex];
         }
 
-//        for(NSDictionary *seen in [PFUser currentUser][@"seen"])
-//            [results removeObject:seen];
-
         completion(results, nil);
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         completion(nil, error);
+    }];
+    
+}
+
+- (void)searchPlantsWithShadeLevel:(NSString *)shade withMoistureUse:(NSString *)moist withMinTemperature:(NSString *)temp completion:(void(^)(NSArray *results, NSError *error))completion {
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Plant"];
+    [query whereKey:@"shadeLevel" equalTo:shade];
+    [query whereKey:@"moistureUse" equalTo:moist];
+    [query whereKey:@"minTemp" equalTo:temp];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        if(error) {
+            NSLog(@"Error getting search results: %@", error.localizedDescription);
+        } else {
+        }
     }];
 }
 
@@ -173,6 +188,22 @@
         
     }
     
+}
+
+- (void)searchWithOffset:(NSUInteger)offset completion:(void(^)(NSArray *results, NSError *error))completion {
+    NSString *url = @"https://plantsservices.sc.egov.usda.gov/api/CharacteristicsSearch";
+    NSMutableDictionary *mutableDict = [NSJSONSerialization JSONObjectWithData:[APIManager searchBody] options:NSJSONReadingMutableContainers error:nil];
+    mutableDict[@"Offset"] = @(offset);
+    
+    [self POST:url parameters:mutableDict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary * _Nullable response) {
+        
+        NSMutableArray<NSDictionary *> *results = [[NSMutableArray alloc] initWithArray:response[@"PlantResults"] copyItems:YES];
+
+        completion(results, nil);
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        completion(nil, error);
+    }];
 }
 
 /*

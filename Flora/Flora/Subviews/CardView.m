@@ -8,6 +8,7 @@
 #import "CardView.h"
 #import "UIImageView+AFNetworking.h"
 #import "APIManager.h"
+#import "Parse/PFImageView.h"
 
 #define PLANT_IMAGE @"ProfileImageFilename"
 
@@ -30,16 +31,16 @@
     return self;
 }
 
-- (instancetype)initWithPlant:(CGRect)frame plantDict:(NSDictionary *)plant{
+- (instancetype)initWithDict:(CGRect)frame plantDict:(NSDictionary *)plantDict{
     self = [super initWithFrame:frame];
     if (self) {
         [self setup];
         
-        self.plant = plant;
+        self.plantDict = plantDict;
         
         UIImageView *imgView = [[UIImageView alloc] init];
         imgView.image = nil;
-        [imgView setImageWithURL:[[APIManager shared] getPlantImageURL:plant[PLANT_IMAGE]]];
+        [imgView setImageWithURL:[[APIManager shared] getPlantImageURL:plantDict[PLANT_IMAGE]]];
         
         imgView.layer.cornerRadius = 10;
 //        imgView.frame = CGRectOffset(self.frame, 15, 15 );
@@ -50,8 +51,45 @@
         
         UILabel *name = [[UILabel alloc] initWithFrame:CGRectOffset(self.frame, 10, 10)];
         name.numberOfLines = 0;
-        name.text = [plant[@"CommonName"] lowercaseString];
-        name.sizeToFit;
+        name.text = [plantDict[@"CommonName"] lowercaseString];
+        [name sizeToFit];
+        [self addSubview:name];
+        
+        UIButton *detailsButton = [[UIButton alloc] initWithFrame: CGRectOffset(self.frame, 0, 0)];
+        [detailsButton setTitle:@"" forState:UIControlStateNormal];
+        detailsButton.contentMode = UIViewContentModeScaleAspectFill;
+//        detailsButton.center = self.center;
+        [detailsButton addTarget:self action:@selector(buttonPressed) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:detailsButton];
+    }
+    return self;
+}
+
+- (instancetype)initWithPlant:(CGRect)frame plant:(Plant *)plant{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self setup];
+        
+        self.plant = plant;
+        
+        
+        PFImageView *imgView = [[PFImageView alloc] initWithFrame:CGRectMake(12.5, 25, 250, 400)];
+        imgView.image = nil;
+        imgView.file = plant.image;
+        [imgView loadInBackground];
+        
+        
+        imgView.layer.cornerRadius = 10;
+//        imgView.frame = CGRectOffset(self.frame, 15, 15 );
+        imgView.frame = CGRectMake(12.5, 25, 250, 400);
+        imgView.contentMode = UIViewContentModeScaleAspectFit;
+        imgView.clipsToBounds = YES;
+        [self addSubview:imgView];
+        
+        UILabel *name = [[UILabel alloc] initWithFrame:CGRectOffset(self.frame, 10, 10)];
+        name.numberOfLines = 0;
+        name.text = [plant.name lowercaseString];
+        [name sizeToFit];
         [self addSubview:name];
         
         UIButton *detailsButton = [[UIButton alloc] initWithFrame: CGRectOffset(self.frame, 0, 0)];
