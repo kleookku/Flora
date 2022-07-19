@@ -27,7 +27,7 @@
 @property (nonatomic) NSUInteger offset;
 @property BOOL NO_MORE_RESULTS;
 @property (nonatomic, strong)PFUser *user;
-@property (nonatomic, strong)NSDictionary *plantToDisplay;
+@property (nonatomic, strong)Plant *plantToDisplay;
 
 @property (weak, nonatomic) IBOutlet ZLSwipeableView *swipeableView;
 @property (weak, nonatomic) IBOutlet UIButton *likeButton;
@@ -131,8 +131,8 @@
 
 #pragma mark - CardViewDelegate
 
-- (void)plantClicked:(NSDictionary *)plantDict {
-    self.plantToDisplay = plantDict;
+- (void)plantClicked:(Plant *)plant {
+    self.plantToDisplay = plant;
     [self performSegueWithIdentifier:@"detailSegue" sender:nil];
 }
 
@@ -141,28 +141,16 @@
 
 - (void)handleLeft:(UIView *)sender {
     CardView *plantView = (CardView *)sender;
-    NSDictionary *curPlant = plantView.plant;
+    Plant *curPlant = plantView.plant;
 
-    // save plant id to user's seen
-    NSMutableArray *seenArray = [[NSMutableArray alloc] initWithArray:self.user[@"seen"] copyItems:YES];
-    if(![seenArray containsObject:curPlant]) {
-        [seenArray addObject:curPlant];
-        self.user[@"seen"] = seenArray;
-        [self.user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-            if(error) {
-                NSLog(@"Error: %@", error.localizedDescription);
-            } else {
-                NSLog(@"Saved!");
-            }
-        }];
-    }
+    NSLog(@"user seen object type is %@", [self.user[@"seen"] class]);
+    [APIManager savePlantToSeen:curPlant];
 }
 
 - (void)handleRight:(UIView *)sender {
     CardView *plantView = (CardView *)sender;
-    NSDictionary *curPlant = plantView.plant;
-    NSString *plantId = [NSString stringWithFormat:@"%@", curPlant[@"Id"]];
-    [APIManager savePlant:curPlant withId:plantId];
+    Plant *curPlant = plantView.plant;
+    [APIManager savePlantToLikes:curPlant];
 }
 
 
@@ -190,7 +178,7 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     DetailViewController *detailVC = [segue destinationViewController];
-    detailVC.plantDict = self.plantToDisplay;
+    detailVC.plant = self.plantToDisplay;
 }
 
 

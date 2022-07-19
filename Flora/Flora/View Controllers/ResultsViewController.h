@@ -18,7 +18,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong)NSArray *temp;
 @property NSNumber *numResults;
 
-
 - (UIView *)nextViewForSwipeableView:(ZLSwipeableView *)swipeableView;
 
 @end

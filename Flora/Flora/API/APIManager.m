@@ -160,23 +160,14 @@
     
 }
 
-+ (void)savePlant:(NSDictionary *)curPlant withId:(NSString *) plantId {
++ (void)savePlantToLikes:(Plant *)plant{
     PFUser *user = [PFUser currentUser];
     
-    if(![user[@"likes"] containsObject:plantId]){
-        
-        // save plant PFObject to database
-        [Plant savePlantWithDict:curPlant withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-            if(error){
-                NSLog(@"Error saving plant: %@", error.localizedDescription);
-            } else {
-                NSLog(@"Successfully saved plant!");
-            }
-        }];
+    if(![user[@"likes"] containsObject:plant.plantId]){
         
         // save plant to user's likes
         NSMutableArray *likesArray = [[NSMutableArray alloc] initWithArray:user[@"likes"] copyItems:YES];
-        [likesArray addObject:plantId];
+        [likesArray addObject:plant.plantId];
         user[@"likes"] = likesArray;
         [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             if(error) {
@@ -187,7 +178,24 @@
         }];
         
     }
-    
+}
+
++ (void)savePlantToSeen:(Plant *)plant {
+    PFUser *user = [PFUser currentUser];
+
+    // save plant id to user's seen
+    NSMutableArray *seenArray = [[NSMutableArray alloc] initWithArray:user[@"seen"] copyItems:YES];
+    if(![seenArray containsObject:plant.plantId]) {
+        [seenArray addObject:plant.plantId];
+        user[@"seen"] = seenArray;
+        [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            if(error) {
+                NSLog(@"Error: %@", error.localizedDescription);
+            } else {
+                NSLog(@"Saved!");
+            }
+        }];
+    }
 }
 
 - (void)searchWithOffset:(NSUInteger)offset completion:(void(^)(NSArray *results, NSError *error))completion {

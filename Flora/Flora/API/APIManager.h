@@ -6,6 +6,8 @@
 //
 
 #import <BDBOAuth1SessionManager.h>
+#import "Plant.h"
+
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -25,7 +27,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)saveBoardWithName:(NSString *) boardName;
 
-+ (void)savePlant:(NSDictionary *)curPlant withId:(NSString *) plantId;
++ (void)savePlantToLikes:(Plant *)plant;
+
++ (void)savePlantToSeen:(Plant *)plant;
 
 - (void)searchWithOffset:(NSUInteger)offset completion:(void(^)(NSArray *results, NSError *error))completion;
 
