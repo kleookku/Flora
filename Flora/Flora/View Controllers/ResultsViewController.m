@@ -21,7 +21,6 @@
  
 @interface ResultsViewController ()
 
-
 @property (nonatomic) BOOL loadCardFromXib;
 
 @property (nonatomic) NSUInteger plantIndex;
@@ -37,7 +36,6 @@
 @end
 
 @implementation ResultsViewController
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -60,6 +58,17 @@
     self.swipeableView.translatesAutoresizingMaskIntoConstraints = NO;
     self.swipeableView.allowedDirection = ZLSwipeableViewDirectionHorizontal;
     self.swipeableView.numberOfHistoryItem = 3;
+    
+}
+
+- (void)viewDidLayoutSubviews {
+    [self.swipeableView loadViewsIfNeeded];
+}
+
+- (void) viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    if(self.isMovingFromParentViewController)
+        [self reset];
 }
 
 - (void)reset {
@@ -72,16 +81,7 @@
     self.offset = -1;
 }
 
-- (void) viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    if(self.isMovingFromParentViewController){
-        [self reset];
-    }
-}
 
-- (void)viewDidLayoutSubviews {
-    [self.swipeableView loadViewsIfNeeded];
-}
 #pragma mark - Action
 
 - (IBAction)didTapDislike:(id)sender {
@@ -96,7 +96,6 @@
 
 - (IBAction)didTapPreviousButton:(id)sender {
     [self handlePrevious:sender];
-    self.plantIndex = _plantIndex - 1;
 }
 
 #pragma mark - ZLSwipeableViewDelegate
@@ -113,15 +112,14 @@
 
 - (UIView *)nextViewForSwipeableView:(ZLSwipeableView *)swipeableView {
     if(!_NO_MORE_RESULTS){
-        if(self.plantIndex + 10 == self.plantsArray.count) {
-            self.offset = _offset + PLANTS_PER_PAGE;
+        if(self.plantIndex + 15 == self.plantsArray.count) {
             [self createCharacteristicSearchWithOffset];
         }
         
         if(self.plantIndex < self.plantsArray.count) {
             CardView *view = [[CardView alloc] initWithPlant:swipeableView.bounds plantDict:_plantsArray[self.plantIndex]];
-            self.plantIndex++;
             view.backgroundColor = [UIColor whiteColor];
+            self.plantIndex++;
             return view;
         } else if(self.plantIndex >= self.plantsArray.count) {
             CardView *view = [[CardView alloc] initWithLoad:swipeableView.bounds];
@@ -136,12 +134,15 @@
 #pragma mark - Handlers
 
 - (void)handleLeft:(UIButton *)sender {
-    NSDictionary *curPlant = self.plantsArray[self.plantIndex-4];
-    NSString *plantId = [NSString stringWithFormat:@"%@", curPlant[@"Id"]];
-    
+    NSDictionary *curPlant = nil;
+    if(self.plantIndex < 3)
+        curPlant = self.plantsArray[self.plantIndex-self.plantsArray.count];
+    else
+        curPlant = self.plantsArray[self.plantIndex-4];
+
     // save plant id to user's seen
     NSMutableArray *seenArray = [[NSMutableArray alloc] initWithArray:self.user[@"seen"] copyItems:YES];
-    [seenArray addObject:plantId];
+    [seenArray addObject:curPlant];
     self.user[@"seen"] = seenArray;
     [self.user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if(error) {
@@ -152,44 +153,21 @@
     }];
 }
 
-- (void)handleRight:(UIButton *)sender {    
+- (void)handleRight:(UIButton *)sender {
     NSDictionary *curPlant = self.plantsArray[self.plantIndex-4];
     NSString *plantId = [NSString stringWithFormat:@"%@", curPlant[@"Id"]];
-    
-    
-    if(![self.user[@"likes"] containsObject:plantId]){
-        // save plant PFObject to database
-        [Plant savePlantWithDict:curPlant withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-            if(error){
-                NSLog(@"Error saving plant: %@", error.localizedDescription);
-            } else {
-                NSLog(@"Successfully saved plant!");
-            }
-        }];
-        
-        // save plant to user's likes
-        NSMutableArray *likesArray = [[NSMutableArray alloc] initWithArray:self.user[@"likes"] copyItems:YES];
-        [likesArray addObject:plantId];
-        self.user[@"likes"] = likesArray;
-        [self.user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-            if(error) {
-                NSLog(@"Error: %@", error.localizedDescription);
-            } else {
-                NSLog(@"Saved!");
-            }
-        }];
-        
-    }
-    
+    [APIManager savePlant:curPlant withId:plantId];
 }
 
 - (void)handlePrevious:(UIBarButtonItem *)sender {
+    self.plantIndex--;
     [self.swipeableView rewind];
 }
 
 #pragma mark - Networking
 
 - (void)createCharacteristicSearchWithOffset {
+    self.offset = _offset + PLANTS_PER_PAGE;
     [[APIManager shared] searchWithShadeLevel:self.shade withMoistureUse:self.moist withMinTemperature:self.temp offsetBy:self.offset completion:^(NSArray * _Nonnull results, NSError * _Nonnull error) {
             if(results) {
                 NSLog(@"Successfully created characteristics search!");
@@ -209,8 +187,6 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
     DetailViewController *detailVC = [segue destinationViewController];
     detailVC.plantDict = self.plantsArray[_plantIndex-4];
 }

@@ -82,7 +82,7 @@
 
 + (PFFileObject *)getPFFileFromImage: (UIImage * _Nullable)image {
     
-    // check if imag eis not nil
+    // check if image is not nil
     if (!image) {
         return nil;
     }
@@ -94,25 +94,6 @@
     }
 
     return [PFFileObject fileObjectWithName:@"image.png" data:imageData];
-}
-
-+ (instancetype)getPlantWithId:(NSString *)plantId{
-    PFQuery *query = [PFQuery queryWithClassName:@"Plant"];
-    __block Plant *returnPlant = nil;
-    [query whereKey:@"plantId" equalTo:plantId];
-    query.limit = 1;
-    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable results, NSError * _Nullable error) {
-        if(results) {
-            if(results.count > 0) {
-                Plant *plant = (Plant *)results[0];
-                returnPlant = plant;
-            }
-        } else {
-            NSLog(@"%@", error.localizedDescription);
-        }
-    }];
-    NSLog(@"return plan %@", returnPlant);
-    return returnPlant;
 }
 
 

@@ -43,6 +43,8 @@
     [self setupAlerts];
 }
 
+#pragma mark - Alerts
+
 - (void)setupAlerts {
     // emptyFieldsAlert
     self.emptyFieldsAlert = [UIAlertController alertControllerWithTitle:@"Fields Empty"
@@ -60,6 +62,23 @@
     [self.passwordMatchAlert addAction:okAction];
     
 }
+
+- (void)displayErrorAlertWithMessage:(NSString *)message {
+    self.errorAlert = [UIAlertController alertControllerWithTitle:@"Error"
+                                                                message:message
+                                                         preferredStyle:(UIAlertControllerStyleAlert)];
+    // create an OK action
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                       style:UIAlertActionStyleDefault
+                                                     handler:^(UIAlertAction * _Nonnull action) {}];
+    // add the OK action to the alert controller
+    [self.errorAlert addAction:okAction];
+    [self presentViewController:self.errorAlert animated:YES completion:^{}];
+    self.errorAlert = nil;
+}
+
+
+#pragma mark - Actions
 
 - (IBAction)registerUser:(id)sender {
     if([self.usernameField.text isEqual:@""] || [self.passwordField.text isEqual:@""]) {
@@ -100,18 +119,11 @@
     }
 }
 
-- (void)displayErrorAlertWithMessage:(NSString *)message {
-    self.errorAlert = [UIAlertController alertControllerWithTitle:@"Error"
-                                                                message:message
-                                                         preferredStyle:(UIAlertControllerStyleAlert)];
-    // create an OK action
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
-                                                       style:UIAlertActionStyleDefault
-                                                     handler:^(UIAlertAction * _Nonnull action) {}];
-    // add the OK action to the alert controller
-    [self.errorAlert addAction:okAction];
-    [self presentViewController:self.errorAlert animated:YES completion:^{}];
+- (IBAction)didTap:(id)sender {
+    [self.view endEditing:YES];
+
 }
+
 
 /*
  #pragma mark - Navigation

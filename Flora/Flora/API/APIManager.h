@@ -25,6 +25,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)saveBoardWithName:(NSString *) boardName;
 
++ (void)savePlant:(NSDictionary *)curPlant withId:(NSString *) plantId;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

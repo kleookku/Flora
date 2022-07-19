@@ -32,7 +32,7 @@
     self.boardNameField.text = self.board.name;
     
     self.collectionView.dataSource = self;
-    self.delegates = [[NSMutableArray alloc] init];
+    self.cellDelegates = [[NSMutableArray alloc] init];
     self.boardNameField.borderStyle = UITextBorderStyleNone;
     
     self.editButton.layer.cornerRadius = 10;
@@ -49,7 +49,7 @@
     [query whereKey:@"plantId" equalTo:self.board.plantsArray[indexPath.row]];
     query.limit = 1;
     
-    [self.delegates addObject:cell];
+    [self.cellDelegates addObject:cell];
 
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable results, NSError * _Nullable error) {
         if(results) {
@@ -127,9 +127,11 @@
                 NSLog(@"Successfully saved board for user!");
             }
         }];
-        for (id<BoardViewControllerDelegate> delegate in _delegates) {
+        for (id<BoardViewControllerDelegate> delegate in _cellDelegates) {
             [delegate stoppedEdit];
         }
+        
+        [self.delegate stoppedEdit];
 
     } else {
         self.previousName = self.board.name;
@@ -138,12 +140,15 @@
         [self.addPlantButton setHidden:NO];
         [self.boardNameField becomeFirstResponder];
         [self.editButton setTitle:@"done" forState:UIControlStateNormal];
-        for (id<BoardViewControllerDelegate> delegate in _delegates) {
+        for (id<BoardViewControllerDelegate> delegate in _cellDelegates) {
             [delegate tappedEdit];
         }
     }
 }
 
+- (IBAction)didTap:(id)sender {
+    [self.view endEditing:YES];
+}
 
 
 #pragma mark - Navigation

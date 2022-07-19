@@ -138,6 +138,7 @@
         [self presentViewController:alert animated:YES completion:nil];
     } else {
         [APIManager saveBoardWithName:boardName];
+        [self updateBoards];
     }
 }
 

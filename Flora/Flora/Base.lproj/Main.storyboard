@@ -480,6 +480,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="SeH-mL-K5Z"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="yab-N7-M7p" firstAttribute="top" secondItem="SeH-mL-K5Z" secondAttribute="top" constant="100" id="1mg-aA-a5L"/>
                             <constraint firstItem="nqj-mp-zW3" firstAttribute="leading" secondItem="AT3-FT-U5q" secondAttribute="leading" id="5Vv-cY-edy"/>
@@ -496,6 +497,9 @@
                             <constraint firstItem="nqj-mp-zW3" firstAttribute="trailing" secondItem="sw6-1R-XLJ" secondAttribute="trailing" id="tjB-vq-SrF"/>
                             <constraint firstItem="QPi-vu-C7O" firstAttribute="top" secondItem="yab-N7-M7p" secondAttribute="bottom" constant="46" id="vks-kw-Wp6"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="oXA-LH-o2G" appends="YES" id="OzJ-H5-KEA"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="C0u-jb-OSG"/>
                     <connections>
@@ -505,6 +509,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v6z-SX-9dj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="oXA-LH-o2G">
+                    <connections>
+                        <action selector="onTap:" destination="PxE-jq-vRI" id="Aev-b1-TH3"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-1039.1304347826087" y="75.669642857142847"/>
         </scene>
@@ -565,6 +574,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="r8w-Cn-Rct"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="gQM-EX-2E6" firstAttribute="leading" secondItem="A9N-ga-Vf7" secondAttribute="leading" id="4JK-1K-Q1m"/>
                             <constraint firstItem="0il-Ua-ZWh" firstAttribute="centerX" secondItem="r8w-Cn-Rct" secondAttribute="centerX" id="9JW-cJ-f0N"/>
@@ -582,6 +592,9 @@
                             <constraint firstItem="gQM-EX-2E6" firstAttribute="top" secondItem="HAt-hv-BCM" secondAttribute="bottom" constant="40" id="ycr-ls-5G1"/>
                             <constraint firstItem="HAt-hv-BCM" firstAttribute="leading" secondItem="ORu-gj-qJY" secondAttribute="leading" id="zjz-aB-i6Q"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="imu-C9-qL6" appends="YES" id="NTq-fC-BUT"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="confirmPasswordField" destination="A9N-ga-Vf7" id="eNI-LW-KxB"/>
@@ -592,6 +605,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kAa-9K-xXy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="imu-C9-qL6">
+                    <connections>
+                        <action selector="didTap:" destination="xkg-Oa-k8x" id="8YM-SX-3g8"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-380" y="76"/>
         </scene>
@@ -677,10 +695,10 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="leM-YR-UZD">
-                                <rect key="frame" x="353" y="76" width="49" height="20"/>
+                                <rect key="frame" x="355" y="59" width="49" height="31"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="vId-60-aYi"/>
+                                    <constraint firstAttribute="height" constant="30" id="vId-60-aYi"/>
                                 </constraints>
                                 <color key="tintColor" red="0.42777464561855671" green="0.42777464561855671" blue="0.42777464561855671" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Button"/>
@@ -690,10 +708,10 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aGz-Ro-shE">
-                                <rect key="frame" x="380" y="104" width="22" height="22"/>
+                                <rect key="frame" x="355" y="101" width="49" height="28"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="22" id="Rlh-B5-Qt4"/>
+                                    <constraint firstAttribute="height" constant="30" id="Rlh-B5-Qt4"/>
                                 </constraints>
                                 <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
@@ -722,7 +740,7 @@
                             <constraint firstItem="aGz-Ro-shE" firstAttribute="leading" secondItem="leM-YR-UZD" secondAttribute="leading" id="y3q-VK-gZo"/>
                         </constraints>
                         <connections>
-                            <outletCollection property="gestureRecognizers" destination="HGQ-PU-sp8" appends="YES" id="nkq-Al-dRa"/>
+                            <outletCollection property="gestureRecognizers" destination="NUc-OE-d7Z" appends="YES" id="ziM-8W-0CZ"/>
                         </connections>
                     </view>
                     <connections>
@@ -730,12 +748,15 @@
                         <outlet property="boardNameField" destination="CK7-30-zHn" id="KzH-tP-E1V"/>
                         <outlet property="collectionView" destination="e8a-Br-8WW" id="IvK-pO-u0n"/>
                         <outlet property="editButton" destination="leM-YR-UZD" id="WHl-wL-kIa"/>
-                        <outlet property="tapGesture" destination="HGQ-PU-sp8" id="Pqs-m6-Vtz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ke7-yj-0Bo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="wSl-cE-b1R" userLabel="Exit" sceneMemberID="exit"/>
-                <tapGestureRecognizer id="HGQ-PU-sp8"/>
+                <tapGestureRecognizer id="NUc-OE-d7Z">
+                    <connections>
+                        <action selector="didTap:" destination="Tt3-k5-Y1C" id="q2D-fQ-uZJ"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-381.15942028985512" y="906.69642857142856"/>
         </scene>
@@ -876,62 +897,54 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Tu3-FF-g2V" customClass="PFImageView">
-                                <rect key="frame" x="144.5" y="168.5" width="125" height="126.5"/>
+                                <rect key="frame" x="107" y="168.5" width="200" height="201.5"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="125" id="IuK-EV-kap"/>
-                                    <constraint firstAttribute="height" constant="125" id="LDl-NL-hl3"/>
+                                    <constraint firstAttribute="width" constant="200" id="IuK-EV-kap"/>
+                                    <constraint firstAttribute="height" constant="200" id="LDl-NL-hl3"/>
                                 </constraints>
                                 <imageReference key="image" image="plus" catalog="system" symbolScale="large"/>
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tvh-WZ-2au">
-                                <rect key="frame" x="107" y="334" width="200" height="34"/>
+                                <rect key="frame" x="107" y="409" width="200" height="34"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="34" id="A0C-pc-7bA"/>
                                     <constraint firstAttribute="width" constant="200" id="Jt7-HR-yHt"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HFh-BZ-cBV">
-                                <rect key="frame" x="107" y="388" width="200" height="34"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="34" id="IK9-ev-wiW"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <rect key="frame" x="107" y="463" width="200" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W69-gj-Rqi">
-                                <rect key="frame" x="107" y="442" width="200" height="34"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="34" id="JmL-pX-dYD"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <rect key="frame" x="107" y="517" width="200" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Ef-9l-Wn2">
-                                <rect key="frame" x="180" y="516" width="54" height="20"/>
+                                <rect key="frame" x="178" y="591" width="58.5" height="40"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="54" id="NZN-22-mIR"/>
-                                    <constraint firstAttribute="height" constant="20" id="fgm-3P-XvR"/>
+                                    <constraint firstAttribute="height" constant="40" id="fgm-3P-XvR"/>
                                 </constraints>
                                 <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="save">
-                                    <fontDescription key="titleFontDescription" type="system" weight="light" pointSize="11"/>
+                                    <fontDescription key="titleFontDescription" type="system" weight="light" pointSize="17"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="didTapSave:" destination="o6M-VV-WH7" eventType="touchUpInside" id="cJa-Kn-nov"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zjl-uQ-oAN">
-                                <rect key="frame" x="144.5" y="169" width="125" height="125"/>
+                                <rect key="frame" x="107" y="169" width="200" height="200"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain"/>
+                                <buttonConfiguration key="configuration" style="plain" title=""/>
                                 <connections>
                                     <action selector="addProfilePic:" destination="o6M-VV-WH7" eventType="touchUpInside" id="fAJ-ke-dIU"/>
                                 </connections>
@@ -953,6 +966,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="5jM-3V-lqn"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="5jM-3V-lqn" firstAttribute="trailing" secondItem="fVP-bm-86f" secondAttribute="trailing" constant="10" id="5e3-t9-TEj"/>
                             <constraint firstItem="Tu3-FF-g2V" firstAttribute="top" secondItem="5jM-3V-lqn" secondAttribute="top" constant="125" id="GRl-RQ-2dB"/>
@@ -974,6 +988,9 @@
                             <constraint firstItem="Tvh-WZ-2au" firstAttribute="centerX" secondItem="Tu3-FF-g2V" secondAttribute="centerX" id="x5Y-Ka-tgC"/>
                             <constraint firstItem="W69-gj-Rqi" firstAttribute="top" secondItem="HFh-BZ-cBV" secondAttribute="bottom" constant="20" id="z3l-qd-f1C"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Bv2-VG-MIQ" appends="YES" id="G65-gJ-nYB"/>
+                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="face.smiling" catalog="system" id="L1B-xl-5Nm"/>
                     <connections>
@@ -986,6 +1003,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aMK-zS-egh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Bv2-VG-MIQ">
+                    <connections>
+                        <action selector="didTap:" destination="o6M-VV-WH7" id="vmw-ip-tkH"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="964" y="897"/>
         </scene>
@@ -1204,10 +1226,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WDU-cz-5oT">
-                                <rect key="frame" x="351" y="245" width="53" height="20"/>
+                                <rect key="frame" x="351" y="239.5" width="53" height="30"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="qC3-ZW-Wtz"/>
+                                    <constraint firstAttribute="height" constant="30" id="qC3-ZW-Wtz"/>
                                 </constraints>
                                 <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
@@ -1222,10 +1244,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1j3-uE-NrQ">
-                                <rect key="frame" x="351" y="44" width="53" height="20"/>
+                                <rect key="frame" x="351" y="44" width="53" height="30"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="p8h-bn-EzZ"/>
+                                    <constraint firstAttribute="height" constant="30" id="p8h-bn-EzZ"/>
                                 </constraints>
                                 <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
@@ -1241,7 +1263,6 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="gty-wF-JC0" firstAttribute="leading" secondItem="vAr-18-QIw" secondAttribute="leading" constant="8" id="2Zi-fK-dYM"/>
-                            <constraint firstItem="WDU-cz-5oT" firstAttribute="bottom" secondItem="gty-wF-JC0" secondAttribute="bottom" id="6Wy-L9-mGR"/>
                             <constraint firstItem="vAr-18-QIw" firstAttribute="bottom" secondItem="LdO-Lc-gd5" secondAttribute="bottom" id="7lW-Ul-0Tm"/>
                             <constraint firstItem="LdO-Lc-gd5" firstAttribute="leading" secondItem="gty-wF-JC0" secondAttribute="leading" id="C45-Od-i0J"/>
                             <constraint firstItem="vAr-18-QIw" firstAttribute="top" secondItem="1j3-uE-NrQ" secondAttribute="top" id="EbB-7c-dEX"/>
@@ -1253,6 +1274,7 @@
                             <constraint firstItem="WDU-cz-5oT" firstAttribute="leading" secondItem="1j3-uE-NrQ" secondAttribute="leading" id="VeB-U0-gfD"/>
                             <constraint firstItem="vAr-18-QIw" firstAttribute="trailing" secondItem="WDU-cz-5oT" secondAttribute="trailing" constant="10" id="Xpu-e4-Ben"/>
                             <constraint firstItem="2Gc-HI-Vdd" firstAttribute="top" secondItem="wD5-iA-dhy" secondAttribute="bottom" constant="2" id="aEz-QX-kfA"/>
+                            <constraint firstItem="WDU-cz-5oT" firstAttribute="centerY" secondItem="gty-wF-JC0" secondAttribute="centerY" id="bqv-s8-qLi"/>
                             <constraint firstItem="vAr-18-QIw" firstAttribute="trailing" secondItem="1j3-uE-NrQ" secondAttribute="trailing" constant="10" id="czv-1i-TJ1"/>
                             <constraint firstItem="vAr-18-QIw" firstAttribute="trailing" secondItem="LdO-Lc-gd5" secondAttribute="trailing" constant="10" id="szh-CX-1Yl"/>
                             <constraint firstItem="wD5-iA-dhy" firstAttribute="leading" secondItem="vAr-18-QIw" secondAttribute="leading" constant="8" id="ts4-tM-TDh"/>

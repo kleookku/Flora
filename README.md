@@ -57,8 +57,9 @@ This app helps users find plants that are suitable for them based on three growt
 - [x] Users cannot have duplicate plants in their likes.
 - [x] Users can add multiple plants to boards at once.
 - [x] Users can reset their password through their email if they forget it. 
-- [ ] Detail images will be loaded from low to high quality.
+- [x] Users can view search results "infinitely" (goes through all the pages/results).
 - [ ] Users can replace plant images with their own image.
+- [ ] Detail images will be loaded from low to high quality.
 
 
 **Super Stretch Stories**

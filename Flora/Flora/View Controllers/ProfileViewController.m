@@ -98,7 +98,10 @@
         UIViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
         sceneDelegate.window.rootViewController = loginViewController;
     }];
+}
 
+- (IBAction)didTap:(id)sender {
+    [self.view endEditing:YES];
 }
 
 #pragma mark - Alerts
@@ -162,10 +165,6 @@
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
         [self presentViewController:imagePickerVC animated:YES completion:nil];
-    }
-    else {
-        NSLog(@"Camera 🚫 available so we will use photo library instead");
-        [self presentViewController:self.noCameraAlert animated:nil completion:^{}];
     }
 }
 

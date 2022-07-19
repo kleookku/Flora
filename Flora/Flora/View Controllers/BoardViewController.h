@@ -20,7 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface BoardViewController : UIViewController
 
 @property (nonatomic, strong)Board *board;
-@property (nonatomic, strong)NSMutableArray<id<BoardViewControllerDelegate>> *delegates;
+@property (nonatomic, strong)NSMutableArray<id<BoardViewControllerDelegate>> *cellDelegates;
+@property (nonatomic, strong)id<BoardViewControllerDelegate> delegate;
 
 @end
 

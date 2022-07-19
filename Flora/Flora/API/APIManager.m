@@ -8,6 +8,7 @@
 #import "APIManager.h"
 #import "Parse/Parse.h"
 #import "Board.h"
+#import "Plant.h"
 
 #define SHADE @"Shade Tolerance"
 #define MOIST @"Moisture Use"
@@ -47,10 +48,19 @@
     
     [self POST:url parameters:mutableDict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary * _Nullable response) {
         
-        NSMutableArray *results = response[@"PlantResults"];
-        for (NSUInteger i = 0; i > 1; i--)
-            [results exchangeObjectAtIndex:i - 1 withObjectAtIndex:arc4random_uniform((u_int32_t)i)];
+        NSMutableArray<NSDictionary *> *results = [[NSMutableArray alloc] initWithArray:response[@"PlantResults"] copyItems:YES];
+        
+        for (NSUInteger i = 0; i < results.count - 1; ++i) {
+            NSInteger remainingCount = results.count - i;
+            NSInteger exchangeIndex = i + arc4random_uniform((u_int32_t )remainingCount);
+            [results exchangeObjectAtIndex:i withObjectAtIndex:exchangeIndex];
+        }
+
+        for(NSDictionary *seen in [PFUser currentUser][@"seen"])
+            [results removeObject:seen];
+
         completion(results, nil);
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         completion(nil, error);
     }];
@@ -132,6 +142,36 @@
             NSLog(@"Saved!");
         }
     }];
+    
+}
+
++ (void)savePlant:(NSDictionary *)curPlant withId:(NSString *) plantId {
+    PFUser *user = [PFUser currentUser];
+    
+    if(![user[@"likes"] containsObject:plantId]){
+        
+        // save plant PFObject to database
+        [Plant savePlantWithDict:curPlant withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+            if(error){
+                NSLog(@"Error saving plant: %@", error.localizedDescription);
+            } else {
+                NSLog(@"Successfully saved plant!");
+            }
+        }];
+        
+        // save plant to user's likes
+        NSMutableArray *likesArray = [[NSMutableArray alloc] initWithArray:user[@"likes"] copyItems:YES];
+        [likesArray addObject:plantId];
+        user[@"likes"] = likesArray;
+        [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            if(error) {
+                NSLog(@"Error: %@", error.localizedDescription);
+            } else {
+                NSLog(@"Saved!");
+            }
+        }];
+        
+    }
     
 }
 

@@ -49,6 +49,8 @@
     [self getPlantObj];
 }
 
+
+
 - (void)getPlantObj {
     if(self.plant) {
         self.activityIndicator.stopAnimating;

@@ -10,10 +10,17 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol DetailViewControllerDelegate
+
+- (void)stoppedEdit;
+
+@end
+
 @interface DetailViewController : UIViewController
 
 @property (nonatomic, strong) NSDictionary *plantDict;
 @property (nonatomic, strong) Plant *plant;
+@property (nonatomic, strong)id<DetailViewControllerDelegate> delegate;
 
 @end
 

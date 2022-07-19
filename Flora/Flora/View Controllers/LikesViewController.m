@@ -16,7 +16,8 @@
 #import "DetailViewController.h"
 #import "APIManager.h"
 
-@interface LikesViewController () <UICollectionViewDataSource, UICollectionViewDelegate, BoardCellDelegate, LikesCellDelegate>
+
+@interface LikesViewController () <UICollectionViewDataSource, UICollectionViewDelegate, BoardCellDelegate, LikesCellDelegate, BoardViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *boardsCollectionView;
 @property (weak, nonatomic) IBOutlet UICollectionView *likedCollectionView;
 @property (weak, nonatomic) IBOutlet UIButton *editButton;
@@ -42,7 +43,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
     self.user = [PFUser currentUser];
     
@@ -97,6 +97,7 @@
     [self.createBoardAlert addAction:confirmAction];
     [self.createBoardAlert addAction:cancelAction];
 }
+
 
 #pragma mark - Refreshing
 
@@ -155,6 +156,17 @@
 
 - (void)confirmBoardDelete:(UIAlertController *)alert {
     [self presentViewController:alert animated:YES completion:nil];
+}
+
+#pragma mark - BoardViewControllerDelegate
+
+- (void) tappedEdit {
+    
+}
+
+- (void) stoppedEdit {
+    [self updateBoards];
+    [self.boardsCollectionView reloadData];
 }
 
 #pragma mark - LikesCellDelegate
@@ -296,6 +308,7 @@
     } else {
         BoardViewController *boardVC = [segue destinationViewController];
         boardVC.board = self.boardToView;
+        boardVC.delegate = self;
     }
 }
 
