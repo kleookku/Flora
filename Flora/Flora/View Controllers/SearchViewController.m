@@ -68,7 +68,7 @@
     self.results = @[];
     [[APIManager shared] searchWithShadeLevel:self.shade withMoistureUse:self.moist withMinTemperature:self.temp offsetBy:self.offset completion:^(NSArray * _Nonnull results, NSError * _Nonnull error) {
         if(results) {
-            if(results.count == 0) {
+            if(results.count < 25) {
                 self.offset += PLANTS_PER_PAGE;
                 [self createCharacteristicSearch];
                 return;

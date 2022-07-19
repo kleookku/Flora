@@ -56,8 +56,8 @@
             [results exchangeObjectAtIndex:i withObjectAtIndex:exchangeIndex];
         }
 
-        for(NSDictionary *seen in [PFUser currentUser][@"seen"])
-            [results removeObject:seen];
+//        for(NSDictionary *seen in [PFUser currentUser][@"seen"])
+//            [results removeObject:seen];
 
         completion(results, nil);
         

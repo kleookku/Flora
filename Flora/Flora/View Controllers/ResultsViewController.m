@@ -19,7 +19,7 @@
 #define PLANT_IMAGE @"ProfileImageFilename"
 #define PLANT_NAME @"CommonName"
  
-@interface ResultsViewController ()
+@interface ResultsViewController () <CardViewDelegate>
 
 @property (nonatomic) BOOL loadCardFromXib;
 
@@ -27,6 +27,7 @@
 @property (nonatomic) NSUInteger offset;
 @property BOOL NO_MORE_RESULTS;
 @property (nonatomic, strong)PFUser *user;
+@property (nonatomic, strong)NSDictionary *plantToDisplay;
 
 @property (weak, nonatomic) IBOutlet ZLSwipeableView *swipeableView;
 @property (weak, nonatomic) IBOutlet UIButton *likeButton;
@@ -86,25 +87,24 @@
 
 - (IBAction)didTapDislike:(id)sender {
     [self.swipeableView swipeTopViewToLeft];
-    [self handleLeft:sender];
 }
 
 - (IBAction)didTapLikebutton:(id)sender {
     [self.swipeableView swipeTopViewToRight];
-    [self handleRight:sender];
 }
 
 - (IBAction)didTapPreviousButton:(id)sender {
-    [self handlePrevious:sender];
+    self.plantIndex--;
+    [self.swipeableView rewind];
 }
 
 #pragma mark - ZLSwipeableViewDelegate
 
 - (void)swipeableView:(ZLSwipeableView *)swipeableView didSwipeView:(UIView *)view inDirection:(ZLSwipeableViewDirection)direction {
     if(direction == ZLSwipeableViewDirectionLeft) {
-        [self handleLeft:nil];
+        [self handleLeft:view];
     } else if (direction == ZLSwipeableViewDirectionRight) {
-        [self handleRight:nil];
+        [self handleRight:view];
     }
 }
 
@@ -118,6 +118,7 @@
         
         if(self.plantIndex < self.plantsArray.count) {
             CardView *view = [[CardView alloc] initWithPlant:swipeableView.bounds plantDict:_plantsArray[self.plantIndex]];
+            view.delegate = self;
             view.backgroundColor = [UIColor whiteColor];
             self.plantIndex++;
             return view;
@@ -130,39 +131,42 @@
     return nil;
 }
 
+#pragma mark - CardViewDelegate
+
+- (void)plantClicked:(NSDictionary *)plantDict {
+    self.plantToDisplay = plantDict;
+    [self performSegueWithIdentifier:@"detailSegue" sender:nil];
+}
+
 
 #pragma mark - Handlers
 
-- (void)handleLeft:(UIButton *)sender {
-    NSDictionary *curPlant = nil;
-    if(self.plantIndex < 3)
-        curPlant = self.plantsArray[self.plantIndex-self.plantsArray.count];
-    else
-        curPlant = self.plantsArray[self.plantIndex-4];
+- (void)handleLeft:(UIView *)sender {
+    CardView *plantView = (CardView *)sender;
+    NSDictionary *curPlant = plantView.plant;
 
     // save plant id to user's seen
     NSMutableArray *seenArray = [[NSMutableArray alloc] initWithArray:self.user[@"seen"] copyItems:YES];
-    [seenArray addObject:curPlant];
-    self.user[@"seen"] = seenArray;
-    [self.user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        if(error) {
-            NSLog(@"Error: %@", error.localizedDescription);
-        } else {
-            NSLog(@"Saved!");
-        }
-    }];
+    if(![seenArray containsObject:curPlant]) {
+        [seenArray addObject:curPlant];
+        self.user[@"seen"] = seenArray;
+        [self.user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            if(error) {
+                NSLog(@"Error: %@", error.localizedDescription);
+            } else {
+                NSLog(@"Saved!");
+            }
+        }];
+    }
 }
 
-- (void)handleRight:(UIButton *)sender {
-    NSDictionary *curPlant = self.plantsArray[self.plantIndex-4];
+- (void)handleRight:(UIView *)sender {
+    CardView *plantView = (CardView *)sender;
+    NSDictionary *curPlant = plantView.plant;
     NSString *plantId = [NSString stringWithFormat:@"%@", curPlant[@"Id"]];
     [APIManager savePlant:curPlant withId:plantId];
 }
 
-- (void)handlePrevious:(UIBarButtonItem *)sender {
-    self.plantIndex--;
-    [self.swipeableView rewind];
-}
 
 #pragma mark - Networking
 
@@ -188,7 +192,7 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     DetailViewController *detailVC = [segue destinationViewController];
-    detailVC.plantDict = self.plantsArray[_plantIndex-4];
+    detailVC.plantDict = self.plantToDisplay;
 }
 
 
