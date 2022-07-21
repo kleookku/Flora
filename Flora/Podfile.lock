@@ -23,6 +23,7 @@ PODS:
     - Bolts/Tasks (= 1.9.1)
   - Parse/UI (1.19.3):
     - Parse/Core
+  - "UITextView+Placeholder (1.4.0)"
   - ZLSwipeableView (0.0.8)
 
 DEPENDENCIES:
@@ -30,6 +31,7 @@ DEPENDENCIES:
   - BDBOAuth1Manager
   - Parse
   - Parse/UI
+  - "UITextView+Placeholder"
   - ZLSwipeableView
 
 SPEC REPOS:
@@ -38,6 +40,7 @@ SPEC REPOS:
     - BDBOAuth1Manager
     - Bolts
     - Parse
+    - "UITextView+Placeholder"
     - ZLSwipeableView
 
 SPEC CHECKSUMS:
@@ -45,8 +48,9 @@ SPEC CHECKSUMS:
   BDBOAuth1Manager: 92d17d06f8a648602962304cd2f35ae7394fa001
   Bolts: 8c1e8aab2f603387b8b9924f57d1d64f43d3ffdc
   Parse: 0abb63a0ff6fa34a3f64b81d595a294e2ece143a
+  "UITextView+Placeholder": d7b0c400921f66523f3a85d74f774512e14f6502
   ZLSwipeableView: df385760ff4838935cdbcb62878ac5acd7355949
 
-PODFILE CHECKSUM: 019ac766ba824c81d88f85fc0f0b67f984ae51a1
+PODFILE CHECKSUM: 038c09fbbe7862c1e9028822062365529a99298f
 
 COCOAPODS: 1.11.3

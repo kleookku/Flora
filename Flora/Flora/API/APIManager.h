@@ -29,6 +29,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)savePlantToLikes:(Plant *)plant;
 
++ (void)removePlantFromLikes:(Plant *)plant;
+
 + (void)savePlantToSeen:(Plant *)plant;
 
 - (void)searchWithOffset:(NSUInteger)offset completion:(void(^)(NSArray *results, NSError *error))completion;

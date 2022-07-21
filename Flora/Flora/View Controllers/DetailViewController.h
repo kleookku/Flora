@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol DetailViewControllerDelegate
 
-- (void)stoppedEdit;
+- (void)likedPlant;
 
 @end
 

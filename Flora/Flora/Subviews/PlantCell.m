@@ -35,5 +35,8 @@
     
     [self.delegate presentConfirmationAlert:confirmationAlert];
 }
+- (IBAction)didTapPresent:(id)sender {
+    [self.delegate presentPlantWithId:self.plant];
+}
 
 @end

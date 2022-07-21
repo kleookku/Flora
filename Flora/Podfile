@@ -11,6 +11,8 @@ pod 'BDBOAuth1Manager'
 pod 'ZLSwipeableView'
 pod 'AFNetworking'
 pod 'Parse/UI'
+pod 'UITextView+Placeholder'
+
 
   target 'FloraTests' do
     inherit! :search_paths

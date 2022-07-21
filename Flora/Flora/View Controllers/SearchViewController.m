@@ -5,36 +5,33 @@
 //  Created by Kleo Ku on 7/7/22.
 //
 
+#import <CoreLocation/CoreLocation.h>
 #import "SearchViewController.h"
 #import "APIManager.h"
 #import "ResultsViewController.h"
 #import "Parse/Parse.h"
+#import <MapKit/MapKit.h>
 
 
-#define LOW_SUN @[@"Tolerant"]
-#define MID_SUN @[@"Intermediate"]
-#define HIGH_SUN @[@"Intolerant"]
-#define SUN_ARRAY @[LOW_SUN, MID_SUN, HIGH_SUN]
+#define LOW_SUN @"Tolerant"
+#define MID_SUN @"Intermediate"
+#define HIGH_SUN @"Intolerant"
+#define NO_SUN @"Any"
+#define SUN_ARRAY @[LOW_SUN, MID_SUN, HIGH_SUN, NO_SUN]
 
-#define LOW_MOIST @[@"Low"]
-#define MED_MOIST @[@"Medium"]
-#define HIGH_MOIST @[@"High"]
-#define MOIST_ARRAY @[LOW_MOIST, MED_MOIST, HIGH_MOIST]
+#define LOW_MOIST @"Low"
+#define MED_MOIST @"Medium"
+#define HIGH_MOIST @"High"
+#define NO_MOIST @"Any"
+#define MOIST_ARRAY @[LOW_MOIST, MED_MOIST, HIGH_MOIST, NO_MOIST]
 
+#define MIN_TEMP_ARRAY @[@(-75), @(-17), @(23), @(0)]
+#define MAX_TEMP_ARRAY @[@(-17), @(23), @(100), @(0)]
 
-#define LOW_TEMP @[@"-75 - -53", @"-52 - -48", @"-47 - -43", @"-42 - -38", @"-37 - -33", @"-32 - -28", @"-27 - -23",@"-22 - -18"]
-#define MED_TEMP @[@"-17 - -13", @"-12 - -8", @"-7 - -3", @"-2 - 2",@"3 - 7", @"8 - 13", @"13 - 17", @"18 - 22"]
-#define HIGH_TEMP @[@"23 - 27",@"28 - 32", @"33 - 37", @"38 - 42", @"43 - 47", @"48 - 52", @"53 - 57"]
-#define TEMP_ARRAY @[LOW_TEMP, MED_TEMP, HIGH_TEMP]
-
-#define NOT_LOW_TEMP @[@"-17 - -13", @"-12 - -8", @"-7 - -3", @"-2 - 2",@"3 - 7", @"8 - 13", @"13 - 17", @"18 - 22", @"23 - 27",@"28 - 32", @"33 - 37", @"38 - 42", @"43 - 47", @"48 - 52", @"53 - 57"]
-#define NOT_MED_TEMP @[@"-75 - -53", @"-52 - -48", @"-47 - -43", @"-42 - -38", @"-37 - -33", @"-32 - -28", @"-27 - -23",@"-22 - -18", @"23 - 27",@"28 - 32", @"33 - 37", @"38 - 42", @"43 - 47", @"48 - 52", @"53 - 57"]
-#define NOT_HIGH_TEMP @[@"-75 - -53", @"-52 - -48", @"-47 - -43", @"-42 - -38", @"-37 - -33", @"-32 - -28", @"-27 - -23",@"-22 - -18", @"-17 - -13", @"-12 - -8", @"-7 - -3", @"-2 - 2",@"3 - 7", @"8 - 13", @"13 - 17", @"18 - 22"]
-#define NOT_TEMP_ARRAY @[NOT_LOW_TEMP, NOT_MED_TEMP, NOT_HIGH_TEMP]
 
 #define PLANTS_PER_PAGE 25
 
-@interface SearchViewController ()
+@interface SearchViewController () <CLLocationManagerDelegate>
 
 @property (nonatomic, strong)NSArray *results;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *moistureControl;
@@ -42,12 +39,20 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *temperaturecontrol;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UIButton *searchButton;
+@property (weak, nonatomic) IBOutlet MKMapView *map;
 
-@property (nonatomic, strong)NSArray *moist;
-@property (nonatomic, strong)NSArray *shade;
-@property (nonatomic, strong)NSArray *temp;
+@property (nonatomic, strong)NSString *moist;
+@property (nonatomic, strong)NSString *shade;
+@property (nonatomic, strong)NSNumber *minTemp;
+@property (nonatomic, strong)NSNumber *maxTemp;
 @property (nonatomic, strong)NSNumber *numResults;
 @property (nonatomic) NSUInteger offset;
+
+@property (nonatomic, strong)CLLocationManager *locationManager;
+@property (nonatomic, strong)MKPointAnnotation *annotation;
+@property (nonatomic, strong)UIAlertController *locationAlert;
+@property (nonatomic, strong)CLLocation *currentLocation;
+@property (nonatomic, strong)NSString *state;
 
 @end
 
@@ -58,27 +63,83 @@
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.searchButton.layer.cornerRadius = 10;
     self.offset = 0;
+    self.map.layer.cornerRadius = 10;
+    
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    self.locationManager.distanceFilter = kCLDistanceFilterNone;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+    self.annotation = [[MKPointAnnotation alloc] init];
+    
+    [self setupAlerts];
 }
+
+#pragma mark - Alerts
+
+- (void)setupAlerts{
+    self.locationAlert = [UIAlertController alertControllerWithTitle:@"Use Current Location?" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self.locationManager requestWhenInUseAuthorization];
+        [self.locationManager startUpdatingLocation];
+    }];
+    UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault handler:nil];
+    
+    [self.locationAlert addAction:noAction];
+    [self.locationAlert addAction:yesAction];
+}
+
+#pragma mark - CLLocationManagerDelegate
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
+    self.currentLocation = [locations objectAtIndex:0];
+    [self.locationManager stopUpdatingLocation];
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init] ;
+    [geocoder reverseGeocodeLocation:self.currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+        if (!(error)) {
+            MKPlacemark *placemark = [placemarks objectAtIndex:0];
+            self.state = placemark.administrativeArea;
+            NSLog(@"state is %@", self.state);
+            [self.annotation setCoordinate:self.currentLocation.coordinate];
+            [self.map addAnnotation:self.annotation];
+        } else
+            NSLog(@"Geocode failed with error %@", error);
+        }];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {}
+- (void)locationManagerDidChangeAuthorization:(CLLocationManager *)manager {}
+
+
+#pragma mark - Actions
+
 - (IBAction)onTapSearch:(id)sender {
     [self.activityIndicator startAnimating];
     self.searchButton.enabled = NO;
-
     [self queryPlants];
 }
+
+- (IBAction)onTapLocation:(id)sender {
+    [self presentViewController:self.locationAlert animated:YES completion:nil];
+}
+
+#pragma mark - Do Search
 
 - (void)queryPlants {
     self.moist = MOIST_ARRAY[_moistureControl.selectedSegmentIndex];
     self.shade = SUN_ARRAY[_sunlightControl.selectedSegmentIndex];
-    self.temp = NOT_TEMP_ARRAY[_temperaturecontrol.selectedSegmentIndex];
-
+    self.minTemp = MIN_TEMP_ARRAY[_temperaturecontrol.selectedSegmentIndex];
+    self.maxTemp = MAX_TEMP_ARRAY[_temperaturecontrol.selectedSegmentIndex];
+    
     PFQuery *query = [PFQuery queryWithClassName:@"Plant"];
     
-    [query whereKey:@"shadeLevel" equalTo:self.shade[0]];
-    [query whereKey:@"moistureUse" equalTo:self.moist[0]];
-    for(NSString *t in self.temp) {
-        [query whereKey:@"minTemp" notEqualTo:t];
+    if(![self.moist isEqualToString:@"Any"])
+        [query whereKey:@"moistureUse" equalTo:self.moist];
+    if(![self.shade isEqualToString:@"Any"])
+        [query whereKey:@"shadeLevel" equalTo:self.shade];
+    if(![self.minTemp isEqualToValue:@(0)]) {
+        [query whereKey:@"minTemp" greaterThan:self.minTemp];
+        [query whereKey:@"minTemp" lessThan:self.maxTemp];
     }
-        
+    
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if(error) {
             NSLog(@"Error getting search results: %@", error.localizedDescription);
@@ -94,10 +155,12 @@
 - (NSArray *)shuffleArray:(NSArray *)array {
     NSMutableArray *mutableArray = [[NSMutableArray alloc] init];
     [mutableArray addObjectsFromArray:array];
-    for (NSUInteger i = 0; i < array.count - 1; ++i) {
-        NSInteger remainingCount = array.count - i;
-        NSInteger exchangeIndex = i + arc4random_uniform((u_int32_t )remainingCount);
-        [mutableArray exchangeObjectAtIndex:i withObjectAtIndex:exchangeIndex];
+    if(array.count > 0) {
+        for (NSUInteger i = 0; i < array.count - 1; ++i) {
+            NSInteger remainingCount = array.count - i;
+            NSInteger exchangeIndex = i + arc4random_uniform((u_int32_t )remainingCount);
+            [mutableArray exchangeObjectAtIndex:i withObjectAtIndex:exchangeIndex];
+        }
     }
     return mutableArray;
 }
@@ -107,10 +170,6 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     ResultsViewController *resultsVC = [segue destinationViewController];
     resultsVC.plantsArray = [self.results mutableCopy];
-    resultsVC.moist = self.moist;
-    resultsVC.shade = self.shade;
-    resultsVC.temp = self.temp;
-    resultsVC.numResults = self.numResults;
 }
 
 

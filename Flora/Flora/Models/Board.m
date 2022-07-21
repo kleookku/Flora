@@ -12,17 +12,20 @@
 @dynamic name;
 @dynamic plantsArray;
 @dynamic user;
+@dynamic notes;
+@dynamic coverImage;
 
 + (nonnull NSString *) parseClassName {
     return @"Board";
 }
 
-+ (void) saveBoard: (NSString * _Nullable)name withPlants:(NSArray * _Nullable)plants forUser:(NSString *)username withCompletion: (PFBooleanResultBlock _Nullable)completion {
++ (void) saveBoard: (NSString * _Nullable)name withPlants:(NSArray * _Nullable)plants forUser:(NSString *)username withNotes:(NSString *)notes withCompletion: (PFBooleanResultBlock _Nullable)completion {
     
     Board *newBoard = [Board new];
     newBoard.name = name;
     newBoard.plantsArray = plants;
     newBoard.user = username;
+    newBoard.notes = notes;
     
     [newBoard saveInBackgroundWithBlock: completion];
 }

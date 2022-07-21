@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol CardViewDelegate
 
-- (void)plantClicked:(NSDictionary *)plantDict;
+- (void)plantClicked:(Plant *)plant;
 
 @end
 

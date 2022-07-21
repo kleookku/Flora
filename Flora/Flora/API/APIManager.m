@@ -138,7 +138,8 @@
     PFUser *user = [PFUser currentUser];
     
     // save board PFObject to database
-    [Board saveBoard:boardName withPlants:@[] forUser:user.username withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+    
+    [Board saveBoard:boardName withPlants:@[] forUser:user.username withNotes:@"" withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
         if(error){
             NSLog(@"Error saving board: %@", error.localizedDescription);
         } else {
@@ -146,7 +147,6 @@
         }
     }];
     
-    // save plant to user's likes
     NSMutableArray *boardsArray = [[NSMutableArray alloc] initWithArray: user[@"boards"] copyItems:YES];
     [boardsArray addObject:boardName];
     user[@"boards"] = boardsArray;
@@ -157,7 +157,6 @@
             NSLog(@"Saved!");
         }
     }];
-    
 }
 
 + (void)savePlantToLikes:(Plant *)plant{
@@ -168,6 +167,23 @@
         // save plant to user's likes
         NSMutableArray *likesArray = [[NSMutableArray alloc] initWithArray:user[@"likes"] copyItems:YES];
         [likesArray addObject:plant.plantId];
+        user[@"likes"] = likesArray;
+        [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            if(error) {
+                NSLog(@"Error: %@", error.localizedDescription);
+            } else {
+                NSLog(@"Saved!");
+            }
+        }];
+        
+    }
+}
+
++ (void)removePlantFromLikes:(Plant *)plant{
+    PFUser *user = [PFUser currentUser];
+    if([user[@"likes"] containsObject:plant.plantId]){
+        NSMutableArray *likesArray = [[NSMutableArray alloc] initWithArray:user[@"likes"] copyItems:YES];
+        [likesArray removeObject:plant.plantId];
         user[@"likes"] = likesArray;
         [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             if(error) {

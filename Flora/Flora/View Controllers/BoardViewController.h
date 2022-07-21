@@ -7,6 +7,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Board.h"
+#import "DetailViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -21,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong)Board *board;
 @property (nonatomic, strong)NSMutableArray<id<BoardViewControllerDelegate>> *cellDelegates;
-@property (nonatomic, strong)id<BoardViewControllerDelegate> delegate;
+@property (nonatomic, strong)id<BoardViewControllerDelegate, DetailViewControllerDelegate> delegate;
 
 @end
 

@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol BoardCellDelegate
 
-- (void)didTapViewBoard:(Board *)board;
+- (void)didTapBoard:(Board *)board;
 - (void)deleteBoard:(NSString *)boardName;
 - (void)confirmBoardDelete:(UIAlertController *)alert;
 

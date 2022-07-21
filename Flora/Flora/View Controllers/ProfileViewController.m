@@ -144,24 +144,7 @@
     self.savedAlert = [UIAlertController alertControllerWithTitle:@"Saved" message:nil preferredStyle:UIAlertControllerStyleAlert];
 }
 
-#pragma mark - Image Select
 
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
-    // Get the image captured by the UIImagePickerController
-    UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
-    UIImage *editedImage = info[UIImagePickerControllerEditedImage];
-    
-    if(editedImage){
-        UIImage *resizedImage = [self resizeImage:editedImage withSize:self.profileImage.bounds.size];
-        self.profileImage.image = resizedImage;
-    } else {
-        UIImage *resizedImage = [self resizeImage:originalImage withSize:self.profileImage.bounds.size];
-        self.profileImage.image = resizedImage;
-    }
-    
-    // Dismiss UIImagePickerController to go back to your original view controller
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
 
 - (void)openCamera {
     UIImagePickerController *imagePickerVC = [UIImagePickerController new];

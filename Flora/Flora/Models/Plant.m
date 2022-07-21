@@ -29,7 +29,10 @@
     newPlant.image = [self getPFFileFromImage:image];
     newPlant.moistureUse = characteristics[@"moist"];
     newPlant.shadeLevel = characteristics[@"shade"];
-    newPlant.minTemp = characteristics[@"temp"];
+    
+    NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+    NSNumber *tempNumber = [f numberFromString:characteristics[@"temp"]];
+    newPlant.minTemp = tempNumber;
     
     [newPlant saveInBackgroundWithBlock:completion];
 }
@@ -70,7 +73,10 @@
     
     newPlant.moistureUse = moist;
     newPlant.shadeLevel = shade;
-    newPlant.minTemp = temp;
+    
+    NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+    NSNumber *tempNumber = [f numberFromString:temp];
+    newPlant.minTemp = tempNumber;
         
     NSLog(@"plant %@", newPlant);
     

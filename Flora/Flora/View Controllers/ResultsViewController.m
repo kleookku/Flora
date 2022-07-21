@@ -48,8 +48,6 @@
     self.offset = -1;
     self.user = [PFUser currentUser];
 
-    // Do any additional setup after loading the view, typically from a nib.
-
     // Required Data Source
     self.swipeableView.dataSource = self;
 
@@ -113,16 +111,16 @@
 - (UIView *)nextViewForSwipeableView:(ZLSwipeableView *)swipeableView {
     if(!_NO_MORE_RESULTS){
         
+        
         if(self.plantIndex < self.plantsArray.count) {
             CardView *view = [[CardView alloc] initWithPlant:swipeableView.bounds plant:_plantsArray[self.plantIndex]];
             view.delegate = self;
             view.backgroundColor = [UIColor whiteColor];
             self.plantIndex++;
             return view;
-        } else {
-            CardView *view = [[CardView alloc] initWithLoad:swipeableView.bounds];
-            view.backgroundColor = [UIColor whiteColor];
-            return view;
+        }
+        else {
+            _NO_MORE_RESULTS = YES;
         }
 
     }
@@ -143,33 +141,15 @@
     CardView *plantView = (CardView *)sender;
     Plant *curPlant = plantView.plant;
 
-    NSLog(@"user seen object type is %@", [self.user[@"seen"] class]);
-    [APIManager savePlantToSeen:curPlant];
+    if(curPlant)
+        [APIManager savePlantToSeen:curPlant];
 }
 
 - (void)handleRight:(UIView *)sender {
     CardView *plantView = (CardView *)sender;
     Plant *curPlant = plantView.plant;
-    [APIManager savePlantToLikes:curPlant];
-}
-
-
-#pragma mark - Networking
-
-- (void)createCharacteristicSearchWithOffset {
-    self.offset = _offset + PLANTS_PER_PAGE;
-    [[APIManager shared] searchWithShadeLevel:self.shade withMoistureUse:self.moist withMinTemperature:self.temp offsetBy:self.offset completion:^(NSArray * _Nonnull results, NSError * _Nonnull error) {
-            if(results) {
-                NSLog(@"Successfully created characteristics search!");
-                if(results.count == 0){
-                    self.NO_MORE_RESULTS = true;
-                }
-                [self.plantsArray addObjectsFromArray:results];
-                
-            } else {
-                NSLog(@"Error creating characteristics search: %@", error.localizedDescription);
-            }
-    }];
+    if(curPlant)
+        [APIManager savePlantToLikes:curPlant];
 }
 
 

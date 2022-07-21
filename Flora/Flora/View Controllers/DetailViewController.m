@@ -35,6 +35,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *tempLabel;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet PFImageView *plantImage;
+@property (weak, nonatomic) IBOutlet UIButton *likeButton;
 @property (weak, nonatomic) IBOutlet UIButton *addToBoardButton;
 
 @end
@@ -44,38 +45,42 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.activityIndicator.startAnimating;
+    [self.activityIndicator startAnimating];
     self.addToBoardButton.layer.cornerRadius = 15;
     [self getPlantObj];
 }
 
 
-
 - (void)getPlantObj {
     if(self.plant) {
-        self.activityIndicator.stopAnimating;
+        [self.activityIndicator stopAnimating];
         self.plantName.text = self.plant.name;
         self.plantImage.file = self.plant.image;
         [self.plantImage loadInBackground];
         self.moistLabel.text = MOIST_DICT[self.plant.moistureUse];
         self.shadeLabel.text = SUN_DICT[self.plant.shadeLevel];
-        self.tempLabel.text = [@"Minimum temperature is " stringByAppendingString:[self.plant.minTemp stringByAppendingString:@"°F"]];
-    } else {
-        [self.plantImage setImageWithURL:[[APIManager shared] getPlantImageURL:self.plantDict[PLANT_IMAGE]]];
-        self.plantName.text = self.plantDict[PLANT_NAME];
-        NSString *idString = [NSString stringWithFormat:@"%@", self.plantDict[PLANT_ID]];
-        [[APIManager shared] getPlantCharacteristicsWithId:idString completion:^(NSString * _Nonnull shade, NSString * _Nonnull moist, NSString * _Nonnull temp, NSError * _Nonnull error) {
-            if(error) {
-                NSLog(@"Error reading plant characteristics: %@", error.localizedDescription);
-            } else {
-                self.activityIndicator.stopAnimating;
-                self.moistLabel.text = MOIST_DICT[moist];
-                self.shadeLabel.text = SUN_DICT[shade];
-                self.tempLabel.text = [@"Minimum temperature is " stringByAppendingString:[temp stringByAppendingString:@"°F"]];
-                
-            }
-        }];
+        NSString *minTempString = [self.plant.minTemp stringValue];
+        self.tempLabel.text = [@"Minimum temperature is " stringByAppendingString:[minTempString stringByAppendingString:@"°F"]];
+        
+        NSArray *userLikes = [PFUser currentUser][@"likes"];
+        if ([userLikes containsObject:self.plant.plantId]) {
+            [self.likeButton setImage:[UIImage systemImageNamed:@"suit.heart.fill"] forState:UIControlStateNormal];
+        } else {
+            [self.likeButton setImage:[UIImage systemImageNamed:@"suit.heart"] forState:UIControlStateNormal];
+        }
     }
+}
+
+- (IBAction)didTapLike:(id)sender {
+    NSArray *userLikes = [PFUser currentUser][@"likes"];
+    if ([userLikes containsObject:self.plant.plantId]) {
+        [APIManager removePlantFromLikes:self.plant];
+        [self.likeButton setImage:[UIImage systemImageNamed:@"suit.heart"] forState:UIControlStateNormal];
+    } else {
+        [APIManager savePlantToLikes:self.plant];
+        [self.likeButton setImage:[UIImage systemImageNamed:@"suit.heart.fill"] forState:UIControlStateNormal];
+    }
+    [self.delegate likedPlant];
 }
 
 

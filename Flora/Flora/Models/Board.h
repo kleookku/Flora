@@ -14,8 +14,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSArray *plantsArray;
 @property (nonatomic, strong) NSString *user;
+@property (nonatomic, strong) NSString *notes;
+@property (nonatomic, strong) PFFileObject *coverImage;
 
-+ (void) saveBoard: (NSString * _Nullable)name withPlants:(NSArray * _Nullable)plants forUser:(NSString *)username withCompletion: (PFBooleanResultBlock _Nullable)completion;
++ (void) saveBoard: (NSString * _Nullable)name withPlants:(NSArray * _Nullable)plants forUser:(NSString *)username withNotes:(NSString *)notes withCompletion: (PFBooleanResultBlock _Nullable)completion;
 
 @end
 

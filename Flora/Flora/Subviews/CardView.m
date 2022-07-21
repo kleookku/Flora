@@ -43,7 +43,6 @@
         [imgView setImageWithURL:[[APIManager shared] getPlantImageURL:plantDict[PLANT_IMAGE]]];
         
         imgView.layer.cornerRadius = 10;
-//        imgView.frame = CGRectOffset(self.frame, 15, 15 );
         imgView.frame = CGRectMake(12.5, 25, 250, 400);
         imgView.contentMode = UIViewContentModeScaleAspectFit;
         imgView.clipsToBounds = YES;
@@ -58,7 +57,6 @@
         UIButton *detailsButton = [[UIButton alloc] initWithFrame: CGRectOffset(self.frame, 0, 0)];
         [detailsButton setTitle:@"" forState:UIControlStateNormal];
         detailsButton.contentMode = UIViewContentModeScaleAspectFill;
-//        detailsButton.center = self.center;
         [detailsButton addTarget:self action:@selector(buttonPressed) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:detailsButton];
     }
@@ -71,7 +69,6 @@
         [self setup];
         
         self.plant = plant;
-        
         
         PFImageView *imgView = [[PFImageView alloc] initWithFrame:CGRectMake(12.5, 25, 250, 400)];
         imgView.image = nil;
@@ -124,7 +121,7 @@
         UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleMedium];
         spinner.frame = CGRectOffset(self.frame, 0, 0);
         spinner.center = self.center;
-        spinner.startAnimating;
+        [spinner startAnimating];
         [self addSubview:spinner];
     }
     return self;
