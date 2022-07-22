@@ -7,6 +7,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Plant.h"
+#import "SelectViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -20,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSDictionary *plantDict;
 @property (nonatomic, strong) Plant *plant;
-@property (nonatomic, strong)id<DetailViewControllerDelegate> delegate;
+@property (nonatomic, strong)id<DetailViewControllerDelegate, SelectViewControllerDelegate> delegate;
 
 @end
 

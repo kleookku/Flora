@@ -91,10 +91,7 @@
     if(self.plant) {
         SelectViewController *selectVC = [segue destinationViewController];
         selectVC.plantId = self.plant.plantId;
-        
-    } else {
-        SelectViewController *selectVC = [segue destinationViewController];
-        selectVC.plantId = self.plantDict[PLANT_ID];
+        selectVC.delegate = self.delegate;
     }
 }
 

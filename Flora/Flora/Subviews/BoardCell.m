@@ -17,12 +17,10 @@
     self.deleteButton.layer.masksToBounds = false;
     self.deleteButton.layer.cornerRadius = self.deleteButton.frame.size.width/2;
     [self.deleteButton setHidden:NO];
-//    [self.detailsButton setUserInteractionEnabled:NO];
 }
 
 - (void) stoppedEdit {
     [self.deleteButton setHidden:YES];
-//    [self.detailsButton setUserInteractionEnabled:YES];
 }
 
 - (IBAction)didTapDelete:(id)sender {

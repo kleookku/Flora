@@ -85,7 +85,14 @@
     PFFileObject *imageFile = [PFFileObject fileObjectWithName:@"avatar.png" data:imageData];
     
     user[@"profilePic"] = imageFile;
-    [user saveInBackground];
+    [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if(error) {
+            NSLog(@"Error saving profile pic %@", error.localizedDescription);
+        } else {
+            NSLog(@"Successfully saved profile pic!");
+            
+        }
+    }];
     
     [self presentViewController:self.savedAlert animated:YES completion:^{
             NSTimeInterval delayInSeconds = 0.25;
@@ -134,6 +141,26 @@
     self.addPictureAlert.preferredAction = cancelAction;
 }
 
+#pragma mark - Image Select
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    // Get the image captured by the UIImagePickerController
+    UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
+    UIImage *editedImage = info[UIImagePickerControllerEditedImage];
+    
+    if(editedImage){
+        UIImage *resizedImage = [self resizeImage:editedImage withSize:self.profileImage.bounds.size];
+        self.profileImage.image = resizedImage;
+    } else {
+        UIImage *resizedImage = [self resizeImage:originalImage withSize:self.profileImage.bounds.size];
+        self.profileImage.image = resizedImage;
+    }
+    
+    // Dismiss UIImagePickerController to go back to your original view controller
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
 - (void)setupNoCameraAlert {
     self.noCameraAlert = [UIAlertController alertControllerWithTitle:@"Camera not available" message:nil preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {}];
@@ -143,8 +170,6 @@
 - (void)setupSavedAlert {
     self.savedAlert = [UIAlertController alertControllerWithTitle:@"Saved" message:nil preferredStyle:UIAlertControllerStyleAlert];
 }
-
-
 
 - (void)openCamera {
     UIImagePickerController *imagePickerVC = [UIImagePickerController new];

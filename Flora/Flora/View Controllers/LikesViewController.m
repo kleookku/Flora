@@ -14,10 +14,11 @@
 #import "Board.h"
 #import "BoardViewController.h"
 #import "DetailViewController.h"
+#import "SelectViewController.h"
 #import "APIManager.h"
 
 
-@interface LikesViewController () <UICollectionViewDataSource, UICollectionViewDelegate, BoardCellDelegate, LikesCellDelegate, BoardViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, DetailViewControllerDelegate>
+@interface LikesViewController () <UICollectionViewDataSource, UICollectionViewDelegate, BoardCellDelegate, LikesCellDelegate, BoardViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, DetailViewControllerDelegate, SelectViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *boardsCollectionView;
 @property (weak, nonatomic) IBOutlet UICollectionView *likedCollectionView;
 @property (weak, nonatomic) IBOutlet UIButton *editButton;
@@ -219,6 +220,11 @@
     [self updateLikes];
 }
 
+#pragma mark - SelectViewControllerDelegate
+
+- (void) boardsSelected {
+    [self updateBoards];
+}
 #pragma mark - CollectionViewDataSource
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -388,5 +394,6 @@
         boardVC.delegate = self;
     }
 }
+
 
 @end

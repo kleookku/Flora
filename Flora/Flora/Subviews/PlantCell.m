@@ -9,6 +9,7 @@
 
 @implementation PlantCell
 - (void)tappedEdit {
+    self.detailsButton.userInteractionEnabled = NO;
     self.deleteButton.contentMode = UIViewContentModeScaleAspectFill;
     self.deleteButton.layer.masksToBounds = false;
     self.deleteButton.layer.cornerRadius = self.deleteButton.frame.size.width/2;
@@ -16,6 +17,7 @@
 }
 
 - (void)stoppedEdit {
+    self.detailsButton.userInteractionEnabled = YES;
     [self.deleteButton setHidden:YES];
 }
 

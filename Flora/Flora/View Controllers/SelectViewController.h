@@ -9,9 +9,17 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol SelectViewControllerDelegate
+
+- (void)boardsSelected;
+
+@end
+
 @interface SelectViewController : UIViewController
 
 @property (nonatomic, strong)NSString *plantId;
+@property (nonatomic, strong)id<SelectViewControllerDelegate> delegate;
+
 
 @end
 

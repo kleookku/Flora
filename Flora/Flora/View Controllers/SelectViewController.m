@@ -21,11 +21,10 @@
 @property (nonatomic, strong)NSArray *boards;
 @property (nonatomic, strong)PFUser *user;
 
-
-
 @end
 
 @implementation SelectViewController
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -37,6 +36,11 @@
     self.collectionView.dataSource = self;
     self.user = [PFUser currentUser];
     self.boards = self.user[@"boards"];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    NSLog(@"delegate is %@", self.delegate);
+    [self.delegate boardsSelected];
 }
 
 #pragma mark - Alert

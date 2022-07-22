@@ -32,12 +32,11 @@
     dispatch_once(&onceToken, ^{
         NSString *path = [[NSBundle mainBundle] pathForResource:@"charSearchBody" ofType:@"json"];
         data = [NSData dataWithContentsOfFile:path];
-        });
+    });
     return data;
 }
 
 - (void)searchWithShadeLevel:(NSArray *)shade withMoistureUse:(NSArray *)moist withMinTemperature:(NSArray *)temp offsetBy:(NSUInteger)offset completion:(void(^)(NSArray *results, NSError *error))completion {
-
     
     NSString *url = @"https://plantsservices.sc.egov.usda.gov/api/CharacteristicsSearch";
     NSMutableDictionary *mutableDict = [NSJSONSerialization JSONObjectWithData:[APIManager searchBody] options:NSJSONReadingMutableContainers error:nil];
@@ -57,7 +56,7 @@
             NSInteger exchangeIndex = i + arc4random_uniform((u_int32_t )remainingCount);
             [results exchangeObjectAtIndex:i withObjectAtIndex:exchangeIndex];
         }
-
+        
         completion(results, nil);
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -159,6 +158,36 @@
     }];
 }
 
++ (void)userFollowedOrUnfollowed:(PFUser *) user {
+    PFUser *currentUser = [PFUser currentUser];
+    
+    NSMutableArray *followingArray = nil;
+    
+    if(currentUser[@"following"]){
+        followingArray = [[NSMutableArray alloc] initWithArray:currentUser[@"following"] copyItems:YES];
+    } else {
+        followingArray = [[NSMutableArray alloc] init];
+    }
+    
+    if([currentUser[@"following"] containsObject:user.username]) {
+        [followingArray removeObject:user.username];
+        currentUser[@"following"] = followingArray;
+        
+    } else {
+        [followingArray addObject:user.username];
+        currentUser[@"following"] = followingArray;
+    }
+    
+    [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if(error) {
+            NSLog(@"Error updating user: %@", error.localizedDescription);
+        } else {
+            NSLog(@"Succesfully followed/unfollowed user!");
+        }
+    }];
+    
+}
+
 + (void)savePlantToLikes:(Plant *)plant{
     PFUser *user = [PFUser currentUser];
     
@@ -198,7 +227,7 @@
 
 + (void)savePlantToSeen:(Plant *)plant {
     PFUser *user = [PFUser currentUser];
-
+    
     // save plant id to user's seen
     NSMutableArray *seenArray = [[NSMutableArray alloc] initWithArray:user[@"seen"] copyItems:YES];
     if(![seenArray containsObject:plant.plantId]) {
@@ -222,7 +251,7 @@
     [self POST:url parameters:mutableDict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary * _Nullable response) {
         
         NSMutableArray<NSDictionary *> *results = [[NSMutableArray alloc] initWithArray:response[@"PlantResults"] copyItems:YES];
-
+        
         completion(results, nil);
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

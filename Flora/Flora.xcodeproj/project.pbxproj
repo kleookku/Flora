@@ -38,6 +38,9 @@
 		F47EE87B286E4A8E00E3AA76 /* FloraTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F47EE87A286E4A8E00E3AA76 /* FloraTests.m */; };
 		F47EE885286E4A8E00E3AA76 /* FloraUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F47EE884286E4A8E00E3AA76 /* FloraUITests.m */; };
 		F47EE887286E4A8E00E3AA76 /* FloraUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F47EE886286E4A8E00E3AA76 /* FloraUITestsLaunchTests.m */; };
+		F488CAC1288B4F840031B781 /* FollowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F488CAC0288B4F840031B781 /* FollowViewController.m */; };
+		F488CAC4288B4FDB0031B781 /* UserSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F488CAC3288B4FDB0031B781 /* UserSearchViewController.m */; };
+		F488CAC7288B56300031B781 /* UserSearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F488CAC6288B56300031B781 /* UserSearchCell.m */; };
 		F49755B52881E046008050BB /* AddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F49755B42881E046008050BB /* AddViewController.m */; };
 		F49755B82881E458008050BB /* AddPlantCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F49755B72881E458008050BB /* AddPlantCell.m */; };
 /* End PBXBuildFile section */
@@ -120,6 +123,12 @@
 		F47EE880286E4A8E00E3AA76 /* FloraUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FloraUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F47EE884286E4A8E00E3AA76 /* FloraUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FloraUITests.m; sourceTree = "<group>"; };
 		F47EE886286E4A8E00E3AA76 /* FloraUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FloraUITestsLaunchTests.m; sourceTree = "<group>"; };
+		F488CABF288B4F840031B781 /* FollowViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FollowViewController.h; sourceTree = "<group>"; };
+		F488CAC0288B4F840031B781 /* FollowViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FollowViewController.m; sourceTree = "<group>"; };
+		F488CAC2288B4FDB0031B781 /* UserSearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserSearchViewController.h; sourceTree = "<group>"; };
+		F488CAC3288B4FDB0031B781 /* UserSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserSearchViewController.m; sourceTree = "<group>"; };
+		F488CAC5288B56300031B781 /* UserSearchCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserSearchCell.h; sourceTree = "<group>"; };
+		F488CAC6288B56300031B781 /* UserSearchCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserSearchCell.m; sourceTree = "<group>"; };
 		F49755B32881E046008050BB /* AddViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddViewController.h; sourceTree = "<group>"; };
 		F49755B42881E046008050BB /* AddViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddViewController.m; sourceTree = "<group>"; };
 		F49755B62881E458008050BB /* AddPlantCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AddPlantCell.h; path = Flora/Subviews/AddPlantCell.h; sourceTree = SOURCE_ROOT; };
@@ -211,6 +220,10 @@
 				F44CF45B287F2F420076AB4B /* BoardViewController.m */,
 				F49755B32881E046008050BB /* AddViewController.h */,
 				F49755B42881E046008050BB /* AddViewController.m */,
+				F488CABF288B4F840031B781 /* FollowViewController.h */,
+				F488CAC0288B4F840031B781 /* FollowViewController.m */,
+				F488CAC2288B4FDB0031B781 /* UserSearchViewController.h */,
+				F488CAC3288B4FDB0031B781 /* UserSearchViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -227,6 +240,8 @@
 		F44CF459287E25210076AB4B /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
+				F488CAC5288B56300031B781 /* UserSearchCell.h */,
+				F488CAC6288B56300031B781 /* UserSearchCell.m */,
 				F456EAA6287CDA280067B05C /* LikesCell.h */,
 				F456EAA7287CDA280067B05C /* LikesCell.m */,
 				F44CF453287E21D10076AB4B /* BoardCell.h */,
@@ -544,6 +559,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F488CAC1288B4F840031B781 /* FollowViewController.m in Sources */,
 				F445ED072875FD410084BDBB /* Board.m in Sources */,
 				F456EAA8287CDA280067B05C /* LikesCell.m in Sources */,
 				F47EE860286E4A8D00E3AA76 /* AppDelegate.m in Sources */,
@@ -560,9 +576,11 @@
 				F445ED162877A9A10084BDBB /* DetailViewController.m in Sources */,
 				F456EAA5287CD5DE0067B05C /* LikesViewController.m in Sources */,
 				F445ED1028760C530084BDBB /* CardView.m in Sources */,
+				F488CAC4288B4FDB0031B781 /* UserSearchViewController.m in Sources */,
 				F44CF458287E251A0076AB4B /* SelectBoardCell.m in Sources */,
 				F47EE871286E4A8E00E3AA76 /* main.m in Sources */,
 				F49755B52881E046008050BB /* AddViewController.m in Sources */,
+				F488CAC7288B56300031B781 /* UserSearchCell.m in Sources */,
 				F445ED192878B48F0084BDBB /* ProfileViewController.m in Sources */,
 				F44CF45C287F2F420076AB4B /* BoardViewController.m in Sources */,
 				F47EE863286E4A8D00E3AA76 /* SceneDelegate.m in Sources */,

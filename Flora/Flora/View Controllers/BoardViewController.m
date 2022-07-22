@@ -43,6 +43,7 @@
     self.editButton.layer.cornerRadius = 10;
     self.editButton.tag = 1;
     self.addPlantButton.layer.cornerRadius = 7;
+    self.addPlantButton.tag = 2;
     
     self.notesView.delegate = self;
     self.notesView.layer.cornerRadius = 15;
@@ -210,10 +211,12 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if([sender tag] == 1) {
+    if([sender tag] == 2) {
         AddViewController *addViewVC = [segue destinationViewController];
         addViewVC.board = self.board;
         addViewVC.delegate = self;
+    } else if ([sender tag] == 1){
+        
     } else {
         DetailViewController *detailVC = [segue destinationViewController];
         detailVC.plant = self.plantToPresent;
