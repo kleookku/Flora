@@ -27,8 +27,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)saveBoardWithName:(NSString *) boardName;
 
-+(void)followUser:(PFUser*)user;
-
 + (void)userFollowedOrUnfollowed:(PFUser *) user;
 
 + (void)savePlantToLikes:(Plant *)plant;

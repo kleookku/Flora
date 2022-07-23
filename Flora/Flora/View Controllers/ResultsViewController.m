@@ -13,8 +13,6 @@
 #import "Parse/Parse.h"
 #import "Plant.h"
 
-#define PLANTS_PER_PAGE 25;
-#define CARD_OFFSET = 4;
 #define PLANT_ID @"AcceptedId"
 #define PLANT_IMAGE @"ProfileImageFilename"
 #define PLANT_NAME @"CommonName"
@@ -140,7 +138,6 @@
 - (void)handleLeft:(UIView *)sender {
     CardView *plantView = (CardView *)sender;
     Plant *curPlant = plantView.plant;
-
     if(curPlant)
         [APIManager savePlantToSeen:curPlant];
 }

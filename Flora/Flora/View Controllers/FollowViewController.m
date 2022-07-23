@@ -25,7 +25,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
@@ -80,14 +79,8 @@
             cell.numBoards.text = [NSString stringWithFormat:@"%li boards", userBoards.count];
         }
     }];
-    
     return cell;
 }
-
-- (void)getUserWithName:(NSString *)username {
-    
-}
-
 
 /*
  #pragma mark - Navigation

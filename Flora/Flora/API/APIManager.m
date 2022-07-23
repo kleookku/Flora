@@ -26,6 +26,8 @@
     return sharedManager;
 }
 
+#pragma mark - Data Extraction
+
 + (NSData *)searchBody {
     static NSData *data = nil;
     static dispatch_once_t onceToken;
@@ -133,6 +135,24 @@
     
 }
 
+- (void)searchWithOffset:(NSUInteger)offset completion:(void(^)(NSArray *results, NSError *error))completion {
+    NSString *url = @"https://plantsservices.sc.egov.usda.gov/api/CharacteristicsSearch";
+    NSMutableDictionary *mutableDict = [NSJSONSerialization JSONObjectWithData:[APIManager searchBody] options:NSJSONReadingMutableContainers error:nil];
+    mutableDict[@"Offset"] = @(offset);
+    
+    [self POST:url parameters:mutableDict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary * _Nullable response) {
+        
+        NSMutableArray<NSDictionary *> *results = [[NSMutableArray alloc] initWithArray:response[@"PlantResults"] copyItems:YES];
+        
+        completion(results, nil);
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        completion(nil, error);
+    }];
+}
+
+# pragma mark - Parse
+
 + (void)saveBoardWithName:(NSString *) boardName {
     PFUser *user = [PFUser currentUser];
     
@@ -154,47 +174,6 @@
             NSLog(@"Error: %@", error.localizedDescription);
         } else {
             NSLog(@"Saved!");
-        }
-    }];
-}
-
-+(void)followUser:(PFUser*)user {
-    PFUser *currentUser = [PFUser currentUser];
-    
-    NSMutableArray *followingArray = nil;
-    NSMutableArray *userFollowingArray = nil;
-    
-    if(currentUser[@"following"]){
-        followingArray = [[NSMutableArray alloc] initWithArray:currentUser[@"following"] copyItems:YES];
-    } else {
-        followingArray = [[NSMutableArray alloc] init];
-    }
-    
-    if(user[@"followers"]){
-        userFollowingArray = [[NSMutableArray alloc] initWithArray:user[@"followers"] copyItems:YES];
-    } else {
-        userFollowingArray = [[NSMutableArray alloc] init];
-    }
-    
-    [followingArray addObject:user.username];
-    currentUser[@"following"] = followingArray;
-    
-    [userFollowingArray addObject:currentUser.username];
-    user[@"followers"] = userFollowingArray;
-    
-    [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        if(error) {
-            NSLog(@"Error updating user: %@", error.localizedDescription);
-        } else {
-            NSLog(@"Succesfully followed/unfollowed user!");
-        }
-    }];
-    
-    [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        if(error) {
-            NSLog(@"Error updating user: %@", error.localizedDescription);
-        } else {
-            NSLog(@"Succesfully followed/unfollowed user!");
         }
     }];
 }
@@ -254,8 +233,6 @@
     PFUser *user = [PFUser currentUser];
     
     if(![user[@"likes"] containsObject:plant.plantId]){
-        
-        // save plant to user's likes
         NSMutableArray *likesArray = [[NSMutableArray alloc] initWithArray:user[@"likes"] copyItems:YES];
         [likesArray addObject:plant.plantId];
         user[@"likes"] = likesArray;
@@ -303,22 +280,6 @@
             }
         }];
     }
-}
-
-- (void)searchWithOffset:(NSUInteger)offset completion:(void(^)(NSArray *results, NSError *error))completion {
-    NSString *url = @"https://plantsservices.sc.egov.usda.gov/api/CharacteristicsSearch";
-    NSMutableDictionary *mutableDict = [NSJSONSerialization JSONObjectWithData:[APIManager searchBody] options:NSJSONReadingMutableContainers error:nil];
-    mutableDict[@"Offset"] = @(offset);
-    
-    [self POST:url parameters:mutableDict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary * _Nullable response) {
-        
-        NSMutableArray<NSDictionary *> *results = [[NSMutableArray alloc] initWithArray:response[@"PlantResults"] copyItems:YES];
-        
-        completion(results, nil);
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        completion(nil, error);
-    }];
 }
 
 /*
