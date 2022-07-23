@@ -158,10 +158,11 @@
     }];
 }
 
-+ (void)userFollowedOrUnfollowed:(PFUser *) user {
++(void)followUser:(PFUser*)user {
     PFUser *currentUser = [PFUser currentUser];
     
     NSMutableArray *followingArray = nil;
+    NSMutableArray *userFollowingArray = nil;
     
     if(currentUser[@"following"]){
         followingArray = [[NSMutableArray alloc] initWithArray:currentUser[@"following"] copyItems:YES];
@@ -169,20 +170,81 @@
         followingArray = [[NSMutableArray alloc] init];
     }
     
-    if([currentUser[@"following"] containsObject:user.username]) {
-        [followingArray removeObject:user.username];
-        currentUser[@"following"] = followingArray;
-        
+    if(user[@"followers"]){
+        userFollowingArray = [[NSMutableArray alloc] initWithArray:user[@"followers"] copyItems:YES];
     } else {
-        [followingArray addObject:user.username];
-        currentUser[@"following"] = followingArray;
+        userFollowingArray = [[NSMutableArray alloc] init];
     }
+    
+    [followingArray addObject:user.username];
+    currentUser[@"following"] = followingArray;
+    
+    [userFollowingArray addObject:currentUser.username];
+    user[@"followers"] = userFollowingArray;
     
     [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if(error) {
             NSLog(@"Error updating user: %@", error.localizedDescription);
         } else {
             NSLog(@"Succesfully followed/unfollowed user!");
+        }
+    }];
+    
+    [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if(error) {
+            NSLog(@"Error updating user: %@", error.localizedDescription);
+        } else {
+            NSLog(@"Succesfully followed/unfollowed user!");
+        }
+    }];
+}
+
++ (void)userFollowedOrUnfollowed:(PFUser *) user {
+    PFUser *currentUser = [PFUser currentUser];
+    
+    NSMutableArray *followingArray = nil;
+    NSMutableArray *userFollowingArray = nil;
+    
+    if(currentUser[@"following"]){
+        followingArray = [[NSMutableArray alloc] initWithArray:currentUser[@"following"] copyItems:YES];
+    } else {
+        followingArray = [[NSMutableArray alloc] init];
+    }
+    
+    if(user[@"followers"]){
+        userFollowingArray = [[NSMutableArray alloc] initWithArray:user[@"followers"] copyItems:YES];
+    } else {
+        userFollowingArray = [[NSMutableArray alloc] init];
+    }
+    
+    if([currentUser[@"following"] containsObject:user.username]) {
+        [followingArray removeObject:user.username];
+        currentUser[@"following"] = followingArray;
+        
+        [userFollowingArray removeObject:currentUser.username];
+        user[@"followers"] = userFollowingArray;
+        
+    } else {
+        [followingArray addObject:user.username];
+        currentUser[@"following"] = followingArray;
+        
+        [userFollowingArray addObject:currentUser.username];
+        user[@"followers"] = userFollowingArray;
+    }
+    
+    [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if(error) {
+            NSLog(@"Error updating user: %@", error.localizedDescription);
+        } else {
+            NSLog(@"Succesfully updated current user!");
+        }
+    }];
+    
+    [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if(error) {
+            NSLog(@"Error updating user: %@", error.localizedDescription);
+        } else {
+            NSLog(@"Succesfully updated user!");
         }
     }];
     

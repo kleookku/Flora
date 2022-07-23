@@ -78,8 +78,8 @@
     cell.numBoards.text = [NSString stringWithFormat:@"%li boards", userBoards.count];
     
     if([self.user[@"following"] containsObject:user.username]) {
-        cell.followButton.backgroundColor = [UIColor lightGrayColor];
-        cell.followButton.tintColor = [UIColor blackColor];
+        cell.followButton.backgroundColor = [UIColor systemGray6Color];
+        cell.followButton.tintColor = [UIColor darkGrayColor];
         [cell.followButton setTitle:@"Following" forState:UIControlStateNormal];
     } else {
         cell.followButton.backgroundColor = [UIColor systemBlueColor];

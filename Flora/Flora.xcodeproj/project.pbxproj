@@ -41,6 +41,7 @@
 		F488CAC1288B4F840031B781 /* FollowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F488CAC0288B4F840031B781 /* FollowViewController.m */; };
 		F488CAC4288B4FDB0031B781 /* UserSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F488CAC3288B4FDB0031B781 /* UserSearchViewController.m */; };
 		F488CAC7288B56300031B781 /* UserSearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F488CAC6288B56300031B781 /* UserSearchCell.m */; };
+		F488CACD288B6B7B0031B781 /* UserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F488CACC288B6B7B0031B781 /* UserCell.m */; };
 		F49755B52881E046008050BB /* AddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F49755B42881E046008050BB /* AddViewController.m */; };
 		F49755B82881E458008050BB /* AddPlantCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F49755B72881E458008050BB /* AddPlantCell.m */; };
 /* End PBXBuildFile section */
@@ -129,6 +130,8 @@
 		F488CAC3288B4FDB0031B781 /* UserSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserSearchViewController.m; sourceTree = "<group>"; };
 		F488CAC5288B56300031B781 /* UserSearchCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserSearchCell.h; sourceTree = "<group>"; };
 		F488CAC6288B56300031B781 /* UserSearchCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserSearchCell.m; sourceTree = "<group>"; };
+		F488CACB288B6B7B0031B781 /* UserCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserCell.h; sourceTree = "<group>"; };
+		F488CACC288B6B7B0031B781 /* UserCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserCell.m; sourceTree = "<group>"; };
 		F49755B32881E046008050BB /* AddViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddViewController.h; sourceTree = "<group>"; };
 		F49755B42881E046008050BB /* AddViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddViewController.m; sourceTree = "<group>"; };
 		F49755B62881E458008050BB /* AddPlantCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AddPlantCell.h; path = Flora/Subviews/AddPlantCell.h; sourceTree = SOURCE_ROOT; };
@@ -240,6 +243,8 @@
 		F44CF459287E25210076AB4B /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
+				F488CACB288B6B7B0031B781 /* UserCell.h */,
+				F488CACC288B6B7B0031B781 /* UserCell.m */,
 				F488CAC5288B56300031B781 /* UserSearchCell.h */,
 				F488CAC6288B56300031B781 /* UserSearchCell.m */,
 				F456EAA6287CDA280067B05C /* LikesCell.h */,
@@ -571,6 +576,7 @@
 				F41A29F6286E509200D2DAB9 /* APIManager.m in Sources */,
 				F445ED0D287606600084BDBB /* ResultsViewController.m in Sources */,
 				F44B96C0287F3A0100A6EC78 /* PlantCell.m in Sources */,
+				F488CACD288B6B7B0031B781 /* UserCell.m in Sources */,
 				F41A29FD286E646D00D2DAB9 /* LoginViewController.m in Sources */,
 				F41A29EB286E4F7100D2DAB9 /* Plant.m in Sources */,
 				F445ED162877A9A10084BDBB /* DetailViewController.m in Sources */,

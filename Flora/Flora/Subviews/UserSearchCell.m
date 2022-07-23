@@ -33,8 +33,8 @@
 - (IBAction)onTapFollow:(id)sender {
     PFUser *currentUser = [PFUser currentUser];
     if(![currentUser[@"following"] containsObject:self.user.username]) {
-        self.followButton.backgroundColor = [UIColor lightGrayColor];
-        self.followButton.tintColor = [UIColor blackColor];
+        self.followButton.backgroundColor = [UIColor systemGray6Color];
+        self.followButton.tintColor = [UIColor darkGrayColor];
         [self.followButton setTitle:@"Following" forState:UIControlStateNormal];
         
     } else {
