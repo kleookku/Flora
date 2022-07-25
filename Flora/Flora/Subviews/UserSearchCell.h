@@ -10,6 +10,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol UserSearchCellDelegate
+
+- (void)unfollow:(NSString*) username;
+- (void)follow:(NSString*) username;
+
+
+@end
+
 @interface UserSearchCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet PFImageView *profPic;
 @property (weak, nonatomic) IBOutlet UILabel *username;
@@ -17,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIButton *followButton;
 
 @property (nonatomic, strong) PFUser* user;
+@property (nonatomic, strong)id<UserSearchCellDelegate> delegate;
 
 @end
 

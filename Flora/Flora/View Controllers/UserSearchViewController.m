@@ -8,13 +8,15 @@
 #import "UserSearchViewController.h"
 #import "Parse/Parse.h"
 #import "UserSearchCell.h"
+#import "Follow.h"
 
-@interface UserSearchViewController () <UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface UserSearchViewController () <UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, UserSearchCellDelegate>
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (nonatomic, strong)NSArray *userResults;
 @property (nonatomic, strong)PFUser *user;
+@property (nonatomic, strong)NSArray *following;
 @end
 
 @implementation UserSearchViewController
@@ -30,6 +32,8 @@
     self.user = [PFUser currentUser];
 
     // Do any additional setup after loading the view.
+    
+    [self getFollowing];
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
@@ -57,6 +61,26 @@
     }
 }
 
+- (void)viewDidDisappear:(BOOL)animated {
+    [self.delegate updateTable];
+}
+
+#pragma mark - UserSearchCellDelegate
+
+- (void)unfollow:(NSString *)username {
+    NSMutableArray *newFollowing = [[NSMutableArray alloc] initWithArray:self.following copyItems:YES];
+    [newFollowing removeObject:username];
+    self.following = newFollowing;
+    [self.tableView reloadData];
+}
+
+- (void)follow:(NSString *)username {
+    NSMutableArray *newFollowing = [[NSMutableArray alloc] initWithArray:self.following copyItems:YES];
+    [newFollowing addObject:username];
+    self.following = newFollowing;
+    [self.tableView reloadData];
+}
+
 # pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -67,17 +91,22 @@
     UserSearchCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UserSearchCell"];
     PFUser *user = self.userResults[indexPath.row];
     
+    cell.delegate = self;
     cell.user = user;
     
-    cell.profPic.file = user[@"profilePic"];
-    [cell.profPic loadInBackground];
+    if(user[@"profilePic"]) {
+        cell.profPic.file = user[@"profilePic"];
+        [cell.profPic loadInBackground];
+    } else {
+        [cell.profPic setImage:[UIImage systemImageNamed:@"person"]];
+    }
     
     cell.username.text = user.username;
     
     NSArray *userBoards = user[@"boards"];
     cell.numBoards.text = [NSString stringWithFormat:@"%li boards", userBoards.count];
     
-    if([self.user[@"following"] containsObject:user.username]) {
+    if([self.following containsObject:user.username]) {
         cell.followButton.backgroundColor = [UIColor systemGray6Color];
         cell.followButton.tintColor = [UIColor darkGrayColor];
         [cell.followButton setTitle:@"Following" forState:UIControlStateNormal];
@@ -89,6 +118,26 @@
 
     return cell;
 }
+
+- (void)getFollowing {
+    NSMutableArray *getFollowing = [[NSMutableArray alloc] init];
+    PFUser *currentUser = [PFUser currentUser];
+    PFQuery *query = [PFQuery queryWithClassName:@"Follow"];
+    [query whereKey:@"follower" equalTo:currentUser.username];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        if(error) {
+            NSLog(@"Error getting follow: %@", error.localizedDescription);
+        } else if (objects.count > 0){
+            for(Follow *follow in objects) {
+                [getFollowing addObject:follow.username];
+            }
+            self.following = getFollowing;
+            [self.tableView reloadData];
+        }
+    }];
+}
+
 /*
 #pragma mark - Navigation
 

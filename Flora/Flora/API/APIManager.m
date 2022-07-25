@@ -191,18 +191,6 @@
             NSLog(@"Successfully saved follow!");
         }
     }];
-    
-    NSMutableArray *followingArray = [[NSMutableArray alloc] initWithArray:currentUser[@"following"] copyItems:YES];
-    [followingArray addObject:user.username];
-    currentUser[@"following"] = followingArray;
-    [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        if(error) {
-            NSLog(@"Error updating user: %@", error.localizedDescription);
-        } else {
-            NSLog(@"Succesfully updated current user!");
-        }
-    }];
-    
 }
 
 
@@ -221,15 +209,21 @@
             [follow deleteInBackground];
         }
     }];
+}
 
-    NSMutableArray *followingArray = [[NSMutableArray alloc] initWithArray:currentUser[@"following"] copyItems:YES];
-    [followingArray removeObject:user.username];
-    currentUser[@"following"] = followingArray;
-    [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
++ (void)removeFollower:(PFUser *) user {
+    PFUser *currentUser = [PFUser currentUser];
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Follow"];
+    [query whereKey:@"follower" equalTo:user.username];
+    [query whereKey:@"username" equalTo:currentUser.username];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if(error) {
-            NSLog(@"Error updating user: %@", error.localizedDescription);
-        } else {
-            NSLog(@"Succesfully updated current user!");
+            NSLog(@"Error getting follow: %@", error.localizedDescription);
+        } else if (objects.count > 0){
+            Follow *follow = (Follow *)objects[0];
+            [follow deleteInBackground];
         }
     }];
 }

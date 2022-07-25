@@ -9,8 +9,9 @@
 #import "UserCell.h"
 #import "Parse/Parse.h"
 #import "Follow.h"
+#import "UserSearchViewController.h"
 
-@interface FollowViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface FollowViewController () <UITableViewDelegate, UITableViewDataSource, UserCellDelegate, UserSearchViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentControl;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -31,7 +32,7 @@
     
     self.user = [PFUser currentUser];
     
-    self.followingArray = self.user[@"following"];
+    [self getFollowing];
     [self getFollowers];
 }
 
@@ -39,6 +40,33 @@
     [self.tableView reloadData];
 }
 
+#pragma mark - UserCellDelegate
+- (void)presentAlert:(UIAlertController *)alert {
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)removeUser:(NSString *)username fromSegment:(int)segment {
+    if(segment == 0){
+        NSMutableArray *temp = [[NSMutableArray alloc] initWithArray:self.followersArray copyItems:YES];
+        [temp removeObject:username];
+        self.followersArray = temp;
+        [self.tableView reloadData];
+    } else {
+        NSMutableArray *temp = [[NSMutableArray alloc] initWithArray:self.followingArray copyItems:YES];
+        [temp removeObject:username];
+        self.followingArray = temp;
+        [self.tableView reloadData];
+    }
+}
+
+#pragma mark - UserSearchViewControllerDelegate
+
+- (void)updateTable {
+    [self getFollowing];
+    [self getFollowers];
+}
+
+#pragma mark - UITableViewController
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if(self.segmentControl.selectedSegmentIndex == 0) {
@@ -50,6 +78,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UserCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UserCell"];
+    cell.delegate = self;
     
     NSString *username = nil;
     
@@ -74,8 +103,12 @@
             PFUser *user = (PFUser *)objects[0];
             cell.user = user;
             
-            cell.profPic.file = user[@"profilePic"];
-            [cell.profPic loadInBackground];
+            if(user[@"profilePic"]) {
+                cell.profPic.file = user[@"profilePic"];
+                [cell.profPic loadInBackground];
+            } else {
+                [cell.profPic setImage:[UIImage systemImageNamed:@"person"]];
+            }
             
             cell.username.text = user.username;
             
@@ -85,6 +118,8 @@
     }];
     return cell;
 }
+
+#pragma mark - Networking
 
 - (void)getFollowers {
     PFQuery *query = [PFQuery queryWithClassName:@"Follow"];
@@ -106,14 +141,34 @@
     }];
 }
 
-/*
+- (void) getFollowing {
+    PFQuery *query = [PFQuery queryWithClassName:@"Follow"];
+    [query whereKey:@"follower" equalTo:self.user.username];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        if(error) {
+            NSLog(@"Error getting following: %@", error.localizedDescription);
+        } else {
+            NSMutableArray *following = [[NSMutableArray alloc] init];
+            
+            for(Follow *follow in objects){
+                [following addObject:follow.username];
+            }
+            
+            self.followingArray = following;
+            [self.tableView reloadData];
+        }
+    }];
+}
+
+
  #pragma mark - Navigation
  
  // In a storyboard-based application, you will often want to do a little preparation before navigation
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
+     UserSearchViewController *userSearchVC = [segue destinationViewController];
+     userSearchVC.delegate = self;
  }
- */
+ 
 
 @end

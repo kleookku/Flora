@@ -31,6 +31,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)followUser:(PFUser *) user;
 
++ (void)removeFollower:(PFUser *) user;
+
 + (void)savePlantToLikes:(Plant *)plant;
 
 + (void)removePlantFromLikes:(Plant *)plant;

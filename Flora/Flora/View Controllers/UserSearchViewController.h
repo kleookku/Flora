@@ -9,7 +9,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol UserSearchViewControllerDelegate
+
+- (void)updateTable;
+
+@end
+
 @interface UserSearchViewController : UIViewController
+
+@property (nonatomic, strong)id<UserSearchViewControllerDelegate> delegate;
 
 @end
 

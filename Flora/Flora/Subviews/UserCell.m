@@ -6,6 +6,7 @@
 //
 
 #import "UserCell.h"
+#import "APIManager.h"
 
 @implementation UserCell
 
@@ -18,14 +19,41 @@
     self.profPic.layer.borderWidth = 0.05;
     
     self.followButton.layer.cornerRadius = 10;
+    
+    self.removeAlert = [UIAlertController alertControllerWithTitle:@"Remove follower?" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancelRemove = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:nil];
+    UIAlertAction *confirmRemove = [UIAlertAction actionWithTitle:@"Confirm" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [APIManager removeFollower:self.user];
+        [self.delegate removeUser:self.user.username fromSegment:0];
+    }];
+    [self.removeAlert addAction:cancelRemove];
+    [self.removeAlert addAction:confirmRemove];
+    [self.removeAlert setPreferredAction:cancelRemove];
+    
+    
+    self.unfollowAlert = [UIAlertController alertControllerWithTitle: [NSString stringWithFormat:@"Unfollow user?"] message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancelUnfollow = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:nil];
+    UIAlertAction *confirmUnfollow = [UIAlertAction actionWithTitle:@"Confirm" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [APIManager unfollowUser:self.user];
+        [self.delegate removeUser:self.user.username fromSegment:1];
+    }];
+    [self.unfollowAlert addAction:cancelUnfollow];
+    [self.unfollowAlert addAction:confirmUnfollow];
+    [self.unfollowAlert setPreferredAction:cancelUnfollow];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
     // Configure the view for the selected state
 }
 
+- (IBAction)buttonTapped:(id)sender {
+    if(self.isFollower) { // remove follower
+        [self.delegate presentAlert:self.removeAlert];
+    } else { // unfollow user
+        [self.delegate presentAlert:self.unfollowAlert];
+    }
+}
 
 
 @end
