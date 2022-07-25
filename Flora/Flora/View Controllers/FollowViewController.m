@@ -8,6 +8,7 @@
 #import "FollowViewController.h"
 #import "UserCell.h"
 #import "Parse/Parse.h"
+#import "Follow.h"
 
 @interface FollowViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -31,7 +32,7 @@
     self.user = [PFUser currentUser];
     
     self.followingArray = self.user[@"following"];
-    self.followersArray = self.user[@"followers"];
+    [self getFollowers];
 }
 
 - (IBAction)segmentChanged:(id)sender {
@@ -49,7 +50,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UserCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UserCell"];
+    
     NSString *username = nil;
+    
     if(self.segmentControl.selectedSegmentIndex == 0) {
         username = self.followersArray[indexPath.row];
         cell.isFollower = YES;
@@ -58,6 +61,7 @@
         username = self.followingArray[indexPath.row];
         cell.isFollower = NO;
         [cell.followButton setTitle:@"Following" forState:UIControlStateNormal];
+        
     }
     
     PFQuery *query = [PFQuery queryWithClassName:@"_User"];
@@ -66,7 +70,7 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if(error){
             NSLog(@"Error getting user %@", error.localizedDescription);
-        } else {
+        } else if(objects.count >0) {
             PFUser *user = (PFUser *)objects[0];
             cell.user = user;
             
@@ -80,6 +84,26 @@
         }
     }];
     return cell;
+}
+
+- (void)getFollowers {
+    PFQuery *query = [PFQuery queryWithClassName:@"Follow"];
+    [query whereKey:@"username" equalTo:self.user.username];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        if(error) {
+            NSLog(@"Error getting followers: %@", error.localizedDescription);
+        } else {
+            NSMutableArray *followers = [[NSMutableArray alloc] init];
+            
+            for(Follow *follow in objects){
+                [followers addObject:follow.follower];
+            }
+            
+            self.followersArray = followers;
+            [self.tableView reloadData];
+        }
+    }];
 }
 
 /*
