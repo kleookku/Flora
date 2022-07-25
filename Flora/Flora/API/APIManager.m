@@ -9,6 +9,7 @@
 #import "Parse/Parse.h"
 #import "Board.h"
 #import "Plant.h"
+#import "Follow.h"
 
 #define SHADE @"Shade Tolerance"
 #define MOIST @"Moisture Use"
@@ -26,7 +27,7 @@
     return sharedManager;
 }
 
-#pragma mark - Data Extraction
+#pragma mark - USDA
 
 + (NSData *)searchBody {
     static NSData *data = nil;
@@ -151,7 +152,7 @@
     }];
 }
 
-# pragma mark - Parse
+# pragma mark - Board
 
 + (void)saveBoardWithName:(NSString *) boardName {
     PFUser *user = [PFUser currentUser];
@@ -178,39 +179,22 @@
     }];
 }
 
-+ (void)userFollowedOrUnfollowed:(PFUser *) user {
+#pragma mark - Follow
+
++ (void)followUser:(PFUser *) user {
     PFUser *currentUser = [PFUser currentUser];
     
-    NSMutableArray *followingArray = nil;
-    NSMutableArray *userFollowingArray = nil;
+    [Follow saveFollow:user.username withFollower:currentUser.username withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+        if(error) {
+            NSLog(@"Error saving follow: %@", error.localizedDescription);
+        } else {
+            NSLog(@"Successfully saved follow!");
+        }
+    }];
     
-    if(currentUser[@"following"]){
-        followingArray = [[NSMutableArray alloc] initWithArray:currentUser[@"following"] copyItems:YES];
-    } else {
-        followingArray = [[NSMutableArray alloc] init];
-    }
-    
-    if(user[@"followers"]){
-        userFollowingArray = [[NSMutableArray alloc] initWithArray:user[@"followers"] copyItems:YES];
-    } else {
-        userFollowingArray = [[NSMutableArray alloc] init];
-    }
-    
-    if([currentUser[@"following"] containsObject:user.username]) {
-        [followingArray removeObject:user.username];
-        currentUser[@"following"] = followingArray;
-        
-        [userFollowingArray removeObject:currentUser.username];
-        user[@"followers"] = userFollowingArray;
-        
-    } else {
-        [followingArray addObject:user.username];
-        currentUser[@"following"] = followingArray;
-        
-        [userFollowingArray addObject:currentUser.username];
-        user[@"followers"] = userFollowingArray;
-    }
-    
+    NSMutableArray *followingArray = [[NSMutableArray alloc] initWithArray:currentUser[@"following"] copyItems:YES];
+    [followingArray addObject:user.username];
+    currentUser[@"following"] = followingArray;
     [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if(error) {
             NSLog(@"Error updating user: %@", error.localizedDescription);
@@ -219,15 +203,38 @@
         }
     }];
     
-    [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+}
+
+
++ (void)unfollowUser:(PFUser *) user {
+    PFUser *currentUser = [PFUser currentUser];
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Follow"];
+    [query whereKey:@"follower" equalTo:currentUser.username];
+    [query whereKey:@"username" equalTo:user.username];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        if(error) {
+            NSLog(@"Error getting follow: %@", error.localizedDescription);
+        } else if (objects.count > 0){
+            Follow *follow = (Follow *)objects[0];
+            [follow deleteInBackground];
+        }
+    }];
+
+    NSMutableArray *followingArray = [[NSMutableArray alloc] initWithArray:currentUser[@"following"] copyItems:YES];
+    [followingArray removeObject:user.username];
+    currentUser[@"following"] = followingArray;
+    [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if(error) {
             NSLog(@"Error updating user: %@", error.localizedDescription);
         } else {
-            NSLog(@"Succesfully updated user!");
+            NSLog(@"Succesfully updated current user!");
         }
     }];
-    
 }
+
+#pragma mark - Plant
 
 + (void)savePlantToLikes:(Plant *)plant{
     PFUser *user = [PFUser currentUser];

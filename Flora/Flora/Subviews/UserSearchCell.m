@@ -36,13 +36,14 @@
         self.followButton.backgroundColor = [UIColor systemGray6Color];
         self.followButton.tintColor = [UIColor darkGrayColor];
         [self.followButton setTitle:@"Following" forState:UIControlStateNormal];
+        [APIManager followUser:self.user];
         
     } else {
         self.followButton.backgroundColor = [UIColor systemBlueColor];
         self.followButton.tintColor = [UIColor whiteColor];
         [self.followButton setTitle:@"Follow" forState:UIControlStateNormal];
+        [APIManager unfollowUser:self.user];
     }
-    [APIManager userFollowedOrUnfollowed:self.user];
 }
 
 @end
