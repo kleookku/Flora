@@ -21,6 +21,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *addPlantButton;
 @property (nonatomic, strong)NSString *previousName;
 @property (weak, nonatomic) IBOutlet UITextView *notesView;
+@property (weak, nonatomic) IBOutlet UISwitch *privacySwitch;
+@property (weak, nonatomic) IBOutlet UIImageView *privacyImage;
 
 @property (nonatomic, strong) Plant* plantToPresent;
 
@@ -42,6 +44,7 @@
     
     if(!self.myBoard) {
         [self.editButton setHidden:YES];
+        [self.privacyImage setHidden:YES];
     } else {
         self.editButton.layer.cornerRadius = 10;
         self.editButton.tag = 1;
@@ -56,6 +59,13 @@
     self.notesView.userInteractionEnabled = NO;
     [self.notesView setScrollEnabled:NO];
     
+    if(self.board.viewable == YES) {
+        [self.privacySwitch setOn:YES];
+        [self.privacyImage setImage:[UIImage systemImageNamed:@"eye"]];
+    } else {
+        [self.privacySwitch setOn:NO];
+        [self.privacyImage setImage:[UIImage systemImageNamed:@"eye.slash"]];
+    }
 
     if(self.board.notes) {
         self.notesView.text = self.board.notes;
@@ -166,6 +176,7 @@
         self.notesView.userInteractionEnabled = NO;
         [self.boardNameField resignFirstResponder];
         [self.addPlantButton setHidden:YES];
+        [self.privacySwitch setHidden:YES];
         
         [self.editButton setTitle:@"edit" forState:UIControlStateNormal];
         
@@ -199,6 +210,7 @@
         self.notesView.userInteractionEnabled = YES;
         [self.addPlantButton setHidden:NO];
         [self.boardNameField becomeFirstResponder];
+        [self.privacySwitch setHidden:NO];
         [self.editButton setTitle:@"done" forState:UIControlStateNormal];
         
         for (id<BoardViewControllerDelegate> delegate in _cellDelegates) {
@@ -211,6 +223,17 @@
     [self.view endEditing:YES];
 }
 
+- (IBAction)didSwitch:(id)sender {
+    if ([self.privacySwitch isOn]) {
+        self.board.viewable = YES;
+        [self.board saveInBackground];
+        [self.privacyImage setImage:[UIImage systemImageNamed:@"eye"]];
+    } else {
+        self.board.viewable = NO;
+        [self.board saveInBackground];
+        [self.privacyImage setImage:[UIImage systemImageNamed:@"eye.slash"]];
+    }
+}
 
 #pragma mark - Navigation
 

@@ -14,6 +14,7 @@
 @dynamic user;
 @dynamic notes;
 @dynamic coverImage;
+@dynamic viewable;
 
 + (nonnull NSString *) parseClassName {
     return @"Board";
@@ -26,6 +27,7 @@
     newBoard.plantsArray = plants;
     newBoard.user = username;
     newBoard.notes = notes;
+    newBoard.viewable = NO;
     
     [newBoard saveInBackgroundWithBlock: completion];
 }
