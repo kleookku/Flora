@@ -8,6 +8,9 @@ target 'Flora' do
   # Pods for Flora
 pod 'Parse'
 pod 'BDBOAuth1Manager'
+pod 'ZLSwipeableView'
+pod 'AFNetworking'
+pod 'Parse/UI'
 
   target 'FloraTests' do
     inherit! :search_paths
