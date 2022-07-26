@@ -94,10 +94,10 @@
                 cell.plantToAdd = self.plantIdString;
                 cell.boardName.text = board.name;
                 
-                if(board.plantsArray.count > 0) {
-                    [self setBoardCoverImage:board.plantsArray[0] forCell:cell];
-                    
-                }
+                
+                [self setBoardCoverImage:board.plantsArray[0] forCell:cell];
+                
+                
             }
         }
     }];
@@ -117,21 +117,29 @@
 #pragma mark - Networking
 
 - (void) setBoardCoverImage:(NSString *)plantId forCell:(SelectBoardCell *)cell {
-    PFQuery *query = [PFQuery queryWithClassName:@"Plant"];
-    [query whereKey:@"plantId" equalTo:plantId];
-    query.limit = 1;
-    
-    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable results, NSError * _Nullable error) {
-        if(results) {
-            if(results.count > 0) {
-                Plant *plant = (Plant *)results[0];
-                cell.coverImage.file = plant.image;
-                [cell.coverImage loadInBackground];
-            } else {
-                NSLog(@"Error getting board cover image: %@", error.localizedDescription);
+    cell.coverImage.layer.cornerRadius = 20;
+    if(cell.board.coverImage) {
+        cell.coverImage.file = cell.board.coverImage;
+        [cell.coverImage loadInBackground];
+    } else if(cell.board.plantsArray.count > 0){
+        PFQuery *query = [PFQuery queryWithClassName:@"Plant"];
+        [query whereKey:@"plantId" equalTo:plantId];
+        query.limit = 1;
+        
+        [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable results, NSError * _Nullable error) {
+            if(results) {
+                if(results.count > 0) {
+                    Plant *plant = (Plant *)results[0];
+                    cell.coverImage.file = plant.image;
+                    [cell.coverImage loadInBackground];
+                } else {
+                    NSLog(@"Error getting board cover image: %@", error.localizedDescription);
+                }
             }
-        }
-    }];
+        }];
+    } else {
+        [cell.coverImage setImage:[UIImage systemImageNamed:@"plus"]];
+    }
 }
 
 - (void)saveBoardWithName:(NSString*)boardName {

@@ -200,6 +200,10 @@
         [self.addPlantButton setHidden:NO];
         [self.boardNameField becomeFirstResponder];
         [self.editButton setTitle:@"done" forState:UIControlStateNormal];
+        
+        for (id<BoardViewControllerDelegate> delegate in _cellDelegates) {
+            [delegate tappedEdit];
+        }
     }
 }
 

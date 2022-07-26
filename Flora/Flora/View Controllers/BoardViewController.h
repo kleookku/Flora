@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol BoardViewControllerDelegate
 
 - (void)stoppedEdit;
+- (void)tappedEdit;
 
 @end
 
