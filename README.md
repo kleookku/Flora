@@ -32,33 +32,41 @@ This app helps users find plants that are suitable for them based on three growt
     - This is a difficult/ambiguous problem because the API is very clunky and complicated, so we expect some extra challenges in using it for the app's needs
 - [x] **Results can be liked or disliked in a stacked view.** 
     - This is a difficult/ambiguous problem because we have no learned how to do swipe gesture recognize or make an item on the screen look like it is moving off the screen. I also would like to have the next plant in the stack prefetched so that the user can swipe through quickly.
-- [ ] Liked plants and each plant's relevant information (image, moisture, sunlight, temperature) will be saved to a database.
+- [x] Liked plants and each plant's relevant information (image, moisture, sunlight, temperature) will be saved to a database.
 - [x] Plants can be viewed in a detail view.
-- [ ] Plants can be added to a board/"garden". 
-- [ ] Users can navigate between the search view and plants view using a navigation bar. 
-- [ ] Users can view and scroll through their likes in the plants view. 
-- [ ] Users can view and scroll through their boards/"gardens" in the plants view. 
-- [ ] Users can create new boards or rename current boards. 
-- [ ] Users cannot add the same plant to a board multiple times.
-- [ ] Users can change their username or password and set a profile picture.
+- [x] Plants can be added to a board/"garden". 
+- [x] Users can navigate between the search view and plants view using a navigation bar. 
+- [x] Users can view and scroll through their likes in the plants view. 
+- [x] Users can view and scroll through their boards/"gardens" in the plants view. 
+- [x] Users can create new boards or rename current boards. 
+- [x] Users are warned when they attempt to add a plant to a board that already contains it.
+- [x] Users can change their username or password and set a profile picture.
 
 
-**Optional Stories**
+**Stretch Stories**
 - [ ] **Plant results will show new results every time (i.e. plants that users have seen already will not appear)**
     - This is a difficult/ambiguous problem because I will have to figure out how to cache certain results and store "seen" results. I also have to figure out how to get new results from later pages of the USDA database in case the user goes through all the plants on the first page.
 - [ ]  **Plants will be extracted from the USDA Plants database and stored in Parse, then queried for a faster search.**
     - [ ] This is a difficult/ambiguous problem because we have not learned how to extract data from an existing database for our own use. I don't really know how to go about this, but my manager says that it is doable.
+- [x] Users can delete plants from their boards.
+- [x] Users can delete boards.
+- [x] Users can delete plants from their likes.
+- [x] Users can refresh their boards by scrolling down.
+- [x] Plant descriptions are in user friendly terms (i.e. instead of 30% soil moisture it will say "water 2 times a day")
+- [x] Users cannot signup with a username that is already in use.
+- [x] Users cannot have duplicate plants in their likes.
+- [x] Users can add multiple plants to boards at once.
+- [x] Users can reset their password through their email if they forget it. 
+- [x] Users can view search results "infinitely" (goes through all the pages/results).
 - [ ] Users can replace plant images with their own image.
-- [ ] Users can delete plants from their boards.
-- [ ] Users can delete boards.
-- [ ] Plant descriptions are in user friendly terms (i.e. instead of 30% soil moisture it will say "water 2 times a day")
-- [ ] Users cannot signup with a username that is already in use.
-- [ ] Users can add multiple plants to boards at once.
+- [ ] Detail images will be loaded from low to high quality.
 
 
-**Stretch Stories**
+**Super Stretch Stories**
 - [ ] Users can buy plants within the app.
 - [ ] Users can take a picture of a plant and the app will help determine what plant it is. 
+- [ ] Users can add their own plants.
+- [ ] Users can share plants or boards. 
 
 ### 2. Screen Archetypes
 - Login Screen
@@ -83,15 +91,16 @@ This app helps users find plants that are suitable for them based on three growt
 - Board Screen
     - Displays a user's board, with an image and the name of each plant that is part of the board. 
     - Allows the user to edit the name of the board.
-- Delete Screen
+- Add Screen
     - Displays a list of plants or list of boards than users can select. 
-    - Presents a remove button that allows the user to delete their selections.
+    - Presents a save button that allows the user to save their selections.
 
 ### 3. Navigation
 
 **Tab Navigation** (Tab to Screen)
 - Search Screen
 - Plants Screen
+- Profile Screen
 
 
 **Flow Navigation** (Screen to Screen)
@@ -103,7 +112,7 @@ This app helps users find plants that are suitable for them based on three growt
             - Select Screen
 - Plants Screen
     - Board Screen
-        - Delete Screen
+        - Add Screen
 
 ## Wireframes
 

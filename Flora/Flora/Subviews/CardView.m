@@ -35,12 +35,15 @@
     if (self) {
         [self setup];
         
+        self.plant = plant;
+        
         UIImageView *imgView = [[UIImageView alloc] init];
         imgView.image = nil;
         [imgView setImageWithURL:[[APIManager shared] getPlantImageURL:plant[PLANT_IMAGE]]];
         
         imgView.layer.cornerRadius = 10;
-        imgView.frame = CGRectOffset(self.frame, 0, 0 );
+//        imgView.frame = CGRectOffset(self.frame, 15, 15 );
+        imgView.frame = CGRectMake(12.5, 25, 250, 400);
         imgView.contentMode = UIViewContentModeScaleAspectFit;
         imgView.clipsToBounds = YES;
         [self addSubview:imgView];
@@ -62,7 +65,7 @@
 }
 
 - (void)buttonPressed {
-    [[self parentViewController] performSegueWithIdentifier:@"detailSegue" sender:nil];
+    [self.delegate plantClicked:self.plant];
 }
 
 - (UIViewController *)parentViewController {
@@ -107,7 +110,7 @@
     self.layer.rasterizationScale = [UIScreen mainScreen].scale;
     
     // Corner Radius
-    self.layer.cornerRadius = 10.0;
+    self.layer.cornerRadius = 15.0;
 }
 
 

@@ -6,6 +6,10 @@
 //
 
 #import "APIManager.h"
+#import "Parse/Parse.h"
+#import "Board.h"
+#import "Plant.h"
+
 #define SHADE @"Shade Tolerance"
 #define MOIST @"Moisture Use"
 #define TEMP @"Temperature, Minimum (°F)"
@@ -28,28 +32,35 @@
     dispatch_once(&onceToken, ^{
         NSString *path = [[NSBundle mainBundle] pathForResource:@"charSearchBody" ofType:@"json"];
         data = [NSData dataWithContentsOfFile:path];
-//        dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-    });
+        });
     return data;
 }
 
 - (void)searchWithShadeLevel:(NSArray *)shade withMoistureUse:(NSArray *)moist withMinTemperature:(NSArray *)temp offsetBy:(NSUInteger)offset completion:(void(^)(NSArray *results, NSError *error))completion {
     NSString *url = @"https://plantsservices.sc.egov.usda.gov/api/CharacteristicsSearch";
-//    NSMutableDictionary *mutableDict = [[APIManager searchBody] mutableCopy];
     NSMutableDictionary *mutableDict = [NSJSONSerialization JSONObjectWithData:[APIManager searchBody] options:NSJSONReadingMutableContainers error:nil];
     mutableDict[@"Offset"] = @(offset);
     NSMutableArray *filterOptions = [mutableDict objectForKey:@"FilterOptions"];
-            
+    
     [self modifyFilterOptions:shade ofArray:filterOptions inCategory:SHADE];
     [self modifyFilterOptions:moist ofArray:filterOptions inCategory:MOIST];
     [self modifyFilterOptions:temp ofArray:filterOptions inCategory:TEMP];
     
     [self POST:url parameters:mutableDict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary * _Nullable response) {
         
-        NSMutableArray *results = response[@"PlantResults"];
-        for (NSUInteger i = 0; i > 1; i--)
-            [results exchangeObjectAtIndex:i - 1 withObjectAtIndex:arc4random_uniform((u_int32_t)i)];
+        NSMutableArray<NSDictionary *> *results = [[NSMutableArray alloc] initWithArray:response[@"PlantResults"] copyItems:YES];
+        
+        for (NSUInteger i = 0; i < results.count - 1; ++i) {
+            NSInteger remainingCount = results.count - i;
+            NSInteger exchangeIndex = i + arc4random_uniform((u_int32_t )remainingCount);
+            [results exchangeObjectAtIndex:i withObjectAtIndex:exchangeIndex];
+        }
+
+//        for(NSDictionary *seen in [PFUser currentUser][@"seen"])
+//            [results removeObject:seen];
+
         completion(results, nil);
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         completion(nil, error);
     }];
@@ -67,21 +78,20 @@
         }];
         [options objectAtIndex:selectionIndex][@"IsSelected"] = @YES;
     }
-    NSLog(@"options are %@", options);
 }
 
-- (void)getPlantCharacteristics:(NSString *)plantId completion:(void (^)(NSDictionary *characteristics, NSError *error))completion {
-    NSString *url = [@"https://plantsservices.sc.egov.usda.gov/api/PlantCharacteristics/" stringByAppendingString:plantId ];
+- (void)getPlantCharacteristicsWithId:(NSString *)plantId completion:(void (^)(NSString *shade, NSString *moist, NSString *temp, NSError *error))completion {
+    NSString *url = [@"https://plantsservices.sc.egov.usda.gov/api/PlantCharacteristics/" stringByAppendingString:plantId];
     [self GET:url parameters:nil progress: nil success:^(NSURLSessionDataTask * _Nonnull task, NSArray * _Nullable response) {
-
-        NSDictionary *dict = @{@"shade": [self getCharacteristicValue:SHADE inArray:response],
-                               @"moist": [self getCharacteristicValue:MOIST inArray:response],
-                               @"temp": [self getCharacteristicValue:TEMP inArray:response]};
         
-        completion(dict, nil);
+        NSString *shadeLevel = [self getCharacteristicValue:SHADE inArray:response];
+        NSString *moistureUse = [self getCharacteristicValue:MOIST inArray:response];
+        NSString *minimumTemp = [self getCharacteristicValue:TEMP inArray:response];
+        
+        completion(shadeLevel, moistureUse, minimumTemp, nil);
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        completion(nil, error);
+        completion(nil, nil, nil, error);
     }];
 }
 
@@ -89,7 +99,6 @@
     NSUInteger index = [response indexOfObjectPassingTest:^BOOL(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         NSDictionary *dict = (NSDictionary *)obj;
         return [dict[@"PlantCharacteristicName"]  isEqualToString:category];}];
-    NSLog(@"response is %@", response);
     
     if( index <= [response count]){
         return [response objectAtIndex:index][@"PlantCharacteristicValue"];
@@ -110,7 +119,61 @@
     
 }
 
++ (void)saveBoardWithName:(NSString *) boardName {
+    PFUser *user = [PFUser currentUser];
+    
+    // save board PFObject to database
+    [Board saveBoard:boardName withPlants:@[] forUser:user.username withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+        if(error){
+            NSLog(@"Error saving board: %@", error.localizedDescription);
+        } else {
+            NSLog(@"Successfully saved board!");
+        }
+    }];
+    
+    // save plant to user's likes
+    NSMutableArray *boardsArray = [[NSMutableArray alloc] initWithArray: user[@"boards"] copyItems:YES];
+    [boardsArray addObject:boardName];
+    user[@"boards"] = boardsArray;
+    [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if(error) {
+            NSLog(@"Error: %@", error.localizedDescription);
+        } else {
+            NSLog(@"Saved!");
+        }
+    }];
+    
+}
 
++ (void)savePlant:(NSDictionary *)curPlant withId:(NSString *) plantId {
+    PFUser *user = [PFUser currentUser];
+    
+    if(![user[@"likes"] containsObject:plantId]){
+        
+        // save plant PFObject to database
+        [Plant savePlantWithDict:curPlant withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+            if(error){
+                NSLog(@"Error saving plant: %@", error.localizedDescription);
+            } else {
+                NSLog(@"Successfully saved plant!");
+            }
+        }];
+        
+        // save plant to user's likes
+        NSMutableArray *likesArray = [[NSMutableArray alloc] initWithArray:user[@"likes"] copyItems:YES];
+        [likesArray addObject:plantId];
+        user[@"likes"] = likesArray;
+        [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            if(error) {
+                NSLog(@"Error: %@", error.localizedDescription);
+            } else {
+                NSLog(@"Saved!");
+            }
+        }];
+        
+    }
+    
+}
 
 /*
  SVPullToRefresh pod (detect when you get to the bottom)

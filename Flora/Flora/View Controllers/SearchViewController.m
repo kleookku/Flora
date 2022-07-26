@@ -26,6 +26,8 @@
 #define HIGH_TEMP @[@"23 - 27",@"28 - 32", @"33 - 37", @"38 - 42", @"43 - 47", @"48 - 52", @"53 - 57"]
 #define TEMP_ARRAY @[LOW_TEMP, MED_TEMP, HIGH_TEMP]
 
+#define PLANTS_PER_PAGE 25
+
 @interface SearchViewController ()
 
 @property (nonatomic, strong)NSArray *results;
@@ -39,6 +41,8 @@
 @property (nonatomic, strong)NSArray *shade;
 @property (nonatomic, strong)NSArray *temp;
 @property (nonatomic, strong)NSNumber *numResults;
+@property (nonatomic) NSUInteger offset;
+
 
 
 @end
@@ -47,8 +51,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.searchButton.layer.cornerRadius = 10;
+    self.offset = 0;
 }
 - (IBAction)onTapSearch:(id)sender {
     self.activityIndicator.startAnimating;
@@ -56,37 +61,35 @@
     self.moist = MOIST_ARRAY[_moistureControl.selectedSegmentIndex];
     self.shade = SUN_ARRAY[_sunlightControl.selectedSegmentIndex];
     self.temp = TEMP_ARRAY[_temperaturecontrol.selectedSegmentIndex];
-    
-    NSLog(@"moist: %@, shade: %@, temp: %@", self.moist, self.shade, self.temp);
-    
-    [self createCharacteristicSearchWithMoistureLevel:self.moist shadeLevel:self.shade minimumTemperature:self.temp];
+    [self createCharacteristicSearch];
 }
 
-- (void)createCharacteristicSearchWithMoistureLevel:(NSArray *)moisture shadeLevel:(NSArray *)shade  minimumTemperature:(NSArray *)temp {
+- (void)createCharacteristicSearch {
     self.results = @[];
-    [[APIManager shared] searchWithShadeLevel:shade withMoistureUse:moisture withMinTemperature:temp offsetBy:0 completion:^(NSArray * _Nonnull results, NSError * _Nonnull error) {
-            if(results) {
+    [[APIManager shared] searchWithShadeLevel:self.shade withMoistureUse:self.moist withMinTemperature:self.temp offsetBy:self.offset completion:^(NSArray * _Nonnull results, NSError * _Nonnull error) {
+        if(results) {
+            if(results.count < 25) {
+                self.offset += PLANTS_PER_PAGE;
+                [self createCharacteristicSearch];
+                return;
+            } else {
                 NSLog(@"Successfully created characteristics search!");
-                NSLog(@"api results first item %@", results[0]);
                 self.results = results;
-                NSLog(@"results first item %@", self.results[0]);
                 self.activityIndicator.stopAnimating;
                 self.searchButton.enabled = YES;
                 
                 [self performSegueWithIdentifier:@"searchSegue" sender:nil];
-            } else {
-                NSLog(@"Error creating characteristics search: %@", error.localizedDescription);
             }
+        } else {
+            NSLog(@"Error creating characteristics search: %@", error.localizedDescription);
+        }
     }];
 }
-
 
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
     ResultsViewController *resultsVC = [segue destinationViewController];
     resultsVC.plantsArray = [self.results mutableCopy];
     resultsVC.moist = self.moist;

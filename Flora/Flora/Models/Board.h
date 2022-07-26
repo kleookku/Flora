@@ -13,8 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSArray *plantsArray;
+@property (nonatomic, strong) NSString *user;
 
-+ (void) saveBoard: (NSString * _Nullable)name withPlants:(NSArray * _Nullable)plants withCompletion: (PFBooleanResultBlock _Nullable)completion;
++ (void) saveBoard: (NSString * _Nullable)name withPlants:(NSArray * _Nullable)plants forUser:(NSString *)username withCompletion: (PFBooleanResultBlock _Nullable)completion;
 
 @end
 
