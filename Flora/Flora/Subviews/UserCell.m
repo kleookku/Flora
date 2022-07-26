@@ -47,6 +47,10 @@
     // Configure the view for the selected state
 }
 
+- (IBAction)tappedUserProfile:(id)sender {
+    [self.delegate tappedUserProfile:self.user];
+}
+
 - (IBAction)buttonTapped:(id)sender {
     if(self.isFollower) { // remove follower
         [self.delegate presentAlert:self.removeAlert];

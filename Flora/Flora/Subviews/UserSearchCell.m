@@ -29,6 +29,9 @@
 
     // Configure the view for the selected state
 }
+- (IBAction)onTapProfile:(id)sender {
+    [self.delegate tappedUserProfile:self.user];
+}
 
 - (IBAction)onTapFollow:(id)sender {
     PFUser *currentUser = [PFUser currentUser];

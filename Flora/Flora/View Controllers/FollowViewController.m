@@ -10,6 +10,7 @@
 #import "Parse/Parse.h"
 #import "Follow.h"
 #import "UserSearchViewController.h"
+#import "UserProfileViewController.h"
 
 @interface FollowViewController () <UITableViewDelegate, UITableViewDataSource, UserCellDelegate, UserSearchViewControllerDelegate>
 
@@ -19,7 +20,9 @@
 @property (nonatomic, strong)NSArray *followersArray;
 @property (nonatomic, strong)NSArray *followingArray;
 
+@property (weak, nonatomic) IBOutlet UIButton *addUsersButton;
 @property (nonatomic, strong)PFUser *user;
+@property (nonatomic, strong)PFUser *userToShow;
 
 @end
 
@@ -34,6 +37,9 @@
     
     [self getFollowing];
     [self getFollowers];
+    
+    self.addUsersButton.tag = 1;
+    
 }
 
 - (IBAction)segmentChanged:(id)sender {
@@ -57,6 +63,11 @@
         self.followingArray = temp;
         [self.tableView reloadData];
     }
+}
+
+- (void)tappedUserProfile:(PFUser *)user {
+    self.userToShow = user;
+    [self performSegueWithIdentifier:@"FollowToProfile" sender:nil];
 }
 
 #pragma mark - UserSearchViewControllerDelegate
@@ -166,8 +177,13 @@
  
  // In a storyboard-based application, you will often want to do a little preparation before navigation
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-     UserSearchViewController *userSearchVC = [segue destinationViewController];
-     userSearchVC.delegate = self;
+     if([sender tag] == 1) {
+         UserSearchViewController *userSearchVC = [segue destinationViewController];
+         userSearchVC.delegate = self;
+     } else {
+         UserProfileViewController *userProfVC = [segue destinationViewController];
+         userProfVC.user = self.userToShow;
+     }
  }
  
 

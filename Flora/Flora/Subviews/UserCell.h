@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)removeUser:(NSString *)username fromSegment:(int)segment;
 
+- (void)tappedUserProfile:(PFUser *)user;
+
 @end
 
 @interface UserCell : UITableViewCell

@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)unfollow:(NSString*) username;
 - (void)follow:(NSString*) username;
+- (void)tappedUserProfile:(PFUser *)user;
 
 
 @end

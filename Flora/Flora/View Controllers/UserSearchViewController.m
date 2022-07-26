@@ -9,6 +9,7 @@
 #import "Parse/Parse.h"
 #import "UserSearchCell.h"
 #import "Follow.h"
+#import "UserProfileViewController.h"
 
 @interface UserSearchViewController () <UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, UserSearchCellDelegate>
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
@@ -17,6 +18,7 @@
 @property (nonatomic, strong)NSArray *userResults;
 @property (nonatomic, strong)PFUser *user;
 @property (nonatomic, strong)NSArray *following;
+@property (nonatomic, strong)PFUser *userToShow;
 @end
 
 @implementation UserSearchViewController
@@ -81,6 +83,11 @@
     [self.tableView reloadData];
 }
 
+- (void)tappedUserProfile:(PFUser *)user {
+    self.userToShow = user;
+    [self performSegueWithIdentifier:@"SearchToProfile" sender:nil];
+}
+
 # pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -138,14 +145,14 @@
     }];
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    UserProfileViewController *userProfVC = [segue destinationViewController];
+    userProfVC.user = self.userToShow;
 }
-*/
+
 
 @end
