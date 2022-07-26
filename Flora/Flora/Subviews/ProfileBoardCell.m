@@ -8,5 +8,8 @@
 #import "ProfileBoardCell.h"
 
 @implementation ProfileBoardCell
+- (IBAction)tappedBoard:(id)sender {
+    [self.delegate didTapBoard:self.board];
+}
 
 @end

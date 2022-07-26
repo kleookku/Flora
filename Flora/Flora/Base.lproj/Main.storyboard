@@ -467,11 +467,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" contentInsetAdjustmentBehavior="never" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="e1u-XV-xkO">
-                                <rect key="frame" x="10.5" y="184" width="393" height="618"/>
+                                <rect key="frame" x="10" y="184" width="394" height="618"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="393" id="Rbs-Ki-hLN"/>
-                                </constraints>
                                 <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="cFV-tj-5tA">
                                     <size key="itemSize" width="175" height="250"/>
@@ -512,7 +509,7 @@
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" title=""/>
                                                     <connections>
-                                                        <action selector="didTapBoard:" destination="XRn-iG-htn" eventType="touchUpInside" id="Xqc-Mc-WR9"/>
+                                                        <action selector="tappedBoard:" destination="XRn-iG-htn" eventType="touchUpInside" id="PZ6-kY-1bW"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -558,7 +555,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xBu-8g-KVj">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="bio" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xBu-8g-KVj">
                                 <rect key="frame" x="122" y="105" width="272" height="20.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="70" id="ndt-jT-KZQ"/>
@@ -573,13 +570,14 @@
                         <constraints>
                             <constraint firstItem="xBu-8g-KVj" firstAttribute="leading" secondItem="9J9-BF-pag" secondAttribute="leading" id="05v-5j-zMd"/>
                             <constraint firstItem="Jn5-fp-viH" firstAttribute="bottom" secondItem="e1u-XV-xkO" secondAttribute="bottom" constant="40" id="FDd-aH-gut"/>
+                            <constraint firstItem="e1u-XV-xkO" firstAttribute="leading" secondItem="Jn5-fp-viH" secondAttribute="leading" constant="10" id="Fnx-sZ-pZj"/>
                             <constraint firstItem="9J9-BF-pag" firstAttribute="leading" secondItem="RkS-6H-Wpe" secondAttribute="trailing" constant="10" id="JOw-GK-Uz2"/>
                             <constraint firstItem="Jn5-fp-viH" firstAttribute="trailing" secondItem="xBu-8g-KVj" secondAttribute="trailing" constant="20" id="LBV-OQ-1Ag"/>
                             <constraint firstItem="e1u-XV-xkO" firstAttribute="top" secondItem="RkS-6H-Wpe" secondAttribute="bottom" constant="12" id="MFT-FM-YZA"/>
                             <constraint firstItem="xBu-8g-KVj" firstAttribute="top" secondItem="9J9-BF-pag" secondAttribute="bottom" constant="3" id="Pza-hx-65X"/>
                             <constraint firstItem="RkS-6H-Wpe" firstAttribute="leading" secondItem="Jn5-fp-viH" secondAttribute="leading" constant="12" id="Zl6-Qx-7zL"/>
                             <constraint firstItem="9J9-BF-pag" firstAttribute="top" secondItem="RkS-6H-Wpe" secondAttribute="top" constant="5" id="ikk-Hx-fMJ"/>
-                            <constraint firstItem="e1u-XV-xkO" firstAttribute="centerX" secondItem="Jn5-fp-viH" secondAttribute="centerX" id="tae-IU-KOP"/>
+                            <constraint firstItem="Jn5-fp-viH" firstAttribute="trailing" secondItem="e1u-XV-xkO" secondAttribute="trailing" constant="10" id="raK-xk-U6z"/>
                             <constraint firstItem="RkS-6H-Wpe" firstAttribute="top" secondItem="Jn5-fp-viH" secondAttribute="top" constant="29" id="vbm-St-oLF"/>
                         </constraints>
                     </view>
@@ -589,6 +587,7 @@
                         <outlet property="collectionView" destination="e1u-XV-xkO" id="DiV-td-wc3"/>
                         <outlet property="profPic" destination="RkS-6H-Wpe" id="KSl-wQ-gJL"/>
                         <outlet property="username" destination="9J9-BF-pag" id="4A3-KA-Bic"/>
+                        <segue destination="Tt3-k5-Y1C" kind="show" identifier="UserBoardDetails" id="iGa-ZO-Xe0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H56-eS-4Ye" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -771,7 +770,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GEn-kj-bfD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2408.695652173913" y="1638.6160714285713"/>
+            <point key="canvasLocation" x="1709" y="1639"/>
         </scene>
         <!--Select View Controller-->
         <scene sceneID="Kdh-ie-nQF">
@@ -877,7 +876,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MhJ-8P-VfT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="poE-0h-kKd" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3089.8550724637685" y="1638.6160714285713"/>
+            <point key="canvasLocation" x="2406" y="1639"/>
         </scene>
         <!--LoginViewController-->
         <scene sceneID="swS-Pp-VFJ">
@@ -1239,6 +1238,7 @@
                             <outletCollection property="gestureRecognizers" destination="NUc-OE-d7Z" appends="YES" id="ziM-8W-0CZ"/>
                         </connections>
                     </view>
+                    <navigationItem key="navigationItem" id="t8Z-hm-1La"/>
                     <connections>
                         <outlet property="addPlantButton" destination="aGz-Ro-shE" id="vLk-Gy-jTX"/>
                         <outlet property="boardNameField" destination="CK7-30-zHn" id="KzH-tP-E1V"/>
@@ -1817,6 +1817,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="iGa-ZO-Xe0"/>
         <segue reference="PgG-C5-otM"/>
         <segue reference="N34-KE-mgi"/>
     </inferredMetricsTieBreakers>

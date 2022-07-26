@@ -177,10 +177,6 @@
 
 #pragma mark - BoardViewControllerDelegate
 
-- (void) tappedEdit {
-    
-}
-
 - (void) stoppedEdit {
     [self updateBoards];
     [self.boardsCollectionView reloadData];
@@ -274,7 +270,6 @@
                     
                     if(board.plantsArray.count > 0) {
                         [self setBoardCoverImage:board.plantsArray[0] forCell:cell];
-                        
                     }
                     
                 }
@@ -392,6 +387,7 @@
         BoardViewController *boardVC = [segue destinationViewController];
         boardVC.board = self.boardToView;
         boardVC.delegate = self;
+        boardVC.myBoard = YES;
     }
 }
 

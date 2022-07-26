@@ -40,10 +40,14 @@
     self.cellDelegates = [[NSMutableArray alloc] init];
     self.boardNameField.borderStyle = UITextBorderStyleNone;
     
-    self.editButton.layer.cornerRadius = 10;
-    self.editButton.tag = 1;
-    self.addPlantButton.layer.cornerRadius = 7;
-    self.addPlantButton.tag = 2;
+    if(!self.myBoard) {
+        [self.editButton setHidden:YES];
+    } else {
+        self.editButton.layer.cornerRadius = 10;
+        self.editButton.tag = 1;
+        self.addPlantButton.layer.cornerRadius = 7;
+        self.addPlantButton.tag = 2;
+    }
     
     self.notesView.delegate = self;
     self.notesView.layer.cornerRadius = 15;
@@ -196,9 +200,6 @@
         [self.addPlantButton setHidden:NO];
         [self.boardNameField becomeFirstResponder];
         [self.editButton setTitle:@"done" forState:UIControlStateNormal];
-        for (id<BoardViewControllerDelegate> delegate in _cellDelegates) {
-            [delegate tappedEdit];
-        }
     }
 }
 

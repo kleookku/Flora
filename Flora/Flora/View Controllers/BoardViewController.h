@@ -13,7 +13,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol BoardViewControllerDelegate
 
-- (void)tappedEdit;
 - (void)stoppedEdit;
 
 @end
@@ -23,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong)Board *board;
 @property (nonatomic, strong)NSMutableArray<id<BoardViewControllerDelegate>> *cellDelegates;
 @property (nonatomic, strong)id<BoardViewControllerDelegate, DetailViewControllerDelegate> delegate;
+@property BOOL myBoard;
 
 @end
 
