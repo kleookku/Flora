@@ -480,7 +480,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" reuseIdentifier="" id="XRn-iG-htn">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" reuseIdentifier="ProfileBoardCell" id="XRn-iG-htn" customClass="ProfileBoardCell">
                                         <rect key="frame" x="0.0" y="0.0" width="190" height="200"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="wqv-Zm-Drv">
@@ -515,28 +515,12 @@
                                                         <action selector="didTapBoard:" destination="XRn-iG-htn" eventType="touchUpInside" id="Xqc-Mc-WR9"/>
                                                     </connections>
                                                 </button>
-                                                <button hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kV0-Xd-yes">
-                                                    <rect key="frame" x="2" y="2" width="20" height="20"/>
-                                                    <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="20" id="LSd-pA-EtC"/>
-                                                        <constraint firstAttribute="height" constant="20" id="mTg-73-GXy"/>
-                                                    </constraints>
-                                                    <color key="tintColor" systemColor="systemGray4Color"/>
-                                                    <state key="normal" title="Button"/>
-                                                    <buttonConfiguration key="configuration" style="plain" image="minus.circle.fill" catalog="system" title=""/>
-                                                    <connections>
-                                                        <action selector="didTapDelete:" destination="XRn-iG-htn" eventType="touchUpInside" id="KOR-kJ-scS"/>
-                                                    </connections>
-                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="5WI-ue-ccA" firstAttribute="leading" secondItem="3nR-dW-E3i" secondAttribute="leading" id="0I0-qx-Dhn"/>
-                                                <constraint firstItem="kV0-Xd-yes" firstAttribute="top" secondItem="wqv-Zm-Drv" secondAttribute="top" constant="2" id="16Q-BK-MWo"/>
                                                 <constraint firstItem="5WI-ue-ccA" firstAttribute="top" secondItem="q9J-MC-tYe" secondAttribute="bottom" constant="6.5" id="It1-vG-eDg"/>
                                                 <constraint firstAttribute="trailing" secondItem="q9J-MC-tYe" secondAttribute="trailing" id="KPr-Z3-NZM"/>
                                                 <constraint firstItem="q9J-MC-tYe" firstAttribute="leading" secondItem="wqv-Zm-Drv" secondAttribute="leading" constant="5" id="QqM-9W-ukg"/>
-                                                <constraint firstItem="kV0-Xd-yes" firstAttribute="leading" secondItem="wqv-Zm-Drv" secondAttribute="leading" constant="2" id="YHs-eH-83y"/>
                                                 <constraint firstAttribute="bottom" secondItem="3nR-dW-E3i" secondAttribute="bottom" constant="8" id="Za7-jx-kyt"/>
                                                 <constraint firstAttribute="bottom" secondItem="q9J-MC-tYe" secondAttribute="bottom" constant="56" id="dTt-UZ-RIj"/>
                                                 <constraint firstItem="ZGr-VD-vZG" firstAttribute="top" secondItem="q9J-MC-tYe" secondAttribute="top" constant="10" id="eyY-BF-vqX"/>
@@ -551,11 +535,10 @@
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="190" height="200"/>
                                         <connections>
-                                            <outlet property="boardName" destination="5WI-ue-ccA" id="zkZ-7t-e1U"/>
-                                            <outlet property="coverImage" destination="q9J-MC-tYe" id="nmt-gA-x76"/>
-                                            <outlet property="deleteButton" destination="kV0-Xd-yes" id="eR9-iJ-yNV"/>
-                                            <outlet property="detailsButton" destination="ZGr-VD-vZG" id="Zv3-49-FMM"/>
-                                            <outlet property="numPlants" destination="3nR-dW-E3i" id="h7n-nZ-5ER"/>
+                                            <outlet property="boardName" destination="5WI-ue-ccA" id="kc8-Co-QaJ"/>
+                                            <outlet property="coverImage" destination="q9J-MC-tYe" id="AV5-7w-ddd"/>
+                                            <outlet property="detailsButton" destination="ZGr-VD-vZG" id="5Fd-aU-c9y"/>
+                                            <outlet property="numPlants" destination="3nR-dW-E3i" id="v9p-ej-SmR"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -605,7 +588,7 @@
                         <outlet property="bio" destination="xBu-8g-KVj" id="SdM-Kp-WJr"/>
                         <outlet property="collectionView" destination="e1u-XV-xkO" id="DiV-td-wc3"/>
                         <outlet property="profPic" destination="RkS-6H-Wpe" id="KSl-wQ-gJL"/>
-                        <outlet property="username" destination="xBu-8g-KVj" id="nim-RX-iMz"/>
+                        <outlet property="username" destination="9J9-BF-pag" id="4A3-KA-Bic"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H56-eS-4Ye" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -24,6 +24,7 @@
 		F445ED1C2878CF7F0084BDBB /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F445ED1B2878CF7F0084BDBB /* SignupViewController.m */; };
 		F4499EF6288F14C700C8169E /* Follow.m in Sources */ = {isa = PBXBuildFile; fileRef = F4499EF5288F14C700C8169E /* Follow.m */; };
 		F4499EF9288F5BC600C8169E /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4499EF8288F5BC600C8169E /* UserProfileViewController.m */; };
+		F4499EFC288F6B9100C8169E /* ProfileBoardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4499EFB288F6B9100C8169E /* ProfileBoardCell.m */; };
 		F44B96C0287F3A0100A6EC78 /* PlantCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F44B96BF287F3A0100A6EC78 /* PlantCell.m */; };
 		F44CF452287E1A890076AB4B /* SelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F44CF451287E1A890076AB4B /* SelectViewController.m */; };
 		F44CF455287E21D10076AB4B /* BoardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F44CF454287E21D10076AB4B /* BoardCell.m */; };
@@ -101,6 +102,8 @@
 		F4499EF5288F14C700C8169E /* Follow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Follow.m; path = Flora/Models/Follow.m; sourceTree = SOURCE_ROOT; };
 		F4499EF7288F5BC600C8169E /* UserProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserProfileViewController.h; sourceTree = "<group>"; };
 		F4499EF8288F5BC600C8169E /* UserProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserProfileViewController.m; sourceTree = "<group>"; };
+		F4499EFA288F6B9100C8169E /* ProfileBoardCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileBoardCell.h; sourceTree = "<group>"; };
+		F4499EFB288F6B9100C8169E /* ProfileBoardCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileBoardCell.m; sourceTree = "<group>"; };
 		F44B96BE287F3A0100A6EC78 /* PlantCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlantCell.h; sourceTree = "<group>"; };
 		F44B96BF287F3A0100A6EC78 /* PlantCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlantCell.m; sourceTree = "<group>"; };
 		F44CF450287E1A890076AB4B /* SelectViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectViewController.h; sourceTree = "<group>"; };
@@ -269,6 +272,8 @@
 				F44B96BF287F3A0100A6EC78 /* PlantCell.m */,
 				F49755B62881E458008050BB /* AddPlantCell.h */,
 				F49755B72881E458008050BB /* AddPlantCell.m */,
+				F4499EFA288F6B9100C8169E /* ProfileBoardCell.h */,
+				F4499EFB288F6B9100C8169E /* ProfileBoardCell.m */,
 			);
 			path = Subviews;
 			sourceTree = "<group>";
@@ -588,6 +593,7 @@
 				F44B96C0287F3A0100A6EC78 /* PlantCell.m in Sources */,
 				F488CACD288B6B7B0031B781 /* UserCell.m in Sources */,
 				F4499EF9288F5BC600C8169E /* UserProfileViewController.m in Sources */,
+				F4499EFC288F6B9100C8169E /* ProfileBoardCell.m in Sources */,
 				F41A29FD286E646D00D2DAB9 /* LoginViewController.m in Sources */,
 				F41A29EB286E4F7100D2DAB9 /* Plant.m in Sources */,
 				F445ED162877A9A10084BDBB /* DetailViewController.m in Sources */,
