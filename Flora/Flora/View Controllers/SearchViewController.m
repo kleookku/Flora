@@ -90,10 +90,19 @@
     acController.delegate = self;
     
     // Specify the place data types to return.
-    GMSPlaceField fields = (GMSPlaceFieldName | GMSPlaceFieldPlaceID);
+    GMSPlaceField fields = (GMSPlaceFieldCoordinate | GMSPlaceFieldFormattedAddress);
     acController.placeFields = fields;
     
     // Specify a filter.
+    /*
+     **let fields: GMSPlaceField = GMSPlaceField(rawValue:UInt(GMSPlaceField.name.rawValue) |
+                 UInt(GMSPlaceField.placeID.rawValue) |
+                 UInt(GMSPlaceField.coordinate.rawValue) |
+                 GMSPlaceField.addressComponents.rawValue |
+                 GMSPlaceField.formattedAddress.rawValue)!
+     autocompleteController.placeFields = fields**
+     */
+    
     _filter = [[GMSAutocompleteFilter alloc] init];
     _filter.type = kGMSPlacesAutocompleteTypeFilterAddress;
     acController.autocompleteFilter = _filter;
@@ -182,8 +191,8 @@
 didAutocompleteWithPlace:(GMSPlace *)place {
   [self dismissViewControllerAnimated:YES completion:nil];
   // Do something with the selected place.
-    self.locationLabel.text = place.name;
-    NSLog(@"%@, %@", place.coordinate.latitude, place.coordinate.longitude);
+    self.locationLabel.text = place.formattedAddress;
+    NSLog(@"%f, %f", place.coordinate.latitude, place.coordinate.longitude);
     self.lat = [[NSNumber numberWithDouble:place.coordinate.latitude] stringValue];
     self.lon = [[NSNumber numberWithDouble:place.coordinate.longitude] stringValue];
 }
