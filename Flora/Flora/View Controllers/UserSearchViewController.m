@@ -35,7 +35,7 @@
 
     // Do any additional setup after loading the view.
     
-    [self getFollowing];
+    [self updateFollowing];
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
@@ -96,22 +96,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UserSearchCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UserSearchCell"];
-    PFUser *user = self.userResults[indexPath.row];
-    
     cell.delegate = self;
+
+    PFUser *user = self.userResults[indexPath.row];
     cell.user = user;
-    
-    if(user[@"profilePic"]) {
-        cell.profPic.file = user[@"profilePic"];
-        [cell.profPic loadInBackground];
-    } else {
-        [cell.profPic setImage:[UIImage systemImageNamed:@"person"]];
-    }
-    
-    cell.username.text = user.username;
-    
-    NSArray *userBoards = user[@"boards"];
-    cell.numBoards.text = [NSString stringWithFormat:@"%li boards", userBoards.count];
     
     if([self.following containsObject:user.username]) {
         cell.followButton.backgroundColor = [UIColor systemGray6Color];
@@ -126,8 +114,8 @@
     return cell;
 }
 
-- (void)getFollowing {
-    NSMutableArray *getFollowing = [[NSMutableArray alloc] init];
+- (void)updateFollowing {
+    NSMutableArray *newFollowing = [[NSMutableArray alloc] init];
     PFUser *currentUser = [PFUser currentUser];
     PFQuery *query = [PFQuery queryWithClassName:@"Follow"];
     [query whereKey:@"follower" equalTo:currentUser.username];
@@ -137,9 +125,9 @@
             NSLog(@"Error getting follow: %@", error.localizedDescription);
         } else if (objects.count > 0){
             for(Follow *follow in objects) {
-                [getFollowing addObject:follow.username];
+                [newFollowing addObject:follow.username];
             }
-            self.following = getFollowing;
+            self.following = newFollowing;
             [self.tableView reloadData];
         }
     }];
@@ -148,7 +136,6 @@
 
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     UserProfileViewController *userProfVC = [segue destinationViewController];
     userProfVC.user = self.userToShow;

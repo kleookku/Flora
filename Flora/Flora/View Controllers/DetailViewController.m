@@ -47,11 +47,11 @@
     // Do any additional setup after loading the view.
     [self.activityIndicator startAnimating];
     self.addToBoardButton.layer.cornerRadius = 15;
-    [self getPlantObj];
+    [self updatePlantObj];
 }
 
 
-- (void)getPlantObj {
+- (void)updatePlantObj {
     if(self.plant) {
         [self.activityIndicator stopAnimating];
         self.plantName.text = self.plant.name;

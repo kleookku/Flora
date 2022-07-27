@@ -8,6 +8,17 @@
 #import "PlantCell.h"
 
 @implementation PlantCell
+
+-(void)setPlant:(Plant *)plant {
+    _plant = plant;
+    self.plantImage.file = plant.image;
+    [self.plantImage loadInBackground];
+    self.plantName.text = plant.name;
+    self.plantId = plant.plantId;
+}
+
+#pragma mark - BoardViewControllerDelegate
+
 - (void)tappedEdit {
     self.detailsButton.userInteractionEnabled = NO;
     self.deleteButton.contentMode = UIViewContentModeScaleAspectFill;
@@ -20,6 +31,8 @@
     self.detailsButton.userInteractionEnabled = YES;
     [self.deleteButton setHidden:YES];
 }
+
+#pragma mark - Actions
 
 - (IBAction)didTapDelete:(id)sender {
     

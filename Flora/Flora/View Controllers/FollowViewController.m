@@ -35,8 +35,8 @@
     
     self.user = [PFUser currentUser];
     
-    [self getFollowing];
-    [self getFollowers];
+    [self updateFollowing];
+    [self updateFollowers];
     
     self.addUsersButton.tag = 1;
     
@@ -73,8 +73,8 @@
 #pragma mark - UserSearchViewControllerDelegate
 
 - (void)updateTable {
-    [self getFollowing];
-    [self getFollowers];
+    [self updateFollowers];
+    [self updateFollowing];
 }
 
 #pragma mark - UITableViewController
@@ -113,18 +113,6 @@
         } else if(objects.count >0) {
             PFUser *user = (PFUser *)objects[0];
             cell.user = user;
-            
-            if(user[@"profilePic"]) {
-                cell.profPic.file = user[@"profilePic"];
-                [cell.profPic loadInBackground];
-            } else {
-                [cell.profPic setImage:[UIImage systemImageNamed:@"person"]];
-            }
-            
-            cell.username.text = user.username;
-            
-            NSArray *userBoards = user[@"boards"];
-            cell.numBoards.text = [NSString stringWithFormat:@"%li boards", userBoards.count];
         }
     }];
     return cell;
@@ -132,7 +120,7 @@
 
 #pragma mark - Networking
 
-- (void)getFollowers {
+- (void)updateFollowers {
     PFQuery *query = [PFQuery queryWithClassName:@"Follow"];
     [query whereKey:@"username" equalTo:self.user.username];
     
@@ -152,7 +140,7 @@
     }];
 }
 
-- (void) getFollowing {
+- (void) updateFollowing {
     PFQuery *query = [PFQuery queryWithClassName:@"Follow"];
     [query whereKey:@"follower" equalTo:self.user.username];
     

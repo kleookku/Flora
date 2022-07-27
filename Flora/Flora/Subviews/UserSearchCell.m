@@ -11,6 +11,22 @@
 
 @implementation UserSearchCell
 
+- (void)setUser:(PFUser *)user {
+    _user = user;
+    
+    if(user[@"profilePic"]) {
+        self.profPic.file = user[@"profilePic"];
+        [self.profPic loadInBackground];
+    } else {
+        [self.profPic setImage:[UIImage systemImageNamed:@"person"]];
+    }
+    
+    self.username.text = user.username;
+    
+    NSArray *userBoards = user[@"boards"];
+    self.numBoards.text = [NSString stringWithFormat:@"%li boards", userBoards.count];
+}
+
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code

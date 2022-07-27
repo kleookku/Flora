@@ -207,10 +207,10 @@
 #pragma mark - Data Import
 
 - (IBAction)onTapImport:(id)sender {
-    [self getPlants];
+    [self updatePlants];
 }
 
-- (void)getPlants {
+- (void)updatePlants {
     [[APIManager shared] searchWithOffset:self.offset completion:^(NSArray * _Nonnull results, NSError * _Nonnull error) {
             if(error) {
                 NSLog(@"error getting plants: %@", error.localizedDescription);
@@ -220,7 +220,7 @@
                     return;
                 } else {
                     self.offset += 25;
-                    [self getPlants];
+                    [self updatePlants];
                 }
                 
             }

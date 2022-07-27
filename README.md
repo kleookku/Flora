@@ -58,16 +58,17 @@ This app helps users find plants that are suitable for them based on three growt
 - [x] Users cannot have duplicate plants in their likes.
 - [x] Users can add multiple plants to boards at once.
 - [x] Users can reset their password through their email if they forget it. 
-- [x] Users can view search results "infinitely" (goes through all the pages/results).
+- [x] Users can view search results "infinitely" (goes through all the pages/results) **(Implemented for API Search, not needed for Parse Search)**
 - [x] Users can add a description to their boards. 
 - [x] Users can add their own cover photo to a board.
 - [x] Users can like a plant by clicking a like button on detail view.
 - [x] Users can search for other users and follow/unfollow them.
-
-**Super Stretch Stories**
-- [ ] Users can search by region/state using their current location.
-- [ ] Users can follow other users and see their boards. 
-- [ ] Users can add their own pictures to each plant.
+- [x] Users can view the users that follow them and the users they're following.
+- [x] Users can remove followers.
+- [x] Users can view other user's boards that are public. 
+- [x] Users can set their boards to public or private, allowing or disallowing other users to view them.
+- [ ] **Users can search for plants using a location they can search up using the Google Maps Places SDK.**
+- [ ] Users can add their own images to each plant.
 
 
 
