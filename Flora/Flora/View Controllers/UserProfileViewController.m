@@ -49,7 +49,7 @@
     
     self.username.text = [NSString stringWithFormat:@"%@'s boards", self.user.username];
     
-    [self getBoards];
+    [self updateBoards];
 }
 
 #pragma mark - ProfileBoardCellDelegate
@@ -107,7 +107,7 @@
 
 #pragma mark - Parse
 
-- (void) getBoards {
+- (void) updateBoards {
     PFQuery *query = [PFQuery queryWithClassName:@"Board"];
     [query whereKey:@"user" equalTo:self.user.username];
     [query whereKey:@"viewable" equalTo:@(YES)];
