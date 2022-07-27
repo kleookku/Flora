@@ -12,6 +12,7 @@ pod 'ZLSwipeableView'
 pod 'AFNetworking'
 pod 'Parse/UI'
 pod 'UITextView+Placeholder'
+pod 'GooglePlaces'
 
 
   target 'FloraTests' do
