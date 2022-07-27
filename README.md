@@ -67,7 +67,8 @@ This app helps users find plants that are suitable for them based on three growt
 - [x] Users can remove followers.
 - [x] Users can view other user's boards that are public. 
 - [x] Users can set their boards to public or private, allowing or disallowing other users to view them.
-- [ ] **Users can search for plants using a location they can search up using the Google Maps Places SDK.**
+- [x] Users can set a location using the Google Maps Places Autocomplete API.
+- [x] Users can set the search attributes using weather information about the set location read from OpenWeather API.
 - [ ] Users can add their own images to each plant.
 
 
