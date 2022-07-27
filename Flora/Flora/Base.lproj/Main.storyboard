@@ -118,8 +118,8 @@
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="tll-um-lZx">
                                 <rect key="frame" x="197" y="706" width="20" height="20"/>
                             </activityIndicatorView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="set location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hIn-dk-Nvz">
-                                <rect key="frame" x="44" y="128" width="95" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="set location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hIn-dk-Nvz">
+                                <rect key="frame" x="45" y="128" width="95" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" red="0.4277746456" green="0.4277746456" blue="0.4277746456" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
@@ -129,10 +129,10 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Klh-EO-3kV" secondAttribute="trailing" constant="20" id="1Qp-on-8NU"/>
+                            <constraint firstItem="hIn-dk-Nvz" firstAttribute="leading" secondItem="7kl-ae-OCk" secondAttribute="leading" constant="25" id="2Ps-vi-pIc"/>
                             <constraint firstItem="tll-um-lZx" firstAttribute="top" secondItem="DRu-Kt-0Xd" secondAttribute="bottom" constant="14" id="2q5-XM-Bhe"/>
                             <constraint firstItem="2CW-Dd-djE" firstAttribute="top" secondItem="Klh-EO-3kV" secondAttribute="bottom" constant="50" id="5FG-9d-AC3"/>
                             <constraint firstItem="jmK-7I-tRg" firstAttribute="top" secondItem="2CW-Dd-djE" secondAttribute="bottom" constant="5" id="5Nw-ug-h6Z"/>
-                            <constraint firstItem="7kl-ae-OCk" firstAttribute="trailing" secondItem="hIn-dk-Nvz" secondAttribute="trailing" id="6DI-rN-Kj1"/>
                             <constraint firstItem="2CW-Dd-djE" firstAttribute="leading" secondItem="Klh-EO-3kV" secondAttribute="leading" id="BNN-NG-xqG"/>
                             <constraint firstItem="FMT-Wk-9gd" firstAttribute="top" secondItem="N34-zG-m6h" secondAttribute="bottom" constant="50" id="Fly-UU-5bA"/>
                             <constraint firstItem="jmK-7I-tRg" firstAttribute="leading" secondItem="2CW-Dd-djE" secondAttribute="leading" id="G3x-Fy-eME"/>

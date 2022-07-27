@@ -93,16 +93,6 @@
     GMSPlaceField fields = (GMSPlaceFieldCoordinate | GMSPlaceFieldFormattedAddress);
     acController.placeFields = fields;
     
-    // Specify a filter.
-    /*
-     **let fields: GMSPlaceField = GMSPlaceField(rawValue:UInt(GMSPlaceField.name.rawValue) |
-                 UInt(GMSPlaceField.placeID.rawValue) |
-                 UInt(GMSPlaceField.coordinate.rawValue) |
-                 GMSPlaceField.addressComponents.rawValue |
-                 GMSPlaceField.formattedAddress.rawValue)!
-     autocompleteController.placeFields = fields**
-     */
-    
     _filter = [[GMSAutocompleteFilter alloc] init];
     _filter.type = kGMSPlacesAutocompleteTypeFilterAddress;
     acController.autocompleteFilter = _filter;

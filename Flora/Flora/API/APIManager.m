@@ -173,7 +173,7 @@
     
     NSString *key = [dict objectForKey: @"openWeather"];
     
-    NSString *url = [NSString stringWithFormat: @"https://api.openweathermap.org/data/2.5/onecall?lat=%@&lon=%@&exclude=%@&appid=%@", lat, lon, @"hourly,daily,minutely,alerts", key]; //@"https://api.openweathermap.org/data/2.5/onecall";
+    NSString *url = [NSString stringWithFormat: @"https://api.openweathermap.org/data/2.5/onecall?lat=%@&lon=%@&exclude=%@&appid=%@&units=imperial", lat, lon, @"hourly,daily,minutely,alerts", key]; //@"https://api.openweathermap.org/data/2.5/onecall";
     [self GET:url parameters:nil // @{@"lat":lat,@"lon":lon,@"exclude":@"minutely,hourly,daily,alerts",@"appid":key,@"units":@"imperial"}
      progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
@@ -186,28 +186,28 @@
         int sunIndex = 0;
         int tempIndex = 0;
 
-        if(moisture <= LOW_MOIST_BOUND) {
+        if(moisture < LOW_MOIST_BOUND) {
             moistIndex = 0;
-        } else if (moisture <= MED_MOIST_BOUND ){
-            moistIndex = 2;
-        } else {
+        } else if (moisture < MED_MOIST_BOUND ){
             moistIndex = 1;
+        } else {
+            moistIndex = 2;
         }
 
-        if(sunlight <= LOW_SUN_BOUND) {
+        if(sunlight < LOW_SUN_BOUND) {
             sunIndex = 0;
-        } else if(sunlight >=  MED_SUN_BOUND) {
-            sunIndex = 2;
-        } else {
+        } else if(sunlight <  MED_SUN_BOUND) {
             sunIndex = 1;
+        } else {
+            sunIndex = 2;
         }
         
         if(temperature < LOW_TEMP_BOUND) {
             tempIndex = 0;
-        } else if(temperature > MED_TEMP_BOUND) {
-            tempIndex = 2;
-        } else {
+        } else if(temperature < MED_TEMP_BOUND) {
             tempIndex = 1;
+        } else {
+            tempIndex = 2;
         }
         
         completion(moistIndex, sunIndex, tempIndex, nil);
