@@ -183,6 +183,7 @@ didAutocompleteWithPlace:(GMSPlace *)place {
   [self dismissViewControllerAnimated:YES completion:nil];
   // Do something with the selected place.
     self.locationLabel.text = place.name;
+    NSLog(@"%@, %@", place.coordinate.latitude, place.coordinate.longitude);
     self.lat = [[NSNumber numberWithDouble:place.coordinate.latitude] stringValue];
     self.lon = [[NSNumber numberWithDouble:place.coordinate.longitude] stringValue];
 }

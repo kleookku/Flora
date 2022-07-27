@@ -15,6 +15,20 @@
 #define MOIST @"Moisture Use"
 #define TEMP @"Temperature, Minimum (°F)"
 
+#define LOW_MOIST_BOUND 30
+#define MED_MOIST_BOUND 60
+#define HIGH_MOIST_BOUND 100
+
+#define LOW_SUN_BOUND 3
+#define MED_SUN_BOUND 6
+#define HIGH_SUN_BOUND 10
+
+#define LOW_TEMP_BOUND -17
+#define MED_TEMP_BOUND 35
+#define HIGH_TEMP_BOUND 100
+
+
+
 @implementation APIManager
 
 + (instancetype)shared {
@@ -159,38 +173,38 @@
     
     NSString *key = [dict objectForKey: @"openWeather"];
     
-    NSString *url = @"https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=-94.04&exclude=hourly,daily,minutely,alerts&appid=c96c5ecb9da23f5f2d43200563e6eb24";//@"https://api.openweathermap.org/data/2.5/onecall";
+    NSString *url = [NSString stringWithFormat: @"https://api.openweathermap.org/data/2.5/onecall?lat=%@&lon=%@&exclude=%@&appid=%@", lat, lon, @"hourly,daily,minutely,alerts", key]; //@"https://api.openweathermap.org/data/2.5/onecall";
     [self GET:url parameters:nil // @{@"lat":lat,@"lon":lon,@"exclude":@"minutely,hourly,daily,alerts",@"appid":key,@"units":@"imperial"}
      progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
-        NSDictionary *response = (NSDictionary *)responseObject;
-        int moisture =  (int) response[@"humidity"];
-        int sunlight = (int) response[@"uvi"];
-        int temperature = (int) response[@"temp"];
+        NSDictionary *response = (NSDictionary *)responseObject[@"current"];
+        int moisture =  [(NSNumber *) response[@"humidity"] intValue];
+        int sunlight = [(NSNumber *) response[@"uvi"] intValue];
+        int temperature = [(NSNumber *) response[@"temp"] intValue];
         
         int moistIndex = 0;
         int sunIndex = 0;
         int tempIndex = 0;
 
-        if(moisture <= 30) {
+        if(moisture <= LOW_MOIST_BOUND) {
             moistIndex = 0;
-        } else if (moisture >= 65 ){
+        } else if (moisture <= MED_MOIST_BOUND ){
             moistIndex = 2;
         } else {
             moistIndex = 1;
         }
 
-        if(sunlight <= -17) {
+        if(sunlight <= LOW_SUN_BOUND) {
             sunIndex = 0;
-        } else if(sunlight >=  6) {
+        } else if(sunlight >=  MED_SUN_BOUND) {
             sunIndex = 2;
         } else {
             sunIndex = 1;
         }
         
-        if(temperature < -17) {
+        if(temperature < LOW_TEMP_BOUND) {
             tempIndex = 0;
-        } else if(temperature > 40) {
+        } else if(temperature > MED_TEMP_BOUND) {
             tempIndex = 2;
         } else {
             tempIndex = 1;
