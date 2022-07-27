@@ -351,6 +351,7 @@
 				F47EE858286E4A8D00E3AA76 /* Frameworks */,
 				F47EE859286E4A8D00E3AA76 /* Resources */,
 				83CF91AB559FDC2A1B5B412C /* [CP] Embed Pods Frameworks */,
+				A575143698D79BEBBA57E9F9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -389,6 +390,7 @@
 				F47EE87D286E4A8E00E3AA76 /* Frameworks */,
 				F47EE87E286E4A8E00E3AA76 /* Resources */,
 				6DB86B2418E2B058A91B5040 /* [CP] Embed Pods Frameworks */,
+				D7BAAE1ABB98100847D3FBB8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -570,6 +572,40 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A575143698D79BEBBA57E9F9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Flora/Pods-Flora-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Flora/Pods-Flora-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Flora/Pods-Flora-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D7BAAE1ABB98100847D3FBB8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Flora-FloraUITests/Pods-Flora-FloraUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Flora-FloraUITests/Pods-Flora-FloraUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Flora-FloraUITests/Pods-Flora-FloraUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

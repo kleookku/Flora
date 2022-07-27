@@ -11,11 +11,6 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
-		<key>AFNetworking.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>6</integer>
-		</dict>
 		<key>BDBOAuth1Manager.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -23,22 +18,19 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
-		<key>BDBOAuth1Manager.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>2</integer>
-		</dict>
 		<key>Bolts.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>3</integer>
+			<integer>2</integer>
 		</dict>
-		<key>Bolts.xcscheme_^#shared#^_</key>
+		<key>GooglePlaces.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
-			<integer>9</integer>
+			<integer>3</integer>
 		</dict>
 		<key>Parse-Parse.xcscheme</key>
 		<dict>
@@ -47,22 +39,12 @@
 			<key>orderHint</key>
 			<integer>5</integer>
 		</dict>
-		<key>Parse-Parse.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>8</integer>
-		</dict>
 		<key>Parse-ParseUI.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>6</integer>
-		</dict>
-		<key>Parse-ParseUI.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>5</integer>
 		</dict>
 		<key>Parse.xcscheme</key>
 		<dict>
@@ -71,22 +53,12 @@
 			<key>orderHint</key>
 			<integer>4</integer>
 		</dict>
-		<key>Parse.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>7</integer>
-		</dict>
 		<key>Pods-Flora-FloraUITests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>8</integer>
-		</dict>
-		<key>Pods-Flora-FloraUITests.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>10</integer>
 		</dict>
 		<key>Pods-Flora.xcscheme</key>
 		<dict>
@@ -95,11 +67,6 @@
 			<key>orderHint</key>
 			<integer>7</integer>
 		</dict>
-		<key>Pods-Flora.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>11</integer>
-		</dict>
 		<key>Pods-FloraTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -107,29 +74,19 @@
 			<key>orderHint</key>
 			<integer>9</integer>
 		</dict>
-		<key>Pods-FloraTests.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>4</integer>
-		</dict>
 		<key>UITextView+Placeholder.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>2</integer>
-		</dict>
-		<key>ZLSwipeableView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>10</integer>
 		</dict>
-		<key>ZLSwipeableView.xcscheme_^#shared#^_</key>
+		<key>ZLSwipeableView.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
-			<integer>3</integer>
+			<integer>11</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
