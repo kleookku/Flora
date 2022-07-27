@@ -120,6 +120,8 @@
 - (IBAction)onTapLocation:(id)sender {
     [self presentViewController:self.locationAlert animated:YES completion:nil];
 }
+- (IBAction)tappedUseLocation:(id)sender {
+}
 
 #pragma mark - Do Search
 
