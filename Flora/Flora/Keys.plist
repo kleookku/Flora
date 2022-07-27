@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>openWeather</key>
+	<string>c96c5ecb9da23f5f2d43200563e6eb24</string>
+	<key>googlePlace</key>
+	<string>AIzaSyC9rQnxy-MNV3T7-6FmosHOV-BlPhDu7as</string>
 	<key>clientKey</key>
 	<string>LneSmDCKtF6X5RbmcDqfeJQ8jlwZVe2eSGpJulHK</string>
 	<key>applicationId</key>
