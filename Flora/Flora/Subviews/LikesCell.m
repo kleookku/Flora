@@ -8,7 +8,14 @@
 #import "LikesCell.h"
 #import "LikesViewController.h"
 
-@implementation LikesCell 
+@implementation LikesCell
+
+- (void)setPlant:(Plant *)plant {
+    _plant = plant;
+    self.plantImage.file = plant.image;
+    [self.plantImage loadInBackground];
+    self.plantName.text = plant.name;
+}
 
 - (IBAction)didTapPlant:(id)sender {
     [self.delegate didTapPlant:self.plant];

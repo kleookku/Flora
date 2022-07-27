@@ -177,6 +177,10 @@
 
 #pragma mark - BoardViewControllerDelegate
 
+-(void) tappedEdit {
+    NSLog(@"Board is being edited");
+}
+
 - (void) stoppedEdit {
     [self updateBoards];
     [self.boardsCollectionView reloadData];
@@ -239,9 +243,6 @@
                 if(results.count > 0) {
                     Plant *plant = (Plant *)results[0];
                     cell.plant = plant;
-                    cell.plantImage.file = plant.image;
-                    [cell.plantImage loadInBackground];
-                    cell.plantName.text = plant.name;
                 }
             } else {
                 NSLog(@"%@", error.localizedDescription);
@@ -265,40 +266,10 @@
                 if (results.count > 0) {
                     Board *board = (Board *)results[0];
                     cell.board = board;
-                    cell.boardName.text = board.name;
-                    cell.numPlants.text = [[NSString stringWithFormat:@"%li",  board.plantsArray.count] stringByAppendingString:@" plants"];
-                    
-                    if(board.plantsArray.count > 0) {
-                        [self setBoardCoverImage:board.plantsArray[0] forCell:cell];
-                    }
-                    
                 }
             }
         }];
         return cell;
-    }
-}
-
-- (void) setBoardCoverImage:(NSString *)plantId forCell:(BoardCell *)cell {
-    if(cell.board.coverImage) {
-        cell.coverImage.file = cell.board.coverImage;
-        [cell.coverImage loadInBackground];
-    } else {
-        PFQuery *query = [PFQuery queryWithClassName:@"Plant"];
-        [query whereKey:@"plantId" equalTo:plantId];
-        query.limit = 1;
-        
-        [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable results, NSError * _Nullable error) {
-            if(results) {
-                if(results.count > 0) {
-                    Plant *plant = (Plant *)results[0];
-                    cell.coverImage.file = plant.image;
-                    [cell.coverImage loadInBackground];
-                } else {
-                    NSLog(@"Error getting board cover image: %@", error.localizedDescription);
-                }
-            }
-        }];
     }
 }
 

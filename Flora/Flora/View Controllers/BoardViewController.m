@@ -34,7 +34,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     self.boardNameField.userInteractionEnabled = NO;
     self.boardNameField.text = self.board.name;
     
@@ -66,7 +66,7 @@
         [self.privacySwitch setOn:NO];
         [self.privacyImage setImage:[UIImage systemImageNamed:@"eye.slash"]];
     }
-
+    
     if(self.board.notes) {
         self.notesView.text = self.board.notes;
     }
@@ -86,16 +86,10 @@
     [self.cellDelegates addObject:cell];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable results, NSError * _Nullable error) {
-        if(results) {
-            if(results.count > 0) {
-                Plant *plant = (Plant *)results[0];
-                cell.plant = plant;
-                cell.plantImage.file = plant.image;
-                [cell.plantImage loadInBackground];
-                cell.plantName.text = plant.name;
-                cell.plantId = plant.plantId;
-            }
-        } else {
+        if(results.count > 0) {
+            Plant *plant = (Plant *)results[0];
+            cell.plant = plant;
+        } else if(error) {
             NSLog(@"%@", error.localizedDescription);
         }
     }];
@@ -125,12 +119,12 @@
 - (void)textViewDidEndEditing:(UITextView *)textView {
     self.board.notes = textView.text;
     [self.board saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-            if(error) {
-                NSLog(@"Error updating board description: %@", error.localizedDescription);
-            } else {
-                NSLog(@"Successfully saved board description!");
-                [self.delegate stoppedEdit];
-            }
+        if(error) {
+            NSLog(@"Error updating board description: %@", error.localizedDescription);
+        } else {
+            NSLog(@"Successfully saved board description!");
+            [self.delegate stoppedEdit];
+        }
     }];
 }
 
@@ -177,9 +171,7 @@
         [self.boardNameField resignFirstResponder];
         [self.addPlantButton setHidden:YES];
         [self.privacySwitch setHidden:YES];
-        
         [self.editButton setTitle:@"edit" forState:UIControlStateNormal];
-        
         self.board.name = self.boardNameField.text;
         [self.board saveInBackground];
         
@@ -197,10 +189,10 @@
                 NSLog(@"Successfully saved board for user!");
             }
         }];
+        
         for (id<BoardViewControllerDelegate> delegate in _cellDelegates) {
             [delegate stoppedEdit];
         }
-        
         [self.delegate stoppedEdit];
         
     } else {
