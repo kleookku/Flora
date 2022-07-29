@@ -24,7 +24,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *addPictureButton;
 
 @property (nonatomic, strong) UIAlertController *addPictureAlert;
-@property (nonatomic, strong) UIAlertController *noCameraAlert;
 @property (nonatomic, strong)UIAlertController *savedAlert;
 
 
@@ -62,7 +61,6 @@
     
     // alerts
     [self setupAddPictureAlert];
-    [self setupNoCameraAlert];
     [self setupSavedAlert];
     
     self.offset = 0;
@@ -141,6 +139,10 @@
     self.addPictureAlert.preferredAction = cancelAction;
 }
 
+- (void)setupSavedAlert {
+    self.savedAlert = [UIAlertController alertControllerWithTitle:@"Saved" message:nil preferredStyle:UIAlertControllerStyleAlert];
+}
+
 #pragma mark - Image Select
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
@@ -161,15 +163,7 @@
 }
 
 
-- (void)setupNoCameraAlert {
-    self.noCameraAlert = [UIAlertController alertControllerWithTitle:@"Camera not available" message:nil preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {}];
-    [self.noCameraAlert addAction:okAction];
-}
 
-- (void)setupSavedAlert {
-    self.savedAlert = [UIAlertController alertControllerWithTitle:@"Saved" message:nil preferredStyle:UIAlertControllerStyleAlert];
-}
 
 - (void)openCamera {
     UIImagePickerController *imagePickerVC = [UIImagePickerController new];

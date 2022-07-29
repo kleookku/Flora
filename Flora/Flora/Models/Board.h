@@ -11,6 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Board : PFObject <PFSubclassing>
 
+@property (nonatomic, strong) NSString *objectId;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSArray *plantsArray;
 @property (nonatomic, strong) NSString *user;

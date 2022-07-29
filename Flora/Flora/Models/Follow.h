@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSString *username;
 @property (nonatomic, strong) NSString *follower;
+@property (nonatomic, strong) NSString *objectId;
 
 + (void) saveFollow: (NSString * _Nullable)username withFollower: (NSString * _Nullable)follower withCompletion: (PFBooleanResultBlock _Nullable)completion;
 

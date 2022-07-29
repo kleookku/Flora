@@ -52,6 +52,8 @@
 		F4B2679628947234002320AE /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B2679528947234002320AE /* FeedViewController.m */; };
 		F4B267992894727A002320AE /* PostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B267982894727A002320AE /* PostCell.m */; };
 		F4B2679C289472F4002320AE /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B2679B289472F4002320AE /* Post.m */; };
+		F4B2679F28947ADE002320AE /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B2679E28947ADE002320AE /* ComposeViewController.m */; };
+		F4B267A228947AFB002320AE /* ComposePlantCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B267A128947AFB002320AE /* ComposePlantCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -160,6 +162,10 @@
 		F4B267982894727A002320AE /* PostCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostCell.m; sourceTree = "<group>"; };
 		F4B2679A289472F4002320AE /* Post.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Post.h; sourceTree = "<group>"; };
 		F4B2679B289472F4002320AE /* Post.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
+		F4B2679D28947ADE002320AE /* ComposeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComposeViewController.h; sourceTree = "<group>"; };
+		F4B2679E28947ADE002320AE /* ComposeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComposeViewController.m; sourceTree = "<group>"; };
+		F4B267A028947AFB002320AE /* ComposePlantCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComposePlantCell.h; sourceTree = "<group>"; };
+		F4B267A128947AFB002320AE /* ComposePlantCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComposePlantCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -283,6 +289,10 @@
 				F4B2679528947234002320AE /* FeedViewController.m */,
 				F4B267972894727A002320AE /* PostCell.h */,
 				F4B267982894727A002320AE /* PostCell.m */,
+				F4B2679D28947ADE002320AE /* ComposeViewController.h */,
+				F4B2679E28947ADE002320AE /* ComposeViewController.m */,
+				F4B267A028947AFB002320AE /* ComposePlantCell.h */,
+				F4B267A128947AFB002320AE /* ComposePlantCell.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -634,6 +644,7 @@
 			files = (
 				F488CAC1288B4F840031B781 /* FollowViewController.m in Sources */,
 				F445ED072875FD410084BDBB /* Board.m in Sources */,
+				F4B267A228947AFB002320AE /* ComposePlantCell.m in Sources */,
 				F4B2679628947234002320AE /* FeedViewController.m in Sources */,
 				F456EAA8287CDA280067B05C /* LikesCell.m in Sources */,
 				F47EE860286E4A8D00E3AA76 /* AppDelegate.m in Sources */,
@@ -650,6 +661,7 @@
 				F488CACD288B6B7B0031B781 /* UserCell.m in Sources */,
 				F4499EF9288F5BC600C8169E /* UserProfileViewController.m in Sources */,
 				F4499EFC288F6B9100C8169E /* ProfileBoardCell.m in Sources */,
+				F4B2679F28947ADE002320AE /* ComposeViewController.m in Sources */,
 				F41A29FD286E646D00D2DAB9 /* LoginViewController.m in Sources */,
 				F4024E7928934DEE0054D6BB /* NameSearchCell.m in Sources */,
 				F41A29EB286E4F7100D2DAB9 /* Plant.m in Sources */,

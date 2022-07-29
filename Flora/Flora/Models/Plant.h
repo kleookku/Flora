@@ -11,6 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Plant : PFObject <PFSubclassing>
 
+@property (nonatomic, strong) NSString *objectId;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) PFFileObject *image;
 @property (nonatomic, strong) NSString *moistureUse;

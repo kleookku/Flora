@@ -11,6 +11,7 @@
 
 @dynamic username;
 @dynamic follower;
+@dynamic objectId;
 
 + (nonnull NSString *) parseClassName {
     return @"Follow";
