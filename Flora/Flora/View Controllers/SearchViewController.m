@@ -44,6 +44,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *searchButton;
 @property (weak, nonatomic) IBOutlet UIButton *locationSearchButton;
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
+@property (weak, nonatomic) IBOutlet UIButton *searchByNameButton;
 
 @property (nonatomic, strong)NSString *moist;
 @property (nonatomic, strong)NSString *shade;
@@ -69,7 +70,8 @@
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
     [self.setLocationAlert addAction:okAction];
     
-    self.searchButton.tag = 1;
+    self.searchByNameButton.tag = 1;
+    self.searchByNameButton.layer.cornerRadius = 10;
 }
 
 
@@ -214,7 +216,7 @@ didFailAutocompleteWithError:(NSError *)error {
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if([sender tag] == 1) {
+    if([sender tag] != 1) {
         ResultsViewController *resultsVC = [segue destinationViewController];
         resultsVC.plantsArray = [self.results mutableCopy];
     }
