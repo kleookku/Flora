@@ -68,6 +68,8 @@
     self.setLocationAlert = [UIAlertController alertControllerWithTitle:@"Please set set location" message:nil preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
     [self.setLocationAlert addAction:okAction];
+    
+    self.searchButton.tag = 1;
 }
 
 
@@ -212,8 +214,10 @@ didFailAutocompleteWithError:(NSError *)error {
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    ResultsViewController *resultsVC = [segue destinationViewController];
-    resultsVC.plantsArray = [self.results mutableCopy];
+    if([sender tag] == 1) {
+        ResultsViewController *resultsVC = [segue destinationViewController];
+        resultsVC.plantsArray = [self.results mutableCopy];
+    }
 }
 
 

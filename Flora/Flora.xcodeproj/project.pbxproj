@@ -10,6 +10,8 @@
 		5FDC46EC33554B9EAC53AA0B /* Pods_FloraTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD0AFB2A2F2157872EEF6730 /* Pods_FloraTests.framework */; };
 		765F0797204FDD8C134538C4 /* Pods_Flora_FloraUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8BFB23CF19A4225799F20F /* Pods_Flora_FloraUITests.framework */; };
 		E73819F1F5C1B3C6EF4C6CF7 /* Pods_Flora.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B8ADF9025442BD0ADD5828A /* Pods_Flora.framework */; };
+		F4024E7628934C790054D6BB /* NameSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4024E7528934C790054D6BB /* NameSearchViewController.m */; };
+		F4024E7928934DEE0054D6BB /* NameSearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4024E7828934DEE0054D6BB /* NameSearchCell.m */; };
 		F41A29E8286E4CE200D2DAB9 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = F41A29E7286E4CE200D2DAB9 /* Keys.plist */; };
 		F41A29EB286E4F7100D2DAB9 /* Plant.m in Sources */ = {isa = PBXBuildFile; fileRef = F41A29EA286E4F7100D2DAB9 /* Plant.m */; };
 		F41A29F6286E509200D2DAB9 /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F41A29F5286E509200D2DAB9 /* APIManager.m */; };
@@ -76,6 +78,10 @@
 		9CB4B67367D9E0DC2EEDD41E /* Pods-FloraTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FloraTests.release.xcconfig"; path = "Target Support Files/Pods-FloraTests/Pods-FloraTests.release.xcconfig"; sourceTree = "<group>"; };
 		AD0AFB2A2F2157872EEF6730 /* Pods_FloraTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FloraTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB8BFB23CF19A4225799F20F /* Pods_Flora_FloraUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Flora_FloraUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4024E7428934C790054D6BB /* NameSearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NameSearchViewController.h; sourceTree = "<group>"; };
+		F4024E7528934C790054D6BB /* NameSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NameSearchViewController.m; sourceTree = "<group>"; };
+		F4024E7728934DEE0054D6BB /* NameSearchCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NameSearchCell.h; sourceTree = "<group>"; };
+		F4024E7828934DEE0054D6BB /* NameSearchCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NameSearchCell.m; sourceTree = "<group>"; };
 		F41A29E7286E4CE200D2DAB9 /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		F41A29E9286E4F7100D2DAB9 /* Plant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Plant.h; sourceTree = "<group>"; };
 		F41A29EA286E4F7100D2DAB9 /* Plant.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Plant.m; sourceTree = "<group>"; };
@@ -240,6 +246,8 @@
 				F488CAC3288B4FDB0031B781 /* UserSearchViewController.m */,
 				F4499EF7288F5BC600C8169E /* UserProfileViewController.h */,
 				F4499EF8288F5BC600C8169E /* UserProfileViewController.m */,
+				F4024E7428934C790054D6BB /* NameSearchViewController.h */,
+				F4024E7528934C790054D6BB /* NameSearchViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -274,6 +282,8 @@
 				F49755B72881E458008050BB /* AddPlantCell.m */,
 				F4499EFA288F6B9100C8169E /* ProfileBoardCell.h */,
 				F4499EFB288F6B9100C8169E /* ProfileBoardCell.m */,
+				F4024E7728934DEE0054D6BB /* NameSearchCell.h */,
+				F4024E7828934DEE0054D6BB /* NameSearchCell.m */,
 			);
 			path = Subviews;
 			sourceTree = "<group>";
@@ -620,6 +630,7 @@
 				F456EAA8287CDA280067B05C /* LikesCell.m in Sources */,
 				F47EE860286E4A8D00E3AA76 /* AppDelegate.m in Sources */,
 				F44CF455287E21D10076AB4B /* BoardCell.m in Sources */,
+				F4024E7628934C790054D6BB /* NameSearchViewController.m in Sources */,
 				F445ED132877438E0084BDBB /* SearchViewController.m in Sources */,
 				F49755B82881E458008050BB /* AddPlantCell.m in Sources */,
 				F44CF452287E1A890076AB4B /* SelectViewController.m in Sources */,
@@ -631,6 +642,7 @@
 				F4499EF9288F5BC600C8169E /* UserProfileViewController.m in Sources */,
 				F4499EFC288F6B9100C8169E /* ProfileBoardCell.m in Sources */,
 				F41A29FD286E646D00D2DAB9 /* LoginViewController.m in Sources */,
+				F4024E7928934DEE0054D6BB /* NameSearchCell.m in Sources */,
 				F41A29EB286E4F7100D2DAB9 /* Plant.m in Sources */,
 				F445ED162877A9A10084BDBB /* DetailViewController.m in Sources */,
 				F456EAA5287CD5DE0067B05C /* LikesViewController.m in Sources */,
@@ -836,6 +848,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_WORKSPACE = NO;
 			};
 			name = Debug;
 		};
@@ -866,6 +879,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_WORKSPACE = NO;
 			};
 			name = Release;
 		};
