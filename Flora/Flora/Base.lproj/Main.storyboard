@@ -228,7 +228,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XYk-of-x5o" customClass="PFImageView">
-                                                    <rect key="frame" x="0.0" y="-3" width="414" height="414"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="411"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="414" id="afv-tv-UD4"/>
                                                     </constraints>
@@ -311,7 +311,7 @@
                                                 <constraint firstItem="dJf-n9-ceB" firstAttribute="leading" secondItem="Jpr-c8-VeC" secondAttribute="leading" constant="6" id="XIn-Rl-NTe"/>
                                                 <constraint firstItem="Ddj-Bv-EYZ" firstAttribute="leading" secondItem="4Hu-VT-KNr" secondAttribute="trailing" constant="15" id="YR1-xG-xJm"/>
                                                 <constraint firstItem="RaO-VE-Wb5" firstAttribute="top" secondItem="dJf-n9-ceB" secondAttribute="top" id="a0M-tg-YPw"/>
-                                                <constraint firstItem="XYk-of-x5o" firstAttribute="top" secondItem="Jpr-c8-VeC" secondAttribute="top" constant="-3" id="a62-FI-stO"/>
+                                                <constraint firstItem="XYk-of-x5o" firstAttribute="top" secondItem="Jpr-c8-VeC" secondAttribute="top" id="a62-FI-stO"/>
                                                 <constraint firstItem="EWz-5j-pNf" firstAttribute="top" secondItem="Ddj-Bv-EYZ" secondAttribute="bottom" constant="2" id="ayB-wM-RHh"/>
                                                 <constraint firstItem="sOl-Km-OOy" firstAttribute="top" secondItem="4Hu-VT-KNr" secondAttribute="bottom" constant="2" id="cMm-IX-d9H"/>
                                                 <constraint firstItem="w6d-l8-UOm" firstAttribute="leading" secondItem="rAc-b5-Gx8" secondAttribute="trailing" constant="5" id="hLU-V0-GYK"/>
