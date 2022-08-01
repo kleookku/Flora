@@ -26,6 +26,7 @@
 
 @property (nonatomic, strong) NSArray *plants;
 @property (nonatomic, strong) UIAlertController *selectWarning;
+@property (nonatomic, strong) UIAlertController *noPlantWarning;
 
 @end
 
@@ -41,9 +42,15 @@
     self.collectionView.dataSource = self;
     self.searchBar.delegate = self;
     
+    self.selectedPlant = nil;
+    
     self.selectWarning = [UIAlertController alertControllerWithTitle:@"Please select only one plant" message:nil preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
     [self.selectWarning addAction:okAction];
+    
+    self.noPlantWarning = [UIAlertController alertControllerWithTitle:@"Post incomplete" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *plantOkAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+    [self.noPlantWarning addAction:plantOkAction];
     
     [self updatePlants:@""];
     self.captionTextView.placeholder = @"Write a caption...";
@@ -56,14 +63,19 @@
 }
 
 - (IBAction)didTapShare:(id)sender {
-    [Post postUserImage:self.postImage.image withCaption:self.captionTextView.text withPlant:self.selectedPlant withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-            if(error) {
-                NSLog(@"Error sharing post: %@", error.localizedDescription);
-            } else {
-                NSLog(@"Successfully shared post!");
-                [self dismissViewControllerAnimated:YES completion:nil];
-            }
-    }];
+    if(self.selectedPlant && self.postImage.image) {
+        [Post postUserImage:self.postImage.image withCaption:self.captionTextView.text withPlant:self.selectedPlant withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+                if(error) {
+                    NSLog(@"Error sharing post: %@", error.localizedDescription);
+                } else {
+                    [self.delegate didPost];
+                    NSLog(@"Successfully shared post!");
+                    [self dismissViewControllerAnimated:YES completion:nil];
+                }
+        }];
+    } else {
+        [self presentViewController:self.noPlantWarning animated:YES completion:nil];
+    }
 }
 - (IBAction)tapped:(id)sender {
     [self.view endEditing:YES];

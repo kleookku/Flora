@@ -277,11 +277,17 @@
                                                     <rect key="frame" x="291" y="12" width="106" height="111"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" title=""/>
+                                                    <connections>
+                                                        <action selector="didTapPlant:" destination="cTj-uQ-doj" eventType="touchUpInside" id="Lil-hC-11r"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RaO-VE-Wb5">
                                                     <rect key="frame" x="6" y="419" width="40" height="40"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" title=""/>
+                                                    <connections>
+                                                        <action selector="didTapProfile:" destination="cTj-uQ-doj" eventType="touchUpInside" id="f89-oq-koM"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EWz-5j-pNf">
                                                     <rect key="frame" x="50" y="516" width="8.5" height="16"/>
@@ -366,7 +372,10 @@
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="composeButton" destination="6Dx-7O-DJW" id="rFn-lY-awj"/>
                         <outlet property="tableView" destination="vRa-sr-nN7" id="Kf5-bl-SWL"/>
+                        <segue destination="1ej-w4-MZv" kind="presentation" identifier="FeedToPlant" id="dNX-vT-LQX"/>
+                        <segue destination="xeW-Us-O9Q" kind="presentation" identifier="FeedToProfile" id="bEM-CY-N0O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jur-Yv-U4a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2034,7 +2043,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-1975.36231884058" y="906.69642857142856"/>
+            <point key="canvasLocation" x="-1797" y="925"/>
         </scene>
         <!--Likes View Controller-->
         <scene sceneID="w4l-c5-sWf">
@@ -2303,8 +2312,8 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="A1E-BI-8ON"/>
-        <segue reference="PgG-C5-otM"/>
-        <segue reference="N34-KE-mgi"/>
+        <segue reference="dNX-vT-LQX"/>
+        <segue reference="bEM-CY-N0O"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.uturn.backward" catalog="system" width="128" height="112"/>
