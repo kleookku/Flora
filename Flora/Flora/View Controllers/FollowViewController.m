@@ -171,6 +171,7 @@
      } else {
          UserProfileViewController *userProfVC = [segue destinationViewController];
          userProfVC.user = self.userToShow;
+         userProfVC.notMyProfile = YES;
      }
  }
  

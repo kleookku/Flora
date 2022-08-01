@@ -29,7 +29,25 @@
     self.searchBar.delegate = self;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    [self updatePlants:@""];
+}
+
+- (void)updatePlants:(NSString *)searchText {
+    PFQuery *query = [PFQuery queryWithClassName:@"Plant"];
+    [query whereKey:@"name" containsString:searchText];
     
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        if(error) {
+            NSLog(@"Error getting search results: %@", error.localizedDescription);
+        } else {
+            NSMutableArray *results = [[NSMutableArray alloc] init];
+            for(Plant *plant in objects){
+                [results addObject:plant];
+            }
+            self.results = results;
+            [self.tableView reloadData];
+        }
+    }];
 }
 
 # pragma mark - Actions
@@ -48,27 +66,7 @@
 # pragma mark - UISearchBarDelegate
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    if(![searchText isEqualToString:@""]) {
-        PFQuery *query = [PFQuery queryWithClassName:@"Plant"];
-        NSString *lowercaseText = [searchText lowercaseString];
-        [query whereKey:@"name" containsString:lowercaseText];
-        
-        [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-            if(error) {
-                NSLog(@"Error getting search results: %@", error.localizedDescription);
-            } else {
-                NSMutableArray *results = [[NSMutableArray alloc] init];
-                for(Plant *plant in objects){
-                    [results addObject:plant];
-                }
-                self.results = results;
-                [self.tableView reloadData];
-            }
-        }];
-    } else {
-        self.results = @[];
-        [self.tableView reloadData];
-    }
+    [self updatePlants:[searchText lowercaseString]];
 }
 
 #pragma mark - UITableViewDatasource

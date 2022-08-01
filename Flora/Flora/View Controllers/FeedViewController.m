@@ -145,6 +145,7 @@
     } else if (_userSegue) {
         UserProfileViewController *userProfileVC = [segue destinationViewController];
         userProfileVC.user = _userSegue;
+        userProfileVC.notMyProfile = YES;
     }
 }
 

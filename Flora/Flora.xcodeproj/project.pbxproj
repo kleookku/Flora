@@ -34,6 +34,8 @@
 		F44CF45C287F2F420076AB4B /* BoardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F44CF45B287F2F420076AB4B /* BoardViewController.m */; };
 		F456EAA5287CD5DE0067B05C /* LikesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F456EAA4287CD5DE0067B05C /* LikesViewController.m */; };
 		F456EAA8287CDA280067B05C /* LikesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F456EAA7287CDA280067B05C /* LikesCell.m */; };
+		F46C67B428987BED006CA056 /* PostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F46C67B328987BED006CA056 /* PostViewController.m */; };
+		F46FB39428984C79001144D6 /* PostGridCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F46FB39328984C79001144D6 /* PostGridCell.m */; };
 		F47EE860286E4A8D00E3AA76 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F47EE85F286E4A8D00E3AA76 /* AppDelegate.m */; };
 		F47EE863286E4A8D00E3AA76 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F47EE862286E4A8D00E3AA76 /* SceneDelegate.m */; };
 		F47EE869286E4A8D00E3AA76 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F47EE867286E4A8D00E3AA76 /* Main.storyboard */; };
@@ -129,6 +131,10 @@
 		F456EAA4287CD5DE0067B05C /* LikesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LikesViewController.m; sourceTree = "<group>"; };
 		F456EAA6287CDA280067B05C /* LikesCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LikesCell.h; sourceTree = "<group>"; };
 		F456EAA7287CDA280067B05C /* LikesCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LikesCell.m; sourceTree = "<group>"; };
+		F46C67B228987BED006CA056 /* PostViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostViewController.h; sourceTree = "<group>"; };
+		F46C67B328987BED006CA056 /* PostViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostViewController.m; sourceTree = "<group>"; };
+		F46FB39228984C79001144D6 /* PostGridCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostGridCell.h; sourceTree = "<group>"; };
+		F46FB39328984C79001144D6 /* PostGridCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostGridCell.m; sourceTree = "<group>"; };
 		F47EE85B286E4A8D00E3AA76 /* Flora.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flora.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F47EE85E286E4A8D00E3AA76 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F47EE85F286E4A8D00E3AA76 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -281,6 +287,8 @@
 				F4499EF8288F5BC600C8169E /* UserProfileViewController.m */,
 				F4499EFA288F6B9100C8169E /* ProfileBoardCell.h */,
 				F4499EFB288F6B9100C8169E /* ProfileBoardCell.m */,
+				F46FB39228984C79001144D6 /* PostGridCell.h */,
+				F46FB39328984C79001144D6 /* PostGridCell.m */,
 				F4024E7428934C790054D6BB /* NameSearchViewController.h */,
 				F4024E7528934C790054D6BB /* NameSearchViewController.m */,
 				F4024E7728934DEE0054D6BB /* NameSearchCell.h */,
@@ -293,6 +301,8 @@
 				F4B2679E28947ADE002320AE /* ComposeViewController.m */,
 				F4B267A028947AFB002320AE /* ComposePlantCell.h */,
 				F4B267A128947AFB002320AE /* ComposePlantCell.m */,
+				F46C67B228987BED006CA056 /* PostViewController.h */,
+				F46C67B328987BED006CA056 /* PostViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -642,6 +652,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F46C67B428987BED006CA056 /* PostViewController.m in Sources */,
 				F488CAC1288B4F840031B781 /* FollowViewController.m in Sources */,
 				F445ED072875FD410084BDBB /* Board.m in Sources */,
 				F4B267A228947AFB002320AE /* ComposePlantCell.m in Sources */,
@@ -678,6 +689,7 @@
 				F4499EF6288F14C700C8169E /* Follow.m in Sources */,
 				F44CF45C287F2F420076AB4B /* BoardViewController.m in Sources */,
 				F47EE863286E4A8D00E3AA76 /* SceneDelegate.m in Sources */,
+				F46FB39428984C79001144D6 /* PostGridCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
