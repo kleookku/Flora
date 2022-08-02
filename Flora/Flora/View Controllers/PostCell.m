@@ -29,14 +29,16 @@
     
     self.postImage.file = post.image;
     [self.postImage loadInBackground];
+    self.postImage.layer.cornerRadius = 40;
     
     self.plantImage.file = post.plant.image;
     [self.plantImage loadInBackground];
-    self.plantImage.layer.cornerRadius = 20;
+    self.plantImage.layer.cornerRadius = 25;
     self.plantImage.layer.borderColor = [[UIColor whiteColor] CGColor];
-    self.plantImage.layer.borderWidth = 3;
+    self.plantImage.layer.borderWidth = 1;
     
     self.usernameLabel.text = post.author.username;
+    self.captionUsernameLabel.text = post.author.username;
     if(post.author[@"profilePic"]) {
         self.profileImage.file = post.author[@"profilePic"];
         [self.profileImage loadInBackground];
@@ -53,8 +55,9 @@
     self.dateLabel.text = self.post.createdAt.shortTimeAgoSinceNow;
     self.captionLabel.text = self.post.caption;
     
-    self.likeCountLabel.text = [self.post.likeCount stringValue];
-    self.commentCountLabel.text = [self.post.commentCount stringValue];
+    self.likeCountLabel.text = [NSString stringWithFormat:@"%@ likes", [self.post.likeCount stringValue]];
+    self.commentCountLabel.text = [NSString stringWithFormat:@"%@ comments", [self.post.commentCount stringValue]];
+    
 }
 
 #pragma mark - Actions

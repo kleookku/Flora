@@ -6,6 +6,7 @@
 //
 
 #import "PostViewController.h"
+#import "DetailViewController.h"
 #import "Parse/PFImageView.h"
 #import "DateTools/DateTools.h"
 
@@ -19,6 +20,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *likeCount;
 @property (weak, nonatomic) IBOutlet UIButton *commentButton;
 @property (weak, nonatomic) IBOutlet UILabel *commentCount;
+@property (weak, nonatomic) IBOutlet PFImageView *plantImage;
+@property (weak, nonatomic) IBOutlet UILabel *captionUsernameLabel;
 
 @end
 
@@ -28,26 +31,47 @@
     [super viewDidLoad];
     [self.post fetchIfNeeded];
     [self.post.author fetchIfNeeded];
+    [self.post.plant fetchIfNeeded];
     // Do any additional setup after loading the view.
     self.postImage.file = self.post.image;
     [self.postImage loadInBackground];
+    self.postImage.layer.cornerRadius = 40;
+    
     self.profileImage.file = self.post.author[@"profilePic"];
     [self.profileImage loadInBackground];
+    self.profileImage.layer.masksToBounds = false;
+    self.profileImage.layer.cornerRadius = self.profileImage.frame.size.width/2;
+    self.profileImage.clipsToBounds = true;
+    self.profileImage.layer.borderWidth = 0.05;
+    
     self.username.text = self.post.author.username;
+    self.captionUsernameLabel.text = self.post.author.username;
     self.dateCreated.text = [self.post.createdAt shortTimeAgoSinceNow];
     self.caption.text = self.post.caption;
-    self.likeCount.text = [self.post.likeCount stringValue];
-    self.commentCount.text = [self.post.commentCount stringValue];
+    self.likeCount.text = [NSString stringWithFormat:@"%@ likes", [self.post.likeCount stringValue]];
+    self.commentCount.text = [NSString stringWithFormat:@"%@ comments", [self.post.commentCount stringValue]];
+    
+    self.plantImage.file = self.post.plant.image;
+    [self.plantImage loadInBackground];
+    self.plantImage.layer.cornerRadius = 25;
+    self.plantImage.layer.borderColor = [[UIColor whiteColor] CGColor];
+    self.plantImage.layer.borderWidth = 1;
 }
 
-/*
+- (IBAction)didTapPlant:(id)sender {
+    [self performSegueWithIdentifier:@"PostToPlant" sender:nil];
+}
+
+
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    DetailViewController *detailVC = [segue destinationViewController];
+    [self.post.plant fetchIfNeeded];
+    detailVC.plant = self.post.plant;
 }
-*/
+
 
 @end
