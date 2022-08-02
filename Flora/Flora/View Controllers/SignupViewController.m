@@ -91,7 +91,7 @@
         PFUser *newUser = [PFUser user];
         
         // set user properties
-        newUser.username = [self.usernameField.text lowercaseString];
+        newUser.username = [[self.usernameField.text lowercaseString] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];;
         newUser.email = self.emailField.text;
         newUser.password = self.passwordField.text;
         

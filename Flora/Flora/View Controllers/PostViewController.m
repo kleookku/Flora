@@ -37,12 +37,19 @@
     [self.postImage loadInBackground];
     self.postImage.layer.cornerRadius = 40;
     
-    self.profileImage.file = self.post.author[@"profilePic"];
-    [self.profileImage loadInBackground];
+    if(self.post.author[@"profilePic"]) {
+        self.profileImage.file = self.post.author[@"profilePic"];
+        [self.profileImage loadInBackground];
+    } else {
+        [self.profileImage setImage:[UIImage systemImageNamed:@"person"]];
+        [self.profileImage setBackgroundColor:[UIColor systemGray5Color]];
+        [self.profileImage setTintColor:[UIColor systemGray4Color]];
+    }
     self.profileImage.layer.masksToBounds = false;
     self.profileImage.layer.cornerRadius = self.profileImage.frame.size.width/2;
     self.profileImage.clipsToBounds = true;
     self.profileImage.layer.borderWidth = 0.05;
+    
     
     self.username.text = self.post.author.username;
     self.captionUsernameLabel.text = self.post.author.username;

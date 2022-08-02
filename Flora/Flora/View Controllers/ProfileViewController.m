@@ -75,7 +75,7 @@
 - (IBAction)didTapSave:(id)sender {
     PFUser *user = [PFUser currentUser];
     if(![self.usernameField.text isEqualToString:@""])
-        user.username = self.usernameField.text;
+        user.username = [self.usernameField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     if(![self.passwordField.text isEqualToString:@""])
         user.password = self.passwordField.text;
     
@@ -88,7 +88,7 @@
             NSLog(@"Error saving profile pic %@", error.localizedDescription);
         } else {
             NSLog(@"Successfully saved profile pic!");
-            
+            [self.delegate updateInformation];
         }
     }];
     
@@ -99,6 +99,7 @@
                 [self.savedAlert dismissViewControllerAnimated:YES completion:nil];
         });
     }];
+    
 
 }
 

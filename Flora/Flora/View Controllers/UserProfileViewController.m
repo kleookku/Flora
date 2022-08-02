@@ -16,7 +16,7 @@
 #import "PostViewController.h"
 #import "ProfileViewController.h"
 
-@interface UserProfileViewController () <UICollectionViewDelegate, UICollectionViewDataSource, ProfileBoardCellDelegate, PostGridCellDelegate>
+@interface UserProfileViewController () <UICollectionViewDelegate, UICollectionViewDataSource, ProfileBoardCellDelegate, PostGridCellDelegate, ProfileViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *username;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -53,6 +53,15 @@
     
     self.editButton.layer.cornerRadius = 20;
     
+    [self updateProfile];
+    
+    [self updateBoards];
+    [self updatePosts];
+}
+
+- (void)updateProfile {
+    [self.user fetchIfNeeded];
+    
     if(self.user[@"profilePic"]) {
         self.profPic.file = self.user[@"profilePic"];
         [self.profPic loadInBackground];
@@ -61,9 +70,6 @@
     }
     
     self.username.text = self.user.username; //[NSString stringWithFormat:@"%@'s boards", self.user.username];
-    
-    [self updateBoards];
-    [self updatePosts];
 }
 
 #pragma mark - Actions
@@ -76,6 +82,12 @@
         [self.collectionView reloadData];
         [self updateBoards];
     }
+}
+
+#pragma mark - ProfileViewControllerDelegate
+
+- (void)updateInformation {
+    [self updateProfile];
 }
 
 #pragma mark - ProfileBoardCellDelegate
@@ -117,7 +129,11 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.boardsArray.count;
+    if(self.segmentedControl.selectedSegmentIndex == 0){
+        return self.boardsArray.count;
+    } else {
+        return self.postsArray.count;
+    }
 }
 
 #pragma mark - Parse
@@ -157,16 +173,19 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if([sender tag] != 1) {
-        if(_boardToView) {
-            BoardViewController *boardVC = [segue destinationViewController];
-            boardVC.board = self.boardToView;
-            boardVC.myBoard = NO;
-        } else if(_postToView) {
-            PostViewController *postVC = [segue destinationViewController];
-            postVC.post = self.postToView;
-        }
+    if([sender tag] == 1) {
+        ProfileViewController *profileVC = [segue destinationViewController];
+        profileVC.delegate = self;
     }
+    if(_boardToView) {
+        BoardViewController *boardVC = [segue destinationViewController];
+        boardVC.board = self.boardToView;
+        boardVC.myBoard = NO;
+    } else if(_postToView) {
+        PostViewController *postVC = [segue destinationViewController];
+        postVC.post = self.postToView;
+    }
+    
 }
 
 
