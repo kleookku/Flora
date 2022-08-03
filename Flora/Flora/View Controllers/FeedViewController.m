@@ -13,6 +13,7 @@
 #import "Parse/Parse.h"
 #import "Post.h"
 #import "Follow.h"
+#import "APIManager.h"
 
 @interface FeedViewController () <UITableViewDelegate, UITableViewDataSource, PostCellDelegate, ComposeViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;

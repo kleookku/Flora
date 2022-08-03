@@ -7,13 +7,14 @@
 
 #import "PostCell.h"
 #import "DateTools.h"
+#import "APIManager.h"
 
 #define MULTIPLIER 4
 
 @implementation PostCell
 
 - (void)awakeFromNib {
-    [super awakeFromNib];    
+    [super awakeFromNib];
     self.plantImage.layer.borderColor = [[UIColor blackColor] CGColor];
     self.plantImage.layer.borderWidth = 3;
 }
@@ -58,6 +59,23 @@
     self.likeCountLabel.text = [NSString stringWithFormat:@"%@ likes", [self.post.likeCount stringValue]];
     self.commentCountLabel.text = [NSString stringWithFormat:@"%@ comments", [self.post.commentCount stringValue]];
     
+    [self updateLikes];
+    
+    
+}
+
+- (void) updateLikes {
+    self.likeCountLabel.text = [NSString stringWithFormat:@"%lu likes", self.post.userLikes.count];
+
+    if ([self.post.userLikes containsObject:[PFUser currentUser].username]) {
+        [self.likeButton setImage:[UIImage systemImageNamed:@"heart.fill"] forState:UIControlStateNormal];
+        [self.likeButton setTintColor:[UIColor redColor]];
+        [self.likeButton setUserInteractionEnabled:YES];
+    } else {
+        [self.likeButton setImage:[UIImage systemImageNamed:@"heart"] forState:UIControlStateNormal];
+        [self.likeButton setTintColor:[UIColor darkGrayColor]];
+        [self.likeButton setUserInteractionEnabled:YES];
+    }
 }
 
 #pragma mark - Actions
@@ -71,9 +89,22 @@
 }
 
 - (IBAction)didTapLike:(id)sender {
-    [self.likeButton setImage:[UIImage systemImageNamed:@"heart.fill"] forState:UIControlStateNormal];
-    [self.likeButton setTintColor:[UIColor redColor]];
+    [self.likeButton setUserInteractionEnabled:NO];
+    PFBooleanResultBlock completion = ^(BOOL succeeded, NSError * _Nullable error) {
+        if(error) {
+            NSLog(@"Error: %@", error.localizedDescription);
+        } else {
+            [self updateLikes];
+        }
+    };
+    
+    if ([self.post.userLikes containsObject:[PFUser currentUser].username]) {
+        [APIManager unlikePost:self.post withCompletion:completion];
+    } else {
+        [APIManager likePost:self.post withCompletion:completion];
+    }
 }
+
 
 
 

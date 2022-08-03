@@ -9,6 +9,7 @@
 #import "DetailViewController.h"
 #import "Parse/PFImageView.h"
 #import "DateTools/DateTools.h"
+#import "APIManager.h"
 
 @interface PostViewController ()
 @property (weak, nonatomic) IBOutlet PFImageView *postImage;
@@ -55,7 +56,7 @@
     self.captionUsernameLabel.text = self.post.author.username;
     self.dateCreated.text = [self.post.createdAt shortTimeAgoSinceNow];
     self.caption.text = self.post.caption;
-    self.likeCount.text = [NSString stringWithFormat:@"%@ likes", [self.post.likeCount stringValue]];
+    self.likeCount.text = [NSString stringWithFormat:@"%lu likes", self.post.userLikes.count];
     self.commentCount.text = [NSString stringWithFormat:@"%@ comments", [self.post.commentCount stringValue]];
     
     self.plantImage.file = self.post.plant.image;
@@ -63,12 +64,47 @@
     self.plantImage.layer.cornerRadius = 25;
     self.plantImage.layer.borderColor = [[UIColor whiteColor] CGColor];
     self.plantImage.layer.borderWidth = 1;
+    
+    [self updateLikes];
 }
+
+- (void) updateLikes {
+    self.likeCount.text = [NSString stringWithFormat:@"%lu likes", self.post.userLikes.count];
+
+    if ([self.post.userLikes containsObject:[PFUser currentUser].username]) {
+        [self.likeButton setImage:[UIImage systemImageNamed:@"heart.fill"] forState:UIControlStateNormal];
+        [self.likeButton setTintColor:[UIColor redColor]];
+        [self.likeButton setUserInteractionEnabled:YES];
+    } else {
+        [self.likeButton setImage:[UIImage systemImageNamed:@"heart"] forState:UIControlStateNormal];
+        [self.likeButton setTintColor:[UIColor darkGrayColor]];
+        [self.likeButton setUserInteractionEnabled:YES];
+    }
+}
+
+# pragma mark - Actions
 
 - (IBAction)didTapPlant:(id)sender {
     [self performSegueWithIdentifier:@"PostToPlant" sender:nil];
 }
 
+- (IBAction)didTapLike:(id)sender {
+    [self.likeButton setUserInteractionEnabled:NO];
+    
+    PFBooleanResultBlock completion = ^(BOOL succeeded, NSError * _Nullable error) {
+        if(error) {
+            NSLog(@"Error: %@", error.localizedDescription);
+        } else {
+            [self updateLikes];
+        }
+    };
+    
+    if ([self.post.userLikes containsObject:[PFUser currentUser].username]) {
+        [APIManager unlikePost:self.post withCompletion:completion];
+    } else {
+        [APIManager likePost:self.post withCompletion:completion];
+    }
+}
 
 
 #pragma mark - Navigation

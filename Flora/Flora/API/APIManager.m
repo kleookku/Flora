@@ -10,6 +10,7 @@
 #import "Board.h"
 #import "Plant.h"
 #import "Follow.h"
+#import "Post.h"
 
 #define SHADE @"Shade Tolerance"
 #define MOIST @"Moisture Use"
@@ -340,6 +341,24 @@
             }
         }];
     }
+}
+
+# pragma mark - Parse Post
+
++ (void)likePost:(Post *)post withCompletion:(PFBooleanResultBlock  _Nullable)completion {
+    PFUser *user = [PFUser currentUser];
+    NSMutableArray *postLikes = [[NSMutableArray alloc] initWithArray:post.userLikes copyItems:YES];
+    [postLikes addObject:user.username];
+    post.userLikes = postLikes;
+    [post saveInBackgroundWithBlock:completion];
+}
+
++ (void)unlikePost:(Post *)post withCompletion:(PFBooleanResultBlock  _Nullable)completion {
+    PFUser *user = [PFUser currentUser];
+    NSMutableArray *postLikes = [[NSMutableArray alloc] initWithArray:post.userLikes copyItems:YES];
+    [postLikes removeObject:user.username];
+    post.userLikes = postLikes;
+    [post saveInBackgroundWithBlock:completion];
 }
 
 /*

@@ -56,6 +56,7 @@
 		F4B2679C289472F4002320AE /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B2679B289472F4002320AE /* Post.m */; };
 		F4B2679F28947ADE002320AE /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B2679E28947ADE002320AE /* ComposeViewController.m */; };
 		F4B267A228947AFB002320AE /* ComposePlantCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B267A128947AFB002320AE /* ComposePlantCell.m */; };
+		F4CE8058289AF9A200C75814 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CE8057289AF9A200C75814 /* Comment.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -172,6 +173,8 @@
 		F4B2679E28947ADE002320AE /* ComposeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComposeViewController.m; sourceTree = "<group>"; };
 		F4B267A028947AFB002320AE /* ComposePlantCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComposePlantCell.h; sourceTree = "<group>"; };
 		F4B267A128947AFB002320AE /* ComposePlantCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComposePlantCell.m; sourceTree = "<group>"; };
+		F4CE8056289AF9A200C75814 /* Comment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
+		F4CE8057289AF9A200C75814 /* Comment.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -236,6 +239,8 @@
 				F41A29EA286E4F7100D2DAB9 /* Plant.m */,
 				F4B2679A289472F4002320AE /* Post.h */,
 				F4B2679B289472F4002320AE /* Post.m */,
+				F4CE8056289AF9A200C75814 /* Comment.h */,
+				F4CE8057289AF9A200C75814 /* Comment.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -686,6 +691,7 @@
 				F49755B52881E046008050BB /* AddViewController.m in Sources */,
 				F488CAC7288B56300031B781 /* UserSearchCell.m in Sources */,
 				F445ED192878B48F0084BDBB /* ProfileViewController.m in Sources */,
+				F4CE8058289AF9A200C75814 /* Comment.m in Sources */,
 				F4499EF6288F14C700C8169E /* Follow.m in Sources */,
 				F44CF45C287F2F420076AB4B /* BoardViewController.m in Sources */,
 				F47EE863286E4A8D00E3AA76 /* SceneDelegate.m in Sources */,
