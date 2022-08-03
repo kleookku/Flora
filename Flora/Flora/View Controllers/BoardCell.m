@@ -18,6 +18,7 @@
 }
 
 - (void) setBoardCoverImage {
+    Board *currentBoard = self.board;
     self.coverImage.layer.cornerRadius = 20;
     if(self.board.coverImage) {
         self.coverImage.file = self.board.coverImage;
@@ -27,23 +28,22 @@
         PFQuery *query = [PFQuery queryWithClassName:@"Plant"];
         [query whereKey:@"plantId" equalTo:plantId];
         query.limit = 1;
-        
         [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable results, NSError * _Nullable error) {
-            if(results) {
-                if(results.count > 0) {
+            if([self.board isEqual:currentBoard]) {
+                if(error) {
+                    NSLog(@"Error getting board cover image: %@", error.localizedDescription);
+                } else if(results.count > 0) {
                     Plant *plant = (Plant *)results[0];
                     self.coverImage.file = plant.image;
                     [self.coverImage loadInBackground];
-                } else {
-                    NSLog(@"Error getting board cover image: %@", error.localizedDescription);
                 }
             }
         }];
-    } else {
-        [self.coverImage setImage:[UIImage systemImageNamed:@"plus"]];
-        [self.coverImage setBackgroundColor:[UIColor systemGray5Color]];
-        [self.coverImage setTintColor:[UIColor systemGray4Color]];
-    }
+} else {
+    [self.coverImage setImage:[UIImage systemImageNamed:@"plus"]];
+    [self.coverImage setBackgroundColor:[UIColor systemGray5Color]];
+    [self.coverImage setTintColor:[UIColor systemGray4Color]];
+}
 }
 
 # pragma mark - Likes View Controller Delegate

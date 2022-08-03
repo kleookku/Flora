@@ -23,6 +23,7 @@
 
 - (void) setBoardCoverImage {
     [self.board fetchIfNeeded];
+    Board *currentBoard = self.board;
     self.coverImage.layer.cornerRadius = 20;
     if(self.board.coverImage) {
         self.coverImage.file = self.board.coverImage;
@@ -34,13 +35,13 @@
         query.limit = 1;
         
         [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable results, NSError * _Nullable error) {
-            if(results) {
-                if(results.count > 0) {
+            if([currentBoard isEqual:self.board]) {
+                if(error) {
+                    NSLog(@"Error getting board cover image: %@", error.localizedDescription);
+                } else if (results.count > 0) {
                     Plant *plant = (Plant *)results[0];
                     self.coverImage.file = plant.image;
                     [self.coverImage loadInBackground];
-                } else {
-                    NSLog(@"Error getting board cover image: %@", error.localizedDescription);
                 }
             }
         }];

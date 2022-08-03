@@ -51,25 +51,29 @@
 
 - (IBAction)onTapFollow:(id)sender {
     PFUser *currentUser = [PFUser currentUser];
+    PFUser *cellUser = self.user;
     PFQuery *query = [PFQuery queryWithClassName:@"Follow"];
     [query whereKey:@"follower" equalTo:currentUser.username];
     [query whereKey:@"username" equalTo:self.user.username];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-        if(error) {
-            NSLog(@"Error getting follow: %@", error.localizedDescription);
-        } else if (objects.count > 0){
-            self.followButton.backgroundColor = [UIColor systemBlueColor];
-            self.followButton.tintColor = [UIColor whiteColor];
-            [self.followButton setTitle:@"Follow" forState:UIControlStateNormal];
-            [APIManager unfollowUser:self.user];
-            [self.delegate unfollow:self.user.username];
-        } else {
-            self.followButton.backgroundColor = [UIColor systemGray6Color];
-            self.followButton.tintColor = [UIColor darkGrayColor];
-            [self.followButton setTitle:@"Following" forState:UIControlStateNormal];
-            [APIManager followUser:self.user];
-            [self.delegate follow:self.user.username];
+        if([self.user isEqual:cellUser]) {
+            if(error) {
+                NSLog(@"Error getting follow: %@", error.localizedDescription);
+            } else if (objects.count > 0){
+                self.followButton.backgroundColor = [UIColor systemBlueColor];
+                self.followButton.tintColor = [UIColor whiteColor];
+                [self.followButton setTitle:@"Follow" forState:UIControlStateNormal];
+                [APIManager unfollowUser:self.user];
+                [self.delegate unfollow:self.user.username];
+            } else {
+                self.followButton.backgroundColor = [UIColor systemGray6Color];
+                self.followButton.tintColor = [UIColor darkGrayColor];
+                [self.followButton setTitle:@"Following" forState:UIControlStateNormal];
+                [APIManager followUser:self.user];
+                [self.delegate follow:self.user.username];
+            }
+            
         }
     }];
 }
