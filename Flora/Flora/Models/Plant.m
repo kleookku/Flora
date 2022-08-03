@@ -62,7 +62,7 @@
 + (instancetype) savePlantWithCharsMoistureUse:(NSString *)moist shadeLevel:(NSString *)shade minimumTemp:(NSString *)temp fromPlantDict:(NSDictionary *)dict withCompletion: (PFBooleanResultBlock _Nullable)completion{
     
     Plant *newPlant = [Plant new];
-    newPlant.name = dict[@"CommonName"];
+    newPlant.name = [dict[@"CommonName"] lowercaseString];
     
     NSURL *imageUrl = [[APIManager shared] getPlantImageURL:dict[@"ProfileImageFilename"]];
     NSData *imageData = [NSData dataWithContentsOfURL:imageUrl];
