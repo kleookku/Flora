@@ -86,7 +86,7 @@
     // pull API Key from your new Keys.plist file
     NSString *path = [[NSBundle mainBundle] pathForResource: @"Keys" ofType: @"plist"];
     NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile: path];
-
+    
     NSString *key = [dict objectForKey: @"googlePlace"];
     [GMSPlacesClient provideAPIKey:key];
     
@@ -113,9 +113,13 @@
             [self.sunlightControl setUserInteractionEnabled:NO];
             [[APIManager shared] weatherValuesAtLat:self.lat atLong:self.lon withCompletion:^(int moist, int sun, int temp, NSError * _Nonnull error) {
                 if(error) {
-                    NSLog(@"Error getting weather values: %@", error.localizedDescription);
+                    [self presentViewController:[APIManager errorAlertWithTitle:@"Error getting weather information" withMessage:error.localizedDescription] animated:YES completion:nil];
+                    self.locationControl.selectedSegmentIndex = 0;
+                    [self.moistureControl setUserInteractionEnabled:YES];
+                    [self.temperaturecontrol setUserInteractionEnabled:YES];
+                    [self.sunlightControl setUserInteractionEnabled:YES];
+
                 } else {
-                    NSLog(@"%i, %i, %i", moist, sun, temp);
                     self.moistureControl.selectedSegmentIndex = moist;
                     self.sunlightControl.selectedSegmentIndex = sun;
                     self.temperaturecontrol.selectedSegmentIndex = temp;
@@ -155,7 +159,7 @@
     
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if(error) {
-            NSLog(@"Error getting search results: %@", error.localizedDescription);
+            [self presentViewController:[APIManager errorAlertWithTitle:@"Error getting search results" withMessage:error.localizedDescription] animated:YES completion:nil];
         } else {
             self.results = [self shuffleArray:objects];
             [self.activityIndicator stopAnimating];
@@ -183,33 +187,30 @@
 // Handle the user's selection.
 - (void)viewController:(GMSAutocompleteViewController *)viewController
 didAutocompleteWithPlace:(GMSPlace *)place {
-  [self dismissViewControllerAnimated:YES completion:nil];
-  // Do something with the selected place.
+    [self dismissViewControllerAnimated:YES completion:nil];
     self.locationLabel.text = place.formattedAddress;
-    NSLog(@"%f, %f", place.coordinate.latitude, place.coordinate.longitude);
     self.lat = [[NSNumber numberWithDouble:place.coordinate.latitude] stringValue];
     self.lon = [[NSNumber numberWithDouble:place.coordinate.longitude] stringValue];
 }
 
 - (void)viewController:(GMSAutocompleteViewController *)viewController
 didFailAutocompleteWithError:(NSError *)error {
-  [self dismissViewControllerAnimated:YES completion:nil];
-  // TODO: handle the error.
-  NSLog(@"Error: %@", [error description]);
+    [self presentViewController:[APIManager errorAlertWithTitle:@"Autocomplete failed" withMessage:error.localizedDescription] animated:YES completion:nil];
+
 }
 
-  // User canceled the operation.
+// User canceled the operation.
 - (void)wasCancelled:(GMSAutocompleteViewController *)viewController {
-  [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-  // Turn the network activity indicator on and off again.
+// Turn the network activity indicator on and off again.
 - (void)didRequestAutocompletePredictions:(GMSAutocompleteViewController *)viewController {
-//  [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    //  [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 }
 
 - (void)didUpdateAutocompletePredictions:(GMSAutocompleteViewController *)viewController {
-//  [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    //  [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 
 

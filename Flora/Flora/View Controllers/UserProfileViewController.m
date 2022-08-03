@@ -15,6 +15,7 @@
 #import "BoardViewController.h"
 #import "PostViewController.h"
 #import "ProfileViewController.h"
+#import "APIManager.h"
 
 @interface UserProfileViewController () <UICollectionViewDelegate, UICollectionViewDataSource, ProfileBoardCellDelegate, PostGridCellDelegate, ProfileViewControllerDelegate>
 
@@ -145,7 +146,7 @@
     
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable results, NSError * _Nullable error) {
         if(error) {
-            NSLog(@"Error getting board: %@", error.localizedDescription);
+            [self presentViewController:[APIManager errorAlertWithTitle:@"Error getting boards" withMessage:error.localizedDescription] animated:YES completion:nil];
         } else if (results.count > 0) {
             self.boardsArray = results;
             [self.collectionView reloadData];
@@ -160,7 +161,7 @@
     
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if(error) {
-            NSLog(@"Error getting posts: %@", error.localizedDescription);
+            [self presentViewController:[APIManager errorAlertWithTitle:@"Error getting posts" withMessage:error.localizedDescription] animated:YES completion:nil];
         } else {
             self.postsArray = objects;
             [self.collectionView reloadData];
