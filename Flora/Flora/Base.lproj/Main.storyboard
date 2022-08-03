@@ -268,6 +268,9 @@
                                                     <color key="tintColor" red="0.57907736440000002" green="0.58161794590000004" blue="0.58923969070000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system" title=""/>
+                                                    <connections>
+                                                        <action selector="didTapLike:" destination="cTj-uQ-doj" eventType="touchUpInside" id="Huf-cv-YoD"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ddj-Bv-EYZ">
                                                     <rect key="frame" x="48" y="462" width="24" height="20"/>
@@ -2540,7 +2543,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="iGa-ZO-Xe0"/>
-        <segue reference="cCH-1l-Q3i"/>
+        <segue reference="dNX-vT-LQX"/>
         <segue reference="bEM-CY-N0O"/>
     </inferredMetricsTieBreakers>
     <resources>

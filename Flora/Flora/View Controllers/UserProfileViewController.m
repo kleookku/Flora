@@ -177,7 +177,7 @@
         ProfileViewController *profileVC = [segue destinationViewController];
         profileVC.delegate = self;
     }
-    if(_boardToView) {
+    else if(_boardToView) {
         BoardViewController *boardVC = [segue destinationViewController];
         boardVC.board = self.boardToView;
         boardVC.myBoard = NO;

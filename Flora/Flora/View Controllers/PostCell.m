@@ -70,4 +70,11 @@
     [self.delegate profilePressed:self.post.author];
 }
 
-    @end
+- (IBAction)didTapLike:(id)sender {
+    [self.likeButton setImage:[UIImage systemImageNamed:@"heart.fill"] forState:UIControlStateNormal];
+    [self.likeButton setTintColor:[UIColor redColor]];
+}
+
+
+
+@end
