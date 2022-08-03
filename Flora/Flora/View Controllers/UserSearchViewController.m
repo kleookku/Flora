@@ -38,6 +38,12 @@
     [self updateFollowing];
 }
 
+- (void)viewDidDisappear:(BOOL)animated {
+    [self.delegate updateTable];
+}
+
+# pragma mark - UISearchBarDelegate
+
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     if(![searchText isEqualToString:@""]) {
         PFQuery *query = [PFQuery queryWithClassName:@"_User"];
@@ -61,10 +67,6 @@
         self.userResults = @[];
         [self.tableView reloadData];
     }
-}
-
-- (void)viewDidDisappear:(BOOL)animated {
-    [self.delegate updateTable];
 }
 
 #pragma mark - UserSearchCellDelegate

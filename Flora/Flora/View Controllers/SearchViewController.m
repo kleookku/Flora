@@ -44,6 +44,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *searchButton;
 @property (weak, nonatomic) IBOutlet UIButton *locationSearchButton;
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
+@property (weak, nonatomic) IBOutlet UIButton *searchByNameButton;
 
 @property (nonatomic, strong)NSString *moist;
 @property (nonatomic, strong)NSString *shade;
@@ -68,6 +69,9 @@
     self.setLocationAlert = [UIAlertController alertControllerWithTitle:@"Please set set location" message:nil preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
     [self.setLocationAlert addAction:okAction];
+    
+    self.searchByNameButton.tag = 1;
+    self.searchByNameButton.layer.cornerRadius = 10;
 }
 
 
@@ -212,8 +216,10 @@ didFailAutocompleteWithError:(NSError *)error {
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    ResultsViewController *resultsVC = [segue destinationViewController];
-    resultsVC.plantsArray = [self.results mutableCopy];
+    if([sender tag] != 1) {
+        ResultsViewController *resultsVC = [segue destinationViewController];
+        resultsVC.plantsArray = [self.results mutableCopy];
+    }
 }
 
 

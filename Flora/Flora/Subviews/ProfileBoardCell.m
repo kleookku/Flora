@@ -18,15 +18,16 @@
     self.boardName.text = board.name;
     self.numPlants.text = [[NSString stringWithFormat:@"%li",  board.plantsArray.count] stringByAppendingString:@" plants"];
 
-    [self setBoardCoverImage:board.plantsArray[0]];
+    [self setBoardCoverImage];
 }
 
-- (void) setBoardCoverImage:(NSString *)plantId {
+- (void) setBoardCoverImage {
    self.coverImage.layer.cornerRadius = 20;
    if(self.board.coverImage) {
        self.coverImage.file = self.board.coverImage;
        [self.coverImage loadInBackground];
    } else if(self.board.plantsArray.count > 0){
+       NSString *plantId = self.board.plantsArray[0];
        PFQuery *query = [PFQuery queryWithClassName:@"Plant"];
        [query whereKey:@"plantId" equalTo:plantId];
        query.limit = 1;
@@ -44,6 +45,8 @@
        }];
    } else {
        [self.coverImage setImage:[UIImage systemImageNamed:@"plus"]];
+       [self.coverImage setBackgroundColor:[UIColor systemGray5Color]];
+       [self.coverImage setTintColor:[UIColor systemGray4Color]];
    }
 }
 
