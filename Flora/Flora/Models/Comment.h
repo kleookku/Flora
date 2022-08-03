@@ -18,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong)Post *post;
 @property (nonatomic, strong)NSArray *likes;
 
++ (void)saveComment:(NSString *)text byUser:(PFUser *)author onPost:(Post *)post withCompletion:(PFBooleanResultBlock  _Nullable)completion;
+
 @end
 
 NS_ASSUME_NONNULL_END

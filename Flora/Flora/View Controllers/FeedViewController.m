@@ -9,6 +9,7 @@
 #import "ComposeViewController.h"
 #import "DetailViewController.h"
 #import "UserProfileViewController.h"
+#import "CommentsViewController.h"
 #import "PostCell.h"
 #import "Parse/Parse.h"
 #import "Post.h"
@@ -24,6 +25,7 @@
 
 @property (nonatomic, strong)Plant *plantSegue;
 @property (nonatomic, strong)PFUser *userSegue;
+@property (nonatomic, strong)Post *postSegue;
 @end
 
 @implementation FeedViewController
@@ -55,13 +57,22 @@
 - (void) plantPressed:(Plant *)plant {
     self.plantSegue = plant;
     self.userSegue = nil;
+    self.postSegue = nil;
     [self performSegueWithIdentifier:@"FeedToPlant" sender:nil];
 }
 
 - (void)profilePressed:(PFUser *)user {
     self.userSegue = user;
     self.plantSegue = nil;
+    self.postSegue = nil;
     [self performSegueWithIdentifier:@"FeedToProfile" sender:nil];
+}
+
+- (void)showComments:(Post *)post {
+    self.postSegue = post;
+    self.plantSegue = nil;
+    self.userSegue = nil;
+    [self performSegueWithIdentifier:@"FeedToComments" sender:nil];
 }
 
 
@@ -147,6 +158,9 @@
         UserProfileViewController *userProfileVC = [segue destinationViewController];
         userProfileVC.user = _userSegue;
         userProfileVC.notMyProfile = YES;
+    } else if (_postSegue) {
+        CommentsViewController *commentsVC = [segue destinationViewController];
+        commentsVC.post = _postSegue;
     }
 }
 

@@ -20,7 +20,7 @@
     return @"Comment";
 }
 
-- (void)saveComment:(NSString *)text byUser:(PFUser *)author onPost:(Post *)post withCompletion:(PFBooleanResultBlock  _Nullable)completion {
++ (void)saveComment:(NSString *)text byUser:(PFUser *)author onPost:(Post *)post withCompletion:(PFBooleanResultBlock  _Nullable)completion {
     Comment *newComment = [Comment new];
     newComment.text = text;
     newComment.author = author;
