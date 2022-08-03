@@ -12,6 +12,8 @@
 #import "Parse/Parse.h"
 #import <MapKit/MapKit.h>
 
+@import GooglePlaces;
+
 
 #define LOW_SUN @"Tolerant"
 #define MID_SUN @"Intermediate"
@@ -31,28 +33,27 @@
 
 #define PLANTS_PER_PAGE 25
 
-@interface SearchViewController () <CLLocationManagerDelegate>
+@interface SearchViewController () <GMSAutocompleteViewControllerDelegate>
 
 @property (nonatomic, strong)NSArray *results;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *moistureControl;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *sunlightControl;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *temperaturecontrol;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *locationControl;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UIButton *searchButton;
-@property (weak, nonatomic) IBOutlet MKMapView *map;
+@property (weak, nonatomic) IBOutlet UIButton *locationSearchButton;
+@property (weak, nonatomic) IBOutlet UILabel *locationLabel;
 
 @property (nonatomic, strong)NSString *moist;
 @property (nonatomic, strong)NSString *shade;
 @property (nonatomic, strong)NSNumber *minTemp;
 @property (nonatomic, strong)NSNumber *maxTemp;
-@property (nonatomic, strong)NSNumber *numResults;
-@property (nonatomic) NSUInteger offset;
 
-@property (nonatomic, strong)CLLocationManager *locationManager;
-@property (nonatomic, strong)MKPointAnnotation *annotation;
-@property (nonatomic, strong)UIAlertController *locationAlert;
-@property (nonatomic, strong)CLLocation *currentLocation;
-@property (nonatomic, strong)NSString *state;
+@property (nonatomic, strong)GMSAutocompleteFilter *filter;
+@property (nonatomic, strong)NSString *lat;
+@property (nonatomic, strong)NSString *lon;
+@property (nonatomic, strong)UIAlertController *setLocationAlert;
 
 @end
 
@@ -62,51 +63,12 @@
     [super viewDidLoad];
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.searchButton.layer.cornerRadius = 10;
-    self.offset = 0;
-    self.map.layer.cornerRadius = 10;
+    self.locationSearchButton.layer.cornerRadius = 10;
     
-    self.locationManager = [[CLLocationManager alloc] init];
-    self.locationManager.delegate = self;
-    self.locationManager.distanceFilter = kCLDistanceFilterNone;
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
-    self.annotation = [[MKPointAnnotation alloc] init];
-    
-    [self setupAlerts];
+    self.setLocationAlert = [UIAlertController alertControllerWithTitle:@"Please set set location" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+    [self.setLocationAlert addAction:okAction];
 }
-
-#pragma mark - Alerts
-
-- (void)setupAlerts{
-    self.locationAlert = [UIAlertController alertControllerWithTitle:@"Use Current Location?" message:nil preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self.locationManager requestWhenInUseAuthorization];
-        [self.locationManager startUpdatingLocation];
-    }];
-    UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault handler:nil];
-    
-    [self.locationAlert addAction:noAction];
-    [self.locationAlert addAction:yesAction];
-}
-
-#pragma mark - CLLocationManagerDelegate
-- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
-    self.currentLocation = [locations objectAtIndex:0];
-    [self.locationManager stopUpdatingLocation];
-    CLGeocoder *geocoder = [[CLGeocoder alloc] init] ;
-    [geocoder reverseGeocodeLocation:self.currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
-        if (!(error)) {
-            MKPlacemark *placemark = [placemarks objectAtIndex:0];
-            self.state = placemark.administrativeArea;
-            NSLog(@"state is %@", self.state);
-            [self.annotation setCoordinate:self.currentLocation.coordinate];
-            [self.map addAnnotation:self.annotation];
-        } else
-            NSLog(@"Geocode failed with error %@", error);
-        }];
-}
-
-- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {}
-- (void)locationManagerDidChangeAuthorization:(CLLocationManager *)manager {}
 
 
 #pragma mark - Actions
@@ -116,11 +78,56 @@
     self.searchButton.enabled = NO;
     [self queryPlants];
 }
-
-- (IBAction)onTapLocation:(id)sender {
-    [self presentViewController:self.locationAlert animated:YES completion:nil];
-}
 - (IBAction)tappedUseLocation:(id)sender {
+    // pull API Key from your new Keys.plist file
+    NSString *path = [[NSBundle mainBundle] pathForResource: @"Keys" ofType: @"plist"];
+    NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile: path];
+
+    NSString *key = [dict objectForKey: @"googlePlace"];
+    [GMSPlacesClient provideAPIKey:key];
+    
+    GMSAutocompleteViewController *acController = [[GMSAutocompleteViewController alloc] init];
+    acController.delegate = self;
+    
+    // Specify the place data types to return.
+    GMSPlaceField fields = (GMSPlaceFieldCoordinate | GMSPlaceFieldFormattedAddress);
+    acController.placeFields = fields;
+    
+    _filter = [[GMSAutocompleteFilter alloc] init];
+    _filter.type = kGMSPlacesAutocompleteTypeFilterAddress;
+    acController.autocompleteFilter = _filter;
+    
+    // Display the autocomplete view controller.
+    [self presentViewController:acController animated:YES completion:nil];
+}
+
+- (IBAction)locationSegmentControl:(id)sender {
+    if(self.locationControl.selectedSegmentIndex == 1) {
+        if(_lat) {
+            [self.moistureControl setUserInteractionEnabled:NO];
+            [self.temperaturecontrol setUserInteractionEnabled:NO];
+            [self.sunlightControl setUserInteractionEnabled:NO];
+            [[APIManager shared] weatherValuesAtLat:self.lat atLong:self.lon withCompletion:^(int moist, int sun, int temp, NSError * _Nonnull error) {
+                if(error) {
+                    NSLog(@"Error getting weather values: %@", error.localizedDescription);
+                } else {
+                    NSLog(@"%i, %i, %i", moist, sun, temp);
+                    self.moistureControl.selectedSegmentIndex = moist;
+                    self.sunlightControl.selectedSegmentIndex = sun;
+                    self.temperaturecontrol.selectedSegmentIndex = temp;
+                }
+            }];
+            
+        } else {
+            [self presentViewController:self.setLocationAlert animated:YES completion:nil];
+            self.locationControl.selectedSegmentIndex = 0;
+        }
+        
+    } else {
+        [self.moistureControl setUserInteractionEnabled:YES];
+        [self.temperaturecontrol setUserInteractionEnabled:YES];
+        [self.sunlightControl setUserInteractionEnabled:YES];
+    }
 }
 
 #pragma mark - Do Search
@@ -166,6 +173,41 @@
     }
     return mutableArray;
 }
+
+# pragma mark - GMSAutocompleteViewControllerDelegate
+
+// Handle the user's selection.
+- (void)viewController:(GMSAutocompleteViewController *)viewController
+didAutocompleteWithPlace:(GMSPlace *)place {
+  [self dismissViewControllerAnimated:YES completion:nil];
+  // Do something with the selected place.
+    self.locationLabel.text = place.formattedAddress;
+    NSLog(@"%f, %f", place.coordinate.latitude, place.coordinate.longitude);
+    self.lat = [[NSNumber numberWithDouble:place.coordinate.latitude] stringValue];
+    self.lon = [[NSNumber numberWithDouble:place.coordinate.longitude] stringValue];
+}
+
+- (void)viewController:(GMSAutocompleteViewController *)viewController
+didFailAutocompleteWithError:(NSError *)error {
+  [self dismissViewControllerAnimated:YES completion:nil];
+  // TODO: handle the error.
+  NSLog(@"Error: %@", [error description]);
+}
+
+  // User canceled the operation.
+- (void)wasCancelled:(GMSAutocompleteViewController *)viewController {
+  [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+  // Turn the network activity indicator on and off again.
+- (void)didRequestAutocompletePredictions:(GMSAutocompleteViewController *)viewController {
+//  [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+}
+
+- (void)didUpdateAutocompletePredictions:(GMSAutocompleteViewController *)viewController {
+//  [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+}
+
 
 #pragma mark - Navigation
 

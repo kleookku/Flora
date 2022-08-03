@@ -15,6 +15,20 @@
 #define MOIST @"Moisture Use"
 #define TEMP @"Temperature, Minimum (°F)"
 
+#define LOW_MOIST_BOUND 30
+#define MED_MOIST_BOUND 60
+#define HIGH_MOIST_BOUND 100
+
+#define LOW_SUN_BOUND 3
+#define MED_SUN_BOUND 6
+#define HIGH_SUN_BOUND 10
+
+#define LOW_TEMP_BOUND -17
+#define MED_TEMP_BOUND 35
+#define HIGH_TEMP_BOUND 100
+
+
+
 @implementation APIManager
 
 + (instancetype)shared {
@@ -27,7 +41,7 @@
     return sharedManager;
 }
 
-#pragma mark - USDA
+#pragma mark - USDA API
 
 + (NSData *)searchBody {
     static NSData *data = nil;
@@ -151,8 +165,59 @@
         completion(nil, error);
     }];
 }
+# pragma mark - Open Weather API
 
-# pragma mark - Board
+- (void)weatherValuesAtLat:(NSString *)lat atLong:(NSString *)lon withCompletion:(void(^)(int moist, int sun, int temp, NSError *error))completion {
+    NSString *path = [[NSBundle mainBundle] pathForResource: @"Keys" ofType: @"plist"];
+    NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile: path];
+    
+    NSString *key = [dict objectForKey: @"openWeather"];
+    
+    NSString *url = [NSString stringWithFormat: @"https://api.openweathermap.org/data/2.5/onecall?lat=%@&lon=%@&exclude=%@&appid=%@&units=imperial", lat, lon, @"hourly,daily,minutely,alerts", key]; //@"https://api.openweathermap.org/data/2.5/onecall";
+    [self GET:url parameters:nil // @{@"lat":lat,@"lon":lon,@"exclude":@"minutely,hourly,daily,alerts",@"appid":key,@"units":@"imperial"}
+     progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        NSDictionary *response = (NSDictionary *)responseObject[@"current"];
+        int moisture =  [(NSNumber *) response[@"humidity"] intValue];
+        int sunlight = [(NSNumber *) response[@"uvi"] intValue];
+        int temperature = [(NSNumber *) response[@"temp"] intValue];
+        
+        int moistIndex = 0;
+        int sunIndex = 0;
+        int tempIndex = 0;
+
+        if(moisture < LOW_MOIST_BOUND) {
+            moistIndex = 0;
+        } else if (moisture < MED_MOIST_BOUND ){
+            moistIndex = 1;
+        } else {
+            moistIndex = 2;
+        }
+
+        if(sunlight < LOW_SUN_BOUND) {
+            sunIndex = 0;
+        } else if(sunlight <  MED_SUN_BOUND) {
+            sunIndex = 1;
+        } else {
+            sunIndex = 2;
+        }
+        
+        if(temperature < LOW_TEMP_BOUND) {
+            tempIndex = 0;
+        } else if(temperature < MED_TEMP_BOUND) {
+            tempIndex = 1;
+        } else {
+            tempIndex = 2;
+        }
+        
+        completion(moistIndex, sunIndex, tempIndex, nil);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        completion(0, 0, 0, error);
+    }];
+}
+
+
+# pragma mark - Parse Board
 
 + (void)saveBoardWithName:(NSString *) boardName {
     PFUser *user = [PFUser currentUser];
@@ -179,7 +244,7 @@
     }];
 }
 
-#pragma mark - Follow
+#pragma mark - Parse Follow
 
 + (void)followUser:(PFUser *) user {
     PFUser *currentUser = [PFUser currentUser];
@@ -228,7 +293,7 @@
     }];
 }
 
-#pragma mark - Plant
+#pragma mark - Parse Plant
 
 + (void)savePlantToLikes:(Plant *)plant{
     PFUser *user = [PFUser currentUser];

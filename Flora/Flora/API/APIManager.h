@@ -27,6 +27,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)saveBoardWithName:(NSString *) boardName;
 
+- (void)weatherValuesAtLat:(NSString *)lat atLong:(NSString *)lon withCompletion:(void(^)(int moist, int sun, int temp, NSError *error))completion;
+
 + (void)unfollowUser:(PFUser *) user;
 
 + (void)followUser:(PFUser *) user;
