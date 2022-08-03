@@ -17,6 +17,7 @@ PODS:
   - BDBOAuth1Manager (2.0.0):
     - AFNetworking/NSURLSession (~> 3.0.0)
   - Bolts/Tasks (1.9.1)
+  - DateTools (2.0.0)
   - GooglePlaces (7.0.0)
   - Parse (1.19.3):
     - Parse/Core (= 1.19.3)
@@ -30,6 +31,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking
   - BDBOAuth1Manager
+  - DateTools
   - GooglePlaces
   - Parse
   - Parse/UI
@@ -41,6 +43,7 @@ SPEC REPOS:
     - AFNetworking
     - BDBOAuth1Manager
     - Bolts
+    - DateTools
     - GooglePlaces
     - Parse
     - "UITextView+Placeholder"
@@ -50,11 +53,12 @@ SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
   BDBOAuth1Manager: 92d17d06f8a648602962304cd2f35ae7394fa001
   Bolts: 8c1e8aab2f603387b8b9924f57d1d64f43d3ffdc
+  DateTools: 933ac9c490f21f92127cf690ccd8c397e0126caf
   GooglePlaces: 8dba710bed6160a2e4b85e84aaafdbcc0b4010d8
   Parse: 0abb63a0ff6fa34a3f64b81d595a294e2ece143a
   "UITextView+Placeholder": d7b0c400921f66523f3a85d74f774512e14f6502
   ZLSwipeableView: df385760ff4838935cdbcb62878ac5acd7355949
 
-PODFILE CHECKSUM: 9c6341b8aef549e7167ea18bde925fe93440a010
+PODFILE CHECKSUM: 0171639a340cfa1cc754eb1ad48d3cd5040d0188
 
 COCOAPODS: 1.11.3

@@ -13,6 +13,7 @@ pod 'AFNetworking'
 pod 'Parse/UI'
 pod 'UITextView+Placeholder'
 pod 'GooglePlaces'
+pod 'DateTools'
 
 post_install do |installer|
   installer.pods_project.build_configurations.each do |config|
