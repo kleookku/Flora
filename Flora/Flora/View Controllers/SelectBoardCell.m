@@ -7,6 +7,11 @@
 
 #import "SelectBoardCell.h"
 #import "Plant.h"
+#ifdef DEBUG
+#    define Elog(...) NSLog(__VA_ARGS__)
+#else
+#    define Elog(...) /* */
+#endif
 
 @implementation SelectBoardCell
 
@@ -32,7 +37,7 @@
         [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable results, NSError * _Nullable error) {
             if([currentBoard isEqual:self.board]) {
                 if(error) {
-                    NSLog(@"Error getting board cover image: %@", error.localizedDescription);
+                    Elog(@"Error getting board cover image: %@", error.localizedDescription);
                 } else if (results.count > 0) {
                     Plant *plant = (Plant *)results[0];
                     self.coverImage.file = plant.image;
@@ -81,9 +86,7 @@
     self.board[@"plantsArray"] = plantsArray;
     [self.board saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if(error) {
-            NSLog(@"Error adding plant to board %@", error.localizedDescription);
-        } else {
-            NSLog(@"Saved plant to board!");
+            Elog(@"Error adding plant to board %@", error.localizedDescription);
         }
     }];
 }

@@ -39,7 +39,6 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    NSLog(@"delegate is %@", self.delegate);
     [self.delegate boardsSelected];
 }
 

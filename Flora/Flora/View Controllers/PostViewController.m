@@ -11,6 +11,12 @@
 #import "DateTools/DateTools.h"
 #import "APIManager.h"
 
+#ifdef DEBUG
+#    define Elog(...) NSLog(__VA_ARGS__)
+#else
+#    define Elog(...) /* */
+#endif
+
 @interface PostViewController ()
 @property (weak, nonatomic) IBOutlet PFImageView *postImage;
 @property (weak, nonatomic) IBOutlet PFImageView *profileImage;
@@ -93,7 +99,7 @@
     
     PFBooleanResultBlock completion = ^(BOOL succeeded, NSError * _Nullable error) {
         if(error) {
-            NSLog(@"Error: %@", error.localizedDescription);
+            Elog(@"Error: %@", error.localizedDescription);
         } else {
             [self updateLikes];
         }

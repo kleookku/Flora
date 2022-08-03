@@ -66,9 +66,7 @@
         }];
     }];
     
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        NSLog(@"Cancelled");
-    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:nil];
     
     [self.forgotPasswordAlert addAction:cancelAction];
     [self.forgotPasswordAlert addAction:okAction];

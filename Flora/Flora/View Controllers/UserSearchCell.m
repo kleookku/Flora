@@ -9,6 +9,12 @@
 #import "Parse/Parse.h"
 #import "APIManager.h"
 
+#ifdef DEBUG
+#    define Elog(...) NSLog(__VA_ARGS__)
+#else
+#    define Elog(...) /* */
+#endif
+
 @implementation UserSearchCell
 
 - (void)setUser:(PFUser *)user {
@@ -59,7 +65,7 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if([self.user isEqual:cellUser]) {
             if(error) {
-                NSLog(@"Error getting follow: %@", error.localizedDescription);
+                Elog(@"Error getting follow: %@", error.localizedDescription);
             } else if (objects.count > 0){
                 self.followButton.backgroundColor = [UIColor systemBlueColor];
                 self.followButton.tintColor = [UIColor whiteColor];

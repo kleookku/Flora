@@ -8,6 +8,12 @@
 #import "ProfileBoardCell.h"
 #import "Plant.h"
 
+#ifdef DEBUG
+#    define Elog(...) NSLog(__VA_ARGS__)
+#else
+#    define Elog(...) /* */
+#endif
+
 @implementation ProfileBoardCell
 - (IBAction)tappedBoard:(id)sender {
     [self.delegate didTapBoard:self.board];
@@ -37,7 +43,7 @@
         [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable results, NSError * _Nullable error) {
             if([currentBoard isEqual:self.board]) {
                 if(error) {
-                    NSLog(@"Error getting board cover image: %@", error.localizedDescription);
+                    Elog(@"Error getting board cover image: %@", error.localizedDescription);
                 } else if (results.count > 0) {
                     Plant *plant = (Plant *)results[0];
                     self.coverImage.file = plant.image;

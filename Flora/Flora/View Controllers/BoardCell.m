@@ -8,6 +8,12 @@
 #import "BoardCell.h"
 #import "Plant.h"
 
+#ifdef DEBUG
+#    define Elog(...) NSLog(__VA_ARGS__)
+#else
+#    define Elog(...) /* */
+#endif
+
 @implementation BoardCell
 
 - (void)setBoard:(Board *)board {
@@ -31,7 +37,7 @@
         [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable results, NSError * _Nullable error) {
             if([self.board isEqual:currentBoard]) {
                 if(error) {
-                    NSLog(@"Error getting board cover image: %@", error.localizedDescription);
+                    Elog(@"Error getting board cover image: %@", error.localizedDescription);
                 } else if(results.count > 0) {
                     Plant *plant = (Plant *)results[0];
                     self.coverImage.file = plant.image;
