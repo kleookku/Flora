@@ -42,7 +42,11 @@
     [self.refreshControl addTarget:self action:@selector(updatePosts) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
     
-    [self updatePosts];
+    if(_isPlantFeed) {
+        [self updatePlantPosts];
+    } else {
+        [self updatePosts];
+    }
 }
 
 #pragma mark - ComposeViewControllerDelegaet
@@ -91,6 +95,28 @@
 }
 
 #pragma mark - Networking
+
+- (void)updatePlantPosts {
+    // construct query
+    PFQuery *query = [PFQuery queryWithClassName:@"Post"];
+    [query includeKey:@"author"];
+    [query includeKey:@"createdAt"];
+    [query orderByDescending:@"createdAt"];
+    [query includeKey:@"likeCount"];
+    [query whereKey:@"plant" equalTo:self.plant];
+    
+    query.limit = 20;
+
+    [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
+        if (posts) {
+            self.postsArray = posts;
+            [self.tableView reloadData];
+            [self.refreshControl endRefreshing];
+        } else {
+            [self presentViewController:[APIManager errorAlertWithTitle:@"Error getting posts" withMessage:error.localizedDescription] animated:YES completion:nil];
+        }
+    }];
+}
 
 - (void)updatePosts {
     PFQuery *query = [PFQuery queryWithClassName:@"Follow"];

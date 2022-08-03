@@ -194,7 +194,7 @@
             <objects>
                 <viewController id="4O8-YI-qzc" customClass="FeedViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="o4R-Nd-jFN">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="vRa-sr-nN7">
@@ -375,7 +375,7 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Dx-7O-DJW">
-                                <rect key="frame" x="363.5" y="44" width="45.5" height="31"/>
+                                <rect key="frame" x="363.5" y="0.0" width="45.5" height="31"/>
                                 <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="plus.app" catalog="system"/>
@@ -397,6 +397,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="line.horizontal.3" catalog="system" selectedImage="line.horizontal.3" id="Z3V-Jf-Ekj"/>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="lE6-W4-hOq"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="composeButton" destination="6Dx-7O-DJW" id="rFn-lY-awj"/>
@@ -1181,13 +1182,29 @@
                                     <action selector="didTapLike:" destination="1ej-w4-MZv" eventType="touchUpInside" id="8wM-Pf-rZD"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lpq-cd-GbX">
+                                <rect key="frame" x="293.5" y="49" width="120.5" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="29" id="HfV-It-grk"/>
+                                </constraints>
+                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Other images">
+                                    <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="15"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="didTapOtherImages:" destination="1ej-w4-MZv" eventType="touchUpInside" id="peg-xo-w5t"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="auA-YP-iNl"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="lpq-cd-GbX" firstAttribute="top" secondItem="auA-YP-iNl" secondAttribute="top" constant="5" id="2Nu-qg-8r0"/>
                             <constraint firstItem="9on-W8-qZC" firstAttribute="centerX" secondItem="auA-YP-iNl" secondAttribute="centerX" id="3qV-Vr-vQO"/>
                             <constraint firstItem="auA-YP-iNl" firstAttribute="top" secondItem="9on-W8-qZC" secondAttribute="top" constant="-50" id="77y-Rt-zqI"/>
                             <constraint firstItem="p2c-nM-jrd" firstAttribute="centerX" secondItem="auA-YP-iNl" secondAttribute="centerX" id="A1n-tZ-H5X"/>
+                            <constraint firstItem="auA-YP-iNl" firstAttribute="trailing" secondItem="lpq-cd-GbX" secondAttribute="trailing" id="BE6-px-gLf"/>
                             <constraint firstItem="3J8-Q8-kAw" firstAttribute="centerX" secondItem="Mdn-uH-jxm" secondAttribute="centerX" id="JmI-Ar-O1f"/>
                             <constraint firstItem="OXA-Iy-Y0s" firstAttribute="centerX" secondItem="SSU-UO-c5K" secondAttribute="centerX" id="Kmg-tV-w1S"/>
                             <constraint firstItem="j7S-9q-eF8" firstAttribute="top" secondItem="3J8-Q8-kAw" secondAttribute="bottom" constant="30" id="Mez-oj-zeB"/>
@@ -1213,6 +1230,7 @@
                         <outlet property="plantName" destination="SSU-UO-c5K" id="zo5-WR-38V"/>
                         <outlet property="shadeLabel" destination="3J8-Q8-kAw" id="aWk-Z0-sC0"/>
                         <outlet property="tempLabel" destination="j7S-9q-eF8" id="0Kb-AP-ZsD"/>
+                        <segue destination="4O8-YI-qzc" kind="show" identifier="PlantToFeed" id="Rag-xo-W6X"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GEn-kj-bfD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2274,17 +2292,17 @@
             <objects>
                 <viewController id="4uw-An-MmV" customClass="ComposeViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5Df-bq-Te3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Post" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PKh-U2-0Jb">
-                                <rect key="frame" x="171" y="59" width="72" height="19.5"/>
+                                <rect key="frame" x="171" y="15" width="72" height="19.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                 <color key="textColor" red="0.57907736440000002" green="0.58161794590000004" blue="0.58923969070000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NyG-Av-OIw" customClass="PFImageView">
-                                <rect key="frame" x="12" y="98.5" width="145" height="145"/>
+                                <rect key="frame" x="12" y="54.5" width="145" height="145"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="145" id="NBz-i8-JMc"/>
@@ -2292,7 +2310,7 @@
                                 </constraints>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2gv-IT-ygw">
-                                <rect key="frame" x="165" y="98.5" width="240" height="145"/>
+                                <rect key="frame" x="165" y="54.5" width="240" height="145"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="Ml9-QH-Y1P"/>
@@ -2370,7 +2388,7 @@
                                 </cells>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wGS-Qu-795">
-                                <rect key="frame" x="333" y="51.5" width="72" height="35"/>
+                                <rect key="frame" x="333" y="7.5" width="72" height="35"/>
                                 <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Share">
@@ -2705,8 +2723,9 @@
     <inferredMetricsTieBreakers>
         <segue reference="iGa-ZO-Xe0"/>
         <segue reference="j1R-Z3-b5z"/>
-        <segue reference="cCH-1l-Q3i"/>
+        <segue reference="dNX-vT-LQX"/>
         <segue reference="xVy-SD-2dZ"/>
+        <segue reference="Rag-xo-W6X"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.uturn.backward" catalog="system" width="128" height="112"/>
