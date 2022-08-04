@@ -25,6 +25,7 @@ PODS:
     - Bolts/Tasks (= 1.9.1)
   - Parse/UI (1.19.3):
     - Parse/Core
+  - SVPullToRefresh (0.4.1)
   - "UITextView+Placeholder (1.4.0)"
   - ZLSwipeableView (0.0.8)
 
@@ -35,6 +36,7 @@ DEPENDENCIES:
   - GooglePlaces
   - Parse
   - Parse/UI
+  - SVPullToRefresh
   - "UITextView+Placeholder"
   - ZLSwipeableView
 
@@ -46,6 +48,7 @@ SPEC REPOS:
     - DateTools
     - GooglePlaces
     - Parse
+    - SVPullToRefresh
     - "UITextView+Placeholder"
     - ZLSwipeableView
 
@@ -56,9 +59,10 @@ SPEC CHECKSUMS:
   DateTools: 933ac9c490f21f92127cf690ccd8c397e0126caf
   GooglePlaces: 8dba710bed6160a2e4b85e84aaafdbcc0b4010d8
   Parse: 0abb63a0ff6fa34a3f64b81d595a294e2ece143a
+  SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c
   "UITextView+Placeholder": d7b0c400921f66523f3a85d74f774512e14f6502
   ZLSwipeableView: df385760ff4838935cdbcb62878ac5acd7355949
 
-PODFILE CHECKSUM: a0bf10f81bbdf9d376310d81bf528ab1131aba52
+PODFILE CHECKSUM: 10291a2e151b4b1f3d528ca117fa4106c81a5001
 
 COCOAPODS: 1.11.3
