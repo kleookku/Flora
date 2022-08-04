@@ -91,18 +91,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
     cell.delegate = self;
-    
-//    if (indexPath.row  == self.postsArray.count) {
-//        Post *lastPost = self.postsArray[indexPath.row];
-//        NSDate *latestDate = lastPost.createdAt;
-//
-//        if(_isPlantFeed){
-//            [self updatePlantPosts:latestDate];
-//        } else {
-//            [self queryPostsAfterDate:latestDate];
-//        }
-//    }
-    
     Post *post = self.postsArray[indexPath.row];
     cell.post = post;
     
@@ -165,7 +153,6 @@
 }
 
 - (void)updatePlantPosts {
-    // construct query
     PFQuery *query = [PFQuery queryWithClassName:@"Post"];
     [query includeKey:@"author"];
     [query includeKey:@"createdAt"];
@@ -218,10 +205,8 @@
     [query orderByDescending:@"createdAt"];
     [query includeKey:@"likeCount"];
     [query includeKey:@"plant"];
-    
     query.limit = 20;
 
-    // fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
         if (posts) {
             NSMutableArray *followingPosts = [[NSMutableArray alloc] init];
