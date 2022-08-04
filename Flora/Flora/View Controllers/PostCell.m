@@ -79,11 +79,9 @@
     if ([self.post.userLikes containsObject:[PFUser currentUser].username]) {
         [self.likeButton setImage:[UIImage systemImageNamed:@"heart.fill"] forState:UIControlStateNormal];
         [self.likeButton setTintColor:[UIColor redColor]];
-        [self.likeButton setUserInteractionEnabled:YES];
     } else {
         [self.likeButton setImage:[UIImage systemImageNamed:@"heart"] forState:UIControlStateNormal];
         [self.likeButton setTintColor:[UIColor lightGrayColor]];
-        [self.likeButton setUserInteractionEnabled:YES];
     }
 }
 
@@ -100,6 +98,8 @@
 - (IBAction)didTapLike:(id)sender {
     [self.likeButton setUserInteractionEnabled:NO];
     PFBooleanResultBlock completion = ^(BOOL succeeded, NSError * _Nullable error) {
+        [self.likeButton setUserInteractionEnabled:YES];
+
         if(error) {
             Elog(@"Error: %@", error.localizedDescription);
         } else {
