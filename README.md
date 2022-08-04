@@ -70,8 +70,16 @@ This app helps users find plants that are suitable for them based on three growt
 - [x] **Users can set a location using the Google Maps Places Autocomplete API.**
 - [x] **Users can set the search attributes using weather information about the set location read from OpenWeather API.**
 - [x] Users can search through plants by name.
-- [ ] Users can add their own images to each plant.
-
+- [x] Users can see a feed of posts from the users they follow. 
+- [x] Users can post an image with an associated plant and a caption. 
+- [x] Users can search up other users to follow them and view their profile. 
+- [x] Each user's profile displays their public boards and their posts. 
+- [x] Users can remove followers.
+- [x] Users can like and comment on posts. 
+- [x] Users can see all the posts associated with a certain plant.
+- [ ] Users can view who liked a post.
+- [ ] Users can scroll through the post feed with infinite scrolling.
+- [ ] Users will get push notifications. 
 
 
 ### 2. Screen Archetypes
