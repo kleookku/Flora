@@ -84,6 +84,16 @@
 }
 
 - (void) likedPost:(UITapGestureRecognizer *)gesture {
+    CABasicAnimation *theAnimation;
+    theAnimation=[CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    theAnimation.duration=0.7;
+    theAnimation.autoreverses=YES;
+    theAnimation.fromValue=[NSNumber numberWithFloat:1.0];
+    theAnimation.toValue=[NSNumber numberWithFloat:0.7];
+    theAnimation.timingFunction=[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    [self.likeButton.layer addAnimation:theAnimation forKey:@"animateOpacity"];
+    
+    
     if(!gesture || gesture.state == UIGestureRecognizerStateRecognized){
         [self.likeButton setUserInteractionEnabled:NO];
         PFBooleanResultBlock completion = ^(BOOL succeeded, NSError * _Nullable error) {
@@ -131,6 +141,7 @@
 }
 
 - (IBAction)didTapLike:(id)sender {
+    
     [self likedPost:nil];
 }
 
