@@ -32,12 +32,21 @@
 @property (weak, nonatomic) IBOutlet UIButton *plantButton;
 @property (weak, nonatomic) IBOutlet UILabel *captionUsernameLabel;
 
+@property (nonatomic, strong)CABasicAnimation *likeAnimation;
+
 @end
 
 @implementation PostViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    _likeAnimation=[CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    _likeAnimation.duration=0.15;
+    _likeAnimation.autoreverses=YES;
+    _likeAnimation.fromValue=[NSNumber numberWithFloat:1.0];
+    _likeAnimation.toValue=[NSNumber numberWithFloat:0.5];
+    _likeAnimation.timingFunction=[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
     
     [self.post fetchIfNeededInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
         self.postImage.file = self.post.image;
@@ -86,6 +95,7 @@
 }
 
 - (void) likedPost:(UITapGestureRecognizer *)gesture {
+    
     if(!gesture || gesture.state == UIGestureRecognizerStateRecognized){
         
         [self.likeButton setUserInteractionEnabled:NO];
@@ -96,6 +106,7 @@
                 Elog(@"Error: %@", error.localizedDescription);
             } else {
                 [self updateLikes];
+                [self.likeButton.layer addAnimation:self.likeAnimation forKey:@"animateOpacity"];
             }
         };
         

@@ -33,6 +33,13 @@
     doubleTapGesture.numberOfTapsRequired = 2;
     [self.postImage addGestureRecognizer:doubleTapGesture];
     self.postImage.userInteractionEnabled = YES;
+    
+    _likeAnimation=[CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    _likeAnimation.duration=0.15;
+    _likeAnimation.autoreverses=YES;
+    _likeAnimation.fromValue=[NSNumber numberWithFloat:1.0];
+    _likeAnimation.toValue=[NSNumber numberWithFloat:0.5];
+    _likeAnimation.timingFunction=[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -84,15 +91,6 @@
 }
 
 - (void) likedPost:(UITapGestureRecognizer *)gesture {
-    CABasicAnimation *theAnimation;
-    theAnimation=[CABasicAnimation animationWithKeyPath:@"transform.scale"];
-    theAnimation.duration=0.7;
-    theAnimation.autoreverses=YES;
-    theAnimation.fromValue=[NSNumber numberWithFloat:1.0];
-    theAnimation.toValue=[NSNumber numberWithFloat:0.7];
-    theAnimation.timingFunction=[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
-    [self.likeButton.layer addAnimation:theAnimation forKey:@"animateOpacity"];
-    
     
     if(!gesture || gesture.state == UIGestureRecognizerStateRecognized){
         [self.likeButton setUserInteractionEnabled:NO];
@@ -103,6 +101,7 @@
                 Elog(@"Error: %@", error.localizedDescription);
             } else {
                 [self updateLikes];
+                [self.likeButton.layer addAnimation:self.likeAnimation forKey:@"animateOpacity"];
             }
         };
         

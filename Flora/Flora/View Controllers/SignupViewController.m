@@ -19,7 +19,7 @@
 @property (nonatomic, strong) UIAlertController *passwordMatchAlert;
 @property (nonatomic, strong) UIAlertController *errorAlert;
 
-
+@property (nonatomic, strong) CABasicAnimation *buttonAnimation;
 
 
 @end
@@ -40,6 +40,13 @@
     self.usernameField.placeholder = @"username";
     self.passwordField.placeholder = @"password";
     self.confirmPasswordField.placeholder = @"confirm password";
+    
+    _buttonAnimation=[CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    _buttonAnimation.duration=0.15;
+    _buttonAnimation.autoreverses=YES;
+    _buttonAnimation.fromValue=[NSNumber numberWithFloat:1.0];
+    _buttonAnimation.toValue=[NSNumber numberWithFloat:0.7];
+    _buttonAnimation.timingFunction=[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
     
     [self setupAlerts];
 }
@@ -82,6 +89,7 @@
 #pragma mark - Actions
 
 - (IBAction)registerUser:(id)sender {
+    [self.signupButton.layer addAnimation:self.buttonAnimation forKey:@"animateOpacity"];
     if([self.usernameField.text isEqual:@""] || [self.passwordField.text isEqual:@""]) {
         [self presentViewController:self.emptyFieldsAlert animated:YES completion:^{
             // optional code for what happens after the alert controller has finished presenting

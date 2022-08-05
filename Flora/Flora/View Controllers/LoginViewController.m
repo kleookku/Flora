@@ -21,6 +21,7 @@
 @property (nonatomic, strong) UIAlertController *forgotPasswordAlert;
 
 
+@property (nonatomic, strong)CABasicAnimation *buttonAnimation;
 @end
 
 @implementation LoginViewController
@@ -32,6 +33,13 @@
     self.passwordField.secureTextEntry = YES;
     _usernameField.placeholder = @"username";
     _passwordField.placeholder = @"password";
+    
+    _buttonAnimation=[CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    _buttonAnimation.duration=0.15;
+    _buttonAnimation.autoreverses=YES;
+    _buttonAnimation.fromValue=[NSNumber numberWithFloat:1.0];
+    _buttonAnimation.toValue=[NSNumber numberWithFloat:0.7];
+    _buttonAnimation.timingFunction=[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
     
 }
 
@@ -82,6 +90,7 @@
 }
 
 - (IBAction)loginUser:(id)sender {
+    [self.loginButton.layer addAnimation:self.buttonAnimation forKey:@"animateOpacity"];
     if([self.usernameField.text isEqual:@""] || [self.passwordField.text isEqual:@""]) {
         [self presentViewController:self.emptyFieldsAlert animated:YES completion:^{}];
     } else {
