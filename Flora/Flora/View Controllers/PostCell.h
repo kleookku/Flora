@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)plantPressed:(Plant *)plant;
 - (void)profilePressed:(PFUser *)user;
 - (void)showComments:(Post *)post;
+- (void)showLikes:(Post *)post;
 
 @end
 

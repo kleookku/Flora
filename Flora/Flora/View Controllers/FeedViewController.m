@@ -10,6 +10,7 @@
 #import "DetailViewController.h"
 #import "UserProfileViewController.h"
 #import "CommentsViewController.h"
+#import "PostLikesViewController.h"
 #import "PostCell.h"
 #import "Parse/Parse.h"
 #import "Post.h"
@@ -28,6 +29,8 @@
 @property (nonatomic, strong)Plant *plantSegue;
 @property (nonatomic, strong)PFUser *userSegue;
 @property (nonatomic, strong)Post *postSegue;
+@property (nonatomic, strong)Post *postToLikesSegue;
+
 
 @end
 
@@ -50,8 +53,10 @@
     
     if(_isPlantFeed) {
         [self updatePlantPosts];
+        [self.composeButton setHidden:YES];
     } else {
         [self updatePosts];
+        [self.composeButton setHidden:NO];
     }
 }
 
@@ -68,6 +73,7 @@
     self.plantSegue = plant;
     self.userSegue = nil;
     self.postSegue = nil;
+    self.postToLikesSegue = nil;
     [self performSegueWithIdentifier:@"FeedToPlant" sender:nil];
 }
 
@@ -75,6 +81,7 @@
     self.userSegue = user;
     self.plantSegue = nil;
     self.postSegue = nil;
+    self.postToLikesSegue = nil;
     [self performSegueWithIdentifier:@"FeedToProfile" sender:nil];
 }
 
@@ -82,7 +89,16 @@
     self.postSegue = post;
     self.plantSegue = nil;
     self.userSegue = nil;
+    self.postToLikesSegue = nil;
     [self performSegueWithIdentifier:@"FeedToComments" sender:nil];
+}
+
+- (void)showLikes:(Post *)post {
+    self.postToLikesSegue = post;
+    self.postSegue = nil;
+    self.plantSegue = nil;
+    self.userSegue = nil;
+    [self performSegueWithIdentifier:@"FeedToLikes" sender:nil];
 }
 
 
@@ -243,6 +259,9 @@
     } else if (_postSegue) {
         CommentsViewController *commentsVC = [segue destinationViewController];
         commentsVC.post = _postSegue;
+    } else if (_postToLikesSegue) {
+        PostLikesViewController *postLikesVC = [segue destinationViewController];
+        postLikesVC.post = _postToLikesSegue;
     }
 }
 

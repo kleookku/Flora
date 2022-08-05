@@ -12,6 +12,8 @@
 		E73819F1F5C1B3C6EF4C6CF7 /* Pods_Flora.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B8ADF9025442BD0ADD5828A /* Pods_Flora.framework */; };
 		F4024E7628934C790054D6BB /* NameSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4024E7528934C790054D6BB /* NameSearchViewController.m */; };
 		F4024E7928934DEE0054D6BB /* NameSearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4024E7828934DEE0054D6BB /* NameSearchCell.m */; };
+		F406C38C289D8AA500C57876 /* PostLikesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F406C38B289D8AA500C57876 /* PostLikesViewController.m */; };
+		F406C38F289D920C00C57876 /* PostLikesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F406C38E289D920C00C57876 /* PostLikesCell.m */; };
 		F41A29E8286E4CE200D2DAB9 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = F41A29E7286E4CE200D2DAB9 /* Keys.plist */; };
 		F41A29EB286E4F7100D2DAB9 /* Plant.m in Sources */ = {isa = PBXBuildFile; fileRef = F41A29EA286E4F7100D2DAB9 /* Plant.m */; };
 		F41A29F6286E509200D2DAB9 /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F41A29F5286E509200D2DAB9 /* APIManager.m */; };
@@ -92,6 +94,10 @@
 		F4024E7528934C790054D6BB /* NameSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NameSearchViewController.m; sourceTree = "<group>"; };
 		F4024E7728934DEE0054D6BB /* NameSearchCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NameSearchCell.h; sourceTree = "<group>"; };
 		F4024E7828934DEE0054D6BB /* NameSearchCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NameSearchCell.m; sourceTree = "<group>"; };
+		F406C38A289D8AA500C57876 /* PostLikesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostLikesViewController.h; sourceTree = "<group>"; };
+		F406C38B289D8AA500C57876 /* PostLikesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostLikesViewController.m; sourceTree = "<group>"; };
+		F406C38D289D920C00C57876 /* PostLikesCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostLikesCell.h; sourceTree = "<group>"; };
+		F406C38E289D920C00C57876 /* PostLikesCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostLikesCell.m; sourceTree = "<group>"; };
 		F41A29E7286E4CE200D2DAB9 /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		F41A29E9286E4F7100D2DAB9 /* Plant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Plant.h; sourceTree = "<group>"; };
 		F41A29EA286E4F7100D2DAB9 /* Plant.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Plant.m; sourceTree = "<group>"; };
@@ -318,6 +324,10 @@
 				F44B09A0289B2B31002CF984 /* CommentsViewController.m */,
 				F44B09A2289B2BDC002CF984 /* CommentCell.h */,
 				F44B09A3289B2BDC002CF984 /* CommentCell.m */,
+				F406C38A289D8AA500C57876 /* PostLikesViewController.h */,
+				F406C38B289D8AA500C57876 /* PostLikesViewController.m */,
+				F406C38D289D920C00C57876 /* PostLikesCell.h */,
+				F406C38E289D920C00C57876 /* PostLikesCell.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -696,6 +706,7 @@
 				F445ED162877A9A10084BDBB /* DetailViewController.m in Sources */,
 				F456EAA5287CD5DE0067B05C /* LikesViewController.m in Sources */,
 				F445ED1028760C530084BDBB /* CardView.m in Sources */,
+				F406C38C289D8AA500C57876 /* PostLikesViewController.m in Sources */,
 				F488CAC4288B4FDB0031B781 /* UserSearchViewController.m in Sources */,
 				F44CF458287E251A0076AB4B /* SelectBoardCell.m in Sources */,
 				F47EE871286E4A8E00E3AA76 /* main.m in Sources */,
@@ -707,6 +718,7 @@
 				F4499EF6288F14C700C8169E /* Follow.m in Sources */,
 				F44CF45C287F2F420076AB4B /* BoardViewController.m in Sources */,
 				F47EE863286E4A8D00E3AA76 /* SceneDelegate.m in Sources */,
+				F406C38F289D920C00C57876 /* PostLikesCell.m in Sources */,
 				F46FB39428984C79001144D6 /* PostGridCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

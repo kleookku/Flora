@@ -23,6 +23,11 @@
     [super awakeFromNib];
     self.plantImage.layer.borderColor = [[UIColor blackColor] CGColor];
     self.plantImage.layer.borderWidth = 3;
+    
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(numLikesTapped)];
+    tapGestureRecognizer.numberOfTapsRequired = 1;
+    [self.likeCountLabel addGestureRecognizer:tapGestureRecognizer];
+    self.likeCountLabel.userInteractionEnabled = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -86,6 +91,10 @@
 }
 
 #pragma mark - Actions
+
+- (void) numLikesTapped {
+    [self.delegate showLikes:self.post];
+}
 
 - (IBAction)didTapPlant:(id)sender {
     [self.delegate plantPressed:self.post.plant];
