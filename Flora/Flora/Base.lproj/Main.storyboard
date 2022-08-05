@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Klh-EO-3kV">
-                                <rect key="frame" x="20" y="343" width="374" height="51"/>
+                                <rect key="frame" x="20" y="300.5" width="374" height="51"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="eth-pl-Ifm"/>
                                 </constraints>
@@ -31,7 +31,7 @@
                                 </segments>
                             </segmentedControl>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="jmK-7I-tRg">
-                                <rect key="frame" x="20" y="453" width="374" height="51"/>
+                                <rect key="frame" x="20" y="410.5" width="374" height="51"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="tWC-Il-v4P"/>
                                 </constraints>
@@ -43,7 +43,7 @@
                                 </segments>
                             </segmentedControl>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="6dt-4t-b8U">
-                                <rect key="frame" x="20" y="563" width="374" height="51"/>
+                                <rect key="frame" x="20" y="520.5" width="374" height="51"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="f6d-5W-wzr"/>
                                 </constraints>
@@ -55,19 +55,25 @@
                                 </segments>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="moisture" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FMT-Wk-9gd">
-                                <rect key="frame" x="20" y="317" width="72.5" height="21"/>
+                                <rect key="frame" x="20" y="274.5" width="72.5" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="oU8-FQ-ROJ"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" red="0.4277746456" green="0.4277746456" blue="0.4277746456" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sunlight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2CW-Dd-djE">
-                                <rect key="frame" x="20" y="427" width="66.5" height="21"/>
+                                <rect key="frame" x="20" y="384.5" width="66.5" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="z1y-45-BIA"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" red="0.4277746456" green="0.4277746456" blue="0.4277746456" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DRu-Kt-0Xd">
-                                <rect key="frame" x="60" y="673" width="294" height="50"/>
+                                <rect key="frame" x="60" y="630.5" width="294" height="50"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="erG-bS-Nv7"/>
@@ -82,13 +88,16 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="temperature" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fdw-Zq-DAK">
-                                <rect key="frame" x="20" y="537" width="102" height="21"/>
+                                <rect key="frame" x="20" y="494.5" width="102" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="fx0-fG-urF"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" red="0.4277746456" green="0.4277746456" blue="0.4277746456" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7kl-ae-OCk">
-                                <rect key="frame" x="20" y="207" width="123" height="21"/>
+                                <rect key="frame" x="20" y="164.5" width="123" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="123" id="Gga-Wf-nvO"/>
                                     <constraint firstAttribute="height" constant="21" id="m3u-21-quy"/>
@@ -103,7 +112,7 @@
                                 </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="N34-zG-m6h">
-                                <rect key="frame" x="20" y="233" width="374" height="51"/>
+                                <rect key="frame" x="20" y="190.5" width="374" height="51"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="2et-u7-i28"/>
                                 </constraints>
@@ -116,11 +125,11 @@
                                 </connections>
                             </segmentedControl>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="tll-um-lZx">
-                                <rect key="frame" x="197" y="733" width="20" height="20"/>
+                                <rect key="frame" x="197" y="690.5" width="20" height="20"/>
                             </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="set location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hIn-dk-Nvz">
-                                <rect key="frame" x="50" y="208.5" width="85.5" height="18"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <rect key="frame" x="50" y="165" width="95" height="20.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" red="0.4277746456" green="0.4277746456" blue="0.4277746456" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -161,12 +170,12 @@
                             <constraint firstItem="6dt-4t-b8U" firstAttribute="top" secondItem="fdw-Zq-DAK" secondAttribute="bottom" constant="5" id="ff1-ao-i7s"/>
                             <constraint firstItem="aeO-v1-fRV" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="g8K-4e-bpl"/>
                             <constraint firstItem="fdw-Zq-DAK" firstAttribute="leading" secondItem="6dt-4t-b8U" secondAttribute="leading" id="h9L-UG-l1c"/>
+                            <constraint firstItem="N34-zG-m6h" firstAttribute="top" secondItem="aeO-v1-fRV" secondAttribute="bottom" constant="64.5" id="hIU-57-gj8"/>
                             <constraint firstItem="DRu-Kt-0Xd" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="hkM-sP-Scx"/>
                             <constraint firstItem="DRu-Kt-0Xd" firstAttribute="leading" secondItem="6dt-4t-b8U" secondAttribute="leading" constant="40" id="i51-X9-9YO"/>
                             <constraint firstItem="jmK-7I-tRg" firstAttribute="top" secondItem="Klh-EO-3kV" secondAttribute="bottom" constant="60" id="lRu-Kk-n84"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="aeO-v1-fRV" secondAttribute="trailing" constant="11" id="mum-2l-0vc"/>
                             <constraint firstItem="Klh-EO-3kV" firstAttribute="top" secondItem="N34-zG-m6h" secondAttribute="bottom" constant="60" id="s61-iH-TAk"/>
-                            <constraint firstItem="hIn-dk-Nvz" firstAttribute="top" secondItem="aeO-v1-fRV" secondAttribute="bottom" constant="82.5" id="uTq-5z-hcr"/>
                             <constraint firstItem="tll-um-lZx" firstAttribute="centerX" secondItem="DRu-Kt-0Xd" secondAttribute="centerX" id="vJo-uc-y7V"/>
                             <constraint firstItem="N34-zG-m6h" firstAttribute="trailing" secondItem="Klh-EO-3kV" secondAttribute="trailing" id="wmY-xK-c4S"/>
                         </constraints>
