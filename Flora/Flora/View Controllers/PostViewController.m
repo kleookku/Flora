@@ -43,6 +43,10 @@
         self.postImage.file = self.post.image;
         [self.postImage loadInBackground];
         self.postImage.layer.cornerRadius = 40;
+        UITapGestureRecognizer *doubleTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(likedPost:)];
+        doubleTapGesture.numberOfTapsRequired = 2;
+        [self.postImage addGestureRecognizer:doubleTapGesture];
+        self.postImage.userInteractionEnabled = YES;
         
         self.dateCreated.text = [self.post.createdAt shortTimeAgoSinceNow];
         self.caption.text = self.post.caption;
@@ -66,6 +70,7 @@
         self.profileImage.layer.cornerRadius = self.profileImage.frame.size.width/2;
         self.profileImage.clipsToBounds = true;
         self.profileImage.layer.borderWidth = 0.05;
+        
     }];
     
     [self.post.plant fetchIfNeededInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
@@ -78,6 +83,28 @@
     
     self.plantButton.tag = 1;
     [self updateLikes];
+}
+
+- (void) likedPost:(UITapGestureRecognizer *)gesture {
+    if(!gesture || gesture.state == UIGestureRecognizerStateRecognized){
+        
+        [self.likeButton setUserInteractionEnabled:NO];
+        PFBooleanResultBlock completion = ^(BOOL succeeded, NSError * _Nullable error) {
+            [self.likeButton setUserInteractionEnabled:YES];
+
+            if(error) {
+                Elog(@"Error: %@", error.localizedDescription);
+            } else {
+                [self updateLikes];
+            }
+        };
+        
+        if ([self.post.userLikes containsObject:[PFUser currentUser].username]) {
+            [APIManager unlikePost:self.post withCompletion:completion];
+        } else {
+            [APIManager likePost:self.post withCompletion:completion];
+        }
+    }
 }
 
 - (void) updateLikes {
@@ -101,21 +128,7 @@
 }
 
 - (IBAction)didTapLike:(id)sender {
-    [self.likeButton setUserInteractionEnabled:NO];
-    
-    PFBooleanResultBlock completion = ^(BOOL succeeded, NSError * _Nullable error) {
-        if(error) {
-            Elog(@"Error: %@", error.localizedDescription);
-        } else {
-            [self updateLikes];
-        }
-    };
-    
-    if ([self.post.userLikes containsObject:[PFUser currentUser].username]) {
-        [APIManager unlikePost:self.post withCompletion:completion];
-    } else {
-        [APIManager likePost:self.post withCompletion:completion];
-    }
+    [self likedPost:nil];
 }
 
 - (IBAction)didTapComment:(id)sender {

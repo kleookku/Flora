@@ -77,8 +77,9 @@ This app helps users find plants that are suitable for them based on three growt
 - [x] Users can remove followers.
 - [x] Users can like and comment on posts. 
 - [x] Users can see all the posts associated with a certain plant.
-- [ ] Users can view who liked a post.
-- [ ] Users can scroll through the post feed with infinite scrolling.
+- [x] Users can scroll through the post feed with infinite scrolling.
+- [x] Users can view who liked a post.
+- [ ] Users can like a post by double tapping the post image in their feed.
 - [ ] Users will get push notifications. 
 
 
