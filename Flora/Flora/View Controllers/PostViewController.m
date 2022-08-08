@@ -8,7 +8,7 @@
 #import "PostViewController.h"
 #import "DetailViewController.h"
 #import "Parse/PFImageView.h"
-#import "DateTools/DateTools.h"
+#import "DateTools.h"
 #import "APIManager.h"
 #import "CommentsViewController.h"
 
@@ -40,6 +40,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.plantButton.tag = 1;
+    self.commentButton.tag = 2;
     
     _likeAnimation=[CABasicAnimation animationWithKeyPath:@"transform.scale"];
     _likeAnimation.duration=0.15;
@@ -90,7 +92,6 @@
         self.plantImage.layer.borderWidth = 1;
     }];
     
-    self.plantButton.tag = 1;
     [self updateLikes];
 }
 
@@ -135,7 +136,7 @@
 # pragma mark - Actions
 
 - (IBAction)didTapPlant:(id)sender {
-    [self performSegueWithIdentifier:@"PostToPlant" sender:nil];
+    [self performSegueWithIdentifier:@"PostToPlant" sender:sender];
 }
 
 - (IBAction)didTapLike:(id)sender {
@@ -143,7 +144,7 @@
 }
 
 - (IBAction)didTapComment:(id)sender {
-    [self performSegueWithIdentifier:@"PostToComments" sender:nil];
+    [self performSegueWithIdentifier:@"PostToComments" sender:sender];
 }
 
 #pragma mark - Navigation
@@ -155,7 +156,7 @@
         [self.post.plant fetchIfNeededInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
             detailVC.plant = self.post.plant;
         }];
-    } else {
+    } else if ([sender tag] == 2) {
         CommentsViewController *commentsVC = [segue destinationViewController];
         commentsVC.post = self.post;
     }

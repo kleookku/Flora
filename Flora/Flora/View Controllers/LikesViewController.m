@@ -240,6 +240,7 @@
                 if(results.count > 0) {
                     Plant *plant = (Plant *)results[0];
                     cell.plant = plant;
+                    
                 }
             } else {
                 [self presentViewController:[APIManager errorAlertWithTitle:@"Error retrieving liked plants" withMessage:error.localizedDescription] animated:YES completion:nil];
