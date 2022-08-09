@@ -184,7 +184,6 @@
 
 # pragma mark - GMSAutocompleteViewControllerDelegate
 
-// Handle the user's selection.
 - (void)viewController:(GMSAutocompleteViewController *)viewController
 didAutocompleteWithPlace:(GMSPlace *)place {
     [self dismissViewControllerAnimated:YES completion:nil];
