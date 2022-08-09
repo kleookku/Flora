@@ -142,6 +142,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     UserProfileViewController *userProfVC = [segue destinationViewController];
     userProfVC.user = self.userToShow;
+    userProfVC.notMyProfile = YES;
 }
 
 
