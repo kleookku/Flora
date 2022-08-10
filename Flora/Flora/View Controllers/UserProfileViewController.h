@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface UserProfileViewController : UIViewController
 
 @property (nonatomic, strong) PFUser *user;
+@property BOOL notMyProfile;
 
 @end
 
