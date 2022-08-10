@@ -39,6 +39,7 @@
     
     PFUser *user = [PFUser currentUser];
     self.usernameField.text = user.username;
+    [self.usernameField setUserInteractionEnabled:NO];
     self.passwordField.placeholder = @"reset password";
     self.passwordField.secureTextEntry = YES;
     self.emailField.text = user.email;
