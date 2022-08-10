@@ -7,11 +7,8 @@
 
 #import "SelectBoardCell.h"
 #import "Plant.h"
-#ifdef DEBUG
-#    define Elog(...) NSLog(__VA_ARGS__)
-#else
-#    define Elog(...) /* */
-#endif
+#import "Elog.h"
+
 
 @implementation SelectBoardCell
 
