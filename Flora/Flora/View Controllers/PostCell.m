@@ -66,5 +66,4 @@
 - (IBAction)didTapProfile:(id)sender {
     [self.delegate profilePressed:self.post.author];
 }
-
     @end

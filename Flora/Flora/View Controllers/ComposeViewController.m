@@ -63,19 +63,12 @@
 }
 
 - (IBAction)didTapShare:(id)sender {
-    if(self.selectedPlant && self.postImage.image) {
-        [Post postUserImage:self.postImage.image withCaption:self.captionTextView.text withPlant:self.selectedPlant withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-                if(error) {
-                    NSLog(@"Error sharing post: %@", error.localizedDescription);
-                } else {
-                    [self.delegate didPost];
-                    NSLog(@"Successfully shared post!");
-                    [self dismissViewControllerAnimated:YES completion:nil];
-                }
-        }];
-    } else {
-        [self presentViewController:self.noPlantWarning animated:YES completion:nil];
-    }
+    [Post postUserImage:self.postImage.image withCaption:self.captionTextView.text withPlant:self.selectedPlant withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+        if(!error) {
+            NSLog(@"Successfully shared post!");
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
+    }];
 }
 - (IBAction)tapped:(id)sender {
     [self.view endEditing:YES];
