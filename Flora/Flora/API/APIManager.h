@@ -7,6 +7,7 @@
 
 #import <BDBOAuth1SessionManager.h>
 #import "Plant.h"
+#import "Post.h"
 
 
 NS_ASSUME_NONNULL_BEGIN
@@ -32,19 +33,18 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)weatherValuesAtLat:(NSString *)lat atLong:(NSString *)lon withCompletion:(void(^)(int moist, int sun, int temp, NSError *error))completion;
 
 + (void)unfollowUser:(PFUser *) user;
-
 + (void)followUser:(PFUser *) user;
-
 + (void)removeFollower:(PFUser *) user;
 
 + (void)savePlantToLikes:(Plant *)plant;
-
 + (void)removePlantFromLikes:(Plant *)plant;
 
 + (void)savePlantToSeen:(Plant *)plant;
 
 - (void)searchWithOffset:(NSUInteger)offset completion:(void(^)(NSArray *results, NSError *error))completion;
 
++ (void)likePost:(Post *)post withCompletion:(PFBooleanResultBlock  _Nullable)completion;
++ (void)unlikePost:(Post *)post withCompletion:(PFBooleanResultBlock  _Nullable)completion;
 
 @end
 

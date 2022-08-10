@@ -930,6 +930,9 @@
                                 <color key="tintColor" red="0.57907736440000002" green="0.58161794590000004" blue="0.58923969070000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system" title=""/>
+                                <connections>
+                                    <action selector="didTapLike:" destination="buC-LH-GHg" eventType="touchUpInside" id="SGo-bi-5CE"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 likes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J5g-2p-3Il">
                                 <rect key="frame" x="364" y="536" width="40" height="16"/>
@@ -994,6 +997,7 @@
                             <constraint firstItem="a23-jP-Uic" firstAttribute="leading" secondItem="ppa-VZ-C38" secondAttribute="leading" constant="10" id="U2M-Zv-al5"/>
                             <constraint firstItem="vUx-Ns-mJ4" firstAttribute="leading" secondItem="wt7-TZ-oyz" secondAttribute="trailing" constant="15" id="XwB-hR-MKo"/>
                             <constraint firstItem="9IJ-k8-oqT" firstAttribute="centerY" secondItem="09s-MU-GYQ" secondAttribute="centerY" id="YOm-Gu-Iuc"/>
+                            <constraint firstItem="wt7-TZ-oyz" firstAttribute="centerY" secondItem="vUx-Ns-mJ4" secondAttribute="centerY" id="dUU-hv-h9U"/>
                             <constraint firstItem="wt7-TZ-oyz" firstAttribute="leading" secondItem="a23-jP-Uic" secondAttribute="leading" id="eIx-j5-pkA"/>
                             <constraint firstItem="1H3-Jc-CPf" firstAttribute="trailing" secondItem="J5g-2p-3Il" secondAttribute="trailing" id="evS-Fj-SwW"/>
                             <constraint firstItem="a23-jP-Uic" firstAttribute="top" secondItem="gjs-dK-xqT" secondAttribute="bottom" constant="10" id="hBQ-TM-vHN"/>
@@ -1005,7 +1009,6 @@
                             <constraint firstItem="wlF-tF-HKT" firstAttribute="top" secondItem="mhJ-RP-qVF" secondAttribute="top" id="ukm-SD-sAM"/>
                             <constraint firstItem="mhJ-RP-qVF" firstAttribute="top" secondItem="a23-jP-Uic" secondAttribute="top" constant="20" id="vpP-UU-xa3"/>
                             <constraint firstItem="1H3-Jc-CPf" firstAttribute="top" secondItem="J5g-2p-3Il" secondAttribute="bottom" constant="2" id="vum-sC-ZyJ"/>
-                            <constraint firstItem="vUx-Ns-mJ4" firstAttribute="firstBaseline" secondItem="wt7-TZ-oyz" secondAttribute="firstBaseline" id="w8u-c2-uEo"/>
                             <constraint firstItem="mhJ-RP-qVF" firstAttribute="trailing" secondItem="a23-jP-Uic" secondAttribute="trailing" constant="-20" id="yvO-cU-MLN"/>
                         </constraints>
                     </view>
@@ -2543,7 +2546,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="iGa-ZO-Xe0"/>
-        <segue reference="dNX-vT-LQX"/>
+        <segue reference="cCH-1l-Q3i"/>
         <segue reference="bEM-CY-N0O"/>
     </inferredMetricsTieBreakers>
     <resources>

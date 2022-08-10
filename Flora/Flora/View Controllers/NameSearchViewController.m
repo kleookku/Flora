@@ -11,6 +11,7 @@
 #import "Parse/Parse.h"
 #import "NameSearchCell.h"
 #import "DetailViewController.h"
+#import "APIManager.h"
 
 @interface NameSearchViewController () <UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, NameSearchCellDelegate>
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
