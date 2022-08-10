@@ -7,6 +7,7 @@
 
 #import "CommentCell.h"
 #import "DateTools/DateTools.h"
+#import "APIManager.h"
 
 @implementation CommentCell
 
@@ -21,20 +22,29 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
+    
     // Configure the view for the selected state
 }
 
 - (void)setComment:(Comment *)comment {
     _comment = comment;
+    Comment *currentComment = comment;
     [comment fetchIfNeededInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
-        self.text.text = comment.text;
-        self.createdAt.text = [comment.createdAt shortTimeAgoSinceNow];
-        [comment.author fetchIfNeededInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
-            self.profileImage.file = comment.author[@"profilePic"];
-            [self.profileImage loadInBackground];
-            self.username.text = comment.author.username;
-        }];
+        if(error) {
+            [APIManager errorAlertWithTitle:@"Error getting post" withMessage:error.localizedDescription];
+        } else if ([self.comment isEqual: currentComment]) {
+            self.text.text = comment.text;
+            self.createdAt.text = [comment.createdAt shortTimeAgoSinceNow];
+            [comment.author fetchIfNeededInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
+                if(error) {
+                    [APIManager errorAlertWithTitle:@"Error getting comment author" withMessage:error.localizedDescription];
+                } else {
+                    self.profileImage.file = comment.author[@"profilePic"];
+                    [self.profileImage loadInBackground];
+                    self.username.text = comment.author.username;
+                }
+            }];
+        }
     }];
 }
 

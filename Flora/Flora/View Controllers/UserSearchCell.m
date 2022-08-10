@@ -8,12 +8,8 @@
 #import "UserSearchCell.h"
 #import "Parse/Parse.h"
 #import "APIManager.h"
+#import "Elog.h"
 
-#ifdef DEBUG
-#    define Elog(...) NSLog(__VA_ARGS__)
-#else
-#    define Elog(...) /* */
-#endif
 
 @implementation UserSearchCell
 
