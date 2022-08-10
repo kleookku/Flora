@@ -12,7 +12,6 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
     
     self.profileImage.layer.masksToBounds = false;
     self.profileImage.layer.cornerRadius = self.profileImage.frame.size.width/2;
@@ -22,14 +21,14 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
 - (void)setUser:(PFUser *)user {
     _user = user;
+    PFUser *currentUser = user;
     
     [user fetchIfNeededInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
+        if([self.user isEqual:currentUser]) {
             if(user[@"profilePic"]) {
                 self.profileImage.file = user[@"profilePic"];
                 [self.profileImage loadInBackground];
@@ -41,6 +40,7 @@
             
             NSArray *userBoards = user[@"boards"];
             self.numBoards.text = [NSString stringWithFormat:@"%li boards", userBoards.count];
+        }
     }];
 }
 
