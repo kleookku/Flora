@@ -866,6 +866,17 @@
 				DEVELOPMENT_TEAM = 7FBY9XMGDL;
 				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/AFNetworking/AFNetworking.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/BDBOAuth1Manager/BDBOAuth1Manager.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Bolts/Bolts.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/DateTools/DateTools.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Parse/Parse.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/UITextView+Placeholder/UITextView_Placeholder.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/ZLSwipeableView/ZLSwipeableView.framework/Headers\"",
+					"\"${PODS_ROOT}/BuildHeaders\"/**",
+				);
 				INFOPLIST_FILE = Flora/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -897,6 +908,17 @@
 				DEVELOPMENT_TEAM = 7FBY9XMGDL;
 				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/AFNetworking/AFNetworking.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/BDBOAuth1Manager/BDBOAuth1Manager.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Bolts/Bolts.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/DateTools/DateTools.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Parse/Parse.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/UITextView+Placeholder/UITextView_Placeholder.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/ZLSwipeableView/ZLSwipeableView.framework/Headers\"",
+					"\"${PODS_ROOT}/BuildHeaders\"/**",
+				);
 				INFOPLIST_FILE = Flora/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;

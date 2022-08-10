@@ -10,6 +10,7 @@
 #import "UserSearchCell.h"
 #import "Follow.h"
 #import "UserProfileViewController.h"
+#import "APIManager.h"
 
 @interface UserSearchViewController () <UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, UserSearchCellDelegate>
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
@@ -53,7 +54,7 @@
         
         [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
             if(error) {
-                NSLog(@"Error getting search results: %@", error.localizedDescription);
+                [self presentViewController:[APIManager errorAlertWithTitle:@"Error getting search results" withMessage:error.localizedDescription] animated:YES completion:nil];
             } else {
                 NSMutableArray *results = [[NSMutableArray alloc] init];
                 for(PFUser *user in objects){
@@ -124,7 +125,7 @@
     
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if(error) {
-            NSLog(@"Error getting follow: %@", error.localizedDescription);
+            [self presentViewController:[APIManager errorAlertWithTitle:@"Error getting users" withMessage:error.localizedDescription] animated:YES completion:nil];
         } else if (objects.count > 0){
             for(Follow *follow in objects) {
                 [newFollowing addObject:follow.username];

@@ -38,7 +38,7 @@
     
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if(error) {
-            NSLog(@"Error getting search results: %@", error.localizedDescription);
+            [self presentViewController:[APIManager errorAlertWithTitle:@"Error searching plants" withMessage:error.localizedDescription] animated:YES completion:nil];
         } else {
             NSMutableArray *results = [[NSMutableArray alloc] init];
             for(Plant *plant in objects){

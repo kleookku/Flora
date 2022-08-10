@@ -85,22 +85,22 @@
     user[@"profilePic"] = imageFile;
     [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if(error) {
-            NSLog(@"Error saving profile pic %@", error.localizedDescription);
+            [self presentViewController:[APIManager errorAlertWithTitle:@"Error saving profile picture" withMessage:error.localizedDescription] animated:YES completion:nil];
+            
         } else {
-            NSLog(@"Successfully saved profile pic!");
             [self.delegate updateInformation];
         }
     }];
     
     [self presentViewController:self.savedAlert animated:YES completion:^{
-            NSTimeInterval delayInSeconds = 0.25;
-            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-                [self.savedAlert dismissViewControllerAnimated:YES completion:nil];
+        NSTimeInterval delayInSeconds = 0.25;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [self.savedAlert dismissViewControllerAnimated:YES completion:nil];
         });
     }];
     
-
+    
 }
 
 - (IBAction)logoutUser:(id)sender {
@@ -170,7 +170,7 @@
     UIImagePickerController *imagePickerVC = [UIImagePickerController new];
     imagePickerVC.delegate = self;
     imagePickerVC.allowsEditing = YES;
-
+    
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
         [self presentViewController:imagePickerVC animated:YES completion:nil];
@@ -207,37 +207,40 @@
 
 - (void)updatePlants {
     [[APIManager shared] searchWithOffset:self.offset completion:^(NSArray * _Nonnull results, NSError * _Nonnull error) {
-            if(error) {
-                NSLog(@"error getting plants: %@", error.localizedDescription);
+        if(error) {
+            [self presentViewController:[APIManager errorAlertWithTitle:@"Error searching plants" withMessage:error.localizedDescription] animated:YES completion:nil];
+            
+        } else {
+            [self saveResults:results];
+            if(results.count<25){
+                return;
             } else {
-                [self saveResults:results];
-                if(results.count<25){
-                    return;
-                } else {
-                    self.offset += 25;
-                    [self updatePlants];
-                }
-                
+                self.offset += 25;
+                [self updatePlants];
             }
+            
+        }
     }];
 }
 
 - (void)saveResults:(NSArray*) results {
     for (NSDictionary *result in results) {
         [Plant savePlantWithDict:result withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-                    NSLog(@"Successfully saved plant to parse!");
+            if(error)
+                [self presentViewController:[APIManager errorAlertWithTitle:@"Error saving plants" withMessage:error.localizedDescription] animated:YES completion:nil];
+            
         }];
     }
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end
