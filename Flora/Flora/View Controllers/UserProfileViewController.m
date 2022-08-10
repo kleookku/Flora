@@ -61,7 +61,7 @@
 }
 
 - (void)updateProfile {
-    [self.user fetchIfNeeded];
+    [self.user fetchIfNeededInBackground];
     
     if(self.user[@"profilePic"]) {
         self.profPic.file = self.user[@"profilePic"];

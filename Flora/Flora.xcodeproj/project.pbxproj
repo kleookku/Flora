@@ -27,6 +27,8 @@
 		F4499EF6288F14C700C8169E /* Follow.m in Sources */ = {isa = PBXBuildFile; fileRef = F4499EF5288F14C700C8169E /* Follow.m */; };
 		F4499EF9288F5BC600C8169E /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4499EF8288F5BC600C8169E /* UserProfileViewController.m */; };
 		F4499EFC288F6B9100C8169E /* ProfileBoardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4499EFB288F6B9100C8169E /* ProfileBoardCell.m */; };
+		F44B09A1289B2B31002CF984 /* CommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F44B09A0289B2B31002CF984 /* CommentsViewController.m */; };
+		F44B09A4289B2BDC002CF984 /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F44B09A3289B2BDC002CF984 /* CommentCell.m */; };
 		F44B96C0287F3A0100A6EC78 /* PlantCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F44B96BF287F3A0100A6EC78 /* PlantCell.m */; };
 		F44CF452287E1A890076AB4B /* SelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F44CF451287E1A890076AB4B /* SelectViewController.m */; };
 		F44CF455287E21D10076AB4B /* BoardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F44CF454287E21D10076AB4B /* BoardCell.m */; };
@@ -118,6 +120,10 @@
 		F4499EF8288F5BC600C8169E /* UserProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserProfileViewController.m; sourceTree = "<group>"; };
 		F4499EFA288F6B9100C8169E /* ProfileBoardCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileBoardCell.h; sourceTree = "<group>"; };
 		F4499EFB288F6B9100C8169E /* ProfileBoardCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileBoardCell.m; sourceTree = "<group>"; };
+		F44B099F289B2B31002CF984 /* CommentsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommentsViewController.h; sourceTree = "<group>"; };
+		F44B09A0289B2B31002CF984 /* CommentsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommentsViewController.m; sourceTree = "<group>"; };
+		F44B09A2289B2BDC002CF984 /* CommentCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommentCell.h; sourceTree = "<group>"; };
+		F44B09A3289B2BDC002CF984 /* CommentCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommentCell.m; sourceTree = "<group>"; };
 		F44B96BE287F3A0100A6EC78 /* PlantCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlantCell.h; sourceTree = "<group>"; };
 		F44B96BF287F3A0100A6EC78 /* PlantCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlantCell.m; sourceTree = "<group>"; };
 		F44CF450287E1A890076AB4B /* SelectViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectViewController.h; sourceTree = "<group>"; };
@@ -309,6 +315,10 @@
 				F4B267A128947AFB002320AE /* ComposePlantCell.m */,
 				F46C67B228987BED006CA056 /* PostViewController.h */,
 				F46C67B328987BED006CA056 /* PostViewController.m */,
+				F44B099F289B2B31002CF984 /* CommentsViewController.h */,
+				F44B09A0289B2B31002CF984 /* CommentsViewController.m */,
+				F44B09A2289B2BDC002CF984 /* CommentCell.h */,
+				F44B09A3289B2BDC002CF984 /* CommentCell.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -667,10 +677,12 @@
 				F456EAA8287CDA280067B05C /* LikesCell.m in Sources */,
 				F47EE860286E4A8D00E3AA76 /* AppDelegate.m in Sources */,
 				F44CF455287E21D10076AB4B /* BoardCell.m in Sources */,
+				F44B09A1289B2B31002CF984 /* CommentsViewController.m in Sources */,
 				F4024E7628934C790054D6BB /* NameSearchViewController.m in Sources */,
 				F445ED132877438E0084BDBB /* SearchViewController.m in Sources */,
 				F49755B82881E458008050BB /* AddPlantCell.m in Sources */,
 				F44CF452287E1A890076AB4B /* SelectViewController.m in Sources */,
+				F44B09A4289B2BDC002CF984 /* CommentCell.m in Sources */,
 				F445ED1C2878CF7F0084BDBB /* SignupViewController.m in Sources */,
 				F4B267992894727A002320AE /* PostCell.m in Sources */,
 				F41A29F6286E509200D2DAB9 /* APIManager.m in Sources */,

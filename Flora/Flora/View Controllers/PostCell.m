@@ -75,7 +75,7 @@
         [self.likeButton setUserInteractionEnabled:YES];
     } else {
         [self.likeButton setImage:[UIImage systemImageNamed:@"heart"] forState:UIControlStateNormal];
-        [self.likeButton setTintColor:[UIColor darkGrayColor]];
+        [self.likeButton setTintColor:[UIColor lightGrayColor]];
         [self.likeButton setUserInteractionEnabled:YES];
     }
 }
@@ -107,6 +107,9 @@
     }
 }
 
+- (IBAction)didTapComments:(id)sender {
+    [self.delegate showComments:self.post];
+}
 
 
 

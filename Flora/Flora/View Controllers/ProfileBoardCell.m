@@ -24,7 +24,7 @@
 }
 
 - (void) setBoardCoverImage {
-    [self.board fetchIfNeeded];
+    [self.board fetchIfNeededInBackground];
     Board *currentBoard = self.board;
     self.coverImage.layer.cornerRadius = 20;
     if(self.board.coverImage) {

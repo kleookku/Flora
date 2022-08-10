@@ -281,6 +281,9 @@
                                                     <color key="tintColor" red="0.57907736440000002" green="0.58161794590000004" blue="0.58923969070000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" image="bubble.right" catalog="system" title=""/>
+                                                    <connections>
+                                                        <action selector="didTapComments:" destination="cTj-uQ-doj" eventType="touchUpInside" id="k54-iX-df3"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H0K-AH-HfA">
                                                     <rect key="frame" x="284" y="74" width="100" height="100"/>
@@ -400,6 +403,7 @@
                         <outlet property="tableView" destination="vRa-sr-nN7" id="Kf5-bl-SWL"/>
                         <segue destination="1ej-w4-MZv" kind="presentation" identifier="FeedToPlant" id="dNX-vT-LQX"/>
                         <segue destination="xeW-Us-O9Q" kind="presentation" identifier="FeedToProfile" id="bEM-CY-N0O"/>
+                        <segue destination="tdN-Vj-VAo" kind="presentation" identifier="FeedToComments" id="Vgu-em-jRy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jur-Yv-U4a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -927,7 +931,7 @@
                                     <constraint firstAttribute="width" constant="23" id="FQ7-5Z-FXW"/>
                                     <constraint firstAttribute="height" constant="18" id="WfQ-JI-CQ1"/>
                                 </constraints>
-                                <color key="tintColor" red="0.57907736440000002" green="0.58161794590000004" blue="0.58923969070000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system" title=""/>
                                 <connections>
@@ -974,9 +978,12 @@
                                     <constraint firstAttribute="height" constant="20" id="XR5-Yy-sB8"/>
                                     <constraint firstAttribute="width" constant="24" id="nUw-4f-lag"/>
                                 </constraints>
-                                <color key="tintColor" red="0.57907736440000002" green="0.58161794590000004" blue="0.58923969070000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="bubble.right" catalog="system" title=""/>
+                                <connections>
+                                    <action selector="didTapComment:" destination="buC-LH-GHg" eventType="touchUpInside" id="Imb-SG-dQk"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ppa-VZ-C38"/>
@@ -1021,11 +1028,13 @@
                         <outlet property="dateCreated" destination="9IJ-k8-oqT" id="Bzz-HC-7P6"/>
                         <outlet property="likeButton" destination="wt7-TZ-oyz" id="kXi-25-ykS"/>
                         <outlet property="likeCount" destination="J5g-2p-3Il" id="RZp-Yi-dsB"/>
+                        <outlet property="plantButton" destination="wlF-tF-HKT" id="Ej5-ar-gjf"/>
                         <outlet property="plantImage" destination="mhJ-RP-qVF" id="6HS-vc-yuW"/>
                         <outlet property="postImage" destination="a23-jP-Uic" id="0FE-Yc-7yl"/>
                         <outlet property="profileImage" destination="gjs-dK-xqT" id="Ihp-cF-nPU"/>
                         <outlet property="username" destination="09s-MU-GYQ" id="TfE-xv-0rv"/>
                         <segue destination="1ej-w4-MZv" kind="show" identifier="PostToPlant" id="cCH-1l-Q3i"/>
+                        <segue destination="tdN-Vj-VAo" kind="presentation" identifier="PostToComments" id="j1R-Z3-b5z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Yv-q1-u4W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1620,6 +1629,155 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-2923" y="163"/>
+        </scene>
+        <!--Comments View Controller-->
+        <scene sceneID="sN9-1d-IwX">
+            <objects>
+                <viewController id="tdN-Vj-VAo" customClass="CommentsViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bub-G7-xOd">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="OoG-eS-Obo">
+                                <rect key="frame" x="0.0" y="111" width="414" height="664"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommentCell" rowHeight="70" id="qOy-nv-HCS" customClass="CommentCell">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="70"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qOy-nv-HCS" id="9WM-3n-FW8">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="user" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j2q-Y8-qhV">
+                                                    <rect key="frame" x="60" y="13" width="32" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3h" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fmp-gn-MDO">
+                                                    <rect key="frame" x="60" y="43" width="16" height="16"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="text" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HN6-WT-gbo">
+                                                    <rect key="frame" x="100" y="13" width="26" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0G0-z7-x0o" customClass="PFImageView">
+                                                    <rect key="frame" x="11" y="7" width="40" height="40"/>
+                                                    <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="Ekm-b4-Bet"/>
+                                                        <constraint firstAttribute="width" constant="40" id="NRQ-r2-1HC"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K5b-qt-W1g">
+                                                    <rect key="frame" x="11" y="7" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="hMz-cr-HGI"/>
+                                                        <constraint firstAttribute="height" constant="40" id="tNo-eC-IGx"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" title=""/>
+                                                    <connections>
+                                                        <action selector="didTapProfile:" destination="qOy-nv-HCS" eventType="touchUpInside" id="Hpp-T3-Sft"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="K5b-qt-W1g" firstAttribute="bottom" secondItem="0G0-z7-x0o" secondAttribute="bottom" id="9YT-Eh-W0F"/>
+                                                <constraint firstItem="K5b-qt-W1g" firstAttribute="leading" secondItem="9WM-3n-FW8" secondAttribute="leading" constant="11" id="9ko-ka-0dC"/>
+                                                <constraint firstItem="HN6-WT-gbo" firstAttribute="leading" secondItem="j2q-Y8-qhV" secondAttribute="trailing" constant="8" symbolic="YES" id="HHC-JP-lot"/>
+                                                <constraint firstItem="j2q-Y8-qhV" firstAttribute="leading" secondItem="K5b-qt-W1g" secondAttribute="trailing" constant="9" id="HZR-0f-FtA"/>
+                                                <constraint firstAttribute="bottom" secondItem="fmp-gn-MDO" secondAttribute="bottom" constant="11" id="Np1-Ay-KMk"/>
+                                                <constraint firstItem="HN6-WT-gbo" firstAttribute="centerY" secondItem="j2q-Y8-qhV" secondAttribute="centerY" id="Vn2-LP-PZh"/>
+                                                <constraint firstItem="j2q-Y8-qhV" firstAttribute="top" secondItem="9WM-3n-FW8" secondAttribute="top" constant="13" id="W0d-MH-ECJ"/>
+                                                <constraint firstItem="K5b-qt-W1g" firstAttribute="leading" secondItem="0G0-z7-x0o" secondAttribute="leading" id="Xxb-n4-VHc"/>
+                                                <constraint firstItem="fmp-gn-MDO" firstAttribute="top" secondItem="j2q-Y8-qhV" secondAttribute="bottom" constant="12" id="cuc-d7-h5e"/>
+                                                <constraint firstItem="K5b-qt-W1g" firstAttribute="top" secondItem="9WM-3n-FW8" secondAttribute="top" constant="7" id="de2-3I-RTW"/>
+                                                <constraint firstItem="fmp-gn-MDO" firstAttribute="leading" secondItem="j2q-Y8-qhV" secondAttribute="leading" id="ghq-u3-UYJ"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="HN6-WT-gbo" secondAttribute="trailing" constant="27" id="wzO-L7-1Kz"/>
+                                                <constraint firstItem="K5b-qt-W1g" firstAttribute="trailing" secondItem="0G0-z7-x0o" secondAttribute="trailing" id="xhi-8u-rco"/>
+                                                <constraint firstItem="K5b-qt-W1g" firstAttribute="top" secondItem="0G0-z7-x0o" secondAttribute="top" id="xmf-QS-r1Q"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="createdAt" destination="fmp-gn-MDO" id="5d3-9L-dxr"/>
+                                            <outlet property="profileImage" destination="0G0-z7-x0o" id="WXY-4h-iXl"/>
+                                            <outlet property="text" destination="HN6-WT-gbo" id="abo-Wh-pie"/>
+                                            <outlet property="username" destination="j2q-Y8-qhV" id="BWE-X5-mxg"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Eh1-TI-2hw">
+                                <rect key="frame" x="56" y="69" width="303" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ecW-zn-LSJ" customClass="PFImageView">
+                                <rect key="frame" x="8" y="66" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="BIU-ZA-9ru"/>
+                                    <constraint firstAttribute="width" constant="40" id="WXS-3B-IJB"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FCd-Ti-K2G">
+                                <rect key="frame" x="359" y="70.5" width="55" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="55" id="R1c-JX-2LQ"/>
+                                    <constraint firstAttribute="height" constant="31" id="tls-9F-WTS"/>
+                                </constraints>
+                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Post">
+                                    <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="12"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="didTapPost:" destination="tdN-Vj-VAo" eventType="touchUpInside" id="4gY-Eq-jua"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Bbt-Ct-fxI"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="OoG-eS-Obo" firstAttribute="leading" secondItem="Bbt-Ct-fxI" secondAttribute="leading" id="GxP-pY-V2r"/>
+                            <constraint firstItem="ecW-zn-LSJ" firstAttribute="leading" secondItem="Bbt-Ct-fxI" secondAttribute="leading" constant="12" id="H9r-f5-Uap"/>
+                            <constraint firstItem="Bbt-Ct-fxI" firstAttribute="bottom" secondItem="OoG-eS-Obo" secondAttribute="bottom" constant="67" id="JYf-v1-pFs"/>
+                            <constraint firstItem="Eh1-TI-2hw" firstAttribute="leading" secondItem="ecW-zn-LSJ" secondAttribute="trailing" constant="4" id="KJs-Hb-f8d"/>
+                            <constraint firstItem="OoG-eS-Obo" firstAttribute="top" secondItem="Eh1-TI-2hw" secondAttribute="bottom" constant="8" symbolic="YES" id="R32-13-AQ2"/>
+                            <constraint firstItem="FCd-Ti-K2G" firstAttribute="leading" secondItem="Eh1-TI-2hw" secondAttribute="trailing" id="XAS-RQ-o1M"/>
+                            <constraint firstItem="Bbt-Ct-fxI" firstAttribute="trailing" secondItem="FCd-Ti-K2G" secondAttribute="trailing" id="btU-s4-pQT"/>
+                            <constraint firstItem="ecW-zn-LSJ" firstAttribute="centerY" secondItem="Eh1-TI-2hw" secondAttribute="centerY" id="ltm-PC-qoJ"/>
+                            <constraint firstItem="Bbt-Ct-fxI" firstAttribute="trailing" secondItem="OoG-eS-Obo" secondAttribute="trailing" id="rmL-xf-1zL"/>
+                            <constraint firstItem="Eh1-TI-2hw" firstAttribute="top" secondItem="Bbt-Ct-fxI" secondAttribute="top" constant="25" id="yUr-zO-TVN"/>
+                            <constraint firstItem="FCd-Ti-K2G" firstAttribute="centerY" secondItem="Eh1-TI-2hw" secondAttribute="centerY" id="yf6-YP-0he"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="pLE-Hu-phD" appends="YES" id="V3y-gE-VjP"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="commentField" destination="Eh1-TI-2hw" id="JHp-aF-ZpD"/>
+                        <outlet property="postButton" destination="FCd-Ti-K2G" id="wZT-X1-Q6u"/>
+                        <outlet property="profileImage" destination="ecW-zn-LSJ" id="V8A-fm-Jid"/>
+                        <outlet property="tableView" destination="OoG-eS-Obo" id="8fS-Ia-kHT"/>
+                        <segue destination="xeW-Us-O9Q" kind="show" identifier="CommentToProfile" id="xVy-SD-2dZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vvz-jZ-Zly" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="pLE-Hu-phD">
+                    <connections>
+                        <action selector="didTap:" destination="tdN-Vj-VAo" id="pIE-OO-wcM"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="-1694.2028985507247" y="147.99107142857142"/>
         </scene>
         <!--Board View Controller-->
         <scene sceneID="ch4-Np-iGw">
@@ -2546,8 +2704,9 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="iGa-ZO-Xe0"/>
-        <segue reference="dNX-vT-LQX"/>
-        <segue reference="bEM-CY-N0O"/>
+        <segue reference="j1R-Z3-b5z"/>
+        <segue reference="cCH-1l-Q3i"/>
+        <segue reference="xVy-SD-2dZ"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.uturn.backward" catalog="system" width="128" height="112"/>
