@@ -11,6 +11,7 @@
 
 @implementation Plant
 
+@dynamic objectId;
 @dynamic name;
 @dynamic image;
 @dynamic moistureUse;

@@ -9,6 +9,7 @@
 
 @implementation Board
 
+@dynamic objectId;
 @dynamic name;
 @dynamic plantsArray;
 @dynamic user;

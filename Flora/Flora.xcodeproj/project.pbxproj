@@ -49,6 +49,11 @@
 		F488CACD288B6B7B0031B781 /* UserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F488CACC288B6B7B0031B781 /* UserCell.m */; };
 		F49755B52881E046008050BB /* AddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F49755B42881E046008050BB /* AddViewController.m */; };
 		F49755B82881E458008050BB /* AddPlantCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F49755B72881E458008050BB /* AddPlantCell.m */; };
+		F4B2679628947234002320AE /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B2679528947234002320AE /* FeedViewController.m */; };
+		F4B267992894727A002320AE /* PostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B267982894727A002320AE /* PostCell.m */; };
+		F4B2679C289472F4002320AE /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B2679B289472F4002320AE /* Post.m */; };
+		F4B2679F28947ADE002320AE /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B2679E28947ADE002320AE /* ComposeViewController.m */; };
+		F4B267A228947AFB002320AE /* ComposePlantCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B267A128947AFB002320AE /* ComposePlantCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,8 +99,8 @@
 		F445ED062875FD410084BDBB /* Board.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Board.m; sourceTree = "<group>"; };
 		F445ED0B287606600084BDBB /* ResultsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResultsViewController.h; sourceTree = "<group>"; };
 		F445ED0C287606600084BDBB /* ResultsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResultsViewController.m; sourceTree = "<group>"; };
-		F445ED0E28760C530084BDBB /* CardView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CardView.h; path = Flora/Subviews/CardView.h; sourceTree = SOURCE_ROOT; };
-		F445ED0F28760C530084BDBB /* CardView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CardView.m; path = Flora/Subviews/CardView.m; sourceTree = SOURCE_ROOT; };
+		F445ED0E28760C530084BDBB /* CardView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CardView.h; path = "Flora/View Controllers/CardView.h"; sourceTree = SOURCE_ROOT; };
+		F445ED0F28760C530084BDBB /* CardView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CardView.m; path = "Flora/View Controllers/CardView.m"; sourceTree = SOURCE_ROOT; };
 		F445ED112877438E0084BDBB /* SearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		F445ED122877438E0084BDBB /* SearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		F445ED142877A9A10084BDBB /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
@@ -149,8 +154,18 @@
 		F488CACC288B6B7B0031B781 /* UserCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserCell.m; sourceTree = "<group>"; };
 		F49755B32881E046008050BB /* AddViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddViewController.h; sourceTree = "<group>"; };
 		F49755B42881E046008050BB /* AddViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddViewController.m; sourceTree = "<group>"; };
-		F49755B62881E458008050BB /* AddPlantCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AddPlantCell.h; path = Flora/Subviews/AddPlantCell.h; sourceTree = SOURCE_ROOT; };
-		F49755B72881E458008050BB /* AddPlantCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AddPlantCell.m; path = Flora/Subviews/AddPlantCell.m; sourceTree = SOURCE_ROOT; };
+		F49755B62881E458008050BB /* AddPlantCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AddPlantCell.h; path = "Flora/View Controllers/AddPlantCell.h"; sourceTree = SOURCE_ROOT; };
+		F49755B72881E458008050BB /* AddPlantCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AddPlantCell.m; path = "Flora/View Controllers/AddPlantCell.m"; sourceTree = SOURCE_ROOT; };
+		F4B2679428947234002320AE /* FeedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedViewController.h; sourceTree = "<group>"; };
+		F4B2679528947234002320AE /* FeedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedViewController.m; sourceTree = "<group>"; };
+		F4B267972894727A002320AE /* PostCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostCell.h; sourceTree = "<group>"; };
+		F4B267982894727A002320AE /* PostCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostCell.m; sourceTree = "<group>"; };
+		F4B2679A289472F4002320AE /* Post.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Post.h; sourceTree = "<group>"; };
+		F4B2679B289472F4002320AE /* Post.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
+		F4B2679D28947ADE002320AE /* ComposeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComposeViewController.h; sourceTree = "<group>"; };
+		F4B2679E28947ADE002320AE /* ComposeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComposeViewController.m; sourceTree = "<group>"; };
+		F4B267A028947AFB002320AE /* ComposePlantCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComposePlantCell.h; sourceTree = "<group>"; };
+		F4B267A128947AFB002320AE /* ComposePlantCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComposePlantCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +228,8 @@
 				F445ED062875FD410084BDBB /* Board.m */,
 				F41A29E9286E4F7100D2DAB9 /* Plant.h */,
 				F41A29EA286E4F7100D2DAB9 /* Plant.m */,
+				F4B2679A289472F4002320AE /* Post.h */,
+				F4B2679B289472F4002320AE /* Post.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -230,24 +247,52 @@
 				F445ED122877438E0084BDBB /* SearchViewController.m */,
 				F445ED0B287606600084BDBB /* ResultsViewController.h */,
 				F445ED0C287606600084BDBB /* ResultsViewController.m */,
+				F445ED0E28760C530084BDBB /* CardView.h */,
+				F445ED0F28760C530084BDBB /* CardView.m */,
 				F445ED142877A9A10084BDBB /* DetailViewController.h */,
 				F445ED152877A9A10084BDBB /* DetailViewController.m */,
 				F456EAA3287CD5DE0067B05C /* LikesViewController.h */,
 				F456EAA4287CD5DE0067B05C /* LikesViewController.m */,
+				F456EAA6287CDA280067B05C /* LikesCell.h */,
+				F456EAA7287CDA280067B05C /* LikesCell.m */,
+				F44CF453287E21D10076AB4B /* BoardCell.h */,
+				F44CF454287E21D10076AB4B /* BoardCell.m */,
 				F44CF450287E1A890076AB4B /* SelectViewController.h */,
 				F44CF451287E1A890076AB4B /* SelectViewController.m */,
+				F44CF456287E251A0076AB4B /* SelectBoardCell.h */,
+				F44CF457287E251A0076AB4B /* SelectBoardCell.m */,
 				F44CF45A287F2F420076AB4B /* BoardViewController.h */,
 				F44CF45B287F2F420076AB4B /* BoardViewController.m */,
+				F44B96BE287F3A0100A6EC78 /* PlantCell.h */,
+				F44B96BF287F3A0100A6EC78 /* PlantCell.m */,
 				F49755B32881E046008050BB /* AddViewController.h */,
 				F49755B42881E046008050BB /* AddViewController.m */,
+				F49755B62881E458008050BB /* AddPlantCell.h */,
+				F49755B72881E458008050BB /* AddPlantCell.m */,
 				F488CABF288B4F840031B781 /* FollowViewController.h */,
 				F488CAC0288B4F840031B781 /* FollowViewController.m */,
+				F488CACB288B6B7B0031B781 /* UserCell.h */,
+				F488CACC288B6B7B0031B781 /* UserCell.m */,
 				F488CAC2288B4FDB0031B781 /* UserSearchViewController.h */,
 				F488CAC3288B4FDB0031B781 /* UserSearchViewController.m */,
+				F488CAC5288B56300031B781 /* UserSearchCell.h */,
+				F488CAC6288B56300031B781 /* UserSearchCell.m */,
 				F4499EF7288F5BC600C8169E /* UserProfileViewController.h */,
 				F4499EF8288F5BC600C8169E /* UserProfileViewController.m */,
+				F4499EFA288F6B9100C8169E /* ProfileBoardCell.h */,
+				F4499EFB288F6B9100C8169E /* ProfileBoardCell.m */,
 				F4024E7428934C790054D6BB /* NameSearchViewController.h */,
 				F4024E7528934C790054D6BB /* NameSearchViewController.m */,
+				F4024E7728934DEE0054D6BB /* NameSearchCell.h */,
+				F4024E7828934DEE0054D6BB /* NameSearchCell.m */,
+				F4B2679428947234002320AE /* FeedViewController.h */,
+				F4B2679528947234002320AE /* FeedViewController.m */,
+				F4B267972894727A002320AE /* PostCell.h */,
+				F4B267982894727A002320AE /* PostCell.m */,
+				F4B2679D28947ADE002320AE /* ComposeViewController.h */,
+				F4B2679E28947ADE002320AE /* ComposeViewController.m */,
+				F4B267A028947AFB002320AE /* ComposePlantCell.h */,
+				F4B267A128947AFB002320AE /* ComposePlantCell.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -259,33 +304,6 @@
 				F41A29F5286E509200D2DAB9 /* APIManager.m */,
 			);
 			path = API;
-			sourceTree = "<group>";
-		};
-		F44CF459287E25210076AB4B /* Subviews */ = {
-			isa = PBXGroup;
-			children = (
-				F488CACB288B6B7B0031B781 /* UserCell.h */,
-				F488CACC288B6B7B0031B781 /* UserCell.m */,
-				F488CAC5288B56300031B781 /* UserSearchCell.h */,
-				F488CAC6288B56300031B781 /* UserSearchCell.m */,
-				F456EAA6287CDA280067B05C /* LikesCell.h */,
-				F456EAA7287CDA280067B05C /* LikesCell.m */,
-				F44CF453287E21D10076AB4B /* BoardCell.h */,
-				F44CF454287E21D10076AB4B /* BoardCell.m */,
-				F445ED0E28760C530084BDBB /* CardView.h */,
-				F445ED0F28760C530084BDBB /* CardView.m */,
-				F44CF456287E251A0076AB4B /* SelectBoardCell.h */,
-				F44CF457287E251A0076AB4B /* SelectBoardCell.m */,
-				F44B96BE287F3A0100A6EC78 /* PlantCell.h */,
-				F44B96BF287F3A0100A6EC78 /* PlantCell.m */,
-				F49755B62881E458008050BB /* AddPlantCell.h */,
-				F49755B72881E458008050BB /* AddPlantCell.m */,
-				F4499EFA288F6B9100C8169E /* ProfileBoardCell.h */,
-				F4499EFB288F6B9100C8169E /* ProfileBoardCell.m */,
-				F4024E7728934DEE0054D6BB /* NameSearchCell.h */,
-				F4024E7828934DEE0054D6BB /* NameSearchCell.m */,
-			);
-			path = Subviews;
 			sourceTree = "<group>";
 		};
 		F47EE852286E4A8D00E3AA76 = {
@@ -313,7 +331,6 @@
 		F47EE85D286E4A8D00E3AA76 /* Flora */ = {
 			isa = PBXGroup;
 			children = (
-				F44CF459287E25210076AB4B /* Subviews */,
 				F41A29F7286E509800D2DAB9 /* API */,
 				F41A29ED286E4F7E00D2DAB9 /* View Controllers */,
 				F41A29EC286E4F7600D2DAB9 /* Models */,
@@ -627,6 +644,8 @@
 			files = (
 				F488CAC1288B4F840031B781 /* FollowViewController.m in Sources */,
 				F445ED072875FD410084BDBB /* Board.m in Sources */,
+				F4B267A228947AFB002320AE /* ComposePlantCell.m in Sources */,
+				F4B2679628947234002320AE /* FeedViewController.m in Sources */,
 				F456EAA8287CDA280067B05C /* LikesCell.m in Sources */,
 				F47EE860286E4A8D00E3AA76 /* AppDelegate.m in Sources */,
 				F44CF455287E21D10076AB4B /* BoardCell.m in Sources */,
@@ -635,12 +654,14 @@
 				F49755B82881E458008050BB /* AddPlantCell.m in Sources */,
 				F44CF452287E1A890076AB4B /* SelectViewController.m in Sources */,
 				F445ED1C2878CF7F0084BDBB /* SignupViewController.m in Sources */,
+				F4B267992894727A002320AE /* PostCell.m in Sources */,
 				F41A29F6286E509200D2DAB9 /* APIManager.m in Sources */,
 				F445ED0D287606600084BDBB /* ResultsViewController.m in Sources */,
 				F44B96C0287F3A0100A6EC78 /* PlantCell.m in Sources */,
 				F488CACD288B6B7B0031B781 /* UserCell.m in Sources */,
 				F4499EF9288F5BC600C8169E /* UserProfileViewController.m in Sources */,
 				F4499EFC288F6B9100C8169E /* ProfileBoardCell.m in Sources */,
+				F4B2679F28947ADE002320AE /* ComposeViewController.m in Sources */,
 				F41A29FD286E646D00D2DAB9 /* LoginViewController.m in Sources */,
 				F4024E7928934DEE0054D6BB /* NameSearchCell.m in Sources */,
 				F41A29EB286E4F7100D2DAB9 /* Plant.m in Sources */,
@@ -650,6 +671,7 @@
 				F488CAC4288B4FDB0031B781 /* UserSearchViewController.m in Sources */,
 				F44CF458287E251A0076AB4B /* SelectBoardCell.m in Sources */,
 				F47EE871286E4A8E00E3AA76 /* main.m in Sources */,
+				F4B2679C289472F4002320AE /* Post.m in Sources */,
 				F49755B52881E046008050BB /* AddViewController.m in Sources */,
 				F488CAC7288B56300031B781 /* UserSearchCell.m in Sources */,
 				F445ED192878B48F0084BDBB /* ProfileViewController.m in Sources */,
