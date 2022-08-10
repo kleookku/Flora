@@ -9,6 +9,7 @@
 #import "AddPlantCell.h"
 #import "Plant.h"
 #import "Parse/PFImageView.h"
+#import "APIManager.h"
 
 @interface AddViewController () <UICollectionViewDataSource, AddPlantCellDelegate>
 
@@ -45,9 +46,8 @@
     
     [self.board saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             if(error) {
-                NSLog(@"Error saving plants to board: %@", error.localizedDescription);
+                [self presentViewController:[APIManager errorAlertWithTitle:@"Error saving plants to board" withMessage:error.localizedDescription] animated:YES completion:nil];
             } else {
-                NSLog(@"Successfully saved plants to board!");
                 [self dismissViewControllerAnimated:YES completion:nil];
             }
     }];
@@ -93,16 +93,14 @@
     query.limit = 1;
     
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable results, NSError * _Nullable error) {
-        if(results) {
-            if(results.count > 0) {
+        if(error){
+            [self presentViewController:[APIManager errorAlertWithTitle:@"Error retrieving liked plants" withMessage:error.localizedDescription] animated:YES completion:nil];
+        } else if (results.count > 0) {
                 Plant *plant = (Plant*)results[0];
                 cell.plantId = plant.plantId;
                 cell.plantImage.file = plant.image;
                 [cell.plantImage loadInBackground];
                 cell.plantName.text = plant.name;
-            }
-        } else {
-            NSLog(@"Error getting liked plants: %@", error.localizedDescription);
         }
     }];
     return cell;

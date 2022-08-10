@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype)shared;
 
++ (UIAlertController *)errorAlertWithTitle:(NSString *)title withMessage:(NSString *)message;
+
 + (NSData *)searchBody;
 
 - (void)searchWithShadeLevel:(NSArray *)shade withMoistureUse:(NSArray *)moist withMinTemperature:(NSArray *)temp offsetBy:(NSUInteger)offset completion:(void(^)(NSArray *results, NSError *error))completion;

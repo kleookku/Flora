@@ -41,6 +41,13 @@
     return sharedManager;
 }
 
++ (UIAlertController *)errorAlertWithTitle:(NSString *)title withMessage:(NSString *)message {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+    [alert addAction:okAction];
+    return alert;
+}
+
 #pragma mark - USDA API
 
 + (NSData *)searchBody {
@@ -92,7 +99,6 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if(error) {
             NSLog(@"Error getting search results: %@", error.localizedDescription);
-        } else {
         }
     }];
 }
@@ -227,8 +233,6 @@
     [Board saveBoard:boardName withPlants:@[] forUser:user.username withNotes:@"" withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
         if(error){
             NSLog(@"Error saving board: %@", error.localizedDescription);
-        } else {
-            NSLog(@"Successfully saved board!");
         }
     }];
     
@@ -238,8 +242,6 @@
     [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if(error) {
             NSLog(@"Error: %@", error.localizedDescription);
-        } else {
-            NSLog(@"Saved!");
         }
     }];
 }
@@ -252,8 +254,6 @@
     [Follow saveFollow:user.username withFollower:currentUser.username withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
         if(error) {
             NSLog(@"Error saving follow: %@", error.localizedDescription);
-        } else {
-            NSLog(@"Successfully saved follow!");
         }
     }];
 }
@@ -305,8 +305,6 @@
         [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             if(error) {
                 NSLog(@"Error: %@", error.localizedDescription);
-            } else {
-                NSLog(@"Saved!");
             }
         }];
         
@@ -322,8 +320,6 @@
         [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             if(error) {
                 NSLog(@"Error: %@", error.localizedDescription);
-            } else {
-                NSLog(@"Saved!");
             }
         }];
         
@@ -341,8 +337,6 @@
         [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             if(error) {
                 NSLog(@"Error: %@", error.localizedDescription);
-            } else {
-                NSLog(@"Saved!");
             }
         }];
     }

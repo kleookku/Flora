@@ -12,6 +12,7 @@
 #import "ComposePlantCell.h"
 #import "Post.h"
 #import "UITextView_Placeholder/UITextView+Placeholder.h"
+#import "APIManager.h"
 
 @interface ComposeViewController () <UISearchBarDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, ComposePlantCellDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *shareButton;
@@ -63,12 +64,19 @@
 }
 
 - (IBAction)didTapShare:(id)sender {
-    [Post postUserImage:self.postImage.image withCaption:self.captionTextView.text withPlant:self.selectedPlant withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-        if(!error) {
-            NSLog(@"Successfully shared post!");
-            [self dismissViewControllerAnimated:YES completion:nil];
-        }
-    }];
+    if(self.selectedPlant && self.postImage.image) {
+        [Post postUserImage:self.postImage.image withCaption:self.captionTextView.text withPlant:self.selectedPlant withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+                if(error) {
+                    [self presentViewController:[APIManager errorAlertWithTitle:@"Error sharing post" withMessage:error.localizedDescription] animated:YES completion:nil];
+                } else {
+                    [self.delegate didPost];
+                    NSLog(@"Successfully shared post!");
+                    [self dismissViewControllerAnimated:YES completion:nil];
+                }
+        }];
+    } else {
+        [self presentViewController:self.noPlantWarning animated:YES completion:nil];
+    }
 }
 - (IBAction)tapped:(id)sender {
     [self.view endEditing:YES];
@@ -101,7 +109,7 @@
     
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if(error) {
-            NSLog(@"Error getting search results: %@", error.localizedDescription);
+            [self presentViewController:[APIManager errorAlertWithTitle:@"Error getting plants" withMessage:error.localizedDescription] animated:YES completion:nil];
         } else {
             NSMutableArray *results = [[NSMutableArray alloc] init];
             for(Plant *plant in objects){

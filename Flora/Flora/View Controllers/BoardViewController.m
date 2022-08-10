@@ -11,6 +11,7 @@
 #import "DetailViewController.h"
 #import "Plant.h"
 #import "UITextView_Placeholder/UITextView+Placeholder.h"
+#import "APIManager.h"
 
 @interface BoardViewController () <UICollectionViewDataSource, PlantCellDelegate, AddViewControllerDelegate, UITextViewDelegate>
 
@@ -90,7 +91,7 @@
             Plant *plant = (Plant *)results[0];
             cell.plant = plant;
         } else if(error) {
-            NSLog(@"%@", error.localizedDescription);
+            [self presentViewController:[APIManager errorAlertWithTitle:@"Error retrieving plants" withMessage:error.localizedDescription] animated:YES completion:nil];
         }
     }];
     return cell;
@@ -120,9 +121,8 @@
     self.board.notes = textView.text;
     [self.board saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if(error) {
-            NSLog(@"Error updating board description: %@", error.localizedDescription);
+            [self presentViewController:[APIManager errorAlertWithTitle:@"Error updating board description" withMessage:error.localizedDescription] animated:YES completion:nil];
         } else {
-            NSLog(@"Successfully saved board description!");
             [self.delegate stoppedEdit];
         }
     }];
@@ -137,9 +137,7 @@
     self.board[@"plantsArray"] = plantsArray;
     [self.board saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if(error) {
-            NSLog(@"Error removing plant from board %@", error.localizedDescription);
-        } else {
-            NSLog(@"Removed plant from board!");
+            [self presentViewController:[APIManager errorAlertWithTitle:@"Error removing plant from board" withMessage:error.localizedDescription] animated:YES completion:nil];
         }
     }];
     
@@ -184,9 +182,7 @@
         user[@"boards"] = boardsArray;
         [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             if(error) {
-                NSLog(@"Error saving user's board: %@", error.localizedDescription);
-            } else {
-                NSLog(@"Successfully saved board for user!");
+                [self presentViewController:[APIManager errorAlertWithTitle:@"Error saving board" withMessage:error.localizedDescription] animated:YES completion:nil];
             }
         }];
         

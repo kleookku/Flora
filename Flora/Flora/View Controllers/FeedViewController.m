@@ -86,7 +86,7 @@
     
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if(error) {
-            NSLog(@"Error getting following: %@", error.localizedDescription);
+            [self presentViewController:[APIManager errorAlertWithTitle:@"Error getting followed users" withMessage:error.localizedDescription] animated:YES completion:nil];
         } else {
             NSMutableArray *following = [[NSMutableArray alloc] init];
             
@@ -126,7 +126,7 @@
             [self.tableView reloadData];
             [self.refreshControl endRefreshing];
         } else {
-            NSLog(@"%@", error.localizedDescription);
+            [self presentViewController:[APIManager errorAlertWithTitle:@"Error getting posts" withMessage:error.localizedDescription] animated:YES completion:nil];
         }
     }];
 }

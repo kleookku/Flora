@@ -9,7 +9,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol ProfileViewControllerDelegate
+
+- (void)updateInformation;
+
+@end
+
 @interface ProfileViewController : UIViewController
+
+@property (nonatomic, strong) id<ProfileViewControllerDelegate> delegate;
 
 @end
 

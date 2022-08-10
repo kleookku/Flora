@@ -7,6 +7,7 @@
 
 #import "SignupViewController.h"
 #import "Parse/Parse.h"
+#import "APIManager.h"
 
 @interface SignupViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
@@ -91,24 +92,15 @@
         PFUser *newUser = [PFUser user];
         
         // set user properties
-        newUser.username = [self.usernameField.text lowercaseString];
+        newUser.username = [[self.usernameField.text lowercaseString] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];;
         newUser.email = self.emailField.text;
         newUser.password = self.passwordField.text;
         
         // call sign up function on the object
         [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
-            if (error != nil) {
-                NSLog(@"Error: %@", error.localizedDescription);
-                [self displayErrorAlertWithMessage:error.localizedDescription];
-                
-                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
-                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-                [alert addAction:okAction];
-                [self presentViewController:alert animated:YES completion:nil];
-                
+            if (error) {
+                [self presentViewController:[APIManager errorAlertWithTitle:@"Signup failed" withMessage:error.localizedDescription] animated:YES completion:nil];
             } else {
-                NSLog(@"User registered successfully");
-                
                 self.usernameField.text = @"";
                 self.passwordField.text = @"";
                 

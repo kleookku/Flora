@@ -52,7 +52,6 @@
                                 NSLog(@"Error saving plant: %@", error.localizedDescription);
                             } else {
                                 NSLog(@"Successfully saved plant!");
-
                             }
             }];
         }

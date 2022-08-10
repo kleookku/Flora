@@ -11,6 +11,7 @@
 #import "Follow.h"
 #import "UserSearchViewController.h"
 #import "UserProfileViewController.h"
+#import "APIManager.h"
 
 @interface FollowViewController () <UITableViewDelegate, UITableViewDataSource, UserCellDelegate, UserSearchViewControllerDelegate>
 
@@ -109,8 +110,8 @@
     
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if(error){
-            NSLog(@"Error getting user %@", error.localizedDescription);
-        } else if(objects.count >0) {
+            [self presentViewController:[APIManager errorAlertWithTitle:@"Error finding user" withMessage:error.localizedDescription] animated:YES completion:nil];
+        } else if (objects.count >0) {
             PFUser *user = (PFUser *)objects[0];
             cell.user = user;
         }
@@ -126,7 +127,7 @@
     
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if(error) {
-            NSLog(@"Error getting followers: %@", error.localizedDescription);
+            [self presentViewController:[APIManager errorAlertWithTitle:@"Error finding followers" withMessage:error.localizedDescription] animated:YES completion:nil];
         } else {
             NSMutableArray *followers = [[NSMutableArray alloc] init];
             
@@ -146,7 +147,7 @@
     
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if(error) {
-            NSLog(@"Error getting following: %@", error.localizedDescription);
+            [self presentViewController:[APIManager errorAlertWithTitle:@"Error finding following" withMessage:error.localizedDescription] animated:YES completion:nil];
         } else {
             NSMutableArray *following = [[NSMutableArray alloc] init];
             

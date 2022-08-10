@@ -87,18 +87,14 @@
     if([self.usernameField.text isEqual:@""] || [self.passwordField.text isEqual:@""]) {
         [self presentViewController:self.emptyFieldsAlert animated:YES completion:^{}];
     } else {
-        NSString *username = self.usernameField.text;
+        NSString *username = [self.usernameField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
         NSString *password = self.passwordField.text;
         
         [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * user, NSError *  error) {
             if (error) {
-                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Login failed" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
-                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-                [alert addAction:okAction];
-                [self presentViewController:alert animated:YES completion:nil];
-            } else {
-                NSLog(@"User logged in successfully");
+                [self presentViewController:[APIManager errorAlertWithTitle:@"Login failed" withMessage:error.localizedDescription] animated:YES completion:nil];
                 
+            } else {
                 self.usernameField.text = @"";
                 self.passwordField.text = @"";
                 

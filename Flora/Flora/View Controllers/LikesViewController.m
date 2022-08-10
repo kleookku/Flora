@@ -94,9 +94,7 @@
         [self updateBoards];
         
     }];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        NSLog(@"Cancelled");
-    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
     
     [self.createBoardAlert addAction:confirmAction];
     [self.createBoardAlert addAction:cancelAction];
@@ -164,10 +162,11 @@
     [self.boardsCollectionView reloadData];
     
     [self.user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        if(error)
-            NSLog(@"Error deleting board from user's boards: %@", error.localizedDescription);
-        else
-            NSLog(@"Successfuly deleted board from user's boards!");
+        if(error) {
+            [self presentViewController:[APIManager errorAlertWithTitle:@"Error deleting board" withMessage:error.localizedDescription] animated:YES completion:nil];
+
+        }
+        
     }];
 }
 
@@ -177,9 +176,7 @@
 
 #pragma mark - BoardViewControllerDelegate
 
--(void) tappedEdit {
-    NSLog(@"Board is being edited");
-}
+- (void) tappedEdit {}
 
 - (void) stoppedEdit {
     [self updateBoards];
@@ -203,10 +200,10 @@
     [self.likedCollectionView reloadData];
     
     [self.user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        if(error)
-            NSLog(@"Error deleting plant from user's likes: %@", error.localizedDescription);
-        else
-            NSLog(@"Successfuly deleted plant from user's likes!");
+        if(error) {
+            [self presentViewController:[APIManager errorAlertWithTitle:@"Error removing plant from likes" withMessage:error.localizedDescription] animated:YES completion:nil];
+
+        }
     }];
 }
 
@@ -245,7 +242,8 @@
                     cell.plant = plant;
                 }
             } else {
-                NSLog(@"%@", error.localizedDescription);
+                [self presentViewController:[APIManager errorAlertWithTitle:@"Error retrieving liked plants" withMessage:error.localizedDescription] animated:YES completion:nil];
+
             }
         }];
         
@@ -262,12 +260,13 @@
         [self.delegates addObject:cell];
         
         [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable results, NSError * _Nullable error) {
-            if(results) {
-                if (results.count > 0) {
-                    Board *board = (Board *)results[0];
-                    cell.board = board;
-                }
+            if(error) {
+                [self presentViewController:[APIManager errorAlertWithTitle:@"Error retrieving boards" withMessage:error.localizedDescription] animated:YES completion:nil];
+            } else if (results.count > 0) {
+                Board *board = (Board *)results[0];
+                cell.board = board;
             }
+            
         }];
         return cell;
     }
@@ -313,14 +312,18 @@
     PFFileObject *imageFile = [PFFileObject fileObjectWithName:@"coverImage.png" data:imageData];
     self.boardToChange.coverImage = imageFile;
     [self.boardToChange saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        if(!error) {
+        if(error) {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error changing cover image" message:nil preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+            [alert addAction:okAction];
+            [self presentViewController:alert animated:YES completion:nil];
+        }
+        else {
             [self updateBoards];
             // Dismiss UIImagePickerController to go back to your original view controller
             [self dismissViewControllerAnimated:YES completion:nil];
         }
-        else
-            NSLog(@"Error changing cover image: %@", error.localizedDescription);
-    }];
+}];
 }
 
 - (void)openLibrary {
