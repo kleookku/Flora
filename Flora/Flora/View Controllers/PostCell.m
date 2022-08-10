@@ -24,6 +24,11 @@
     tapGestureRecognizer.numberOfTapsRequired = 1;
     [self.likeCountLabel addGestureRecognizer:tapGestureRecognizer];
     self.likeCountLabel.userInteractionEnabled = YES;
+    
+    UITapGestureRecognizer *doubleTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(likedPost:)];
+    doubleTapGesture.numberOfTapsRequired = 2;
+    [self.postImage addGestureRecognizer:doubleTapGesture];
+    self.postImage.userInteractionEnabled = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -74,6 +79,27 @@
     }];
 }
 
+- (void) likedPost:(UITapGestureRecognizer *)gesture {
+    if(!gesture || gesture.state == UIGestureRecognizerStateRecognized){
+        [self.likeButton setUserInteractionEnabled:NO];
+        PFBooleanResultBlock completion = ^(BOOL succeeded, NSError * _Nullable error) {
+            [self.likeButton setUserInteractionEnabled:YES];
+
+            if(error) {
+                Elog(@"Error: %@", error.localizedDescription);
+            } else {
+                [self updateLikes];
+            }
+        };
+        
+        if ([self.post.userLikes containsObject:[PFUser currentUser].username]) {
+            [APIManager unlikePost:self.post withCompletion:completion];
+        } else {
+            [APIManager likePost:self.post withCompletion:completion];
+        }
+    }
+}
+
 - (void) updateLikes {
     self.likeCountLabel.text = [NSString stringWithFormat:@"%lu likes", self.post.userLikes.count];
 
@@ -101,23 +127,7 @@
 }
 
 - (IBAction)didTapLike:(id)sender {
-    
-    [self.likeButton setUserInteractionEnabled:NO];
-    PFBooleanResultBlock completion = ^(BOOL succeeded, NSError * _Nullable error) {
-        [self.likeButton setUserInteractionEnabled:YES];
-
-        if(error) {
-            Elog(@"Error: %@", error.localizedDescription);
-        } else {
-            [self updateLikes];
-        }
-    };
-    
-    if ([self.post.userLikes containsObject:[PFUser currentUser].username]) {
-        [APIManager unlikePost:self.post withCompletion:completion];
-    } else {
-        [APIManager likePost:self.post withCompletion:completion];
-    }
+    [self likedPost:nil];
 }
 
 - (IBAction)didTapComments:(id)sender {
