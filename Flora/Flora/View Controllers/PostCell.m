@@ -29,7 +29,7 @@
 
 - (void)setPost:(Post *)post {
     _post = post;
-    
+        
     [post fetchIfNeededInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
         self.postImage.file = post.image;
         [self.postImage loadInBackground];
@@ -71,7 +71,7 @@
 
 - (void) updateLikes {
     self.likeCountLabel.text = [NSString stringWithFormat:@"%lu likes", self.post.userLikes.count];
-    
+
     if ([self.post.userLikes containsObject:[PFUser currentUser].username]) {
         [self.likeButton setImage:[UIImage systemImageNamed:@"heart.fill"] forState:UIControlStateNormal];
         [self.likeButton setTintColor:[UIColor redColor]];
@@ -92,6 +92,7 @@
 }
 
 - (IBAction)didTapLike:(id)sender {
+    
     [self.likeButton setUserInteractionEnabled:NO];
     PFBooleanResultBlock completion = ^(BOOL succeeded, NSError * _Nullable error) {
         [self.likeButton setUserInteractionEnabled:YES];
