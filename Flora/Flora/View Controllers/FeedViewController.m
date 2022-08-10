@@ -6,16 +6,23 @@
 //
 
 #import "FeedViewController.h"
+#import "ComposeViewController.h"
+#import "DetailViewController.h"
+#import "UserProfileViewController.h"
 #import "PostCell.h"
 #import "Parse/Parse.h"
 #import "Post.h"
 #import "Follow.h"
 
-@interface FeedViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface FeedViewController () <UITableViewDelegate, UITableViewDataSource, PostCellDelegate, ComposeViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIButton *composeButton;
 
 @property (nonatomic, strong) NSArray *postsArray;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
+
+@property (nonatomic, strong)Plant *plantSegue;
+@property (nonatomic, strong)PFUser *userSegue;
 @end
 
 @implementation FeedViewController
@@ -26,6 +33,8 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
+    self.composeButton.tag = 1;
+    
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(updatePosts) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
@@ -33,10 +42,33 @@
     [self updatePosts];
 }
 
+#pragma mark - ComposeViewControllerDelegaet
+
+- (void)didPost {
+    [self updatePosts];
+    [self.tableView reloadData];
+}
+
+#pragma mark - PostCellDelegate
+
+- (void) plantPressed:(Plant *)plant {
+    self.plantSegue = plant;
+    self.userSegue = nil;
+    [self performSegueWithIdentifier:@"FeedToPlant" sender:nil];
+}
+
+- (void)profilePressed:(PFUser *)user {
+    self.userSegue = user;
+    self.plantSegue = nil;
+    [self performSegueWithIdentifier:@"FeedToProfile" sender:nil];
+}
+
+
 # pragma mark - UITableViewDelegate
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
+    cell.delegate = self;
     Post *post = self.postsArray[indexPath.row];
     cell.post = post;
     return cell;
@@ -100,14 +132,20 @@
 }
 
 
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([sender tag] == 1){
+        ComposeViewController *composeVC = [segue destinationViewController];
+        composeVC.delegate = self;
+    } else if (_plantSegue){
+        DetailViewController *detailVC = [segue destinationViewController];
+        detailVC.plant = _plantSegue;
+    } else if (_userSegue) {
+        UserProfileViewController *userProfileVC = [segue destinationViewController];
+        userProfileVC.user = _userSegue;
+    }
 }
-*/
 
 @end

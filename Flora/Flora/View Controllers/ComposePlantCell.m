@@ -18,8 +18,6 @@
     } else if(!self.delegate.selectedPlant){
         self.isSelected = YES;
         [self.selectedButton setTintColor:[UIColor whiteColor]];
-
-//        [self.selectedButton setImage:[UIImage systemImageNamed:@"checkmark.circle.fill"] forState:UIControlStateNormal];
         [self.delegate selectedPlant:self.plant];
     } else {
         [self.delegate presentWarning];

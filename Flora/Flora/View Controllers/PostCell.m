@@ -13,16 +13,9 @@
 @implementation PostCell
 
 - (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
-    
+    [super awakeFromNib];    
     self.plantImage.layer.borderColor = [[UIColor blackColor] CGColor];
     self.plantImage.layer.borderWidth = 3;
-    
-    UILongPressGestureRecognizer *recognizer = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(handleLongPress:)];
-    [recognizer setMinimumPressDuration:1.0];
-    [self.plantImage setUserInteractionEnabled:YES];
-    [self.plantImage addGestureRecognizer:recognizer];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -63,5 +56,14 @@
     self.likeCountLabel.text = [self.post.likeCount stringValue];
     self.commentCountLabel.text = [self.post.commentCount stringValue];
 }
-    
+
+#pragma mark - Actions
+
+- (IBAction)didTapPlant:(id)sender {
+    [self.delegate plantPressed:self.post.plant];
+}
+
+- (IBAction)didTapProfile:(id)sender {
+    [self.delegate profilePressed:self.post.author];
+}
     @end

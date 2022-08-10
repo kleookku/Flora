@@ -11,6 +11,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol PostCellDelegate
+
+- (void)plantPressed:(Plant *)plant;
+- (void)profilePressed:(PFUser *)user;
+
+@end
+
+
 @interface PostCell : UITableViewCell
 
 @property (nonatomic, strong) Post *post;
@@ -27,6 +35,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIButton *commentButton;
 @property (weak, nonatomic) IBOutlet UILabel *likeCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *commentCountLabel;
+
+@property (nonatomic, strong)id<PostCellDelegate> delegate;
+@property (nonatomic, strong)Plant *plant;
+
 @end
 
 NS_ASSUME_NONNULL_END
