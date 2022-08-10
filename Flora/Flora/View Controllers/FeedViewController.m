@@ -18,6 +18,8 @@
 #import "APIManager.h"
 #import "SVPullToRefresh/SVPullToRefresh.h"
 
+#define COMPOSE_BUTTON 1
+
 @interface FeedViewController () <UITableViewDelegate, UITableViewDataSource, PostCellDelegate, ComposeViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIButton *composeButton;
@@ -45,7 +47,7 @@
         [self addLaterPosts];
     }];
     
-    self.composeButton.tag = 1;
+    self.composeButton.tag = COMPOSE_BUTTON;
     
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(updatePosts) forControlEvents:UIControlEventValueChanged];

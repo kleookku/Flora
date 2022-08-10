@@ -12,6 +12,9 @@
 #import "APIManager.h"
 #import "CommentsViewController.h"
 
+#define PLANT_BUTTON 1
+#define COMMENT_BUTTON 2
+
 #ifdef DEBUG
 #    define Elog(...) NSLog(__VA_ARGS__)
 #else
@@ -40,8 +43,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.plantButton.tag = 1;
-    self.commentButton.tag = 2;
+    self.plantButton.tag = PLANT_BUTTON;
+    self.commentButton.tag = COMMENT_BUTTON;
     
     _likeAnimation=[CABasicAnimation animationWithKeyPath:@"transform.scale"];
     _likeAnimation.duration=0.15;

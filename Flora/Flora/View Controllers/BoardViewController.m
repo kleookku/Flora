@@ -13,6 +13,9 @@
 #import "UITextView_Placeholder/UITextView+Placeholder.h"
 #import "APIManager.h"
 
+#define EDIT_BUTTON 1
+#define ADD_PLANT_BUTTON 2
+
 @interface BoardViewController () <UICollectionViewDataSource, PlantCellDelegate, AddViewControllerDelegate, UITextViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *boardNameField;
@@ -48,9 +51,9 @@
         [self.privacyImage setHidden:YES];
     } else {
         self.editButton.layer.cornerRadius = 10;
-        self.editButton.tag = 1;
+        self.editButton.tag = EDIT_BUTTON;
         self.addPlantButton.layer.cornerRadius = 7;
-        self.addPlantButton.tag = 2;
+        self.addPlantButton.tag = ADD_PLANT_BUTTON;
     }
     
     self.notesView.delegate = self;

@@ -28,6 +28,8 @@
 #define NO_MOIST @"No moisture information"
 #define MOIST_DICT @{@"Low":LOW_MOIST, @"Medium": MED_MOIST, @"High": HIGH_MOIST, @"N/A": NO_MOIST}
 
+#define ADD_TO_BOARD_BUTTON 1
+
 @interface DetailViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *plantName;
@@ -50,7 +52,7 @@
     // Do any additional setup after loading the view.
     [self.activityIndicator startAnimating];
     self.addToBoardButton.layer.cornerRadius = 15;
-    self.addToBoardButton.tag = 1;
+    self.addToBoardButton.tag = ADD_TO_BOARD_BUTTON;
     [self updatePlantObj];
     
     _likeAnimation=[CABasicAnimation animationWithKeyPath:@"transform.scale"];

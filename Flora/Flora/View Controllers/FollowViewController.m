@@ -13,6 +13,8 @@
 #import "UserProfileViewController.h"
 #import "APIManager.h"
 
+#define ADD_USERS_BUTTON 1
+
 @interface FollowViewController () <UITableViewDelegate, UITableViewDataSource, UserCellDelegate, UserSearchViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentControl;
@@ -39,7 +41,7 @@
     [self updateFollowing];
     [self updateFollowers];
     
-    self.addUsersButton.tag = 1;
+    self.addUsersButton.tag = ADD_USERS_BUTTON;
     
 }
 
