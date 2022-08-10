@@ -40,7 +40,7 @@ This app helps users find plants that are suitable for them based on three growt
 - [x] Users can view and scroll through their boards/"gardens" in the plants view. 
 - [x] Users can create new boards or rename current boards. 
 - [x] Users are warned when they attempt to add a plant to a board that already contains it.
-- [x] Users can change their username or password and set a profile picture.
+- [x] Users can change their password and set a profile picture.
 
 
 **Stretch Stories**
