@@ -28,7 +28,12 @@
 #define MED_TEMP_BOUND 35
 #define HIGH_TEMP_BOUND 100
 
-
+#ifdef DEBUG
+#    define DLog(...) NSLog(__VA_ARGS__)
+#else
+#    define DLog(...) /* */
+#endif
+#define ALog(...) NSLog(__VA_ARGS__)
 
 @implementation APIManager
 
