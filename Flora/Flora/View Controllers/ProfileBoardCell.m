@@ -7,12 +7,8 @@
 
 #import "ProfileBoardCell.h"
 #import "Plant.h"
+#import "Header.h"
 
-#ifdef DEBUG
-#    define Elog(...) NSLog(__VA_ARGS__)
-#else
-#    define Elog(...) /* */
-#endif
 
 @implementation ProfileBoardCell
 - (IBAction)tappedBoard:(id)sender {

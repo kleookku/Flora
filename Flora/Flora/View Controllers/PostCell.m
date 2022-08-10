@@ -8,12 +8,8 @@
 #import "PostCell.h"
 #import "DateTools.h"
 #import "APIManager.h"
+#import "Header.h"
 
-#ifdef DEBUG
-#    define Elog(...) NSLog(__VA_ARGS__)
-#else
-#    define Elog(...) /* */
-#endif
 
 #define MULTIPLIER 4
 
