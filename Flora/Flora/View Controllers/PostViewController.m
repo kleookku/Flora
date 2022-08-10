@@ -11,12 +11,8 @@
 #import "DateTools/DateTools.h"
 #import "APIManager.h"
 #import "CommentsViewController.h"
+#import "Elog.h"
 
-#ifdef DEBUG
-#    define Elog(...) NSLog(__VA_ARGS__)
-#else
-#    define Elog(...) /* */
-#endif
 
 @interface PostViewController ()
 @property (weak, nonatomic) IBOutlet PFImageView *postImage;
