@@ -166,7 +166,7 @@
     
     NSString *key = [dict objectForKey: @"openWeather"];
     
-    NSString *url = [NSString stringWithFormat: @"https://api.openweathermap.org/data/2.5/onecall?lat=%@&lon=%@&exclude=%@&appid=%@&units=imperial", lat, lon, @"hourly,daily,minutely,alerts", key]; //@"https://api.openweathermap.org/data/2.5/onecall";
+    NSString *url = [NSString stringWithFormat: @"https://api.openweathermap.org/data/2.5/onecall?lat=%@&lon=%@&exclude=%@&appid=%@&units=imperial", lat, lon, @"hourly,daily,minutely,alerts", key];
     [self GET:url parameters:nil // @{@"lat":lat,@"lon":lon,@"exclude":@"minutely,hourly,daily,alerts",@"appid":key,@"units":@"imperial"}
      progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         

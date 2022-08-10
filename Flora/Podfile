@@ -6,6 +6,7 @@ target 'Flora' do
   use_frameworks!
 
   # Pods for Flora
+pod 'DateTools'
 pod 'Parse'
 pod 'BDBOAuth1Manager'
 pod 'ZLSwipeableView'
@@ -13,9 +14,9 @@ pod 'AFNetworking'
 pod 'Parse/UI'
 pod 'UITextView+Placeholder'
 pod 'GooglePlaces'
-pod 'DateTools'
 pod 'SVPullToRefresh'
 
+#,'Pods-FloraTests.debug','Pods-Flora-FloraUITests.debug'
 
   target 'FloraTests' do
     inherit! :search_paths

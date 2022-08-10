@@ -17,6 +17,9 @@
 #import "ProfileViewController.h"
 #import "APIManager.h"
 
+#define EDIT_BUTTON 1
+
+
 @interface UserProfileViewController () <UICollectionViewDelegate, UICollectionViewDataSource, ProfileBoardCellDelegate, PostGridCellDelegate, ProfileViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *username;
@@ -36,7 +39,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.editButton.tag = 1;
+    self.editButton.tag = EDIT_BUTTON;
     
     if(self.notMyProfile) {
         [self.editButton setHidden:YES];

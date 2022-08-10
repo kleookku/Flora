@@ -40,7 +40,7 @@ This app helps users find plants that are suitable for them based on three growt
 - [x] Users can view and scroll through their boards/"gardens" in the plants view. 
 - [x] Users can create new boards or rename current boards. 
 - [x] Users are warned when they attempt to add a plant to a board that already contains it.
-- [x] Users can change their username or password and set a profile picture.
+- [x] Users can change their password and set a profile picture.
 
 
 **Stretch Stories**
@@ -77,9 +77,10 @@ This app helps users find plants that are suitable for them based on three growt
 - [x] Users can remove followers.
 - [x] Users can like and comment on posts. 
 - [x] Users can see all the posts associated with a certain plant.
-- [ ] Users can view who liked a post.
-- [ ] Users can scroll through the post feed with infinite scrolling.
-- [ ] Users will get push notifications. 
+- [x] Users can scroll through the post feed with infinite scrolling.
+- [x] Users can view who liked a post.
+- [x] Users can like a post by double tapping the post image in their feed.
+- [x] Like buttons bounce when tapped.
 
 
 ### 2. Screen Archetypes
@@ -89,7 +90,10 @@ This app helps users find plants that are suitable for them based on three growt
 - Profile Screen
     - Displays user profile image, username, email, and allows user to change each of these attributes.
 - Search Screen
-    - Displays three sliders that describe different levels for each attribute: moisture, sunlight, and temperature
+    - Displays three segment controls that describe different levels for each attribute: moisture, sunlight, and temperature
+    - Users can set a location and use weather information from that location to input attributres.
+- Name Search Screen
+    - Users can search for plants by typing the plant's name into the search bar. 
 - Results Screen
     - Displays each plant's image and name in a stacked view. 
     - Users can swipe right or left on each plant to like or dislike the plant.
@@ -104,29 +108,60 @@ This app helps users find plants that are suitable for them based on three growt
     - Presents a button in the boards section that allows the user to create a new board.
 - Board Screen
     - Displays a user's board, with an image and the name of each plant that is part of the board. 
-    - Allows the user to edit the name of the board.
+    - Allows the user to edit the name, description, and viewability of the board.
 - Add Screen
     - Displays a list of plants or list of boards than users can select. 
     - Presents a save button that allows the user to save their selections.
+- Feed Screen
+    - Displays posts posted by users that user follows. 
+    - Users can interact with posts (like, comment, view profile)
+- Comment Screen
+    - Displays comments on a post in a table view. 
+    - Users can post their own comment and view a commenter's profile.
+- Post Likes Screen
+    - Displays users that liked a post in a table view.
+- Compose Screen
+    - Users can add their own photo, add a caption, and pick a plant to post.
+- Friends Screen
+    - Users can view who they follow and who follows them.
+- Find Users Screen
+    - Users can search for a user by username through a search bar.
+- User Profile Screen
+    - Users can view other users (and their own) boards and posts in collection views.
 
 ### 3. Navigation
 
 **Tab Navigation** (Tab to Screen)
-- Search Screen
+- Feed Screen
 - Plants Screen
+- Search Screen
+- Friends Screen
 - Profile Screen
 
 
 **Flow Navigation** (Screen to Screen)
 - Log in/Register
     - Signup Screen
-- Search Screen
-    - Results Screen
-        - Details Screen
-            - Select Screen
+- Feed Screen
+    - Compose Screen
+    - Post Likes Screen
+    - Comments Screen
 - Plants Screen
     - Board Screen
         - Add Screen
+        - Details Screen
+    - Details Screen
+- Search Screen
+    - Results Screen
+        - Details Screen
+    - Name Search Screen
+        - Details Screen
+- Friends Screen
+    - User Profile Screen
+    - Find Users Screen
+- Profile Screen
+    - Settings Screen
+    - Board Screen
 
 ## Wireframes
 

@@ -91,12 +91,10 @@
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>10</integer>
+			<integer>13</integer>
 		</dict>
-		<key>SVPullToRefresh.xcscheme</key>
+		<key>SVPullToRefresh.xcscheme_^#shared#^_</key>
 		<dict>
-			<key>isShown</key>
-			<false/>
 			<key>orderHint</key>
 			<integer>13</integer>
 		</dict>

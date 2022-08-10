@@ -18,6 +18,8 @@
 #import "APIManager.h"
 #import "SVPullToRefresh/SVPullToRefresh.h"
 
+#define COMPOSE_BUTTON 1
+
 @interface FeedViewController () <UITableViewDelegate, UITableViewDataSource, PostCellDelegate, ComposeViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIButton *composeButton;
@@ -45,7 +47,7 @@
         [self addLaterPosts];
     }];
     
-    self.composeButton.tag = 1;
+    self.composeButton.tag = COMPOSE_BUTTON;
     
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(updatePosts) forControlEvents:UIControlEventValueChanged];
@@ -120,52 +122,55 @@
 #pragma mark - Networking
 
 - (void)addLaterPosts {
-    NSUInteger index = self.postsArray.count-1;
-    Post *latestPost = self.postsArray[index];
-    NSDate *latestDate = latestPost.createdAt;
-    
-    PFQuery *query = [PFQuery queryWithClassName:@"Post"];
-    [query includeKey:@"author"];
-    [query whereKey:@"createdAt" lessThan:latestDate];
-    [query includeKey:@"createdAt"];
-    [query orderByDescending:@"createdAt"];
-    [query includeKey:@"likeCount"];
-    query.limit = 20;
-    
-    if(_isPlantFeed){
-        [query whereKey:@"plant" equalTo:self.plant];
-        [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
-            if (posts) {
-                NSMutableArray *plantPosts = [[NSMutableArray alloc] init];
-                [plantPosts addObjectsFromArray:self.postsArray];
-                [plantPosts addObjectsFromArray:posts];
-                self.postsArray = plantPosts;
-                [self.tableView reloadData];
-                [self.tableView.infiniteScrollingView stopAnimating];
-                
-            } else {
-                [self presentViewController:[APIManager errorAlertWithTitle:@"Error getting posts" withMessage:error.localizedDescription] animated:YES completion:nil];
-            }
-        }];
-    } else {
-        [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
-            if (posts) {
-                NSMutableArray *followingPosts = [[NSMutableArray alloc] init];
-                [followingPosts addObjectsFromArray:self.postsArray];
-                for(Post *p in posts){
-                    if([self.followedUsers containsObject:p.author.username]) {
-                        [followingPosts addObject:p];
-                    }
+    if(self.postsArray.count > 0) {
+        NSUInteger index = self.postsArray.count-1;
+        Post *latestPost = self.postsArray[index];
+        NSDate *latestDate = latestPost.createdAt;
+        
+        PFQuery *query = [PFQuery queryWithClassName:@"Post"];
+        [query includeKey:@"author"];
+        [query whereKey:@"createdAt" lessThan:latestDate];
+        [query includeKey:@"createdAt"];
+        [query orderByDescending:@"createdAt"];
+        [query includeKey:@"likeCount"];
+        query.limit = 20;
+        
+        if(_isPlantFeed){
+            [query whereKey:@"plant" equalTo:self.plant];
+            [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
+                if (posts) {
+                    NSMutableArray *plantPosts = [[NSMutableArray alloc] init];
+                    [plantPosts addObjectsFromArray:self.postsArray];
+                    [plantPosts addObjectsFromArray:posts];
+                    self.postsArray = plantPosts;
+                    [self.tableView reloadData];
+                    [self.tableView.infiniteScrollingView stopAnimating];
+                    
+                } else {
+                    [self presentViewController:[APIManager errorAlertWithTitle:@"Error getting posts" withMessage:error.localizedDescription] animated:YES completion:nil];
                 }
-                self.postsArray = followingPosts;
-                [self.tableView reloadData];
-                [self.tableView.infiniteScrollingView stopAnimating];
-            } else {
-                NSLog(@"%@", error.localizedDescription);
-                [self presentViewController:[APIManager errorAlertWithTitle:@"Error getting posts" withMessage:error.localizedDescription] animated:YES completion:nil];
-            }
-        }];
+            }];
+        } else {
+            [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
+                if (posts) {
+                    NSMutableArray *followingPosts = [[NSMutableArray alloc] init];
+                    [followingPosts addObjectsFromArray:self.postsArray];
+                    for(Post *p in posts){
+                        if([self.followedUsers containsObject:p.author.username]) {
+                            [followingPosts addObject:p];
+                        }
+                    }
+                    self.postsArray = followingPosts;
+                    [self.tableView reloadData];
+                    [self.tableView.infiniteScrollingView stopAnimating];
+                } else {
+                    NSLog(@"%@", error.localizedDescription);
+                    [self presentViewController:[APIManager errorAlertWithTitle:@"Error getting posts" withMessage:error.localizedDescription] animated:YES completion:nil];
+                }
+            }];
+        }
     }
+    
 }
 
 - (void)updatePlantPosts {

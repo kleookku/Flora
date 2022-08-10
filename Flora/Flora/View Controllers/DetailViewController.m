@@ -28,6 +28,8 @@
 #define NO_MOIST @"No moisture information"
 #define MOIST_DICT @{@"Low":LOW_MOIST, @"Medium": MED_MOIST, @"High": HIGH_MOIST, @"N/A": NO_MOIST}
 
+#define ADD_TO_BOARD_BUTTON 1
+
 @interface DetailViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *plantName;
@@ -39,6 +41,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *likeButton;
 @property (weak, nonatomic) IBOutlet UIButton *addToBoardButton;
 
+@property (nonatomic, strong)CABasicAnimation *likeAnimation;
+
 @end
 
 @implementation DetailViewController
@@ -48,8 +52,15 @@
     // Do any additional setup after loading the view.
     [self.activityIndicator startAnimating];
     self.addToBoardButton.layer.cornerRadius = 15;
-    self.addToBoardButton.tag = 1;
+    self.addToBoardButton.tag = ADD_TO_BOARD_BUTTON;
     [self updatePlantObj];
+    
+    _likeAnimation=[CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    _likeAnimation.duration=0.15;
+    _likeAnimation.autoreverses=YES;
+    _likeAnimation.fromValue=[NSNumber numberWithFloat:1.0];
+    _likeAnimation.toValue=[NSNumber numberWithFloat:0.5];
+    _likeAnimation.timingFunction=[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
 }
 
 
@@ -76,13 +87,17 @@
 #pragma mark - Actions
 
 - (IBAction)didTapLike:(id)sender {
+    [self.likeButton.layer addAnimation:self.likeAnimation forKey:@"animateOpacity"];
+
     NSArray *userLikes = [PFUser currentUser][@"likes"];
     if ([userLikes containsObject:self.plant.plantId]) {
         [APIManager removePlantFromLikes:self.plant];
         [self.likeButton setImage:[UIImage systemImageNamed:@"suit.heart"] forState:UIControlStateNormal];
+        [self.likeButton setTintColor:[UIColor darkGrayColor]];
     } else {
         [APIManager savePlantToLikes:self.plant];
         [self.likeButton setImage:[UIImage systemImageNamed:@"suit.heart.fill"] forState:UIControlStateNormal];
+        [self.likeButton setTintColor:[UIColor redColor]];
     }
     [self.delegate likedPlant];
 }

@@ -17,6 +17,9 @@
 #import "SelectViewController.h"
 #import "APIManager.h"
 
+#define LIKES_COLLECTION 1
+#define BOARDS_COLLECTION 2
+
 
 @interface LikesViewController () <UICollectionViewDataSource, UICollectionViewDelegate, BoardCellDelegate, LikesCellDelegate, BoardViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, DetailViewControllerDelegate, SelectViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *boardsCollectionView;
@@ -56,8 +59,8 @@
     self.likedCollectionView.dataSource = self;
     self.boardsCollectionView.dataSource = self;
     
-    self.likedCollectionView.tag = 1;
-    self.boardsCollectionView.tag = 2;
+    self.likedCollectionView.tag = LIKES_COLLECTION;
+    self.boardsCollectionView.tag = BOARDS_COLLECTION;
     
     self.boardsRefreshControl = [[UIRefreshControl alloc] init];
     [self.boardsRefreshControl addTarget:self action:@selector(updateBoards) forControlEvents:UIControlEventValueChanged];
@@ -225,7 +228,7 @@
 #pragma mark - CollectionViewDataSource
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    if (collectionView.tag == 1) {
+    if (collectionView.tag == LIKES_COLLECTION) {
         LikesCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"LikesCell" forIndexPath:indexPath];
         cell.plantImage.layer.cornerRadius = 20;
         cell.delegate = self;
@@ -240,6 +243,7 @@
                 if(results.count > 0) {
                     Plant *plant = (Plant *)results[0];
                     cell.plant = plant;
+                    
                 }
             } else {
                 [self presentViewController:[APIManager errorAlertWithTitle:@"Error retrieving liked plants" withMessage:error.localizedDescription] animated:YES completion:nil];
@@ -273,7 +277,7 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    if (collectionView.tag == 1) {
+    if (collectionView.tag == LIKES_COLLECTION) {
         return self.likes.count;
         
     } else {

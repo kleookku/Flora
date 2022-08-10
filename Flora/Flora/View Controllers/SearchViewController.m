@@ -29,7 +29,7 @@
 
 #define MIN_TEMP_ARRAY @[@(-75), @(-17), @(23), @(0)]
 #define MAX_TEMP_ARRAY @[@(-17), @(23), @(100), @(0)]
-
+#define SEARCH_NAME_BUTTON 1
 
 #define PLANTS_PER_PAGE 25
 
@@ -70,7 +70,7 @@
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
     [self.setLocationAlert addAction:okAction];
     
-    self.searchByNameButton.tag = 1;
+    self.searchByNameButton.tag = SEARCH_NAME_BUTTON;
     self.searchByNameButton.layer.cornerRadius = 10;
 }
 
@@ -184,7 +184,6 @@
 
 # pragma mark - GMSAutocompleteViewControllerDelegate
 
-// Handle the user's selection.
 - (void)viewController:(GMSAutocompleteViewController *)viewController
 didAutocompleteWithPlace:(GMSPlace *)place {
     [self dismissViewControllerAnimated:YES completion:nil];

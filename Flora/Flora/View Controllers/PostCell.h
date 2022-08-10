@@ -41,6 +41,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong)id<PostCellDelegate> delegate;
 @property (nonatomic, strong)Plant *plant;
+@property (nonatomic, strong)CABasicAnimation *likeAnimation;
 
 @end
 
