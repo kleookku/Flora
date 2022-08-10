@@ -10,6 +10,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "SelectViewController.h"
 #import "Parse/PFImageView.h"
+#import "FeedViewController.h"
 
 #define PLANT_ID @"Id"
 #define PLANT_NAME @"CommonName"
@@ -47,6 +48,7 @@
     // Do any additional setup after loading the view.
     [self.activityIndicator startAnimating];
     self.addToBoardButton.layer.cornerRadius = 15;
+    self.addToBoardButton.tag = 1;
     [self updatePlantObj];
 }
 
@@ -71,6 +73,8 @@
     }
 }
 
+#pragma mark - Actions
+
 - (IBAction)didTapLike:(id)sender {
     NSArray *userLikes = [PFUser currentUser][@"likes"];
     if ([userLikes containsObject:self.plant.plantId]) {
@@ -83,15 +87,22 @@
     [self.delegate likedPlant];
 }
 
+- (IBAction)didTapOtherImages:(id)sender {
+    [self performSegueWithIdentifier:@"PlantToFeed" sender:nil];
+}
 
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if(self.plant) {
+    if([sender tag] == 1) {
         SelectViewController *selectVC = [segue destinationViewController];
         selectVC.plantId = self.plant.plantId;
         selectVC.delegate = self.delegate;
+    } else {
+        FeedViewController *feedVC = [segue destinationViewController];
+        feedVC.isPlantFeed = YES;
+        feedVC.plant = self.plant;
     }
 }
 
