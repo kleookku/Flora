@@ -8,6 +8,8 @@
 #import "UserSearchCell.h"
 #import "Parse/Parse.h"
 #import "APIManager.h"
+#import "Elog.h"
+
 
 @implementation UserSearchCell
 
@@ -59,7 +61,7 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if([self.user isEqual:cellUser]) {
             if(error) {
-                NSLog(@"Error getting follow: %@", error.localizedDescription);
+                Elog(@"Error getting follow: %@", error.localizedDescription);
             } else if (objects.count > 0){
                 self.followButton.backgroundColor = [UIColor systemBlueColor];
                 self.followButton.tintColor = [UIColor whiteColor];

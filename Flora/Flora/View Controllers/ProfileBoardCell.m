@@ -7,6 +7,8 @@
 
 #import "ProfileBoardCell.h"
 #import "Plant.h"
+#import "Elog.h"
+
 
 @implementation ProfileBoardCell
 - (IBAction)tappedBoard:(id)sender {
@@ -37,7 +39,7 @@
         [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable results, NSError * _Nullable error) {
             if([currentBoard isEqual:self.board]) {
                 if(error) {
-                    NSLog(@"Error getting board cover image: %@", error.localizedDescription);
+                    Elog(@"Error getting board cover image: %@", error.localizedDescription);
                 } else if (results.count > 0) {
                     Plant *plant = (Plant *)results[0];
                     self.coverImage.file = plant.image;

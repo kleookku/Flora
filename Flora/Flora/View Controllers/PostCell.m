@@ -8,6 +8,8 @@
 #import "PostCell.h"
 #import "DateTools.h"
 #import "APIManager.h"
+#import "Elog.h"
+
 
 #define MULTIPLIER 4
 
@@ -92,7 +94,7 @@
     [self.likeButton setUserInteractionEnabled:NO];
     PFBooleanResultBlock completion = ^(BOOL succeeded, NSError * _Nullable error) {
         if(error) {
-            NSLog(@"Error: %@", error.localizedDescription);
+            Elog(@"Error: %@", error.localizedDescription);
         } else {
             [self updateLikes];
         }

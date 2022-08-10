@@ -10,6 +10,8 @@
 #import "Parse/PFImageView.h"
 #import "DateTools/DateTools.h"
 #import "APIManager.h"
+#import "Elog.h"
+
 
 @interface PostViewController ()
 @property (weak, nonatomic) IBOutlet PFImageView *postImage;
@@ -93,7 +95,7 @@
     
     PFBooleanResultBlock completion = ^(BOOL succeeded, NSError * _Nullable error) {
         if(error) {
-            NSLog(@"Error: %@", error.localizedDescription);
+            Elog(@"Error: %@", error.localizedDescription);
         } else {
             [self updateLikes];
         }

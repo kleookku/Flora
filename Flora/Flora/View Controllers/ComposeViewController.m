@@ -70,7 +70,6 @@
                     [self presentViewController:[APIManager errorAlertWithTitle:@"Error sharing post" withMessage:error.localizedDescription] animated:YES completion:nil];
                 } else {
                     [self.delegate didPost];
-                    NSLog(@"Successfully shared post!");
                     [self dismissViewControllerAnimated:YES completion:nil];
                 }
         }];

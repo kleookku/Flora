@@ -8,6 +8,8 @@
 #import "Plant.h"
 #import "APIManager.h"
 #import "UIImage+AFNetworking.h"
+#import "Elog.h"
+
 
 @implementation Plant
 
@@ -45,14 +47,12 @@
     // save plant to database
     [[APIManager shared] getPlantCharacteristicsWithId:plantId completion:^(NSString * _Nonnull shade, NSString * _Nonnull moist, NSString * _Nonnull temp, NSError * _Nonnull error) {
         if(error) {
-            NSLog(@"Error getting plant characteristics: %@", error);
+            Elog(@"Error getting plant characteristics: %@", error);
         } else {
             [Plant savePlantWithCharsMoistureUse:moist shadeLevel:shade minimumTemp:temp fromPlantDict:dict withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-                            if(error) {
-                                NSLog(@"Error saving plant: %@", error.localizedDescription);
-                            } else {
-                                NSLog(@"Successfully saved plant!");
-                            }
+                if(error) {
+                    Elog(@"Error saving plant: %@", error.localizedDescription);
+                }
             }];
         }
     }];
@@ -78,8 +78,6 @@
     NSNumber *tempNumber = [f numberFromString:temp];
     newPlant.minTemp = tempNumber;
         
-    NSLog(@"plant %@", newPlant);
-    
     [newPlant saveInBackgroundWithBlock: completion];
     
     return newPlant;

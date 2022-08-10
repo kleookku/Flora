@@ -11,6 +11,7 @@
 #import "Plant.h"
 #import "Follow.h"
 #import "Post.h"
+#import "Elog.h"
 
 #define SHADE @"Shade Tolerance"
 #define MOIST @"Moisture Use"
@@ -28,12 +29,6 @@
 #define MED_TEMP_BOUND 35
 #define HIGH_TEMP_BOUND 100
 
-#ifdef DEBUG
-#    define DLog(...) NSLog(__VA_ARGS__)
-#else
-#    define DLog(...) /* */
-#endif
-#define ALog(...) NSLog(__VA_ARGS__)
 
 @implementation APIManager
 
@@ -93,20 +88,6 @@
         completion(nil, error);
     }];
     
-}
-
-- (void)searchPlantsWithShadeLevel:(NSString *)shade withMoistureUse:(NSString *)moist withMinTemperature:(NSString *)temp completion:(void(^)(NSArray *results, NSError *error))completion {
-    
-    PFQuery *query = [PFQuery queryWithClassName:@"Plant"];
-    [query whereKey:@"shadeLevel" equalTo:shade];
-    [query whereKey:@"moistureUse" equalTo:moist];
-    [query whereKey:@"minTemp" equalTo:temp];
-    
-    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-        if(error) {
-            NSLog(@"Error getting search results: %@", error.localizedDescription);
-        }
-    }];
 }
 
 - (void)modifyFilterOptions:(NSArray *)selections ofArray:(NSMutableArray *)filterOptions inCategory:(NSString *)categoryString{
@@ -238,7 +219,7 @@
     
     [Board saveBoard:boardName withPlants:@[] forUser:user.username withNotes:@"" withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
         if(error){
-            NSLog(@"Error saving board: %@", error.localizedDescription);
+            Elog(@"Error saving board: %@", error.localizedDescription);
         }
     }];
     
@@ -247,7 +228,7 @@
     user[@"boards"] = boardsArray;
     [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if(error) {
-            NSLog(@"Error: %@", error.localizedDescription);
+            Elog(@"Error: %@", error.localizedDescription);
         }
     }];
 }
@@ -259,7 +240,7 @@
     
     [Follow saveFollow:user.username withFollower:currentUser.username withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
         if(error) {
-            NSLog(@"Error saving follow: %@", error.localizedDescription);
+            Elog(@"Error saving follow: %@", error.localizedDescription);
         }
     }];
 }
@@ -274,7 +255,7 @@
     
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if(error) {
-            NSLog(@"Error getting follow: %@", error.localizedDescription);
+            Elog(@"Error getting follow: %@", error.localizedDescription);
         } else if (objects.count > 0){
             Follow *follow = (Follow *)objects[0];
             [follow deleteInBackground];
@@ -291,7 +272,7 @@
     
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if(error) {
-            NSLog(@"Error getting follow: %@", error.localizedDescription);
+            Elog(@"Error getting follow: %@", error.localizedDescription);
         } else if (objects.count > 0){
             Follow *follow = (Follow *)objects[0];
             [follow deleteInBackground];
@@ -310,7 +291,7 @@
         user[@"likes"] = likesArray;
         [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             if(error) {
-                NSLog(@"Error: %@", error.localizedDescription);
+                Elog(@"Error: %@", error.localizedDescription);
             }
         }];
         
@@ -325,7 +306,7 @@
         user[@"likes"] = likesArray;
         [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             if(error) {
-                NSLog(@"Error: %@", error.localizedDescription);
+                Elog(@"Error: %@", error.localizedDescription);
             }
         }];
         
@@ -342,7 +323,7 @@
         user[@"seen"] = seenArray;
         [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             if(error) {
-                NSLog(@"Error: %@", error.localizedDescription);
+                Elog(@"Error: %@", error.localizedDescription);
             }
         }];
     }
