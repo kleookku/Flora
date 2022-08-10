@@ -57,12 +57,10 @@
 
 - (IBAction)didTapShare:(id)sender {
     [Post postUserImage:self.postImage.image withCaption:self.captionTextView.text withPlant:self.selectedPlant withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-            if(error) {
-                NSLog(@"Error sharing post: %@", error.localizedDescription);
-            } else {
-                NSLog(@"Successfully shared post!");
-                [self dismissViewControllerAnimated:YES completion:nil];
-            }
+        if(!error) {
+            NSLog(@"Successfully shared post!");
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
     }];
 }
 - (IBAction)tapped:(id)sender {

@@ -63,42 +63,5 @@
     self.likeCountLabel.text = [self.post.likeCount stringValue];
     self.commentCountLabel.text = [self.post.commentCount stringValue];
 }
-
-//- (void)handleLongPress:(UILongPressGestureRecognizer*)gesture{
-//    CGRect imageFrame = gesture.view.frame;
-//    imageFrame.size.height = gesture.view.frame.size.height * MULTIPLIER;
-//    imageFrame.size.width = gesture.view.frame.size.width * MULTIPLIER;
-//    if (gesture.state == UIGestureRecognizerStateBegan) {
-//        [UIView animateWithDuration:DURATION animations:^{
-//            gesture.view.layer.zPosition = MAXFLOAT;
-//            gesture.view.frame = imageFrame;
-//            gesture.view.transform = CGAffineTransformMakeTranslation(self.view.center.x - gesture.view.center.x, self.view.center.y - gesture.view.center.y);
-//        }];
-//    } if (gesture.state == UIGestureRecognizerStateEnded) {
-//        [self.plantImage setFrame:CGRectMake(30, 30, 100, 100)];
-//    }
-//
-//    /*
-//     UILongPressGestureRecognizer *profileImageExpand = sender;
-//         CGRect profileImageframe = profileImageExpand.view.frame;
-//         profileImageframe.size.height = profileImageExpand.view.frame.size.height * SIZEMULTIPLIER;
-//         profileImageframe.size.width = profileImageExpand.view.frame.size.width * SIZEMULTIPLIER;
-//         if(profileImageExpand.state == UIGestureRecognizerStateBegan){
-//             [UIView animateWithDuration:DEFAULTDURATION animations:^{
-//                 profileImageExpand.view.layer.zPosition = MAXFLOAT;
-//                 profileImageExpand.view.frame = profileImageframe;
-//                 profileImageExpand.view.transform = CGAffineTransformMakeTranslation(self.view.center.x - profileImageExpand.view.center.x, self.view.center.y - profileImageExpand.view.center.y);
-//             } completion:nil];
-//         }
-//         profileImageframe.size.height = profileImageExpand.view.frame.size.height / SIZEMULTIPLIER;
-//         profileImageframe.size.width = profileImageExpand.view.frame.size.width / SIZEMULTIPLIER;
-//         if(profileImageExpand.state == UIGestureRecognizerStateEnded){
-//             [UIView animateWithDuration:DEFAULTDURATION animations:^{
-//                 profileImageExpand.view.frame = profileImageframe;
-//                 profileImageExpand.view.transform = CGAffineTransformMakeTranslation(ORIGINALXPOSITION, ORIGINALYPOSITION);
-//             } completion:nil];
-//         }
-//     */
-//}
     
     @end
