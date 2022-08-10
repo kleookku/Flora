@@ -163,7 +163,7 @@
 		F49755B42881E046008050BB /* AddViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddViewController.m; sourceTree = "<group>"; };
 		F49755B62881E458008050BB /* AddPlantCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AddPlantCell.h; path = "Flora/View Controllers/AddPlantCell.h"; sourceTree = SOURCE_ROOT; };
 		F49755B72881E458008050BB /* AddPlantCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AddPlantCell.m; path = "Flora/View Controllers/AddPlantCell.m"; sourceTree = SOURCE_ROOT; };
-		F49F7FF928A435810067CB4C /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
+		F49F7FFA28A43B080067CB4C /* Elog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Elog.h; sourceTree = "<group>"; };
 		F4B2679428947234002320AE /* FeedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedViewController.h; sourceTree = "<group>"; };
 		F4B2679528947234002320AE /* FeedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedViewController.m; sourceTree = "<group>"; };
 		F4B267972894727A002320AE /* PostCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostCell.h; sourceTree = "<group>"; };
@@ -355,7 +355,7 @@
 				F47EE85E286E4A8D00E3AA76 /* AppDelegate.h */,
 				F47EE85F286E4A8D00E3AA76 /* AppDelegate.m */,
 				F47EE867286E4A8D00E3AA76 /* Main.storyboard */,
-				F49F7FF928A435810067CB4C /* Header.h */,
+				F49F7FFA28A43B080067CB4C /* Elog.h */,
 				F47EE86A286E4A8E00E3AA76 /* Assets.xcassets */,
 				F47EE86C286E4A8E00E3AA76 /* LaunchScreen.storyboard */,
 				F47EE86F286E4A8E00E3AA76 /* Info.plist */,

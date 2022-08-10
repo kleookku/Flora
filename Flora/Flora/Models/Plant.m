@@ -8,7 +8,7 @@
 #import "Plant.h"
 #import "APIManager.h"
 #import "UIImage+AFNetworking.h"
-#import "Header.h"
+#import "Elog.h"
 
 
 @implementation Plant

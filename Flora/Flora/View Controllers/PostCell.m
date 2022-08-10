@@ -8,7 +8,7 @@
 #import "PostCell.h"
 #import "DateTools.h"
 #import "APIManager.h"
-#import "Header.h"
+#import "Elog.h"
 
 
 #define MULTIPLIER 4

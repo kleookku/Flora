@@ -10,7 +10,7 @@
 #import "Parse/PFImageView.h"
 #import "DateTools/DateTools.h"
 #import "APIManager.h"
-#import "Header.h"
+#import "Elog.h"
 
 
 @interface PostViewController ()

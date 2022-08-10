@@ -11,7 +11,7 @@
 #import "Plant.h"
 #import "Follow.h"
 #import "Post.h"
-#import "Header.h"
+#import "Elog.h"
 
 #define SHADE @"Shade Tolerance"
 #define MOIST @"Moisture Use"

@@ -8,7 +8,7 @@
 #import "UserSearchCell.h"
 #import "Parse/Parse.h"
 #import "APIManager.h"
-#import "Header.h"
+#import "Elog.h"
 
 
 @implementation UserSearchCell

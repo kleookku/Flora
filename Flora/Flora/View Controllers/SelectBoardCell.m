@@ -7,7 +7,7 @@
 
 #import "SelectBoardCell.h"
 #import "Plant.h"
-#import "Header.h"
+#import "Elog.h"
 
 
 @implementation SelectBoardCell

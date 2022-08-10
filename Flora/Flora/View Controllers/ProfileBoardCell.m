@@ -7,7 +7,7 @@
 
 #import "ProfileBoardCell.h"
 #import "Plant.h"
-#import "Header.h"
+#import "Elog.h"
 
 
 @implementation ProfileBoardCell
