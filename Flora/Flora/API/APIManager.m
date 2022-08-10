@@ -11,6 +11,7 @@
 #import "Plant.h"
 #import "Follow.h"
 #import "Post.h"
+#import "Elog.h"
 
 #define SHADE @"Shade Tolerance"
 #define MOIST @"Moisture Use"
@@ -28,11 +29,6 @@
 #define MED_TEMP_BOUND 35
 #define HIGH_TEMP_BOUND 100
 
-#ifdef DEBUG
-#    define Elog(...) NSLog(__VA_ARGS__)
-#else
-#    define Elog(...) /* */
-#endif
 
 @implementation APIManager
 
